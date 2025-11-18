@@ -1,0 +1,1361 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://bullettrade.cn/docs/qmt-server.html">
+      
+      
+        <link rel="prev" href="contributing.html">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>QMT 服务配置 - BulletTrade Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="css/custom.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="aa" data-md-color-accent="aa">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#qmt-bullet-trade-server" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="index.html" title="BulletTrade Docs" class="md-header__button md-logo" aria-label="BulletTrade Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            BulletTrade Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              QMT 服务配置
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="aa" data-md-color-accent="aa"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/BulletTrade/bullet-trade" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  官方首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="index.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  文档首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="backtest.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  回测引擎
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="live.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  实盘引擎
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="trade-support.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  交易支撑
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="quickstart.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  扩展能力
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="api.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  API 文档
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="data/DATA_PROVIDER_GUIDE.html" class="md-tabs__link">
+          
+  
+  
+  数据源
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="contributing.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  邀请贡献
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="qmt-server.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  QMT 服务配置
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="BulletTrade Docs" class="md-nav__button md-logo" aria-label="BulletTrade Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    BulletTrade Docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/BulletTrade/bullet-trade" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    官方首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    文档首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="backtest.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    回测引擎
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="live.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实盘引擎
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="trade-support.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    交易支撑
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="quickstart.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    扩展能力
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="api.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API 文档
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据源
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    数据源
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data/DATA_PROVIDER_GUIDE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据源指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data/DATA_PROVIDER_JQDATA.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    聚宽数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data/DATA_PROVIDER_MINIQMT.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MiniQMT 数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data/DATA_PROVIDER_TUSHARE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tushare 数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="contributing.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    邀请贡献
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    QMT 服务配置
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="qmt-server.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    QMT 服务配置
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 前置条件
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 启动远程服务（服务端）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 远程回测（仅用数据）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 远程实盘（数据+交易）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 远程实盘（数据+交易）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-env" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 本地 .env 示例
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 远程端到端测试（可选）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-joinquant" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 聚宽（JoinQuant）环境调用远程服务
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 开发与测试建议
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 常见问题
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 相关文件
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="qmt-bullet-trade-server">QMT 远程服务（bullet-trade server）操作指南<a class="headerlink" href="#qmt-bullet-trade-server" title="Permanent link">&para;</a></h1>
+<p>本指南覆盖：
+- 启动本地 QMT 远程服务（数据/交易）
+- 使用远程服务做回测（仅数据）
+- 使用远程服务驱动实盘（数据+交易）
+- 聚宽环境调用远程服务（查询现金/持仓、下单/撤单）
+- 开发/测试用的 stub 服务（不依赖 QMT/xtquant）</p>
+<hr />
+<h2 id="1">1. 前置条件<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Windows 上已安装 QMT 并能正常登录，xtquant Python 依赖已就绪（仅真实 QMT 服务需要）。</li>
+<li>本机或服务器开放一个监听端口供远程访问（默认 58620）。</li>
+<li>使用令牌鉴权（<code>--token</code> 或 <code>QMT_SERVER_TOKEN</code>）。建议同时配置 <code>--allowlist</code> 或 TLS 证书。</li>
+</ul>
+<hr />
+<h2 id="2">2. 启动远程服务（服务端）<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<p>最简启动（真实 QMT）：
+<div class="highlight"><pre><span></span><code>bullet-trade<span class="w"> </span>server<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--server-type<span class="o">=</span>qmt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--listen<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span>--port<span class="w"> </span><span class="m">58620</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--token<span class="w"> </span><span class="m">123456</span>
+</code></pre></div></p>
+<p>常用参数：
+- <code>--enable-data/--disable-data</code>：启用/禁用数据服务（默认启用）
+- <code>--enable-broker/--disable-broker</code>：启用/禁用券商服务（默认启用）
+- <code>--allowlist "10.0.0.0/8,192.168.0.0/16,127.0.0.1"</code>：限制访问来源 IP
+- <code>--tls-cert FILE --tls-key FILE</code>：开启 TLS（强烈建议在公网使用）
+- <code>--accounts "main=55001234:stock:C:\\Qmt\\userdata_mini"</code>：多账户声明（别名=账号:类型:数据目录）
+- <code>--sub-accounts "demo@main:limit=1000000"</code>：虚拟子账户 + 单笔额度限制（单位：成交金额）</p>
+<p>也可通过环境变量配置（参考 <code>bullet-trade/env.live.example</code>）：
+- <code>QMT_ACCOUNT_ID</code>、<code>QMT_ACCOUNT_TYPE</code>、<code>QMT_DATA_PATH</code>、<code>QMT_SESSION_ID</code>、<code>QMT_AUTO_SUBSCRIBE</code>
+- <code>QMT_SERVER_{LISTEN,PORT,TOKEN,ALLOWLIST,MAX_CONNECTIONS,MAX_SUBSCRIPTIONS}</code>
+- <code>QMT_SERVER_ACCOUNTS</code>（等价 <code>--accounts</code>），<code>QMT_SERVER_SUB_ACCOUNTS</code>（等价 <code>--sub-accounts</code>）</p>
+<p>启动日志会打印账户概览（对齐 print_portfolio_info 风格）：
+<div class="highlight"><pre><span></span><code>QMT 连接建立: account_id=55001234, type=stock
+📊 券商账户概览: 总资产 1,234,567.89, 可用资金 234,567.89, 仓位 81.00%
++------------+--------+------+------+--------+--------+-----------+--------+--------+------+
+| 股票代码   | 名称   | 持仓 | 可用 | 成本价 | 现价   | 市值      | 盈亏   | 盈亏%  | 占比% |
++============+========+======+======+========+========+===========+========+========+======+
+| 000001.XSHE| 平安银 | 1000 | 1000 | 12.345 | 13.210 | 13,210.00 | 865.00 | 7.01%  | 1.07% |
++------------+--------+------+------+--------+--------+-----------+--------+--------+------+
+...
+</code></pre></div></p>
+<blockquote>
+<p>无 QMT/xtquant 环境，可用 stub 服务做联调：<code>bullet-trade server --server-type=stub --listen 127.0.0.1 --port 58630 --token stub</code>。</p>
+</blockquote>
+<p>即时打印账户概览（远程调试）：</p>
+<ul>
+<li>客户端请求：<code>action = "admin.print_account"</code>，payload 可选 <code>{ "account_key": "main", "sub_account_id": "demo@main", "limit": 8 }</code></li>
+<li>服务端效果：在日志中打印账户概览表格，同时返回 <code>{ "dtype": "text", "value": "...表格文本..." }</code></li>
+</ul>
+<hr />
+<h2 id="3">3. 远程回测（仅用数据）<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<p>让回测直接走远程数据服务（不依赖本地 JQ/Tushare）：</p>
+<p>方式 A：环境变量（推荐）
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">DEFAULT_DATA_PROVIDER</span><span class="o">=</span>qmt-remote
+<span class="nb">export</span><span class="w"> </span><span class="nv">QMT_SERVER_HOST</span><span class="o">=</span><span class="m">127</span>.0.0.1
+<span class="nb">export</span><span class="w"> </span><span class="nv">QMT_SERVER_PORT</span><span class="o">=</span><span class="m">58620</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">QMT_SERVER_TOKEN</span><span class="o">=</span><span class="m">123456</span>
+
+<span class="c1"># 指定 .env 文件（可选）：</span>
+<span class="c1"># Linux/macOS</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">BT_ENV_FILE</span><span class="o">=</span>/path/to/client.env
+<span class="c1"># Windows (PowerShell)</span>
+<span class="nv">$env</span>:BT_ENV_FILE<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;C:\\path\\to\\client.env&#39;</span>
+
+<span class="c1"># 运行你的回测</span>
+bullet-trade<span class="w"> </span>backtest<span class="w"> </span>strategies/my_strategy.py<span class="w"> </span>--start<span class="w"> </span><span class="m">2023</span>-01-01<span class="w"> </span>--end<span class="w"> </span><span class="m">2023</span>-12-31
+</code></pre></div></p>
+<p>方式 B：代码内切换 Provider
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">bullet_trade.data.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">set_data_provider</span><span class="p">,</span> <span class="n">get_price</span>
+
+<span class="n">set_data_provider</span><span class="p">(</span><span class="s1">&#39;qmt-remote&#39;</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">58620</span><span class="p">,</span> <span class="n">token</span><span class="o">=</span><span class="s1">&#39;123456&#39;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">get_price</span><span class="p">(</span><span class="s1">&#39;000001.XSHE&#39;</span><span class="p">,</span> <span class="n">start_date</span><span class="o">=</span><span class="s1">&#39;2023-01-01&#39;</span><span class="p">,</span> <span class="n">end_date</span><span class="o">=</span><span class="s1">&#39;2023-03-01&#39;</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="s1">&#39;1d&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">())</span>
+</code></pre></div></p>
+<blockquote>
+<p>注意：远程数据由 MiniQMT 驱动，需提前准备 <code>QMT_DATA_PATH</code> 的本地数据目录（或启用自动下载）。</p>
+</blockquote>
+<hr />
+<h2 id="4">4. 远程实盘（数据+交易）<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<p>目标：本地/云端运行 bullet-trade LiveEngine，通过远程 QMT 服务下单。</p>
+<p>环境变量：
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">DEFAULT_DATA_PROVIDER</span><span class="o">=</span>qmt-remote
+<span class="nb">export</span><span class="w"> </span><span class="nv">DEFAULT_BROKER</span><span class="o">=</span>qmt-remote
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">QMT_SERVER_HOST</span><span class="o">=</span><span class="m">127</span>.0.0.1
+<span class="nb">export</span><span class="w"> </span><span class="nv">QMT_SERVER_PORT</span><span class="o">=</span><span class="m">58620</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">QMT_SERVER_TOKEN</span><span class="o">=</span><span class="m">123456</span>
+
+<span class="c1"># 如服务端使用了多账户/子账户，可指定：</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">QMT_SERVER_ACCOUNT_KEY</span><span class="o">=</span>main
+<span class="nb">export</span><span class="w"> </span><span class="nv">QMT_SERVER_SUB_ACCOUNT</span><span class="o">=</span>demo@main
+</code></pre></div></p>
+<p>运行：
+<div class="highlight"><pre><span></span><code>bullet-trade<span class="w"> </span>live<span class="w"> </span>strategies/live_order_showcase.py<span class="w"> </span>--broker<span class="w"> </span>qmt-remote
+</code></pre></div></p>
+<p>LiveEngine 内部会：
+- 通过 <code>RemoteQmtProvider</code> 订阅行情、获取历史数据；
+- 通过 <code>RemoteQmtBroker</code> 下单/撤单，并定期同步账户与持仓；
+- 控制台按 <code>print_portfolio_info</code> 风格打印实时账户概览。</p>
+<hr />
+<h3 id="41-env">4.1 本地 <code>.env</code> 示例<a class="headerlink" href="#41-env" title="Permanent link">&para;</a></h3>
+<p>根目录执行 <code>cp env.example .env</code> 后，可在 <code>bullet-trade/.env</code> 中追加下列参数，便于测试脚本和 CLI 统一读取：</p>
+<div class="highlight"><pre><span></span><code>DEFAULT_DATA_PROVIDER=qmt-remote
+DEFAULT_BROKER=qmt-remote
+
+QMT_SERVER_HOST=127.0.0.1
+QMT_SERVER_PORT=58620
+QMT_SERVER_TOKEN=123456
+QMT_SERVER_ACCOUNT_KEY=main        # 可选，如服务端启用多账户
+QMT_SERVER_SUB_ACCOUNT=demo@main   # 可选，指定子账户
+QMT_SERVER_TLS_CERT=/path/to/ca.pem  # 可选，若启用了 TLS
+
+# 日志相关（可选）
+QMT_SERVER_LOG_FILE=/var/log/qmt-server.log
+QMT_SERVER_ACCESS_LOG=1          # 是否输出 access log（默认开启）
+QMT_SERVER_LOG_ACCOUNT=0         # 是否将 admin.print_account 结果写入日志，默认 0 代表不打印
+</code></pre></div>
+<p>所有 <code>bullet-trade</code> 组件（包括本次新增的远程测试）都会优先读取 <code>.env</code>，因此不再需要在每个命令前手动 <code>export</code>。</p>
+<hr />
+<h3 id="42">4.2 远程端到端测试（可选）<a class="headerlink" href="#42" title="Permanent link">&para;</a></h3>
+<p>若需直接连接到你部署在公网/内网的 QMT server，并验证账户、持仓以及两种下单方式，可在 <code>.env</code> 中额外添加：</p>
+<div class="highlight"><pre><span></span><code>REMOTE_QMT_TEST_ENABLED=1
+REMOTE_QMT_TEST_LIMIT_SYMBOL=000001.XSHE
+REMOTE_QMT_TEST_LIMIT_PRICE=10.0
+REMOTE_QMT_TEST_LIMIT_AMOUNT=100
+REMOTE_QMT_TEST_MARKET_SYMBOL=000002.XSHE
+REMOTE_QMT_TEST_MARKET_AMOUNT=100
+REMOTE_QMT_TEST_ACCOUNT=remote-e2e
+</code></pre></div>
+<p>然后执行 <code>pytest tests/test_remote_broker_e2e.py -m requires_network</code>，该用例会：
+- 读取 <code>QMT_SERVER_*</code> 参数建立远程连接；
+- 获取资产与持仓；
+- 同时发送一笔限价单和一笔市价单（金额可在 <code>.env</code> 中调小）；
+- 通过 <code>get_order_status</code>/<code>sync_orders</code> 分别验证异步/同步订单接口；
+- 撤销限价单，避免对真实账户造成持仓残留。</p>
+<blockquote>
+<p>强烈建议在仿真账户或低风险环境执行此测试，并在跑完后人工确认订单状态。</p>
+</blockquote>
+<hr />
+<h2 id="5-joinquant">5. 聚宽（JoinQuant）环境调用远程服务<a class="headerlink" href="#5-joinquant" title="Permanent link">&para;</a></h2>
+<p>步骤：复制 <code>helpers/bullet_trade_jq_remote_helper.py</code> 到聚宽研究环境；在策略中：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">bullet_trade_jq_remote_helper</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">configure</span><span class="p">,</span> <span class="n">get_data_client</span><span class="p">,</span> <span class="n">get_broker_client</span><span class="p">,</span>
+    <span class="n">order</span><span class="p">,</span> <span class="n">order_value</span><span class="p">,</span> <span class="n">order_target</span><span class="p">,</span> <span class="n">order_target_value</span><span class="p">,</span>
+    <span class="n">cancel_order</span><span class="p">,</span> <span class="n">get_order_status</span><span class="p">,</span> <span class="n">get_open_orders</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># 初始化连接</span>
+<span class="n">configure</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;你的公网IP或域名&#39;</span><span class="p">,</span> <span class="n">token</span><span class="o">=</span><span class="s1">&#39;123456&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">58620</span><span class="p">)</span>
+
+<span class="c1"># 1) 数据：</span>
+<span class="n">dc</span> <span class="o">=</span> <span class="n">get_data_client</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">get_price</span><span class="p">(</span><span class="s1">&#39;000001.XSHE&#39;</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="s1">&#39;2023-01-01&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;2023-02-01&#39;</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="s1">&#39;1d&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">())</span>
+
+<span class="c1"># 2) 券商账户：</span>
+<span class="n">bc</span> <span class="o">=</span> <span class="n">get_broker_client</span><span class="p">()</span>
+<span class="n">acct</span> <span class="o">=</span> <span class="n">bc</span><span class="o">.</span><span class="n">get_account</span><span class="p">()</span>  <span class="c1"># 返回 RemoteAccount(available_cash, total_value)</span>
+<span class="n">positions</span> <span class="o">=</span> <span class="n">bc</span><span class="o">.</span><span class="n">get_positions</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;现金:&#39;</span><span class="p">,</span> <span class="n">acct</span><span class="o">.</span><span class="n">available_cash</span><span class="p">,</span> <span class="s1">&#39;总资产:&#39;</span><span class="p">,</span> <span class="n">acct</span><span class="o">.</span><span class="n">total_value</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">positions</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+
+<span class="c1"># 3) 下单/撤单：</span>
+<span class="n">order</span> <span class="o">=</span> <span class="n">bc</span><span class="o">.</span><span class="n">place_order</span><span class="p">(</span><span class="s1">&#39;000001.XSHE&#39;</span><span class="p">,</span> <span class="n">side</span><span class="o">=</span><span class="s1">&#39;BUY&#39;</span><span class="p">,</span> <span class="n">amount</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">price</span><span class="o">=</span><span class="mf">10.0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;下单返回:&#39;</span><span class="p">,</span> <span class="n">order</span><span class="p">)</span>
+<span class="n">status</span> <span class="o">=</span> <span class="n">bc</span><span class="o">.</span><span class="n">get_order_status</span><span class="p">(</span><span class="n">order</span><span class="o">.</span><span class="n">order_id</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;状态:&#39;</span><span class="p">,</span> <span class="n">status</span><span class="p">)</span>
+<span class="n">bc</span><span class="o">.</span><span class="n">cancel_order</span><span class="p">(</span><span class="n">order</span><span class="o">.</span><span class="n">order_id</span><span class="p">)</span>
+
+<span class="c1"># 4) 聚宽风格快捷方法（含自动补价、市价转限价、同步等待）：</span>
+<span class="n">oid</span> <span class="o">=</span> <span class="n">order</span><span class="p">(</span><span class="s1">&#39;000001.XSHE&#39;</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">price</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">wait_timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">cancel_order</span><span class="p">(</span><span class="n">oid</span><span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p>短连接模式（适配聚宽）的 tick 推送不可用，但下单/撤单/查询均可使用。</p>
+</blockquote>
+<hr />
+<h2 id="6">6. 开发与测试建议<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<p>1) 无 QMT 环境先用 stub 自测：
+<div class="highlight"><pre><span></span><code>bullet-trade<span class="w"> </span>server<span class="w"> </span>--server-type<span class="o">=</span>stub<span class="w"> </span>--listen<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span>--port<span class="w"> </span><span class="m">58630</span><span class="w"> </span>--token<span class="w"> </span>stub
+
+<span class="c1"># 客户端（回测/实盘都行）</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">DEFAULT_DATA_PROVIDER</span><span class="o">=</span>qmt-remote
+<span class="nb">export</span><span class="w"> </span><span class="nv">DEFAULT_BROKER</span><span class="o">=</span>qmt-remote
+<span class="nb">export</span><span class="w"> </span><span class="nv">QMT_SERVER_HOST</span><span class="o">=</span><span class="m">127</span>.0.0.1
+<span class="nb">export</span><span class="w"> </span><span class="nv">QMT_SERVER_PORT</span><span class="o">=</span><span class="m">58630</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">QMT_SERVER_TOKEN</span><span class="o">=</span>stub
+</code></pre></div></p>
+<p>2) 仅数据联调（不动真实账户）：
+<div class="highlight"><pre><span></span><code>bullet-trade<span class="w"> </span>server<span class="w"> </span>--server-type<span class="o">=</span>qmt<span class="w"> </span>--enable-data<span class="w"> </span>--disable-broker<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--listen<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span>--port<span class="w"> </span><span class="m">58620</span><span class="w"> </span>--token<span class="w"> </span><span class="m">123456</span>
+</code></pre></div></p>
+<p>3) 端到端（数据+交易）：
+<div class="highlight"><pre><span></span><code>bullet-trade<span class="w"> </span>server<span class="w"> </span>--server-type<span class="o">=</span>qmt<span class="w"> </span>--enable-data<span class="w"> </span>--enable-broker<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--listen<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span>--port<span class="w"> </span><span class="m">58620</span><span class="w"> </span>--token<span class="w"> </span><span class="m">123456</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--accounts<span class="w"> </span><span class="s2">&quot;main=55001234:stock:C:\\Qmt\\userdata_mini&quot;</span>
+</code></pre></div></p>
+<p>4) 多账户与子账户额度：
+<div class="highlight"><pre><span></span><code>bullet-trade<span class="w"> </span>server<span class="w"> </span>--server-type<span class="o">=</span>qmt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--accounts<span class="w"> </span><span class="s2">&quot;main=55001234:stock:C:\\Qmt\\user_a,hedge=55004321:stock:C:\\Qmt\\user_b&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--sub-accounts<span class="w"> </span><span class="s2">&quot;research@main:limit=200000,qa@hedge&quot;</span>
+</code></pre></div></p>
+<p>5) 安全加固：
+- 非公网环境最少也启用 <code>--allowlist</code>；
+- 公网务必配 <code>--tls-cert/--tls-key</code> 并限制来源 IP；
+- 定期更换 <code>--token</code>。</p>
+<hr />
+<h2 id="7">7. 常见问题<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
+<ul>
+<li>日志显示现金/总资产为 0：</li>
+<li>初次连接后 QMT 刷新需要短暂时间，服务端已加入轻微等待；</li>
+<li>请确认已登录正确资金账号，且 <code>QMT_DATA_PATH</code> 指向对应数据目录；</li>
+<li>
+<p>xtquant 版本字段差异较大，已做多字段兼容与兜底估算（现金+持仓市值）。</p>
+</li>
+<li>
+<p>无法下单/撤单：</p>
+</li>
+<li>核对服务端是否启用券商模块（未 <code>--disable-broker</code>）；</li>
+<li>检查 <code>QMT_SERVER_TOKEN</code>、IP 白名单、TLS 配置；</li>
+<li>
+<p>查看服务端日志是否有 xtquant 错误码或权限限制。</p>
+</li>
+<li>
+<p>聚宽调用失败：</p>
+</li>
+<li>请确保研究环境能访问你的服务器 IP/端口；</li>
+<li>若使用 TLS，需要同时传入 <code>tls_cert</code> 并确保可用。</li>
+</ul>
+<hr />
+<h2 id="8">8. 相关文件<a class="headerlink" href="#8" title="Permanent link">&para;</a></h2>
+<ul>
+<li>服务端适配：<code>bullet_trade/server/adapters/qmt.py</code></li>
+<li>远程数据 Provider：<code>bullet_trade/data/providers/remote_qmt.py</code></li>
+<li>远程券商 Broker：<code>bullet_trade/broker/qmt_remote.py</code></li>
+<li>聚宽短连接客户端：<code>helpers/jq_remote_qmt.py</code></li>
+<li>启动 CLI：<code>bullet_trade/server/cli.py</code></li>
+<li>指定 .env 文件：</li>
+<li>通过环境变量覆盖：<code>BT_ENV_FILE=/path/to/server.env bullet-trade server ...</code></li>
+<li>或命令行：<code>bullet-trade server --env-file /path/to/server.env ...</code>（会覆盖默认加载）</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/BulletTrade/bullet-trade" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.tabs", "navigation.tracking", "search.suggest", "toc.integrate"], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>
