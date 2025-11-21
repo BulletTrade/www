@@ -12,7 +12,7 @@
       
       
       
-        <link rel="next" href="backtest.html">
+        <link rel="next" href="quickstart.html">
       
       
         
@@ -253,6 +253,44 @@
   
   
     <li class="md-tabs__item">
+      <a href="quickstart.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  快速上手
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="config.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  配置总览
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
       <a href="backtest.html" class="md-tabs__link">
         
   
@@ -298,25 +336,6 @@
     
   
   交易支撑
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="quickstart.html" class="md-tabs__link">
-        
-  
-  
-    
-  
-  扩展能力
 
       </a>
     </li>
@@ -610,6 +629,60 @@
   
   
     <li class="md-nav__item">
+      <a href="quickstart.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    快速上手
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="config.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    配置总览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="backtest.html" class="md-nav__link">
         
   
@@ -691,33 +764,6 @@
   
   
     <li class="md-nav__item">
-      <a href="quickstart.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    扩展能力
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="api.html" class="md-nav__link">
         
   
@@ -756,10 +802,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
         
           
-          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
             
   
   
@@ -777,8 +823,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -989,13 +1035,14 @@
 
 <h2 id="index">index<a class="headerlink" href="#index" title="Permanent link">&para;</a></h2>
 <ul>
+<li><a href="quickstart.html">快速上手</a>：三步跑通回测/实盘，聚宽策略无改直接复用。</li>
+<li><a href="config.html">配置总览</a>：回测/本地实盘/远程实盘/聚宽接入的环境变量一览。</li>
 <li><a href="backtest.html">回测引擎</a>：真实价格成交、分红送股处理、聚宽代码示例与 CLI 回测。</li>
 <li><a href="live.html">实盘引擎</a>：本地 QMT 独立实盘与远程实盘流程。</li>
 <li><a href="trade-support.html">交易支撑</a>：聚宽模拟盘接入、远程 QMT 服务与 helper 用法。</li>
-<li><a href="quickstart.html">扩展能力</a>：数据/交易提供者设计理念与扩展指引。</li>
+<li><a href="qmt-server.html">QMT 服务配置</a>：bullet-trade server 的完整说明。</li>
 <li><a href="data/DATA_PROVIDER_GUIDE.html">数据源指南</a>：聚宽、MiniQMT、Tushare 以及自定义 Provider 配置。</li>
 <li><a href="api.html">API 文档</a>：策略可用 API、类模型与工具函数。</li>
-<li><a href="qmt-server.html">QMT 服务配置</a>：bullet-trade server 的完整说明。</li>
 </ul>
 <p><strong>链接</strong>：
 - GitHub 仓库 https://github.com/BulletTrade/bullet-trade 
@@ -1004,7 +1051,10 @@
 <ul>
 <li>推荐使用 Python 3.10+ 并创建虚拟环境：
   <div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+<span class="c1"># macos/linux</span>
 <span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+<span class="c1"># windows</span>
+.venv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate.bat
 </code></pre></div></li>
 <li>一键安装：
   <div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>bullet-trade

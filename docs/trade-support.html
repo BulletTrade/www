@@ -14,7 +14,7 @@
         <link rel="prev" href="live.html">
       
       
-        <link rel="next" href="quickstart.html">
+        <link rel="next" href="api.html">
       
       
         
@@ -253,6 +253,44 @@
   
   
     <li class="md-tabs__item">
+      <a href="quickstart.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  快速上手
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="config.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  配置总览
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
       <a href="backtest.html" class="md-tabs__link">
         
   
@@ -300,25 +338,6 @@
     
   
   交易支撑
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="quickstart.html" class="md-tabs__link">
-        
-  
-  
-    
-  
-  扩展能力
 
       </a>
     </li>
@@ -510,6 +529,60 @@
   
   
     <li class="md-nav__item">
+      <a href="quickstart.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    快速上手
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="config.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    配置总览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="backtest.html" class="md-nav__link">
         
   
@@ -624,21 +697,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#remote-qmt" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        聚宽模拟盘接入（Remote QMT）
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        本地与远程配置对照
+        步骤总览
       
     </span>
   </a>
@@ -646,10 +708,60 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#1-qmt-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 启动 QMT server
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-research-helper" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 聚宽 Research 上传 helper
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 在策略里调用
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 在策略里调用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        调试与排查
+        运行效果
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常见问题
       
     </span>
   </a>
@@ -660,33 +772,6 @@
   
 </nav>
       
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="quickstart.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    扩展能力
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -736,10 +821,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
         
           
-          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
             
   
   
@@ -757,8 +842,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -961,191 +1046,63 @@
   
 
 
-<h1 id="_1">交易支撑<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<p>此页对应 bullettrade.cn 首页“交易服务”入口，重点介绍聚宽模拟盘如何通过远程 QMT 服务完成真实下单，以及相关调试方法。</p>
-<h2 id="remote-qmt">聚宽模拟盘接入（Remote QMT）<a class="headerlink" href="#remote-qmt" title="Permanent link">&para;</a></h2>
-<p>1) 启动或接入远程 QMT server：参考 <a href="qmt-server.html">QMT 服务配置</a> 启动数据+交易服务，记下 <code>host/port/token</code> 与账户标识。<br />
-2) 将辅助文件复制到聚宽研究根目录：<br />
-   - <code>bullet-trade/helpers/bullet_trade_jq_remote_helper.py</code><br />
-   - <code>bullet-trade/helpers/jq_remote_strategy_example.py</code>（示例策略，可参照调整）<br />
-3) 在聚宽策略里配置并下单：
-   <div class="highlight"><pre><span></span><code> <span class="kn">from</span><span class="w"> </span><span class="nn">jqdata</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>  <span class="c1"># 聚宽内置</span>
- <span class="kn">import</span><span class="w"> </span><span class="nn">bullet_trade_jq_remote_helper</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">bt</span>
- <span class="c1"># ===== 配置区域 =====</span>
- <span class="n">BT_REMOTE_HOST</span> <span class="o">=</span> <span class="s1">&#39;xxx.xxx.xxx.xxx&#39;</span>  <span class="c1">#远程qmt服务器</span>
- <span class="n">BT_REMOTE_PORT</span> <span class="o">=</span> <span class="mi">58620</span>              <span class="c1">#远程qmt服务器端口</span>
- <span class="n">BT_REMOTE_TOKEN</span> <span class="o">=</span> <span class="s1">&#39;secret_must_strong_6723816&#39;</span>  <span class="c1">#修改为你自己的服务器token秘钥</span>
- <span class="n">ACCOUNT_KEY</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># 可选</span>
- <span class="n">SUB_ACCOUNT</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># 可选</span>
+<h1 id="_1">交易支撑：聚宽模拟盘远程实盘<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>聚焦聚宽 Research/模拟盘如何调用远程 QMT server 完成真实下单，含截图与常见问题。</p>
+<h2 id="_2">步骤总览<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>1) 启动远程 QMT server（数据 + 交易）并放行防火墙。<br />
+2) 上传 helper 到聚宽根目录。<br />
+3) 在策略里配置 host/port/token，调用 helper 下单/查询。</p>
+<h2 id="1-qmt-server">1. 启动 QMT server<a class="headerlink" href="#1-qmt-server" title="Permanent link">&para;</a></h2>
+<p><div class="highlight"><pre><span></span><code>bullet-trade<span class="w"> </span>server<span class="w"> </span>--listen<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span>--port<span class="w"> </span><span class="m">58620</span><span class="w"> </span>--token<span class="w"> </span>secret<span class="w"> </span>^
+<span class="w">  </span>--enable-data<span class="w"> </span>--enable-broker<span class="w"> </span>^
+<span class="w">  </span>--accounts<span class="w"> </span><span class="nv">main</span><span class="o">=</span><span class="m">123456</span>:stock<span class="w"> </span>^
+<span class="w">  </span>--data-path<span class="w"> </span><span class="s2">&quot;C:\国金QMT交易端\userdata_mini&quot;</span>
+</code></pre></div>
+防火墙放行提示：
+<img alt="server-firewall" src="assets/server-firewall.png" /></p>
+<p>服务端日志示例：
+<img alt="joinquant-server-qmt" src="assets/joinquant-server-qmt.png" /></p>
+<h2 id="2-research-helper">2. 聚宽 Research 上传 helper<a class="headerlink" href="#2-research-helper" title="Permanent link">&para;</a></h2>
+<ul>
+<li>位置：聚宽根目录 <code>/</code></li>
+<li>文件：<code>helpers/bullet_trade_jq_remote_helper.py</code></li>
+<li>操作截图：
+<img alt="joinquant-sever-reserch" src="assets/joinquant-sever-reserch.png" /></li>
+</ul>
+<h2 id="3">3. 在策略里调用<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<p><div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">bullet_trade_jq_remote_helper</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">bt</span>
 
- <span class="k">def</span><span class="w"> </span><span class="nf">_ensure_configured</span><span class="p">():</span>
-     <span class="k">if</span> <span class="ow">not</span> <span class="n">BT_REMOTE_TOKEN</span><span class="p">:</span>
-         <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;请先在 BT_REMOTE_HOST/BT_REMOTE_PORT/BT_REMOTE_TOKEN/ACCOUNT_KEY/SUB_ACCOUNT 填写远程服务器配置&quot;</span><span class="p">)</span>
-     <span class="n">bt</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span>
-         <span class="n">host</span><span class="o">=</span><span class="n">BT_REMOTE_HOST</span><span class="p">,</span>
-         <span class="n">port</span><span class="o">=</span><span class="n">BT_REMOTE_PORT</span><span class="p">,</span>
-         <span class="n">token</span><span class="o">=</span><span class="n">BT_REMOTE_TOKEN</span><span class="p">,</span>
-         <span class="n">account_key</span><span class="o">=</span><span class="n">ACCOUNT_KEY</span><span class="p">,</span>
-         <span class="n">sub_account_id</span><span class="o">=</span><span class="n">SUB_ACCOUNT</span><span class="p">,</span>
-     <span class="p">)</span>
-     <span class="c1"># 让券商端可用数据补价</span>
-     <span class="n">bt</span><span class="o">.</span><span class="n">get_broker_client</span><span class="p">()</span><span class="o">.</span><span class="n">bind_data_client</span><span class="p">(</span><span class="n">bt</span><span class="o">.</span><span class="n">get_data_client</span><span class="p">())</span>
-
-
- <span class="k">def</span><span class="w"> </span><span class="nf">process_initialize</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
-<span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">     聚宽重启/代码刷新时调用，此处完成所有初始化与任务注册。</span>
-<span class="sd">     &quot;&quot;&quot;</span>
-     <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;process_initialize 重建配置 </span><span class="si">{</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-     <span class="n">_ensure_configured</span><span class="p">()</span>
-
+<span class="n">bt</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span>
+    <span class="n">host</span><span class="o">=</span><span class="s2">&quot;your.server.ip&quot;</span><span class="p">,</span>
+    <span class="n">port</span><span class="o">=</span><span class="mi">58620</span><span class="p">,</span>
+    <span class="n">token</span><span class="o">=</span><span class="s2">&quot;secret&quot;</span><span class="p">,</span>
+    <span class="n">account_key</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="p">,</span>    <span class="c1"># 对应 --accounts 别名</span>
+    <span class="n">sub_account_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>   <span class="c1"># 可选</span>
+<span class="p">)</span>
+<span class="n">bt</span><span class="o">.</span><span class="n">bind_clients_to_globals</span><span class="p">()</span>  <span class="c1"># 将数据/券商客户端挂到 g</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">initialize</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
-     <span class="n">set_benchmark</span><span class="p">(</span><span class="s2">&quot;000001.XSHE&quot;</span><span class="p">)</span>
-     <span class="n">set_option</span><span class="p">(</span><span class="s2">&quot;use_real_price&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="n">set_benchmark</span><span class="p">(</span><span class="s1">&#39;000300.XSHG&#39;</span><span class="p">)</span>
 
-     <span class="n">run_daily</span><span class="p">(</span><span class="n">show_account_and_positions</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="s2">&quot;09:35&quot;</span><span class="p">)</span>
-     <span class="n">run_daily</span><span class="p">(</span><span class="n">place_limit_buy_and_cancel</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="s2">&quot;09:36&quot;</span><span class="p">)</span>
-     <span class="c1">#run_daily(place_market_buy_async, time=&quot;09:37&quot;)</span>
-     <span class="c1">#run_daily(check_open_orders, time=&quot;09:38&quot;)</span>
-     <span class="n">run_daily</span><span class="p">(</span><span class="n">trade_gold_roundtrip</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="s2">&quot;09:39&quot;</span><span class="p">)</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">show_account_and_positions</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
-<span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">     打印账户与持仓。</span>
-<span class="sd">     &quot;&quot;&quot;</span>
-     <span class="k">try</span><span class="p">:</span>
-         <span class="n">acct</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">get_account</span><span class="p">()</span>
-         <span class="n">positions</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">get_positions</span><span class="p">()</span>
-         <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-             <span class="sa">f</span><span class="s2">&quot;[账号] 现金=</span><span class="si">{</span><span class="n">acct</span><span class="o">.</span><span class="n">available_cash</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> 总资产=</span><span class="si">{</span><span class="n">acct</span><span class="o">.</span><span class="n">total_value</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> 持仓数量=</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">positions</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
-         <span class="p">)</span>
-         <span class="k">for</span> <span class="n">pos</span> <span class="ow">in</span> <span class="n">positions</span><span class="p">:</span>
-             <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[持仓] </span><span class="si">{</span><span class="n">pos</span><span class="o">.</span><span class="n">security</span><span class="si">}</span><span class="s2"> 数量=</span><span class="si">{</span><span class="n">pos</span><span class="o">.</span><span class="n">amount</span><span class="si">}</span><span class="s2"> 成本=</span><span class="si">{</span><span class="n">pos</span><span class="o">.</span><span class="n">avg_cost</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> 市值=</span><span class="si">{</span><span class="n">pos</span><span class="o">.</span><span class="n">market_value</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
-         <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;获取账户/持仓失败: </span><span class="si">{</span><span class="n">exc</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
- <span class="k">def</span><span class="w"> </span><span class="nf">place_limit_buy_and_cancel</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
-<span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">     取当前价打 99 折挂单买入 100 手，wait_timeout=10s 同步等待，然后尝试撤单。</span>
-<span class="sd">     &quot;&quot;&quot;</span>
-     <span class="n">symbol</span> <span class="o">=</span> <span class="s2">&quot;000001.XSHE&quot;</span>
-     <span class="k">try</span><span class="p">:</span>
-         <span class="n">last</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">get_data_client</span><span class="p">()</span><span class="o">.</span><span class="n">get_last_price</span><span class="p">(</span><span class="n">symbol</span><span class="p">)</span>
-         <span class="k">if</span> <span class="ow">not</span> <span class="n">last</span><span class="p">:</span>
-             <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[限价单] 无法获取 </span><span class="si">{</span><span class="n">symbol</span><span class="si">}</span><span class="s2"> 价格，跳过&quot;</span><span class="p">)</span>
-             <span class="k">return</span>
-         <span class="n">limit_price</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">last</span> <span class="o">*</span> <span class="mf">0.99</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-         <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[限价单] </span><span class="si">{</span><span class="n">symbol</span><span class="si">}</span><span class="s2"> 99折买入尝试，限价=</span><span class="si">{</span><span class="n">limit_price</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-         <span class="n">oid</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">price</span><span class="o">=</span><span class="n">limit_price</span><span class="p">,</span> <span class="n">wait_timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-         <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[限价单] 下单返回 order_id=</span><span class="si">{</span><span class="n">oid</span><span class="si">}</span><span class="s2">，准备撤单&quot;</span><span class="p">)</span>
-         <span class="k">if</span> <span class="n">oid</span><span class="p">:</span>
-             <span class="k">try</span><span class="p">:</span>
-                 <span class="n">bt</span><span class="o">.</span><span class="n">cancel_order</span><span class="p">(</span><span class="n">oid</span><span class="p">)</span>
-                 <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[撤单] 已提交撤单 order_id=</span><span class="si">{</span><span class="n">oid</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-             <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
-                 <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[撤单] 撤单失败 order_id=</span><span class="si">{</span><span class="n">oid</span><span class="si">}</span><span class="s2">, err=</span><span class="si">{</span><span class="n">exc</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
-         <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[限价单] 下单流程异常: </span><span class="si">{</span><span class="n">exc</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-
- <span class="k">def</span><span class="w"> </span><span class="nf">place_market_buy_async</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
-<span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">     市价单（自动补价转限价），不等待回报。</span>
-<span class="sd">     &quot;&quot;&quot;</span>
-     <span class="n">symbol</span> <span class="o">=</span> <span class="s2">&quot;000002.XSHE&quot;</span>
-     <span class="k">try</span><span class="p">:</span>
-         <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[市价单] </span><span class="si">{</span><span class="n">symbol</span><span class="si">}</span><span class="s2"> 买入 100，异步模式&quot;</span><span class="p">)</span>
-         <span class="n">oid</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">price</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">wait_timeout</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-         <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[市价单] 已提交，order_id=</span><span class="si">{</span><span class="n">oid</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
-         <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[市价单] 下单失败: </span><span class="si">{</span><span class="n">exc</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-
- <span class="k">def</span><span class="w"> </span><span class="nf">trade_gold_roundtrip</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
-<span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">     同步买入黄金 100 份（市价自动补限价），待回报后再卖出同等数量。</span>
-<span class="sd">     &quot;&quot;&quot;</span>
-     <span class="n">symbol</span> <span class="o">=</span> <span class="s2">&quot;518880.XSHG&quot;</span>  <span class="c1"># 黄金 ETF</span>
-     <span class="k">try</span><span class="p">:</span>
-         <span class="n">before_acct</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">get_account</span><span class="p">()</span>
-         <span class="n">positions</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">get_positions</span><span class="p">()</span>
-         <span class="n">pos_map</span> <span class="o">=</span> <span class="p">{</span><span class="n">p</span><span class="o">.</span><span class="n">security</span><span class="p">:</span> <span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">positions</span><span class="p">}</span>
-         <span class="n">before_pos</span> <span class="o">=</span> <span class="n">pos_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">symbol</span><span class="p">)</span>
-         <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-             <span class="sa">f</span><span class="s2">&quot;[黄金回合][前] 现金=</span><span class="si">{</span><span class="n">before_acct</span><span class="o">.</span><span class="n">available_cash</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> &quot;</span>
-             <span class="sa">f</span><span class="s2">&quot;持仓=</span><span class="si">{</span><span class="n">before_pos</span><span class="o">.</span><span class="n">amount</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">before_pos</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="mi">0</span><span class="si">}</span><span class="s2"> 可用=</span><span class="si">{</span><span class="n">before_pos</span><span class="o">.</span><span class="n">available</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">before_pos</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="mi">0</span><span class="si">}</span><span class="s2">&quot;</span>
-         <span class="p">)</span>
-         <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[黄金回合] 市价买入 </span><span class="si">{</span><span class="n">symbol</span><span class="si">}</span><span class="s2"> 100 份，同步等待成交（保护价自动计算）&quot;</span><span class="p">)</span>
-         <span class="n">buy_oid</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">price</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">wait_timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-         <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[黄金回合] 买单 order_id=</span><span class="si">{</span><span class="n">buy_oid</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-         <span class="k">if</span> <span class="n">buy_oid</span><span class="p">:</span>
-             <span class="n">mid_acct</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">get_account</span><span class="p">()</span>
-             <span class="n">positions</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">get_positions</span><span class="p">()</span>
-             <span class="n">pos_map</span> <span class="o">=</span> <span class="p">{</span><span class="n">p</span><span class="o">.</span><span class="n">security</span><span class="p">:</span> <span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">positions</span><span class="p">}</span>
-             <span class="n">mid_pos</span> <span class="o">=</span> <span class="n">pos_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">symbol</span><span class="p">)</span>
-             <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-                 <span class="sa">f</span><span class="s2">&quot;[黄金回合][买后] 现金=</span><span class="si">{</span><span class="n">mid_acct</span><span class="o">.</span><span class="n">available_cash</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> &quot;</span>
-                 <span class="sa">f</span><span class="s2">&quot;持仓=</span><span class="si">{</span><span class="n">mid_pos</span><span class="o">.</span><span class="n">amount</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">mid_pos</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="mi">0</span><span class="si">}</span><span class="s2"> 可用=</span><span class="si">{</span><span class="n">mid_pos</span><span class="o">.</span><span class="n">available</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">mid_pos</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="mi">0</span><span class="si">}</span><span class="s2">&quot;</span>
-             <span class="p">)</span>
-             <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[黄金回合] 市价卖出 </span><span class="si">{</span><span class="n">symbol</span><span class="si">}</span><span class="s2"> 100 份，同步等待成交（保护价自动计算）&quot;</span><span class="p">)</span>
-             <span class="n">sell_oid</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="n">price</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">wait_timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-             <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[黄金回合] 卖单 order_id=</span><span class="si">{</span><span class="n">sell_oid</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-             <span class="n">after_acct</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">get_account</span><span class="p">()</span>
-             <span class="n">positions</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">get_positions</span><span class="p">()</span>
-             <span class="n">pos_map</span> <span class="o">=</span> <span class="p">{</span><span class="n">p</span><span class="o">.</span><span class="n">security</span><span class="p">:</span> <span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">positions</span><span class="p">}</span>
-             <span class="n">after_pos</span> <span class="o">=</span> <span class="n">pos_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">symbol</span><span class="p">)</span>
-             <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-                 <span class="sa">f</span><span class="s2">&quot;[黄金回合][卖后] 现金=</span><span class="si">{</span><span class="n">after_acct</span><span class="o">.</span><span class="n">available_cash</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> &quot;</span>
-                 <span class="sa">f</span><span class="s2">&quot;持仓=</span><span class="si">{</span><span class="n">after_pos</span><span class="o">.</span><span class="n">amount</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">after_pos</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="mi">0</span><span class="si">}</span><span class="s2"> 可用=</span><span class="si">{</span><span class="n">after_pos</span><span class="o">.</span><span class="n">available</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">after_pos</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="mi">0</span><span class="si">}</span><span class="s2">&quot;</span>
-             <span class="p">)</span>
-     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
-         <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[黄金回合] 交易失败: </span><span class="si">{</span><span class="n">exc</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-
- <span class="k">def</span><span class="w"> </span><span class="nf">check_open_orders</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
-<span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">     查询开放订单、状态，并演示可卖数量。</span>
-<span class="sd">     &quot;&quot;&quot;</span>
-     <span class="k">try</span><span class="p">:</span>
-         <span class="n">opens</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">get_open_orders</span><span class="p">()</span>
-         <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[订单查询] 当前未完结订单数=</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">opens</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-         <span class="k">for</span> <span class="n">it</span> <span class="ow">in</span> <span class="n">opens</span><span class="p">:</span>
-             <span class="n">oid</span> <span class="o">=</span> <span class="n">it</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;order_id&quot;</span><span class="p">)</span>
-             <span class="n">status</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">get_order_status</span><span class="p">(</span><span class="n">oid</span><span class="p">)</span> <span class="k">if</span> <span class="n">oid</span> <span class="k">else</span> <span class="p">{}</span>
-             <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[订单查询] order_id=</span><span class="si">{</span><span class="n">oid</span><span class="si">}</span><span class="s2">, status=</span><span class="si">{</span><span class="n">status</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;status&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">, raw=</span><span class="si">{</span><span class="n">status</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-         <span class="c1"># 展示可卖数量</span>
-             <span class="n">positions</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">get_positions</span><span class="p">()</span>
-             <span class="k">for</span> <span class="n">pos</span> <span class="ow">in</span> <span class="n">positions</span><span class="p">:</span>
-                 <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[持仓核对] </span><span class="si">{</span><span class="n">pos</span><span class="o">.</span><span class="n">security</span><span class="si">}</span><span class="s2"> 总量=</span><span class="si">{</span><span class="n">pos</span><span class="o">.</span><span class="n">amount</span><span class="si">}</span><span class="s2"> 可用=</span><span class="si">{</span><span class="n">pos</span><span class="o">.</span><span class="n">available</span><span class="si">}</span><span class="s2"> 冻结=</span><span class="si">{</span><span class="n">pos</span><span class="o">.</span><span class="n">frozen</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
-         <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[订单查询] 失败: </span><span class="si">{</span><span class="n">exc</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</code></pre></div></p>
+<span class="k">def</span><span class="w"> </span><span class="nf">handle_data</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+    <span class="n">bt</span><span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="s1">&#39;000001.XSHE&#39;</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>          <span class="c1"># 买入</span>
+    <span class="n">bt</span><span class="o">.</span><span class="n">order_value</span><span class="p">(</span><span class="s1">&#39;000002.XSHE&#39;</span><span class="p">,</span> <span class="mi">50000</span><span class="p">)</span>  <span class="c1"># 按金额买入</span>
+    <span class="n">positions</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">get_positions</span><span class="p">()</span>
+</code></pre></div>
+支持接口：<code>order/order_value/order_target/order_target_value</code>、<code>cancel_order/get_order_status/get_open_orders</code>、<code>get_account/get_positions</code>。</p>
+<h3 id="_3">运行效果<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>聚宽策略日志+持仓：
+<img alt="joinquant-remote-live-support" src="assets/joinquant-remote-live-support.png" /></p>
+<p>同步/异步下单时间线（默认同步等待 16s，示例 0.5s 成交）：
+<img alt="sync-order" src="assets/sync-order.png" /></p>
+<h2 id="_4">常见问题<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <ul>
-<li>常用 API：<code>get_data_client().get_price(...)</code>、<code>get_broker_client().order/order_target/order_value/cancel_order/get_positions/get_account</code>。</li>
+<li>401 未授权：token 不一致或被 <code>--allowlist</code> 限制。</li>
+<li>超时/未成交：查看服务端日志，按需调整 <code>wait_timeout</code> 或改用异步；确认行情正常。</li>
+<li>无行情：服务端需启用 <code>--enable-data</code> 且 QMT 已登录。</li>
+<li>多账户：server <code>--accounts a=...</code>，策略里 <code>account_key='a'</code> 指定。</li>
 </ul>
-<p><img alt="joinquant_test" src="assets/joinquant_test.png" /></p>
-<h2 id="_2">本地与远程配置对照<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<ul>
-<li>客户端（本地/聚宽）环境变量示例：
-  <div class="highlight"><pre><span></span><code><span class="nv">QMT_SERVER_HOST</span><span class="o">=</span><span class="m">10</span>.0.0.8
-<span class="nv">QMT_SERVER_PORT</span><span class="o">=</span><span class="m">58620</span>
-<span class="nv">QMT_SERVER_TOKEN</span><span class="o">=</span>secret
-<span class="nv">QMT_SERVER_ACCOUNT_KEY</span><span class="o">=</span>main<span class="w">        </span><span class="c1"># 如 server 启用了多账户</span>
-<span class="nv">QMT_SERVER_SUB_ACCOUNT</span><span class="o">=</span>demo@main<span class="w">   </span><span class="c1"># 可选，服务端配置了子账户时填写</span>
-</code></pre></div></li>
-<li>服务端（Windows/MiniQMT）快速启动：<br />
-<code>bullet-trade server --listen 0.0.0.0 --port 58620 --token secret --enable-data --enable-broker</code></li>
-<li>无真实账户时，可先运行 stub：<br />
-<code>bullet-trade server --server-type=stub --listen 127.0.0.1 --port 58630 --token stub --enable-data --enable-broker</code></li>
-</ul>
-<h2 id="_3">调试与排查<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<ul>
-<li>连接失败：检查 token/IP 白名单/TLS 证书(证书复杂，请先只用Token)，或在服务端开启 <code>--log-file</code> 查看日志。</li>
-<li>下单无反馈：确认账户已登录且 <code>QMT_DATA_PATH</code> 指向正确数据；可在 stub 模式先验证调用栈。</li>
-<li>数据侧偏差：在 helper 里优先使用 snapshot 获取价格，如失败再回落到 1m K 线；确保服务端行情目录完整。</li>
-</ul>
-<p>如需更多示例或截图，请附带调用日志与配置片段提交 Issue，团队会协助定位。</p>
+<p>更多 server 侧参数与安全提示见 <a href="qmt-server.html">QMT server</a>；配置变量详见 <a href="config.html">配置总览</a>。</p>
 
 
 
