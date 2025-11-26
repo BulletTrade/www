@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://bullettrade.cn/docs/quickstart.html">
+        <link rel="canonical" href="https://bullettrade.cn/docs/research.html">
       
       
-        <link rel="prev" href="index.html">
+        <link rel="prev" href="quickstart.html">
       
       
-        <link rel="next" href="research.html">
+        <link rel="next" href="config.html">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>快速上手 - BulletTrade Docs</title>
+        <title>研究环境 - BulletTrade Docs</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#jupyterlab" class="md-skip">
           跳转至
         </a>
       
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              快速上手
+              研究环境
             
           </span>
         </div>
@@ -251,10 +251,8 @@
   
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
+    <li class="md-tabs__item">
       <a href="quickstart.html" class="md-tabs__link">
         
   
@@ -272,8 +270,10 @@
   
   
   
+    
   
-    <li class="md-tabs__item">
+  
+    <li class="md-tabs__item md-tabs__item--active">
       <a href="research.html" class="md-tabs__link">
         
   
@@ -564,6 +564,33 @@
       
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="quickstart.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    快速上手
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
     
   
   
@@ -583,7 +610,7 @@
   <span class="md-ellipsis">
     
   
-    快速上手
+    研究环境
   
 
     
@@ -594,14 +621,14 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="quickstart.html" class="md-nav__link md-nav__link--active">
+      <a href="research.html" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
     
   
-    快速上手
+    研究环境
   
 
     
@@ -627,32 +654,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. 安装与准备环境
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. 兼容聚宽的最小策略
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. 直接运行
+        默认路径与安全策略
       
     </span>
   </a>
@@ -663,7 +668,40 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        我应该看哪篇文档？
+        首次运行会自动完成
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常用命令
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        与回测/实盘的衔接
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常见问题
       
     </span>
   </a>
@@ -674,33 +712,6 @@
   
 </nav>
       
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="research.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    研究环境
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -1110,51 +1121,53 @@
   
 
 
-<h1 id="_1">快速上手：三步跑通（聚宽兼容）<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<p>目标：用原有聚宽策略，最少改动跑通回测与实盘（本地或远程）。如需细节配置，参考 <a href="config.html">配置总览</a>。</p>
-<h2 id="1">1. 安装与准备环境<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">source</span><span class="w"> </span>.venv/bin/activate
-pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;bullet-trade[dev]&quot;</span>
-</code></pre></div>
-复制模板：
-<div class="highlight"><pre><span></span><code>cp<span class="w"> </span>env.backtest.example<span class="w"> </span>.env<span class="w">    </span><span class="c1"># 回测</span>
-cp<span class="w"> </span>env.live.example<span class="w"> </span>.env<span class="w">        </span><span class="c1"># 实盘/远程</span>
-</code></pre></div></p>
-<h2 id="2">2. 兼容聚宽的最小策略<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">jqdata</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">initialize</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
-    <span class="n">set_benchmark</span><span class="p">(</span><span class="s1">&#39;000300.XSHG&#39;</span><span class="p">)</span>
-    <span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;use_real_price&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
-    <span class="n">g</span><span class="o">.</span><span class="n">stocks</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;000001.XSHE&#39;</span><span class="p">,</span> <span class="s1">&#39;600000.XSHG&#39;</span><span class="p">]</span>
-    <span class="n">run_daily</span><span class="p">(</span><span class="n">trade</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="s1">&#39;10:00&#39;</span><span class="p">)</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">trade</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
-    <span class="n">order</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">stocks</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">100</span><span class="p">)</span>
-    <span class="n">order</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">stocks</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">200</span><span class="p">)</span>
-</code></pre></div>
-<blockquote>
-<p>聚宽 API 直接可用，无需改接口；仅通过 <code>.env</code> 切换数据源/券商。</p>
-</blockquote>
-<h2 id="3">3. 直接运行<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<h1 id="jupyterlab">研究环境（JupyterLab）<a class="headerlink" href="#jupyterlab" title="Permanent link">&para;</a></h1>
+<p>BulletTrade 提供 <code>bullet-trade lab</code>/<code>bullet-trade jupyterlab</code> 一键启动研究环境。默认根目录位于用户主目录下的 <code>bullet-trade</code>，集中存放 Notebook、<code>.env</code> 与输出。</p>
+<p>首次运行要注意一下设置和目录：
+<img alt="first-started" src="assets/jupyter-first-started.png" /></p>
+<h2 id="_1">默认路径与安全策略<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <ul>
-<li>回测：
-<div class="highlight"><pre><span></span><code>bullet-trade<span class="w"> </span>backtest<span class="w"> </span>strategies/demo_strategy.py<span class="w"> </span>--start<span class="w"> </span><span class="m">2025</span>-01-01<span class="w"> </span>--end<span class="w"> </span><span class="m">2025</span>-06-01
+<li>Notebook 根目录：macOS/Linux <code>~/bullet-trade</code>，Windows <code>~\\bullet-trade</code></li>
+<li>设置文件：<code>~/.bullet-trade/setting.json</code>，可调 <code>host</code>、<code>port</code>、<code>root_dir</code>、<code>env_path</code>、<code>open_browser</code>、<code>no_password</code>、<code>no_cert</code>、<code>token</code></li>
+<li><code>.env</code> 读取顺序：默认仅加载根目录下的 <code>.env</code>（不会读取当前工作目录的 <code>.env</code>）</li>
+<li>默认监听 <code>127.0.0.1:8088</code>，开启 Jupyter token，未配置密码/证书；如需公网访问请务必配置密码或证书</li>
+</ul>
+<p>运行后会自动打开浏览器：
+<img alt="launcher" src="assets/jupyter-launcher.png" /></p>
+<h2 id="_2">首次运行会自动完成<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<ol>
+<li>创建 <code>~/.bullet-trade/setting.json</code>、默认根目录与 <code>.env</code>。</li>
+<li>将安装目录的 <code>bullet_trade/notebook/</code> 样例复制到根目录（保留子目录结构，已存在同名文件跳过并在日志中提示）。</li>
+<li>写入 BulletTrade 代码片段设置，可在 Command Palette 搜索 “BulletTrade” 插入。</li>
+<li>打印当前使用的设置文件与 <code>.env</code> 路径，以及可修改的默认行为。</li>
+</ol>
+<p>欢迎样例ipynb
+<img alt="welcome" src="assets/jupyter-welcome.png" /></p>
+<h2 id="_3">常用命令<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<ul>
+<li>启动研究环境（默认打开浏览器）：<br />
+  <div class="highlight"><pre><span></span><code>bullet-trade<span class="w"> </span>lab
 </code></pre></div></li>
-<li>本地实盘（QMT/模拟）：
-<div class="highlight"><pre><span></span><code>bullet-trade<span class="w"> </span>live<span class="w"> </span>strategies/demo_strategy.py<span class="w"> </span>--broker<span class="w"> </span>qmt
+<li>仅做依赖/端口诊断：<br />
+  <div class="highlight"><pre><span></span><code>bullet-trade<span class="w"> </span>lab<span class="w"> </span>--diagnose
 </code></pre></div></li>
-<li>远程实盘（qmt-remote）：
-<div class="highlight"><pre><span></span><code>bullet-trade<span class="w"> </span>live<span class="w"> </span>strategies/demo_strategy.py<span class="w"> </span>--broker<span class="w"> </span>qmt-remote
+<li>自定义监听或根目录：编辑 <code>~/.bullet-trade/setting.json</code>（如修改 <code>root_dir</code>、<code>env_path</code>、<code>host</code>、<code>port</code>），或临时使用 <code>--ip/--port/--notebook-dir</code> 覆盖。</li>
+</ul>
+<p>系统部分api与聚宽对齐，下面是接入miniqmt配置后的数据获取样例：
+<img alt="data" src="assets/jupyter-data.png" /></p>
+<h2 id="_4">与回测/实盘的衔接<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<ul>
+<li>在根目录 <code>.env</code> 配置数据源与券商参数，Notebook 中 <code>import bullet_trade</code> 或聚宽兼容 API 即可直接使用。</li>
+<li>复用根目录运行命令行：<br />
+  <div class="highlight"><pre><span></span><code>bullet-trade<span class="w"> </span>backtest<span class="w"> </span>strategies/demo_strategy.py<span class="w"> </span>--start<span class="w"> </span><span class="m">2025</span>-01-01<span class="w"> </span>--end<span class="w"> </span><span class="m">2025</span>-06-01
+bullet-trade<span class="w"> </span>live<span class="w"> </span>strategies/demo_strategy.py<span class="w"> </span>--broker<span class="w"> </span>qmt
 </code></pre></div></li>
 </ul>
-<h2 id="_2">我应该看哪篇文档？<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h2 id="_5">常见问题<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <ul>
-<li>配置说明：查看 <a href="config.html">配置总览</a></li>
-<li>回测细节/FAQ：看 <a href="backtest.html">回测引擎</a></li>
-<li>本地/远程实盘：看 <a href="live.html">实盘引擎</a></li>
-<li>远程 QMT server 部署：看 <a href="qmt-server.html">QMT server</a></li>
-<li>聚宽模拟盘接入远程实盘：看 <a href="trade-support.html">trade-support</a></li>
+<li><strong>端口占用</strong>：使用 <code>bullet-trade lab --diagnose --port 8088</code> 查看占用，或在 <code>setting.json</code> 修改端口。  </li>
+<li><strong>无法写入目录</strong>：确保根目录可写，必要时调整 <code>root_dir</code>。  </li>
+<li><strong>安全提示</strong>：当监听非 127.0.0.1 且未配置密码/证书时，CLI 会拒绝启动；请配置密码/证书或改为 loopback。</li>
 </ul>
 
 

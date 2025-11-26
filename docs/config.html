@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://bullettrade.cn/docs/config.html">
       
       
-        <link rel="prev" href="quickstart.html">
+        <link rel="prev" href="research.html">
       
       
         <link rel="next" href="backtest.html">
@@ -270,6 +270,25 @@
   
   
   
+  
+    <li class="md-tabs__item">
+      <a href="research.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  研究环境
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
     
   
   
@@ -319,6 +338,25 @@
     
   
   实盘引擎
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="tick.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Tick 行情指南
 
       </a>
     </li>
@@ -553,6 +591,33 @@
       
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="research.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    研究环境
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
     
   
   
@@ -649,6 +714,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        风控（实盘）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#qmt-remote" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -660,7 +736,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         聚宽模拟盘接入远程实盘
@@ -720,6 +796,33 @@
     
   
     实盘引擎
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tick.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tick 行情指南
   
 
     
@@ -831,10 +934,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
         
           
-          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="0">
             
   
   
@@ -852,8 +955,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_10">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1055,6 +1158,12 @@
 <td>默认券商/交易通道（<code>simulator</code>/<code>qmt</code>/<code>qmt-remote</code>）</td>
 </tr>
 <tr>
+<td><code>DATA_CACHE_DIR</code></td>
+<td>否</td>
+<td><code>~/.bullet-trade/cache</code></td>
+<td>行情缓存根目录，子目录按数据源名自动创建；留空禁用缓存</td>
+</tr>
+<tr>
 <td><code>LOG_DIR</code></td>
 <td>否</td>
 <td><code>logs</code></td>
@@ -1092,13 +1201,7 @@
 <td>聚宽数据账号</td>
 </tr>
 <tr>
-<td><code>JQDATA_CACHE_DIR</code></td>
-<td>否</td>
-<td><code>~/.bullet-trade/cache/jq_cache/</code></td>
-<td>聚宽缓存目录</td>
-</tr>
-<tr>
-<td><code>TUSHARE_TOKEN</code>/<code>TUSHARE_CACHE_DIR</code></td>
+<td><code>TUSHARE_TOKEN</code></td>
 <td>选</td>
 <td><code>your_token</code></td>
 <td>需 <code>tushare</code> 时配置</td>
@@ -1160,6 +1263,61 @@
 </tr>
 </tbody>
 </table>
+<h2 id="_4">风控（实盘）<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>变量</th>
+<th>必填</th>
+<th>示例/默认</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MAX_ORDER_VALUE</code></td>
+<td>否</td>
+<td><code>100000</code></td>
+<td>单笔订单金额上限，超出直接拒单。</td>
+</tr>
+<tr>
+<td><code>MAX_DAILY_TRADE_VALUE</code></td>
+<td>否</td>
+<td><code>500000</code></td>
+<td>单日累计成交金额上限，超出直接拒单。</td>
+</tr>
+<tr>
+<td><code>MAX_DAILY_TRADES</code></td>
+<td>否</td>
+<td><code>100</code></td>
+<td>单日最大交易笔数，超出直接拒单。</td>
+</tr>
+<tr>
+<td><code>MAX_STOCK_COUNT</code></td>
+<td>否</td>
+<td><code>20</code></td>
+<td>最大持仓标的数（仅买入检查）。</td>
+</tr>
+<tr>
+<td><code>MAX_POSITION_RATIO</code></td>
+<td>否</td>
+<td><code>20</code></td>
+<td>单标下单金额占总资产上限，需要在风控检查时提供账户总资产才会生效。</td>
+</tr>
+<tr>
+<td><code>STOP_LOSS_RATIO</code></td>
+<td>否</td>
+<td><code>5</code></td>
+<td>止损阈值，供 <code>check_stop_loss</code> 辅助判断，需策略自行下撤单。</td>
+</tr>
+<tr>
+<td><code>RISK_CHECK_ENABLED</code></td>
+<td>否</td>
+<td><code>false</code></td>
+<td>后台风控巡检开关，间隔由 <code>RISK_CHECK_INTERVAL</code> 控制（默认 <code>300</code> 秒）。</td>
+</tr>
+</tbody>
+</table>
 <h2 id="qmt-remote">远程实盘（qmt-remote）<a class="headerlink" href="#qmt-remote" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -1197,7 +1355,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_4">聚宽模拟盘接入远程实盘<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h2 id="_5">聚宽模拟盘接入远程实盘<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>

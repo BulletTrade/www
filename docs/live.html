@@ -14,7 +14,7 @@
         <link rel="prev" href="backtest.html">
       
       
-        <link rel="next" href="trade-support.html">
+        <link rel="next" href="tick.html">
       
       
         
@@ -272,6 +272,25 @@
   
   
     <li class="md-tabs__item">
+      <a href="research.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  研究环境
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
       <a href="config.html" class="md-tabs__link">
         
   
@@ -319,6 +338,25 @@
     
   
   实盘引擎
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="tick.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Tick 行情指南
 
       </a>
     </li>
@@ -556,6 +594,33 @@
   
   
     <li class="md-nav__item">
+      <a href="research.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    研究环境
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="config.html" class="md-nav__link">
         
   
@@ -739,12 +804,56 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="安全与风控">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#env" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        风控参数配置（.env）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
   
 </nav>
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tick.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tick 行情指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -848,10 +957,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
         
           
-          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="0">
             
   
   
@@ -869,8 +978,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_10">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1137,6 +1246,58 @@ bullet-trade<span class="w"> </span>live<span class="w"> </span>strategies/demo_
 <li>QMT server 更多参数见 <a href="qmt-server.html">QMT server</a>。</li>
 <li>若要让聚宽模拟盘接入远程实盘，请看 <a href="trade-support.html">trade-support</a>。</li>
 </ul>
+<h3 id="env">风控参数配置（.env）<a class="headerlink" href="#env" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>变量</th>
+<th>默认值</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MAX_ORDER_VALUE</code></td>
+<td><code>100000</code></td>
+<td>单笔订单金额上限，超过即拒单。</td>
+</tr>
+<tr>
+<td><code>MAX_DAILY_TRADE_VALUE</code></td>
+<td><code>500000</code></td>
+<td>单日累计成交金额上限，超过即拒单。</td>
+</tr>
+<tr>
+<td><code>MAX_DAILY_TRADES</code></td>
+<td><code>100</code></td>
+<td>单日最大交易笔数，超过即拒单。</td>
+</tr>
+<tr>
+<td><code>MAX_STOCK_COUNT</code></td>
+<td><code>20</code></td>
+<td>持仓标的数上限（仅买入检查）。</td>
+</tr>
+<tr>
+<td><code>MAX_POSITION_RATIO</code></td>
+<td><code>20</code></td>
+<td>单标下单金额占总资产的最大比例（需在调用风控时传入账户总资产，否则不生效）。</td>
+</tr>
+<tr>
+<td><code>STOP_LOSS_RATIO</code></td>
+<td><code>5</code></td>
+<td>止损阈值，仅供 <code>check_stop_loss</code> 辅助判断，需策略自行下撤单。</td>
+</tr>
+<tr>
+<td><code>RISK_CHECK_ENABLED</code></td>
+<td><code>false</code></td>
+<td>开启后台风控巡检（间隔由 <code>RISK_CHECK_INTERVAL</code> 控制），拒单仍由下单路径内置检查触发。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>提示：默认值偏宽，真实账户请按资金量收紧（例如把金额/笔数/仓位阈值调小）；先用 <code>LIVE_MODE=dry_run</code> 验证风控配置，再切 <code>LIVE_MODE=live</code>。需要用到单标仓位限制时，请在风控检查时传入账户总资产以触发 <code>MAX_POSITION_RATIO</code>。***</p>
+</blockquote>
+<p>实盘风控情况
+<img alt="risk-control" src="assets/real-risk-control.png" /></p>
 
 
 

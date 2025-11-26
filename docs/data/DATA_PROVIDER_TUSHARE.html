@@ -272,6 +272,25 @@
   
   
     <li class="md-tabs__item">
+      <a href="../research.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  研究环境
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
       <a href="../config.html" class="md-tabs__link">
         
   
@@ -317,6 +336,25 @@
     
   
   实盘引擎
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../tick.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Tick 行情指南
 
       </a>
     </li>
@@ -556,6 +594,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../research.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    研究环境
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../config.html" class="md-nav__link">
         
   
@@ -618,6 +683,33 @@
     
   
     实盘引擎
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tick.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tick 行情指南
   
 
     
@@ -734,10 +826,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" checked>
         
           
-          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
+          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="">
             
   
   
@@ -755,8 +847,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_10">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_12">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1040,7 +1132,7 @@
 <ul>
 <li>依赖 <code>tushare&gt;=1.2.0</code>，建议通过 <code>pip install bullet-trade[tushare]</code> 一键安装。  </li>
 <li>认证优先级：<code>set_data_provider</code> 参数 &gt; <code>.env</code> 中的 <code>TUSHARE_TOKEN</code> &gt; 构造函数传入。  </li>
-<li>Provider 会在首次调用时自动创建 <code>ts.pro_api</code> 客户端，并将 <code>cache_dir</code> 设置为 <code>TUSHARE_CACHE_DIR</code>。</li>
+<li>Provider 会在首次调用时自动创建 <code>ts.pro_api</code> 客户端，并将 <code>cache_dir</code> 设置为 <code>DATA_CACHE_DIR/tushare</code>（若配置）。</li>
 </ul>
 <h2 id="_2">价格获取策略<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <ul>
@@ -1063,7 +1155,7 @@
 </ul>
 <h2 id="_5">使用提示<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <ol>
-<li><strong>速率限制</strong>：Pro 账号默认 5000 次/分钟，如高频调用建议开启 <code>TUSHARE_CACHE_DIR</code> 缓存目录或在私有网络中本地化数据。  </li>
+<li><strong>速率限制</strong>：Pro 账号默认 5000 次/分钟，如高频调用建议开启 <code>DATA_CACHE_DIR</code> 缓存目录或在私有网络中本地化数据。  </li>
 <li><strong>数据完整性</strong>：部分场外基金/LOF 在 <code>fund_basic</code> 中缺少 <code>delist_date</code>，封装会将其解析为 <code>NaT</code>，可在策略端自行填补。  </li>
 <li><strong>指数资产判断</strong>：当前默认 <code>ts_code</code> 均按股票资产处理，如需要精确的 <code>asset</code> 可在后续版本通过 <code>stock_basic</code> 信息进一步区分。  </li>
 <li><strong>分钟线权限</strong>：若账号未开通分钟级别数据，<code>ts.pro_bar</code> 会返回空 DataFrame；框架会在日志层面记录，策略需自行兜底。</li>

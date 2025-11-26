@@ -272,6 +272,25 @@
   
   
     <li class="md-tabs__item">
+      <a href="../research.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  研究环境
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
       <a href="../config.html" class="md-tabs__link">
         
   
@@ -317,6 +336,25 @@
     
   
   实盘引擎
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../tick.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Tick 行情指南
 
       </a>
     </li>
@@ -556,6 +594,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../research.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    研究环境
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../config.html" class="md-nav__link">
         
   
@@ -618,6 +683,33 @@
     
   
     实盘引擎
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tick.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tick 行情指南
   
 
     
@@ -734,10 +826,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" checked>
         
           
-          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
+          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="">
             
   
   
@@ -755,8 +847,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_10">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_12">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1066,7 +1158,7 @@
 <li><code>mode</code>：回测 <code>backtest</code>（默认）或实盘 <code>live</code>，用于控制自动下载等行为，可在初始化参数中传入。  </li>
 <li><code>auto_download</code> / <code>MINIQMT_AUTO_DOWNLOAD</code>：是否调用 <code>xtdata.download_history_data</code>；未指定时回测模式默认开启、实盘模式默认关闭。  </li>
 <li><code>market</code> / <code>MINIQMT_MARKET</code>：交易日市场代码（默认 <code>SH</code>）。  </li>
-<li><code>cache_dir</code> / <code>MINIQMT_CACHE_DIR</code>：覆写 provider 缓存目录（默认沿用 <code>JQDATA_CACHE_DIR</code>）。  </li>
+<li><code>cache_dir</code> / <code>DATA_CACHE_DIR</code>：磁盘缓存目录，若不显式传入则使用 <code>DATA_CACHE_DIR/miniqmt</code>；未设置则禁用缓存。  </li>
 <li><code>tushare_token</code> / <code>TUSHARE_TOKEN</code>：xtquant 缺失分红或指数成分时自动回退到 Tushare。</li>
 </ul>
 <h2 id="_2">代码后缀兼容<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>

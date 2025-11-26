@@ -272,6 +272,25 @@
   
   
     <li class="md-tabs__item">
+      <a href="../research.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  研究环境
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
       <a href="../config.html" class="md-tabs__link">
         
   
@@ -317,6 +336,25 @@
     
   
   实盘引擎
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../tick.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Tick 行情指南
 
       </a>
     </li>
@@ -556,6 +594,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../research.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    研究环境
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../config.html" class="md-nav__link">
         
   
@@ -618,6 +683,33 @@
     
   
     实盘引擎
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tick.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tick 行情指南
   
 
     
@@ -734,10 +826,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" checked>
         
           
-          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
+          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="">
             
   
   
@@ -755,8 +847,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_10">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_12">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1029,7 +1121,7 @@
 <ul>
 <li>依赖官方 <code>jqdatasdk</code>，并对 <code>get_price_engine</code> 打补丁以支持 <code>pre_factor_ref_date</code>。  </li>
 <li>支持从 <code>.env</code> 或 CLI 参数读取 <code>JQDATA_USERNAME</code>/<code>PASSWORD</code>/<code>SERVER</code>/<code>PORT</code>，也可以通过 <code>set_data_provider('jqdata', username='xxx', password='xxx')</code> 覆盖。  </li>
-<li><code>CacheManager</code> 默认读取 <code>JQDATA_CACHE_DIR</code>，可按需关闭或调整 TTL。</li>
+<li><code>CacheManager</code> 默认读取 <code>DATA_CACHE_DIR/jqdatasdk</code>，可按需关闭或调整 TTL。</li>
 </ul>
 <h2 id="_2">动态复权<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <ul>
@@ -1045,7 +1137,7 @@
 <h2 id="_4">可能遇到的问题<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <ol>
 <li><strong>权限或额度不足</strong>：<code>jqdatasdk</code> 抛出 <code>PermissionError</code> 时，通常意味着账号未开通所请求的数据表，需要在聚宽后台申请。  </li>
-<li><strong>自建缓存冲突</strong>：若 <code>JQDATA_CACHE_DIR</code> 指向共享目录，请确保不同 provider 名称对应不同子目录，以免缓存键碰撞。  </li>
+<li><strong>自建缓存冲突</strong>：若 <code>DATA_CACHE_DIR</code> 指向共享目录，请确保不会与其他应用复用同一路径。  </li>
 <li><strong>Panel 格式兼容</strong>：聚宽仍使用 <code>pd.Panel</code> 返回多标的行情，本封装会尝试调用 <code>to_frame()</code> 并转换为 MultiIndex DataFrame；如遇 <code>FutureWarning</code> 可忽略。  </li>
 <li><strong>extreme 日期</strong>：当 <code>start_date</code>/<code>end_date</code> 超出标的上市区间时，SDK 会返回空 DataFrame；框架会在日志层面提示“获取数据失败”，属预期表现。</li>
 </ol>

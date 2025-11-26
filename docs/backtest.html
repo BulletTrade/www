@@ -272,6 +272,25 @@
   
   
     <li class="md-tabs__item">
+      <a href="research.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  研究环境
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
       <a href="config.html" class="md-tabs__link">
         
   
@@ -319,6 +338,25 @@
     
   
   实盘引擎
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="tick.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Tick 行情指南
 
       </a>
     </li>
@@ -556,6 +594,33 @@
   
   
     <li class="md-nav__item">
+      <a href="research.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    研究环境
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="config.html" class="md-nav__link">
         
   
@@ -750,6 +815,33 @@
   
   
     <li class="md-nav__item">
+      <a href="tick.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tick 行情指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="trade-support.html" class="md-nav__link">
         
   
@@ -842,10 +934,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
         
           
-          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="0">
             
   
   
@@ -863,8 +955,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_10">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1049,7 +1141,8 @@ pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </s
 cp<span class="w"> </span>env.backtest.example<span class="w"> </span>.env
 </code></pre></div>
 2) 只填本页用到的变量（其余见 <a href="config.html">配置总览</a>）：
-<div class="highlight"><pre><span></span><code><span class="nv">DEFAULT_DATA_PROVIDER</span><span class="o">=</span>jqdata<span class="w">         </span><span class="c1"># 必填，行情源</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># 数据源类型 (jqdata, tushare, qmt)</span>
+<span class="nv">DEFAULT_DATA_PROVIDER</span><span class="o">=</span>jqdata<span class="w">         </span><span class="c1"># 必填，行情源</span>
 <span class="nv">JQDATA_USERNAME</span><span class="o">=</span>your_username<span class="w">       </span><span class="c1"># 选填，按数据源需要</span>
 <span class="nv">JQDATA_PASSWORD</span><span class="o">=</span>your_password
 </code></pre></div>
