@@ -942,6 +942,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#research-io" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        研究文件读写 {#research-io}
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#utils-messages" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1199,6 +1210,7 @@
 <li><a href="#orders-portfolio">订单与组合</a></li>
 <li><a href="#tick-subscription">行情订阅（Tick）</a></li>
 <li><a href="#data-model">数据模型</a></li>
+<li><a href="#research-io">研究文件读写</a></li>
 <li><a href="#utils-messages">工具函数与消息</a></li>
 <li><a href="#cli-bridge">CLI 衔接</a></li>
 </ul>
@@ -1306,6 +1318,20 @@
 <li><code>Portfolio</code> / <code>SubPortfolio</code>：账户与子账户信息，含 <code>total_value/available_cash/locked_cash/positions</code> 等；<code>positions</code> 为 <code>{code: Position}</code>。</li>
 <li><code>Position</code>：持仓详情，含 <code>total_amount/closeable_amount/avg_cost/price/value/side</code> 等，并记录 <code>today_buy_t1</code>（T+1 可用数量）。</li>
 <li><code>Order</code> / <code>Trade</code>：委托与成交记录；<code>OrderStatus</code>/<code>OrderStyle</code> 为枚举；<code>SecurityUnitData</code> 为 <code>current_data</code> 单标的快照。</li>
+</ul>
+<h2 id="research-io">研究文件读写 {#research-io}<a class="headerlink" href="#research-io" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>read_file(path)</code> / <code>write_file(path, content, append=False)</code>：兼容聚宽，路径必须是研究根目录下的相对路径。根目录来源于 <code>~/.bullet-trade/setting.json</code> 的 <code>root_dir</code>（无设置文件时默认 <code>~/bullet-trade</code>）；日志会打印相对与绝对路径，便于确认实际读写位置。</li>
+<li>写入：<code>content</code> 支持 <code>str</code>/<code>bytes</code>/<code>bytearray</code>/<code>memoryview</code>，字符串以 UTF-8 编码；<code>append=True</code> 追加写入，默认覆盖；父目录自动创建。</li>
+<li>越界/绝对路径：会抛出错误并在消息中附带相对与绝对路径。</li>
+<li>未初始化提示：当研究根目录或设置文件不存在时，会提示运行 <code>bullet-trade lab</code> 初始化研究环境，并标明预期路径。</li>
+<li>示例：
+  <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">jqdata</span><span class="w"> </span><span class="kn">import</span> <span class="n">read_file</span><span class="p">,</span> <span class="n">write_file</span>
+
+<span class="n">write_file</span><span class="p">(</span><span class="s2">&quot;data/demo.json&quot;</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">&quot;hello&quot;</span><span class="p">:</span> <span class="s2">&quot;world&quot;</span><span class="p">}))</span>
+<span class="n">raw</span> <span class="o">=</span> <span class="n">read_file</span><span class="p">(</span><span class="s2">&quot;data/demo.json&quot;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span> <span class="o">==</span> <span class="p">{</span><span class="s2">&quot;hello&quot;</span><span class="p">:</span> <span class="s2">&quot;world&quot;</span><span class="p">}</span>
+</code></pre></div></li>
 </ul>
 <h2 id="utils-messages">工具函数与消息 {#utils-messages}<a class="headerlink" href="#utils-messages" title="Permanent link">&para;</a></h2>
 <ul>

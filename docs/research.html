@@ -679,7 +679,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        常用命令
+        研究文件读写（兼容聚宽）
       
     </span>
   </a>
@@ -690,7 +690,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        与回测/实盘的衔接
+        常用命令
       
     </span>
   </a>
@@ -699,6 +699,17 @@
       
         <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        与回测/实盘的衔接
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         常见问题
@@ -1131,6 +1142,7 @@
 <li>设置文件：<code>~/.bullet-trade/setting.json</code>，可调 <code>host</code>、<code>port</code>、<code>root_dir</code>、<code>env_path</code>、<code>open_browser</code>、<code>no_password</code>、<code>no_cert</code>、<code>token</code></li>
 <li><code>.env</code> 读取顺序：默认仅加载根目录下的 <code>.env</code>（不会读取当前工作目录的 <code>.env</code>）</li>
 <li>默认监听 <code>127.0.0.1:8088</code>，开启 Jupyter token，未配置密码/证书；如需公网访问请务必配置密码或证书</li>
+<li>研究文件读写：<code>read_file</code>/<code>write_file</code> 兼容聚宽，路径相对研究根目录；日志会打印相对/绝对路径，便于排查；若未初始化会提示运行 <code>bullet-trade lab</code></li>
 </ul>
 <p>运行后会自动打开浏览器：
 <img alt="launcher" src="assets/jupyter-launcher.png" /></p>
@@ -1143,7 +1155,30 @@
 </ol>
 <p>欢迎样例ipynb
 <img alt="welcome" src="assets/jupyter-welcome.png" /></p>
-<h2 id="_3">常用命令<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h2 id="_3">研究文件读写（兼容聚宽）<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<ul>
+<li>路径：<code>read_file(path)</code> / <code>write_file(path, content, append=False)</code> 的 <code>path</code> 需为研究根目录的相对路径，根目录来源于 <code>~/.bullet-trade/setting.json</code> 的 <code>root_dir</code>（无设置文件时默认 <code>~/bullet-trade</code>）。日志会打印相对路径与展开的绝对路径，方便确认读写位置。</li>
+<li>初始化提示：若尚未创建研究根目录或设置文件，调用时会提示运行 <code>bullet-trade lab</code> 完成初始化，并标明预期路径。</li>
+<li>写入：<code>content</code> 支持 <code>str</code>/<code>bytes</code>/<code>bytearray</code>/<code>memoryview</code>，字符串以 UTF-8 编码；<code>append=True</code> 追加写入，默认覆盖；父目录不存在时自动创建。</li>
+<li>读写越界：绝对路径或试图跳出研究根目录会抛错，错误信息会包含相对与绝对路径。</li>
+<li>示例：
+  <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">io</span><span class="o">,</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">jqdata</span><span class="w"> </span><span class="kn">import</span> <span class="n">read_file</span><span class="p">,</span> <span class="n">write_file</span>
+
+<span class="c1"># 写入 CSV（覆盖）</span>
+<span class="n">write_file</span><span class="p">(</span><span class="s2">&quot;logs/out.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;a,b</span><span class="se">\n</span><span class="s2">1,2</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="c1"># 追加二进制</span>
+<span class="n">write_file</span><span class="p">(</span><span class="s2">&quot;logs/out.csv&quot;</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&quot;3,4</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># 读取原始字节并解析</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">read_file</span><span class="p">(</span><span class="s2">&quot;logs/out.csv&quot;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+
+<span class="c1"># 写入/读取 JSON</span>
+<span class="n">write_file</span><span class="p">(</span><span class="s2">&quot;data/hs300.json&quot;</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">get_index_stocks</span><span class="p">(</span><span class="s2">&quot;000300.XSHG&quot;</span><span class="p">)))</span>
+<span class="n">codes</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">read_file</span><span class="p">(</span><span class="s2">&quot;data/hs300.json&quot;</span><span class="p">))</span>
+</code></pre></div></li>
+</ul>
+<h2 id="_4">常用命令<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <ul>
 <li>启动研究环境（默认打开浏览器）：<br />
   <div class="highlight"><pre><span></span><code>bullet-trade<span class="w"> </span>lab
@@ -1155,7 +1190,7 @@
 </ul>
 <p>系统部分api与聚宽对齐，下面是接入miniqmt配置后的数据获取样例：
 <img alt="data" src="assets/jupyter-data.png" /></p>
-<h2 id="_4">与回测/实盘的衔接<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h2 id="_5">与回测/实盘的衔接<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <ul>
 <li>在根目录 <code>.env</code> 配置数据源与券商参数，Notebook 中 <code>import bullet_trade</code> 或聚宽兼容 API 即可直接使用。</li>
 <li>复用根目录运行命令行：<br />
@@ -1163,7 +1198,7 @@
 bullet-trade<span class="w"> </span>live<span class="w"> </span>strategies/demo_strategy.py<span class="w"> </span>--broker<span class="w"> </span>qmt
 </code></pre></div></li>
 </ul>
-<h2 id="_5">常见问题<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h2 id="_6">常见问题<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>端口占用</strong>：使用 <code>bullet-trade lab --diagnose --port 8088</code> 查看占用，或在 <code>setting.json</code> 修改端口。  </li>
 <li><strong>无法写入目录</strong>：确保根目录可写，必要时调整 <code>root_dir</code>。  </li>
