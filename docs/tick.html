@@ -811,10 +811,27 @@
   <a href="#tick_1" class="md-nav__link">
     <span class="md-ellipsis">
       
+        Tick 订阅架构
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tick 订阅架构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tick_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
         Tick 负载里有哪些字段？
       
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1185,13 +1202,124 @@
 
 
 <h1 id="tick">Tick 订阅与行情接收指南<a class="headerlink" href="#tick" title="Permanent link">&para;</a></h1>
-<p>面向实盘/远程使用者的 Tick 使用说明，覆盖订阅、接收、取消以及当前实现限制。底层实现主要有两条链路：</p>
+<p>面向实盘/远程使用者的 Tick 使用说明，覆盖订阅、接收、取消以及当前实现限制。</p>
+<h2 id="tick_1">Tick 订阅架构<a class="headerlink" href="#tick_1" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────────────────────┐
+│                         Tick 订阅数据流架构                                   │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  场景 A: 本地 xtdata 订阅（Windows + miniQMT 环境）                            │
+│                                                                             │
+│  ┌──────────────────┐      ┌──────────────────┐      ┌──────────────────┐   │
+│  │   策略代码        │      │   bullet-trade    │     │   miniQMT        │   │
+│  │                  │      │   core/api.py    │      │   xtquant SDK    │   │
+│  │  subscribe(      │      │                  │      │                  │   │
+│  │   [&#39;000001&#39;],    │─────▶│  subscribe()     │─────▶│ xtdata.subscribe │   │
+│  │   &#39;tick&#39;         │      │                  │      │ _quote()         │   │
+│  │  )               │      │                  │      │                  │   │
+│  └──────────────────┘      └──────────────────┘      └────────┬─────────┘   │
+│                                                               │             │
+│                                                   实时推送 tick│             │
+│                                                               ▼             │
+│  ┌──────────────────┐      ┌──────────────────┐      ┌──────────────────┐   │
+│  │   handle_tick    │◀─────│   _on_xt_tick    │◀─────│ callback 回调    │   │
+│  │   (context,tick) │      │   字段映射转换     │      │ {lastPrice,time} │   │
+│  │                  │      │   sid/last_price │      │                  │   │
+│  └──────────────────┘      └──────────────────┘      └──────────────────┘   │
+│                                                                             │
+│  特点：延迟最低（&lt; 100ms），支持全市场订阅 [&#39;SH&#39;,&#39;SZ&#39;]                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  场景 B: LiveEngine + qmt-remote 远程订阅（macOS/Linux 客户端）                 │
+│                                                                             │
+│  ┌──────────────────────────────────────────────────────────────────────┐   │
+│  │  客户端 (macOS/Linux)                                                 │   │
+│  │                                                                      │   │
+│  │  ┌──────────────┐    ┌──────────────────┐    ┌────────────────────┐  │   │
+│  │  │  策略代码     │    │  LiveEngine       │    │ RemoteQmtBroker   │  │   │
+│  │  │              │    │                  │    │ RemoteQmtProvider  │  │   │
+│  │  │  subscribe(  │───▶│ register_tick_   │───▶│                    │  │   │
+│  │  │   [...],     │    │ subscription()   │    │ 记录订阅清单         │  │   │
+│  │  │   &#39;tick&#39;     │    │                  │    │                    │  │   │
+│  │  │  )           │    │                  │    │                    │  │   │
+│  │  └──────────────┘    └──────────────────┘    └────────────────────┘  │   │
+│  │                              │                         │             │   │
+│  │                   tick_sync_interval                   │             │   │
+│  │                   (默认 2 秒轮询)                        │             │   │
+│  │                              │                         │             │   │
+│  │                              ▼                         │             │   │
+│  │                      ┌──────────────────┐              │             │   │
+│  │                      │  _tick_loop()    │              │             │   │
+│  │                      │  定时拉取快照     │───────────────┘             │   │
+│  │                      └────────┬─────────┘                            │   │
+│  │                               │                                      │   │
+│  │                               │ request(&quot;data.snapshot&quot;)             │   │
+│  └───────────────────────────────┼──────────────────────────────────────┘   │
+│                                  │                                          │
+│                          ════════╪════════  网络 ════════════════            │
+│                                  │                                          │
+│  ┌───────────────────────────────┼──────────────────────────────────────┐   │
+│  │  服务端 (Windows + miniQMT)    │                                      │   │
+│  │                               ▼                                      │   │
+│  │  ┌────────────────────────────────────────────────────────────────┐  │   │
+│  │  │  bullet-trade server                                           │  │   │
+│  │  │                                                                │  │   │
+│  │  │  ┌────────────────┐       ┌────────────────┐                   │  │   │
+│  │  │  │ QmtDataAdapter │◀──────│ data.snapshot  │◀── 客户端请求       │  │   │
+│  │  │  │                │       │ 处理器          │                   │  │   │
+│  │  │  └───────┬────────┘       └────────────────┘                   │  │   │
+│  │  │          │                                                     │  │   │
+│  │  │          │ get_current_tick()                                  │  │   │
+│  │  │          ▼                                                     │  │   │
+│  │  │  ┌────────────────┐                                            │  │   │
+│  │  │  │ xtdata.get_    │                                            │  │   │
+│  │  │  │ full_tick()    │                                            │  │   │
+│  │  │  └───────┬────────┘                                            │  │   │
+│  │  │          │                                                     │  │   │
+│  │  │          ▼                                                     │  │   │
+│  │  │  ┌────────────────┐                                            │  │   │
+│  │  │  │ miniQMT        │  实时 tick 数据源                            │  │   │
+│  │  │  │ xtquant SDK    │  {lastPrice, time, bidPrice, askPrice...}  │  │   │
+│  │  │  └────────────────┘                                            │  │   │
+│  │  └────────────────────────────────────────────────────────────────┘  │   │
+│  └──────────────────────────────────────────────────────────────────────┘   │
+│                                                                             │
+│  特点：跨平台支持，延迟 = tick_sync_interval + 网络延迟                          │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  handle_tick 回调数据格式                                                     │
+│                                                                             │
+│  def handle_tick(context, tick):                                            │
+│      # tick 字典包含以下字段（来源于 miniQMT xtdata 推送）                       │
+│      tick = {                                                               │
+│          &#39;sid&#39;: &#39;000001.XSHE&#39;,       # 聚宽风格代码                           │
+│          &#39;symbol&#39;: &#39;000001.SZ&#39;,      # QMT 风格代码                          │
+│          &#39;last_price&#39;: 10.50,        # 最新价                                │
+│          &#39;dt&#39;: 1700000000000,        # 时间戳(毫秒)                           │
+│          # ── 盘口字段（本地 xtdata 模式可用）──                                │
+│          &#39;bid1&#39;: 10.49,              # 买一价                                │
+│          &#39;ask1&#39;: 10.51,              # 卖一价                                │
+│          &#39;bid1_volume&#39;: 1000,        # 买一量                                │
+│          &#39;ask1_volume&#39;: 800,         # 卖一量                                │
+│          &#39;last_close&#39;: 10.30,        # 昨收                                  │
+│          &#39;open&#39;: 10.35,              # 开盘价                                │
+│          &#39;high&#39;: 10.55,              # 最高价                                │
+│          &#39;low&#39;: 10.28,               # 最低价                                │
+│          &#39;volume&#39;: 50000,            # 成交量                                │
+│          &#39;amount&#39;: 525000.0,         # 成交额                                │
+│      }                                                                      │
+└─────────────────────────────────────────────────────────────────────────────┘
+</code></pre></div>
+<p>底层实现主要有两条链路：</p>
 <ul>
 <li><strong>LiveEngine + qmt-remote（默认）</strong>：<code>subscribe(...)</code> 只记录订阅清单，后台按 <code>tick_sync_interval</code>（默认 2 秒）轮询券商的 <code>get_current_tick</code>。对于远程场景，该调用会通过 <code>RemoteQmtBroker -&gt; RemoteQmtConnection</code> 请求 server 的 <code>data.snapshot</code>，并在收到后触发策略的 <code>handle_tick</code>。</li>
 <li><strong>本地 xtdata（无 LiveEngine 或设置了 xtdata 数据源）</strong>：<code>subscribe(...)</code> 会直接调用 <code>xtdata.subscribe_quote/subscribe_whole_quote</code> 由 xtquant 推送，回调 <code>_on_xt_tick</code> 统一成 <code>sid/last_price/dt</code> 后传给策略的 <code>handle_tick</code>。</li>
 <li><strong>Server 端 data.subscribe</strong>：<code>bullet-trade server</code> 内部的 <code>TickSubscriptionManager</code> 每隔 1 秒轮询数据适配器的 <code>get_current_tick</code>，将结果打包成事件 <code>{"symbol": "000001.SZ", "sid": "000001.XSHE", "last_price": 10.1, "dt": ...}</code> 推给远程客户端。当前 LiveEngine 的 qmt-remote 券商并不消费该推送，而是采用上面的轮询模式。</li>
 </ul>
-<h3 id="tick_1">Tick 负载里有哪些字段？<a class="headerlink" href="#tick_1" title="Permanent link">&para;</a></h3>
+<h3 id="tick_2">Tick 负载里有哪些字段？<a class="headerlink" href="#tick_2" title="Permanent link">&para;</a></h3>
 <ul>
 <li>始终有 <code>sid</code>（聚宽风格代码，例如 <code>000001.XSHE</code>）和 <code>last_price</code>、<code>dt</code>（时间字符串）。  </li>
 <li>xtdata 推送时原始字段是 <code>stock_code</code>/<code>code</code> + <code>lastPrice</code>/<code>time</code>，框架会映射成上述键；server 推送时会额外带 <code>symbol</code>（QMT 风格代码，如 <code>000001.SZ</code>）。  </li>
