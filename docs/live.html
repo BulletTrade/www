@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://bullettrade.cn/docs/live.html">
       
       
-        <link rel="prev" href="backtest.html">
+        <link rel="prev" href="optimize.html">
       
       
         <link rel="next" href="tick.html">
@@ -317,6 +317,25 @@
     
   
   回测引擎
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="optimize.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  参数优化
 
       </a>
     </li>
@@ -672,6 +691,33 @@
       
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="optimize.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    参数优化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
     
   
   
@@ -738,6 +784,39 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
+        生命周期流程
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        生命周期回调说明
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        典型交易日时间线
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
         场景对比（先选路径）
       
     </span>
@@ -758,7 +837,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        命令行参数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
         实盘效果与日志
@@ -785,18 +875,46 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        生命周期与状态
+        状态持久化
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="状态持久化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        持久化机制
       
     </span>
   </a>
   
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        状态恢复
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
         安全与风控
@@ -812,6 +930,67 @@
     <span class="md-ellipsis">
       
         风控参数配置（.env）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常见问题
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="常见问题">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        策略重启后状态丢失
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        定时任务没有触发
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        订单没有成交
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        远程连接失败
       
     </span>
   </a>
@@ -957,10 +1136,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
         
           
-          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="0">
             
   
   
@@ -978,8 +1157,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_12">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1157,7 +1336,160 @@
 
 <h1 id="_1">实盘引擎<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <p>本页涵盖本地 QMT/模拟与远程 qmt-remote 两种运行方式，聚焦最小可用流程与关键截图。</p>
-<h2 id="_2">场景对比（先选路径）<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h2 id="_2">生命周期流程<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────────────────────┐
+│  bullet-trade live strategy.py --broker qmt                                  │
+└───────────────────────────────────┬─────────────────────────────────────────┘
+                                    │
+                                    ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  1. 启动阶段                                                                 │
+│                                                                              │
+│     ┌──────────────┐    ┌──────────────┐    ┌──────────────┐                │
+│     │ 加载策略文件  │ → │ 检查运行态    │ → │ 首次启动?    │                │
+│     │ strategy.py  │    │ g.pkl 存在?  │    │              │                │
+│     └──────────────┘    └──────────────┘    └──────┬───────┘                │
+│                                                     │                        │
+│                              ┌──────────────────────┴─────────────────────┐  │
+│                              │                                            │  │
+│                              ▼                                            ▼  │
+│                    ┌──────────────────┐                     ┌──────────────┐ │
+│                    │ 是：调用          │                     │ 否：恢复状态 │ │
+│                    │ initialize()     │                     │ 跳过init    │ │
+│                    └────────┬─────────┘                     └──────┬───────┘ │
+│                              │                                      │        │
+│                              └──────────────┬───────────────────────┘        │
+│                                             ▼                                │
+│                              ┌──────────────────────────┐                    │
+│                              │ 代码变更?                 │                    │
+│                              │ (hash对比)               │                    │
+│                              └────────────┬─────────────┘                    │
+│                                           │ 是                               │
+│                                           ▼                                  │
+│                              ┌──────────────────────────┐                    │
+│                              │ after_code_changed()     │                    │
+│                              │ 热更新回调               │                    │
+│                              └────────────┬─────────────┘                    │
+│                                           ▼                                  │
+│                    ┌──────────────┐    ┌──────────────┐                      │
+│                    │ 初始化券商   │ → │process_      │                      │
+│                    │ Broker连接   │    │initialize() │                      │
+│                    └──────────────┘    └──────────────┘                      │
+├─────────────────────────────────────────────────────────────────────────────┤
+│  2. 运行循环（持续运行，每日重复）                                            │
+│                                                                              │
+│     ┌───────────────────────────────────────────────────────────────────┐   │
+│     │  每个交易日                                                        │   │
+│     │                                                                    │   │
+│     │  09:15 ─────────────────────────────────────────────────────────  │   │
+│     │    │                                                              │   │
+│     │    ▼  before_trading_start()  盘前准备                            │   │
+│     │                                                                    │   │
+│     │  09:30 ─────────────────────────────────────────────────────────  │   │
+│     │    │                                                              │   │
+│     │    ▼  MarketOpenEvent 开盘事件                                    │   │
+│     │    │  run_daily 定时任务开始执行                                   │   │
+│     │    │  handle_data() / handle_tick() 触发                          │   │
+│     │    │                                                              │   │
+│     │  11:30 ─────────────────────────────────────────────────────────  │   │
+│     │    │  午休（自动跳过，不触发回调）                                  │   │
+│     │  13:00 ─────────────────────────────────────────────────────────  │   │
+│     │    │                                                              │   │
+│     │    ▼  继续执行 run_daily 定时任务                                  │   │
+│     │                                                                    │   │
+│     │  15:00 ─────────────────────────────────────────────────────────  │   │
+│     │    │                                                              │   │
+│     │    ▼  MarketCloseEvent 收盘事件                                   │   │
+│     │    │  after_trading_end()  盘后清理                               │   │
+│     │    │  自动保存 g.pkl / live_state.json                            │   │
+│     │    │                                                              │   │
+│     │  ────────── 等待下一个交易日 ──────────                            │   │
+│     └───────────────────────────────────────────────────────────────────┘   │
+├─────────────────────────────────────────────────────────────────────────────┤
+│  3. 退出阶段                                                                 │
+│     ┌──────────────┐    ┌──────────────┐    ┌──────────────┐                │
+│     │ Ctrl+C 终止  │ → │ 保存运行态    │ → │ 断开券商连接  │                │
+│     │ 或异常退出   │    │ g.pkl        │    │ 清理资源     │                │
+│     └──────────────┘    └──────────────┘    └──────────────┘                │
+└─────────────────────────────────────────────────────────────────────────────┘
+</code></pre></div>
+<h2 id="_3">生命周期回调说明<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>回调函数</th>
+<th>触发时机</th>
+<th>典型用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>initialize(context)</code></td>
+<td>首次启动时调用（运行态不存在）</td>
+<td>初始化策略参数、注册定时任务</td>
+</tr>
+<tr>
+<td><code>process_initialize(context)</code></td>
+<td>每次进程启动后调用</td>
+<td>恢复连接、重建缓存、检查状态</td>
+</tr>
+<tr>
+<td><code>after_code_changed(context)</code></td>
+<td>检测到策略文件变更后调用</td>
+<td>热更新逻辑、参数调整</td>
+</tr>
+<tr>
+<td><code>before_trading_start(context)</code></td>
+<td>每日开盘前（09:15）调用</td>
+<td>盘前数据准备、选股</td>
+</tr>
+<tr>
+<td><code>handle_data(context, data)</code></td>
+<td>开盘时（09:30）调用一次</td>
+<td>日级别交易逻辑</td>
+</tr>
+<tr>
+<td><code>handle_tick(context, tick)</code></td>
+<td>收到 tick 推送时调用</td>
+<td>tick 级别交易逻辑</td>
+</tr>
+<tr>
+<td><code>after_trading_end(context)</code></td>
+<td>每日收盘后（15:00）调用</td>
+<td>盘后统计、发送通知</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_4">典型交易日时间线<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>时间        事件                              说明
+────────────────────────────────────────────────────────────────────────────
+08:00       LiveEngine 启动                   加载策略、恢复 g 状态
+            ↓
+09:15       BeforeTradingStartEvent           触发 before_trading_start()
+            before_trading_start()            盘前选股、数据准备
+            ↓
+09:25       集合竞价结束                       可获取开盘价
+            ↓
+09:30       MarketOpenEvent                   正式开盘
+            run_daily(&#39;09:30&#39;) 任务执行       定时任务触发
+            handle_data() 触发                日级别交易逻辑
+            ↓
+09:30-11:30 盘中交易时段                      run_daily 任务按时触发
+            handle_tick() 持续触发            tick 推送
+            订单实时处理                      委托、成交、撤单
+            ↓
+11:30-13:00 午休                             自动跳过，不触发任何回调
+            ↓
+13:00-15:00 下午交易时段                      与上午相同
+            ↓
+15:00       MarketCloseEvent                 收盘
+            after_trading_end()              盘后统计、通知
+            自动保存 g.pkl                   持久化策略状态
+            ↓
+15:00+      收盘后                           等待下一个交易日
+            可选：继续运行或退出
+</code></pre></div>
+<h2 id="_5">场景对比（先选路径）<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -1203,7 +1535,42 @@
 bullet-trade<span class="w"> </span>live<span class="w"> </span>strategies/demo_strategy.py<span class="w"> </span>--broker<span class="w"> </span>qmt
 </code></pre></div>
 - 建议先用 <code>--broker simulator</code> dry-run，再切换真实账号。</p>
-<h3 id="_3">实盘效果与日志<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h3 id="_6">命令行参数<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>bullet-trade<span class="w"> </span>live<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span>strategy_file<span class="w"> </span>--broker<span class="w"> </span><span class="o">{</span>qmt,qmt-remote,simulator<span class="o">}</span>
+<span class="w">                  </span><span class="o">[</span>--log-dir<span class="w"> </span>LOG_DIR<span class="o">]</span><span class="w"> </span><span class="o">[</span>--runtime-dir<span class="w"> </span>RUNTIME_DIR<span class="o">]</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>strategy_file</code></td>
+<td>✓</td>
+<td>策略文件路径</td>
+</tr>
+<tr>
+<td><code>--broker</code></td>
+<td>✓</td>
+<td>券商类型：<code>qmt</code>、<code>qmt-remote</code>、<code>simulator</code></td>
+</tr>
+<tr>
+<td><code>--log-dir</code></td>
+<td></td>
+<td>日志目录（覆盖 .env 中的 LOG_DIR）</td>
+</tr>
+<tr>
+<td><code>--runtime-dir</code></td>
+<td></td>
+<td>运行态目录（覆盖 .env 中的 RUNTIME_DIR）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_7">实盘效果与日志<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p>QMT 本机持仓/下单：
 <img alt="qmt-trade-live" src="assets/qmt-trade-live.png" /></p>
 <p>委托状态（限价/市价/撤单）：
@@ -1226,20 +1593,48 @@ bullet-trade<span class="w"> </span>live<span class="w"> </span>strategies/demo_
 <span class="nv">QMT_SERVER_PORT</span><span class="o">=</span><span class="m">58620</span>
 <span class="nv">QMT_SERVER_TOKEN</span><span class="o">=</span>secret
 <span class="nv">QMT_SERVER_ACCOUNT_KEY</span><span class="o">=</span>main
-</code></pre></div>
-3) 运行策略：
+</code></pre></div></p>
+<p>3) 运行策略：
 <div class="highlight"><pre><span></span><code>bullet-trade<span class="w"> </span>live<span class="w"> </span>strategies/demo_strategy.py<span class="w"> </span>--broker<span class="w"> </span>qmt-remote
-</code></pre></div>
-4) 服务端日志示例：
+</code></pre></div></p>
+<p>4) 服务端日志示例：
 <img alt="joinquant-server-qmt" src="assets/joinquant-server-qmt.png" /></p>
-<h2 id="_4">生命周期与状态<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<ul>
-<li><code>initialize</code>：策略首次加载。</li>
-<li><code>process_initialize</code>：进程重启后执行，适合恢复 g/连接。</li>
-<li><code>after_code_change</code>：代码热更新后执行。</li>
-<li>持久化：<code>RUNTIME_DIR</code> 自动写入 <code>live_state.json</code>、<code>g.pkl</code>，可在回调里加载恢复。</li>
-</ul>
-<h2 id="_5">安全与风控<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h2 id="_8">状态持久化<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p>实盘引擎自动管理运行态，支持断点续跑：</p>
+<div class="highlight"><pre><span></span><code>runtime/
+├── live_state.json    # 引擎状态（当前日期、已执行任务等）
+└── g.pkl              # 策略全局变量 g 的序列化
+</code></pre></div>
+<h3 id="_9">持久化机制<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>时机</th>
+<th>保存内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>每日收盘后</td>
+<td>自动保存 <code>g.pkl</code> 和 <code>live_state.json</code></td>
+</tr>
+<tr>
+<td>定时自动保存</td>
+<td>可配置间隔（<code>G_AUTOSAVE_INTERVAL</code>）</td>
+</tr>
+<tr>
+<td>进程退出时</td>
+<td>保存当前状态</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_10">状态恢复<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p>重启后，引擎会：
+1. 检测 <code>g.pkl</code> 是否存在
+2. 存在则恢复 <code>g</code> 状态，跳过 <code>initialize()</code>
+3. 调用 <code>process_initialize()</code> 让策略处理恢复逻辑
+4. 对比策略文件 hash，变更则调用 <code>after_code_changed()</code></p>
+<h2 id="_11">安全与风控<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
 <ul>
 <li><code>.env</code> 不入库；远程服务务必带 <code>--token</code>，必要时限制到内网。</li>
 <li>策略层保留风控钩子：停牌过滤、最大回撤、成交失败重试等。</li>
@@ -1279,25 +1674,46 @@ bullet-trade<span class="w"> </span>live<span class="w"> </span>strategies/demo_
 <tr>
 <td><code>MAX_POSITION_RATIO</code></td>
 <td><code>20</code></td>
-<td>单标下单金额占总资产的最大比例（需在调用风控时传入账户总资产，否则不生效）。</td>
+<td>单标下单金额占总资产的最大比例。</td>
 </tr>
 <tr>
 <td><code>STOP_LOSS_RATIO</code></td>
 <td><code>5</code></td>
-<td>止损阈值，仅供 <code>check_stop_loss</code> 辅助判断，需策略自行下撤单。</td>
+<td>止损阈值，仅供 <code>check_stop_loss</code> 辅助判断。</td>
 </tr>
 <tr>
 <td><code>RISK_CHECK_ENABLED</code></td>
 <td><code>false</code></td>
-<td>开启后台风控巡检（间隔由 <code>RISK_CHECK_INTERVAL</code> 控制），拒单仍由下单路径内置检查触发。</td>
+<td>开启后台风控巡检。</td>
 </tr>
 </tbody>
 </table>
 <blockquote>
-<p>提示：默认值偏宽，真实账户请按资金量收紧（例如把金额/笔数/仓位阈值调小）；先用 <code>LIVE_MODE=dry_run</code> 验证风控配置，再切 <code>LIVE_MODE=live</code>。需要用到单标仓位限制时，请在风控检查时传入账户总资产以触发 <code>MAX_POSITION_RATIO</code>。***</p>
+<p>提示：默认值偏宽，真实账户请按资金量收紧；先用 <code>LIVE_MODE=dry_run</code> 验证风控配置，再切 <code>LIVE_MODE=live</code>。</p>
 </blockquote>
-<p>实盘风控情况
+<p>实盘风控情况：
 <img alt="risk-control" src="assets/real-risk-control.png" /></p>
+<h2 id="_12">常见问题<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<h3 id="_13">策略重启后状态丢失<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<p>检查 <code>RUNTIME_DIR</code> 配置是否正确，确保指向持久化目录。</p>
+<h3 id="_14">定时任务没有触发<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<ol>
+<li>检查 <code>run_daily</code> 的时间格式是否正确（如 <code>'10:00'</code>）</li>
+<li>确认当前是交易时段</li>
+<li>查看日志中是否有调度相关错误</li>
+</ol>
+<h3 id="_15">订单没有成交<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<ol>
+<li>检查 QMT 客户端是否正常登录</li>
+<li>查看风控日志是否拒单</li>
+<li>确认标的是否停牌或涨跌停</li>
+</ol>
+<h3 id="_16">远程连接失败<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<ol>
+<li>检查防火墙是否放行端口</li>
+<li>确认 <code>QMT_SERVER_HOST</code> 和 <code>QMT_SERVER_PORT</code> 配置正确</li>
+<li>验证 <code>QMT_SERVER_TOKEN</code> 与服务端一致</li>
+</ol>
 
 
 

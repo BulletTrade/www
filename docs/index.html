@@ -329,6 +329,25 @@
   
   
     <li class="md-tabs__item">
+      <a href="optimize.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  参数优化
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
       <a href="live.html" class="md-tabs__link">
         
   
@@ -786,6 +805,33 @@
   
   
     <li class="md-nav__item">
+      <a href="optimize.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    参数优化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="live.html" class="md-nav__link">
         
   
@@ -932,10 +978,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
         
           
-          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="0">
             
   
   
@@ -953,8 +999,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_12">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1142,6 +1188,7 @@
 <li><a href="research.html">研究环境（JupyterLab）</a>：<code>bullet-trade lab</code> 一键启动 Notebook，默认根目录、设置文件与示例说明。</li>
 <li><a href="config.html">配置总览</a>：回测/本地实盘/远程实盘/聚宽接入的环境变量一览。</li>
 <li><a href="backtest.html">回测引擎</a>：真实价格成交、分红送股处理、聚宽代码示例与 CLI 回测。</li>
+<li><a href="optimize.html">参数优化</a>：多进程并行参数寻优，自动找出最优策略参数。</li>
 <li><a href="live.html">实盘引擎</a>：本地 QMT 独立实盘与远程实盘流程。</li>
 <li><a href="trade-support.html">交易支撑</a>：聚宽模拟盘接入、远程 QMT 服务与 helper 用法。</li>
 <li><a href="qmt-server.html">QMT 服务配置</a>：bullet-trade server 的完整说明。</li>
@@ -1187,6 +1234,8 @@ cp<span class="w"> </span>bullet-trade/env.example<span class="w"> </span>bullet
 <ul>
 <li>回测：<br />
 <code>bullet-trade backtest strategies/demo_strategy.py --start 2024-01-01 --end 2024-03-01 --frequency minute --benchmark 000300.XSHG</code></li>
+<li>参数优化：<br />
+<code>bullet-trade optimize strategies/demo_strategy.py --params params.json --start 2020-01-01 --end 2023-12-31 --output optimization.csv</code></li>
 <li>实盘（本地/远程 QMT，未配置时可先用模拟券商）：<br />
 <code>bullet-trade live strategies/demo_strategy.py --broker qmt</code><br />
 <code>bullet-trade live strategies/demo_strategy.py --broker qmt-remote  # 需要 .env 配好 QMT_SERVER_*</code></li>
