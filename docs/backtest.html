@@ -824,7 +824,7 @@
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        兼容聚宽的策略示例
+        策略示例
       
     </span>
   </a>
@@ -874,6 +874,166 @@
   <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
+        风险指标计算公式
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="风险指标计算公式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基础参数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#total-returns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        策略收益 (Total Returns)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#annualized-returns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        策略年化收益 (Annualized Returns)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#volatility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        策略波动率 (Volatility)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#downside-volatility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        下行波动率 (Downside Volatility)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#max-drawdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        最大回撤 (Max Drawdown)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sharpe-ratio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        夏普比率 (Sharpe Ratio)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sortino-ratio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        索提诺比率 (Sortino Ratio)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#calmar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Calmar 比率
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        日胜率
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        交易胜率
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        盈亏比
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        指标解读参考
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
         单独生成报告
       
     </span>
@@ -882,7 +1042,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
+  <a href="#_20" class="md-nav__link">
     <span class="md-ellipsis">
       
         常见问题
@@ -894,7 +1054,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
+  <a href="#_21" class="md-nav__link">
     <span class="md-ellipsis">
       
         中文字体
@@ -905,7 +1065,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
+  <a href="#_22" class="md-nav__link">
     <span class="md-ellipsis">
       
         数据认证失败
@@ -916,7 +1076,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
+  <a href="#_23" class="md-nav__link">
     <span class="md-ellipsis">
       
         分钟线回测
@@ -927,7 +1087,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
+  <a href="#_24" class="md-nav__link">
     <span class="md-ellipsis">
       
         日志为空
@@ -938,7 +1098,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_19" class="md-nav__link">
+  <a href="#_25" class="md-nav__link">
     <span class="md-ellipsis">
       
         回测速度慢
@@ -1340,7 +1500,7 @@
 
 
 <h1 id="_1">回测引擎<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<p>如何在本地快速跑通与聚宽对齐的回测，落盘报告并校验指标。</p>
+<p>如何在本地快速跑通回测，落盘报告并校验指标。</p>
 <h2 id="_2">工作流程<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────────────────────┐
 │  bullet-trade backtest strategy.py --start 2024-01-01 --end 2024-06-30      │
@@ -1400,7 +1560,7 @@ cp<span class="w"> </span>env.backtest.example<span class="w"> </span>.env
 <span class="w">  </span>--output<span class="w"> </span>backtest_results/demo
 </code></pre></div></p>
 <blockquote>
-<p>聚宽策略可直接复用：<code>from jqdata import *</code>、<code>order_target_value</code> 等 API 已兼容，无需改代码。</p>
+<p>策略文件使用标准 API：<code>from jqdata import *</code>、<code>order_target_value</code> 等，无需额外改代码。</p>
 </blockquote>
 <h2 id="_3">命令行参数<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>bullet-trade<span class="w"> </span>backtest<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span>strategy_file<span class="w"> </span>--start<span class="w"> </span>START<span class="w"> </span>--end<span class="w"> </span>END
@@ -1550,7 +1710,7 @@ cp<span class="w"> </span>env.backtest.example<span class="w"> </span>.env
 </code></pre></div>
 <p>选择真实价格成交后，系统会自动处理分红、配股等现金/股份变动。</p>
 <p><img alt="分红配股" src="assets/%E5%88%86%E7%BA%A2%E9%85%8D%E8%82%A1.png" /></p>
-<h2 id="_9">兼容聚宽的策略示例<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<h2 id="_9">策略示例<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">jqdata</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">initialize</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
@@ -1630,12 +1790,16 @@ cp<span class="w"> </span>env.backtest.example<span class="w"> </span>.env
 <td>日收益率标准差的年化值</td>
 </tr>
 <tr>
+<td>下行波动率</td>
+<td>仅考虑下跌日的波动率</td>
+</tr>
+<tr>
 <td>最大回撤</td>
 <td>回测期间最大净值回撤幅度</td>
 </tr>
 <tr>
 <td>夏普比率</td>
-<td>风险调整收益（年化收益 / 波动率）</td>
+<td>风险调整收益</td>
 </tr>
 <tr>
 <td>索提诺比率</td>
@@ -1655,28 +1819,165 @@ cp<span class="w"> </span>env.backtest.example<span class="w"> </span>.env
 </tr>
 <tr>
 <td>盈亏比</td>
-<td>平均盈利 / 平均亏损</td>
+<td>总盈利额 / 总亏损额</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_13">风险指标计算公式<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
+<p>本节详细说明各风险指标的计算方法，便于验证和对比。</p>
+<h3 id="_14">基础参数<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>无风险利率</strong>：默认 4%（年化）</li>
+<li><strong>年化交易日</strong>：250 天</li>
+<li><strong>小数精度</strong>：百分比保留 2 位，比率保留 4 位</li>
+</ul>
+<h3 id="total-returns">策略收益 (Total Returns)<a class="headerlink" href="#total-returns" title="Permanent link">&para;</a></h3>
+<p>$$
+\text{策略收益} = \frac{P_{end} - P_{start}}{P_{start}} \times 100\%
+$$</p>
+<ul>
+<li>$P_{end}$：策略结束时的总资产（现金 + 持仓市值）</li>
+<li>$P_{start}$：策略开始时的总资产</li>
+</ul>
+<h3 id="annualized-returns">策略年化收益 (Annualized Returns)<a class="headerlink" href="#annualized-returns" title="Permanent link">&para;</a></h3>
+<p>$$
+R_p = \left( (1 + P)^{\frac{250}{n}} - 1 \right) \times 100\%
+$$</p>
+<ul>
+<li>$P$：策略收益（小数形式）</li>
+<li>$n$：策略执行天数</li>
+</ul>
+<h3 id="volatility">策略波动率 (Volatility)<a class="headerlink" href="#volatility" title="Permanent link">&para;</a></h3>
+<p>$$
+\sigma_p = \sqrt{\frac{250}{n-1} \sum_{i=1}^{n} (r_p - \bar{r_p})^2}
+$$</p>
+<ul>
+<li>$r_p$：策略每日收益率</li>
+<li>$\bar{r_p}$：策略每日收益率的平均值</li>
+<li>$n$：策略执行天数</li>
+</ul>
+<h3 id="downside-volatility">下行波动率 (Downside Volatility)<a class="headerlink" href="#downside-volatility" title="Permanent link">&para;</a></h3>
+<p>$$
+\sigma_{pd} = \sqrt{\frac{250}{n} \sum_{i=1}^{n} (r_p - \bar{r_{pi}})^2 \cdot f(t)}
+$$</p>
+<p>其中：
+- $\bar{r_{pi}}$：截至第 $i$ 日的平均收益率
+- $f(t) = 1$ 当 $r_p &lt; \bar{r_{pi}}$，否则 $f(t) = 0$</p>
+<p>这种动态目标的下行波动率计算方式，能更准确地反映策略的下行风险。</p>
+<h3 id="max-drawdown">最大回撤 (Max Drawdown)<a class="headerlink" href="#max-drawdown" title="Permanent link">&para;</a></h3>
+<p>$$
+\text{最大回撤} = \max \left( \frac{P_x - P_y}{P_x} \right), \quad y &gt; x
+$$</p>
+<ul>
+<li>$P_x, P_y$：策略某日的总资产，$y &gt; x$ 表示 $y$ 日在 $x$ 日之后</li>
+</ul>
+<h3 id="sharpe-ratio">夏普比率 (Sharpe Ratio)<a class="headerlink" href="#sharpe-ratio" title="Permanent link">&para;</a></h3>
+<p>$$
+\text{Sharpe} = \frac{R_p - R_f}{\sigma_p}
+$$</p>
+<ul>
+<li>$R_p$：策略年化收益率（小数形式）</li>
+<li>$R_f$：无风险利率（默认 0.04）</li>
+<li>$\sigma_p$：策略年化波动率（小数形式）</li>
+</ul>
+<h3 id="sortino-ratio">索提诺比率 (Sortino Ratio)<a class="headerlink" href="#sortino-ratio" title="Permanent link">&para;</a></h3>
+<p>$$
+\text{Sortino} = \frac{R_p - R_f}{\sigma_{pd}}
+$$</p>
+<ul>
+<li>$R_p$：策略年化收益率（小数形式）</li>
+<li>$R_f$：无风险利率（默认 0.04）</li>
+<li>$\sigma_{pd}$：策略下行波动率（小数形式）</li>
+</ul>
+<h3 id="calmar">Calmar 比率<a class="headerlink" href="#calmar" title="Permanent link">&para;</a></h3>
+<p>$$
+\text{Calmar} = \frac{\text{策略年化收益}}{\left| \text{最大回撤} \right|}
+$$</p>
+<p>也称为<strong>收益回撤比</strong>，衡量单位回撤带来的收益。</p>
+<h3 id="_15">日胜率<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<p>$$
+\text{日胜率} = \frac{\text{当日收益} &gt; 0 \text{的天数}}{\text{总交易日数}} \times 100\%
+$$</p>
+<h3 id="_16">交易胜率<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<p>$$
+\text{交易胜率} = \frac{\text{盈利交易次数}}{\text{总交易次数}} \times 100\%
+$$</p>
+<p>每次<strong>卖出</strong>记为一次交易。盈亏判断基于：</p>
+<p>$$
+\text{盈亏} = (\text{卖出价} - \text{成本价}) \times \text{数量} - \text{手续费} - \text{印花税}
+$$</p>
+<h3 id="_17">盈亏比<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<p>$$
+\text{盈亏比} = \frac{\text{总盈利额}}{\text{总亏损额}}
+$$</p>
+<p>基于交易记录计算，汇总所有盈利交易和亏损交易的金额后求比。</p>
+<h3 id="_18">指标解读参考<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>优秀</th>
+<th>良好</th>
+<th>一般</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>夏普比率</td>
+<td>&gt; 2.0</td>
+<td>1.0 ~ 2.0</td>
+<td>&lt; 1.0</td>
+</tr>
+<tr>
+<td>索提诺比率</td>
+<td>&gt; 3.0</td>
+<td>1.5 ~ 3.0</td>
+<td>&lt; 1.5</td>
+</tr>
+<tr>
+<td>Calmar 比率</td>
+<td>&gt; 3.0</td>
+<td>1.0 ~ 3.0</td>
+<td>&lt; 1.0</td>
+</tr>
+<tr>
+<td>最大回撤</td>
+<td>&lt; 10%</td>
+<td>10% ~ 25%</td>
+<td>&gt; 25%</td>
+</tr>
+<tr>
+<td>交易胜率</td>
+<td>&gt; 60%</td>
+<td>45% ~ 60%</td>
+<td>&lt; 45%</td>
+</tr>
+<tr>
+<td>盈亏比</td>
+<td>&gt; 2.0</td>
+<td>1.0 ~ 2.0</td>
+<td>&lt; 1.0</td>
 </tr>
 </tbody>
 </table>
 <p><img alt="backtest_result" src="assets/backtest_result.png" /></p>
-<h2 id="_13">单独生成报告<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
+<h2 id="_19">单独生成报告<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h2>
 <p>如需对已有回测结果重新生成报告：</p>
 <div class="highlight"><pre><span></span><code>bullet-trade<span class="w"> </span>report<span class="w"> </span>--input<span class="w"> </span>backtest_results/demo<span class="w"> </span>--format<span class="w"> </span>html
 </code></pre></div>
 <p>报告文件（HTML/PNG）可直接复用到站点或 MR 截图。</p>
-<h2 id="_14">常见问题<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
-<h3 id="_15">中文字体<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<h2 id="_20">常见问题<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h2>
+<h3 id="_21">中文字体<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
 <p>首次生成图片会自动配置中文字体，确保系统存在任意中文字体即可。</p>
-<h3 id="_16">数据认证失败<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<h3 id="_22">数据认证失败<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
 <p>检查 <code>.env</code> 中的账号/Token 或环境变量覆盖，参考 <a href="config.html">配置总览</a>。</p>
-<h3 id="_17">分钟线回测<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<h3 id="_23">分钟线回测<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
 <p>确认数据源支持分钟线，且策略设置 <code>use_real_price=True</code>。</p>
 <div class="highlight"><pre><span></span><code>bullet-trade<span class="w"> </span>backtest<span class="w"> </span>strategy.py<span class="w"> </span>--start<span class="w"> </span><span class="m">2024</span>-01-01<span class="w"> </span>--end<span class="w"> </span><span class="m">2024</span>-01-31<span class="w"> </span>--frequency<span class="w"> </span>minute
 </code></pre></div>
-<h3 id="_18">日志为空<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<h3 id="_24">日志为空<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
 <p>若未指定 <code>--log</code> 且又使用了 <code>--no-logs</code>，不会写入文件。</p>
-<h3 id="_19">回测速度慢<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<h3 id="_25">回测速度慢<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
 <ul>
 <li>减少回测时间范围先验证逻辑</li>
 <li>分钟级回测比日线慢很多，建议先用日线调试</li>
