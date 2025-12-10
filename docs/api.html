@@ -1296,8 +1296,10 @@
 <li><code>order_match_mode</code>：撮合时机，<code>'immediate'</code>（默认，创建订单即处理）或 <code>'bar_end'</code>（等到 bar 结束统一撮合）。</li>
 <li><code>match_by_signal</code>：限价单资金检查使用信号价(<code>True</code>)或撮合价(<code>False</code>，默认)。</li>
 <li><code>market_period</code> / <code>time_aliases</code>：可传入自定义交易时段或别名列表，影响调度时间解析。</li>
-<li><code>set_slippage(FixedSlippage(value))</code>：设置固定滑点；内部按双边一半计算（value=0.002 -&gt; 买入+0.001，卖出-0.001）。</li>
-<li><code>set_order_cost(OrderCost(...), type='stock')</code>：设置手续费/印花税，按资产类别覆盖。默认 <code>stock</code> 买入佣金万三、卖出佣金万三+千分之一印花税、最小佣金 5 元；<code>fund/money_market_fund</code> 默认免印花税。</li>
+<li><code>set_slippage(...)</code>：聚宽兼容滑点，支持 <code>FixedSlippage(绝对价差)</code> / <code>PriceRelatedSlippage(比例)</code> / <code>StepRelatedSlippage(跳数)</code>，可按 <code>type/ref</code> 写入全局/品类/合约；撮合按单边一半计算（买入 +，卖出 -），跳数按标的 tick 步长；货币基金强制 0 滑点；未显式配置时回退到 <code>security_overrides</code> 或默认 0.00246（价格相关）。</li>
+<li><code>set_order_cost(OrderCost(...), type='stock', ref=None)</code>：设置手续费/印花税，支持代码级覆盖。默认 <code>stock</code> 买入佣金万三、卖出佣金万三+千分之一印花税、最小佣金 5 元；<code>fund/money_market_fund</code> 默认免印花税。</li>
+<li><code>set_commission(PerTrade(...))</code>：聚宽兼容的股票费用设置（开平费率+最小佣金，印花税 0），等价于股票的 <code>set_order_cost</code>。</li>
+<li><code>set_universe(stocks)</code>：聚宽兼容，记录策略标的池（元组）。</li>
 <li><code>set_data_provider(name|instance, **kwargs)</code> / <code>get_data_provider()</code>：切换或读取当前数据源。内置名称：<code>jqdata</code>（默认）、<code>tushare</code>、<code>qmt</code>/<code>miniqmt</code>、<code>qmt-remote</code>。切换后自动重新认证并清空缓存。</li>
 </ul>
 <h2 id="data-api">数据接口 {#data-api}<a class="headerlink" href="#data-api" title="Permanent link">&para;</a></h2>
@@ -1328,7 +1330,7 @@
 <li><code>cancel_all_orders()</code>：撤销本地队列所有订单。  </li>
 <li>默认 <code>set_option('order_match_mode', 'immediate')</code> 时创建即撮合；否则在 bar 结束批量撮合。</li>
 <li>价格样式：<code>MarketOrderStyle(limit_price=None, buy_price_percent=None, sell_price_percent=None)</code>（市价，可选保护价或价差系数，实盘会带保护价并传 <code>market=True</code>）；<code>LimitOrderStyle(price)</code>（限价）。</li>
-<li>回测撮合：无论市价/限价，成交价默认按滑点计算（显式 <code>set_slippage</code> &gt; 默认 0.00246/2 双边）；保护价/限价仅用于资金检查和接受条件，不直接决定成交价。</li>
+<li>回测撮合：无论市价/限价，成交价按滑点优先级应用（<code>ref</code> &gt; <code>type</code> &gt; <code>all</code> &gt; 旧全局设置 &gt; <code>security_overrides</code>/默认 0.00246/2）；保护价/限价仅用于资金检查和接受条件，不直接决定成交价；货币基金强制 0 滑点。</li>
 <li>成本/滑点：<code>OrderCost</code>、<code>FixedSlippage</code> 同上。</li>
 </ul>
 <p><a id="tick-subscription"></a></p>
