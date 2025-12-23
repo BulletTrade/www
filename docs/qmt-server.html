@@ -1301,6 +1301,7 @@ bullet-trade<span class="w"> </span>server<span class="w"> </span>--listen<span 
 <li>鉴权失败：token 不一致；必要时加 <code>--allowlist</code> 或 TLS。</li>
 <li>行情缺失：确认 QMT 已登录且有行情权限。</li>
 <li>多账户：<code>--accounts a=123456:stock,b=654321:stock</code>，客户端 <code>QMT_SERVER_ACCOUNT_KEY=a</code> 选择账户。</li>
+<li>撤单等待：broker.cancel_order 默认按 TRADE_MAX_WAIT_TIME 轮询订单状态，返回 timed_out=true 表示仍未进入终态，可再调用 broker.order_status 确认</li>
 </ul>
 
 
