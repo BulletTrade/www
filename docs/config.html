@@ -733,6 +733,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#security_overridesjson" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        下单手数规则（security_overrides.json）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1327,6 +1338,13 @@
 </tr>
 </tbody>
 </table>
+<h2 id="security_overridesjson">下单手数规则（security_overrides.json）<a class="headerlink" href="#security_overridesjson" title="Permanent link">&para;</a></h2>
+<p>下单的最小手数与步进规则通过 <code>bullet_trade/config/security_overrides.json</code> 的 <code>lot_rules</code> 配置统一管理：
+- <code>default</code>：默认规则（例如 A 股 100 股/100 股步进）
+- <code>by_market</code>：按市场覆盖（北交所 <code>BJ</code>，兼容 <code>.BJ/.BSE</code>）
+- <code>by_prefix</code>：按代码前缀覆盖（如科创板 <code>68</code>、可转债 <code>110/113/118/123/127/128</code>）
+- <code>by_code</code>：单标覆盖</p>
+<p>规则匹配时兼容聚宽后缀（<code>.XSHG/.XSHE</code>）与 QMT/Tushare 后缀（<code>.SH/.SZ</code>、<code>.BJ/.BSE</code>）。</p>
 <h2 id="_4">风控（实盘）<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
