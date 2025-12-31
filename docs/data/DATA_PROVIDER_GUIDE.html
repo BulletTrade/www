@@ -1113,7 +1113,7 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ✅ 数据源对比测试
+        🎯 直接访问特有接口
       
     </span>
   </a>
@@ -1124,7 +1124,7 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🎯 代码格式对照表
+        ✅ 数据源对比测试
       
     </span>
   </a>
@@ -1133,6 +1133,17 @@
       
         <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 代码格式对照表
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
         💡 最佳实践
@@ -1144,7 +1155,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
         开发阶段
@@ -1155,7 +1166,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
         实盘阶段
@@ -1166,7 +1177,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
         统一代码
@@ -1182,7 +1193,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       
         🐛 常见问题
@@ -1243,7 +1254,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
+  <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
         相关文档
@@ -1717,7 +1728,10 @@ MINIQMT_MARKET=SH
 <span class="c1"># 切换到 Tushare（如果配置了）</span>
 <span class="n">set_data_provider</span><span class="p">(</span><span class="s1">&#39;tushare&#39;</span><span class="p">)</span>
 </code></pre></div>
-<h2 id="_5">✅ 数据源对比测试<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h2 id="_5">🎯 直接访问特有接口<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>需要调用某数据源的原生/特有方法（如 <code>get_is_st</code>）时，可通过 <code>get_data_provider("jqdata")</code> 直接拿到实例，默认数据源保持不变。缺失方法会按“同一数据源”的 SDK 回退，不会跨数据源。详见《DATA_PROVIDER_DIRECT_ACCESS.md》。</p>
+<p>⚠️ 直连会降低跨数据源可移植性，策略迁移时需自行处理兼容或降级。</p>
+<h2 id="_6">✅ 数据源对比测试<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <p>用于验证不同 provider 的复权口径与数据一致性，建议在准备好账号与本地数据后执行：</p>
 <ul>
 <li><code>tests/e2e/data/test_provider_parity.py::test_ping_an_bank_real_parity</code><br />
@@ -1731,7 +1745,7 @@ MINIQMT_MARKET=SH
 - <code>JQDATA_USERNAME/JQDATA_PASSWORD</code> 已配置
 - <code>TUSHARE_TOKEN</code> 已配置（如使用 Tushare）
 - <code>QMT_DATA_PATH</code> 已配置（如使用 QMT）</p>
-<h2 id="_6">🎯 代码格式对照表<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h2 id="_7">🎯 代码格式对照表<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -1759,24 +1773,24 @@ MINIQMT_MARKET=SH
 <p><strong>注意：</strong> 
 - JQData Provider <strong>只支持聚宽格式</strong>（<code>.XSHG</code>/<code>.XSHE</code>）
 - MiniQMT Provider <strong>两种格式都支持</strong>，自动转换</p>
-<h2 id="_7">💡 最佳实践<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
-<h3 id="_8">开发阶段<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<h2 id="_8">💡 最佳实践<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<h3 id="_9">开发阶段<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <ul>
 <li>使用 <strong>JQData Provider</strong> 进行策略开发和回测</li>
 <li>数据全面，便于研究和验证</li>
 </ul>
-<h3 id="_9">实盘阶段<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<h3 id="_10">实盘阶段<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <ul>
 <li>使用 <strong>MiniQMT Provider</strong> 进行实盘交易</li>
 <li>本地数据，速度快，延迟低</li>
 </ul>
-<h3 id="_10">统一代码<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<h3 id="_11">统一代码<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <ul>
 <li>建议在策略中使用<strong>聚宽格式代码</strong>（<code>.XSHG</code>/<code>.XSHE</code>）</li>
 <li>这样切换数据源时无需修改代码</li>
 <li>MiniQMT Provider 会自动转换</li>
 </ul>
-<h2 id="_11">🐛 常见问题<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<h2 id="_12">🐛 常见问题<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
 <h3 id="q1">Q1: 如何知道当前使用的是哪个数据源？<a class="headerlink" href="#q1" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">bullet_trade.data.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_data_provider</span>
 
@@ -1800,11 +1814,12 @@ MINIQMT_MARKET=SH
 <li>MiniQMT Provider 会自动转换格式</li>
 <li>这样切换数据源时代码不需要修改</li>
 </ul>
-<h2 id="_12">相关文档<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<h2 id="_13">相关文档<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="DATA_PROVIDER_JQDATA.html">聚宽数据</a></li>
 <li><a href="DATA_PROVIDER_MINIQMT.html">MiniQMT 数据</a></li>
 <li><a href="DATA_PROVIDER_TUSHARE.html">Tushare 数据</a></li>
+<li><a href="DATA_PROVIDER_DIRECT_ACCESS.html">按名称直接访问数据提供者</a></li>
 </ul>
 
 
