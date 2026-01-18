@@ -698,7 +698,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        研究文件读写（兼容聚宽）
+        因子研究（通用管线）
       
     </span>
   </a>
@@ -709,7 +709,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        常用命令
+        研究文件读写（兼容聚宽）
       
     </span>
   </a>
@@ -720,7 +720,7 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        与回测/实盘的衔接
+        常用命令
       
     </span>
   </a>
@@ -729,6 +729,17 @@
       
         <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        与回测/实盘的衔接
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
         常见问题
@@ -1201,7 +1212,14 @@
 </ol>
 <p>欢迎样例ipynb
 <img alt="welcome" src="assets/jupyter-welcome.png" /></p>
-<h2 id="_3">研究文件读写（兼容聚宽）<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h2 id="_3">因子研究（通用管线）<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<ul>
+<li>位置：<code>bullet_trade.research.factors</code> 提供因子管线（<code>run_factor_pipeline</code>）、评估与向量化回测（<code>evaluate_factor_performance</code>）、结果存储（<code>save_results</code>）。</li>
+<li>典型流程：准备 DataFrame（<code>date/code/close/...</code> + 自定义因子函数）→ 过滤（停牌/涨跌停/ST/次新/到期日等）→ 因子去极值/标准化/中性化 → 多因子加权得分 → 分桶/IC/RankIC/长多/多空回测 → 结果落地 CSV/Parquet/SQLite。</li>
+<li>成本模型：佣金/印花税/滑点 + 每笔固定费（可转债流量费等），在评估时统一扣减。</li>
+<li>示例：<code>research/convertible_factor_example.py</code> 展示可转债溢价/双低因子从管线到评估的完整链路，结果默认写入研究目录下的 <code>results/</code>。</li>
+</ul>
+<h2 id="_4">研究文件读写（兼容聚宽）<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <ul>
 <li>路径：<code>read_file(path)</code> / <code>write_file(path, content, append=False)</code> 的 <code>path</code> 需为研究根目录的相对路径，根目录来源于 <code>~/.bullet-trade/setting.json</code> 的 <code>root_dir</code>（无设置文件时默认 <code>~/bullet-trade</code>）。日志会打印相对路径与展开的绝对路径，方便确认读写位置。</li>
 <li>初始化提示：若尚未创建研究根目录或设置文件，调用时会提示运行 <code>bullet-trade lab</code> 完成初始化，并标明预期路径。</li>
@@ -1224,7 +1242,7 @@
 <span class="n">codes</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">read_file</span><span class="p">(</span><span class="s2">&quot;data/hs300.json&quot;</span><span class="p">))</span>
 </code></pre></div></li>
 </ul>
-<h2 id="_4">常用命令<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h2 id="_5">常用命令<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <ul>
 <li>启动研究环境（默认打开浏览器）：<br />
   <div class="highlight"><pre><span></span><code>bullet-trade<span class="w"> </span>lab
@@ -1236,7 +1254,7 @@
 </ul>
 <p>系统部分api与聚宽对齐，下面是接入miniqmt配置后的数据获取样例：
 <img alt="data" src="assets/jupyter-data.png" /></p>
-<h2 id="_5">与回测/实盘的衔接<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h2 id="_6">与回测/实盘的衔接<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <ul>
 <li>在根目录 <code>.env</code> 配置数据源与券商参数，Notebook 中 <code>import bullet_trade</code> 或聚宽兼容 API 即可直接使用。</li>
 <li>复用根目录运行命令行：<br />
@@ -1244,7 +1262,7 @@
 bullet-trade<span class="w"> </span>live<span class="w"> </span>strategies/demo_strategy.py<span class="w"> </span>--broker<span class="w"> </span>qmt
 </code></pre></div></li>
 </ul>
-<h2 id="_6">常见问题<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h2 id="_7">常见问题<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>端口占用</strong>：使用 <code>bullet-trade lab --diagnose --port 8088</code> 查看占用，或在 <code>setting.json</code> 修改端口。  </li>
 <li><strong>无法写入目录</strong>：确保根目录可写，必要时调整 <code>root_dir</code>。  </li>
