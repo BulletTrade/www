@@ -1560,6 +1560,12 @@
 <td>调度事件超时时间，延迟超过则丢弃当次事件</td>
 </tr>
 <tr>
+<td><code>STRATEGY_NAME</code></td>
+<td>否</td>
+<td><code>demo-strategy</code></td>
+<td>实盘订单备注中的策略标识，便于多策略并行排查；未设置时使用策略文件名</td>
+</tr>
+<tr>
 <td><code>SCHEDULER_MARKET_PERIODS</code></td>
 <td>否</td>
 <td><code>09:30-11:30,13:00-15:00</code></td>
@@ -1622,6 +1628,7 @@
 </tbody>
 </table>
 <blockquote>
+<p>备注：实盘下单会生成 <code>bt:&lt;strategy&gt;:&lt;shortid&gt;</code> 格式的订单备注（仅 ASCII，&lt;=24 字符），其中 <code>&lt;strategy&gt;</code> 优先使用 <code>STRATEGY_NAME</code>，未设置则取策略文件名短名。</p>
 <p>提示：敏感信息不要入库，按需覆盖到本地 <code>.env</code>。***</p>
 </blockquote>
 

@@ -1368,7 +1368,7 @@
 <li><code>Context</code>：<code>portfolio/current_dt/previous_dt/previous_date/run_params/subportfolios</code>，策略函数 <code>initialize/handle_data</code> 等默认接收此对象。</li>
 <li><code>Portfolio</code> / <code>SubPortfolio</code>：账户与子账户信息，含 <code>total_value/available_cash/locked_cash/positions</code> 等；<code>positions</code> 为 <code>{code: Position}</code>。</li>
 <li><code>Position</code>：持仓详情，含 <code>total_amount/closeable_amount/avg_cost/price/value/side</code> 等，并记录 <code>today_buy_t1</code>（T+1 可用数量）。</li>
-<li><code>Order</code> / <code>Trade</code>：委托与成交记录；<code>Trade</code> 含 <code>trade_id</code> 字段；<code>OrderStatus</code>/<code>OrderStyle</code> 为枚举；<code>SecurityUnitData</code> 为 <code>current_data</code> 单标的快照。</li>
+<li><code>Order</code> / <code>Trade</code>：委托与成交记录；<code>Trade</code> 含 <code>trade_id</code> 字段；<code>OrderStatus</code>/<code>OrderStyle</code> 为枚举；<code>SecurityUnitData</code> 为 <code>current_data</code> 单标的快照。实盘时 <code>Order.filled</code> 返回已成交数量，券商支持时会在 <code>Order.extra</code> 中附带 <code>order_remark/strategy_name</code> 等扩展字段。</li>
 </ul>
 <h2 id="research-io">研究文件读写 {#research-io}<a class="headerlink" href="#research-io" title="Permanent link">&para;</a></h2>
 <ul>
