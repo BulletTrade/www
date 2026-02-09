@@ -1314,6 +1314,9 @@ pip<span class="w"> </span>install<span class="w"> </span>bullet-trade
 <p>开发模式：
 <div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;bullet-trade[dev]&quot;</span>
 </code></pre></div></p>
+<blockquote>
+<p>提示：使用 <code>pip install bullet-trade</code> 时，实盘 CLI 读取的是已安装包；本地改源码后若想立即生效，请改用 <code>pip install -e "bullet-trade[dev]"</code> 并重启进程/Kernel。</p>
+</blockquote>
 <p>复制模板：
 <div class="highlight"><pre><span></span><code>cp<span class="w"> </span>env.backtest.example<span class="w"> </span>.env<span class="w">    </span><span class="c1"># 回测</span>
 cp<span class="w"> </span>env.live.example<span class="w"> </span>.env<span class="w">        </span><span class="c1"># 实盘/远程</span>

@@ -997,6 +997,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        改了源码但实盘引擎不生效
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1713,6 +1724,13 @@ bullet-trade<span class="w"> </span>live<span class="w"> </span>strategies/demo_
 <li>检查防火墙是否放行端口</li>
 <li>确认 <code>QMT_SERVER_HOST</code> 和 <code>QMT_SERVER_PORT</code> 配置正确</li>
 <li>验证 <code>QMT_SERVER_TOKEN</code> 与服务端一致</li>
+</ol>
+<h3 id="_17">改了源码但实盘引擎不生效<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<ol>
+<li>优先确认当前 Python 解释器加载的是哪个 <code>bullet_trade</code>：
+   <code>python -c "import bullet_trade,inspect;print(inspect.getfile(bullet_trade))"</code></li>
+<li>本地开发请使用可编辑安装：<code>pip install -e "bullet-trade[dev]"</code>。</li>
+<li>修改源码后需重启运行进程（CLI）或重启 Jupyter Kernel；已启动进程不会自动热加载安装包代码。</li>
 </ol>
 
 
