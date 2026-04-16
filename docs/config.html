@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
@@ -700,10 +700,82 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#1-qmt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 本地 QMT 最小配置
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 远程 server 最小配置
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-qmt-remote" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 远程 qmt-remote 客户端最小配置
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 多账户时才需要的参数
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 多账户时才需要的参数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        server 端
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        通用
+        客户端
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 这些参数一开始通常不用配
       
     </span>
   </a>
@@ -711,76 +783,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        回测
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#qmt" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        本地实盘（QMT/模拟）
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#security_overridesjson" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        下单手数规则（security_overrides.json）
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        风控（实盘）
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#qmt-remote" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        远程实盘（qmt-remote）
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        聚宽模拟盘接入远程实盘
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#liveengine" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        实盘运行参数（LiveEngine）
+        6. 一个判断原则
       
     </span>
   </a>
@@ -1200,437 +1206,83 @@
   
 
 
-<h1 id="_1">配置总览（回测/实盘/远程）<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<p>统一列出常用环境变量，避免在多页面重复。按照场景分组，可结合 <code>.env</code> 模板使用。</p>
-<blockquote>
-<p>若需显式指定 <code>.env</code> 文件，可设置 <code>BT_ENV_FILE</code> / <code>BULLET_TRADE_ENV_FILE</code> / <code>ENV_FILE</code>，优先级高于自动向上查找。</p>
-</blockquote>
-<h2 id="_2">通用<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>变量</th>
-<th>必填</th>
-<th>示例/默认</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>BT_ENV_FILE</code>/<code>BULLET_TRADE_ENV_FILE</code>/<code>ENV_FILE</code></td>
-<td>否</td>
-<td><code>./.env.live</code></td>
-<td>指定要加载的 <code>.env</code> 路径，覆盖默认的向上查找逻辑</td>
-</tr>
-<tr>
-<td><code>DEFAULT_DATA_PROVIDER</code></td>
-<td>否</td>
-<td><code>jqdata</code></td>
-<td>默认行情源，回测/实盘共用（<code>jqdata</code>/<code>tushare</code>/<code>qmt</code>）</td>
-</tr>
-<tr>
-<td><code>DEFAULT_BROKER</code></td>
-<td>否</td>
-<td><code>qmt</code></td>
-<td>默认券商/交易通道（<code>simulator</code>/<code>qmt</code>/<code>qmt-remote</code>）</td>
-</tr>
-<tr>
-<td><code>DATA_CACHE_DIR</code></td>
-<td>否</td>
-<td><code>~/.bullet-trade/cache</code></td>
-<td>行情缓存根目录，子目录按数据源名自动创建；留空禁用缓存</td>
-</tr>
-<tr>
-<td><code>LOG_DIR</code></td>
-<td>否</td>
-<td><code>logs</code></td>
-<td>日志目录</td>
-</tr>
-<tr>
-<td><code>LOG_LEVEL</code></td>
-<td>否</td>
-<td><code>INFO</code></td>
-<td>控制台日志级别（<code>DEBUG</code>/<code>INFO</code>/<code>WARNING</code>/<code>ERROR</code>）</td>
-</tr>
-<tr>
-<td><code>LOG_FILE_LEVEL</code></td>
-<td>否</td>
-<td>跟随 <code>LOG_LEVEL</code></td>
-<td>文件日志级别，未设置则与 <code>LOG_LEVEL</code> 相同</td>
-</tr>
-<tr>
-<td><code>RUNTIME_DIR</code></td>
-<td>否</td>
-<td><code>runtime</code></td>
-<td>运行态/持久化目录（含 g.pkl、live_state.json）</td>
-</tr>
-</tbody>
-</table>
-<h2 id="_3">回测<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>变量</th>
-<th>必填</th>
-<th>示例/默认</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>DEFAULT_DATA_PROVIDER</code></td>
-<td>是</td>
-<td><code>jqdata</code></td>
-<td>回测行情源</td>
-</tr>
-<tr>
-<td><code>JQDATA_USERNAME</code>/<code>JQDATA_PASSWORD</code></td>
-<td>视数据源</td>
-<td><code>your_user</code>/<code>your_pwd</code></td>
-<td>聚宽数据账号</td>
-</tr>
-<tr>
-<td><code>JQDATA_SERVER</code>/<code>JQDATA_PORT</code></td>
-<td>否</td>
-<td><code>srv</code>/<code>8087</code></td>
-<td>聚宽网关的地址/端口，不填则使用官方默认</td>
-</tr>
-<tr>
-<td><code>TUSHARE_TOKEN</code></td>
-<td>选</td>
-<td><code>your_token</code></td>
-<td>需 <code>tushare</code> 时配置</td>
-</tr>
-<tr>
-<td><code>TUSHARE_CUSTOM_URL</code></td>
-<td>否</td>
-<td><code>http://127.0.0.1:port</code></td>
-<td>Tushare 自定义接入点</td>
-</tr>
-<tr>
-<td><code>MINIQMT_MARKET</code></td>
-<td>否</td>
-<td><code>SH</code></td>
-<td>MiniQMT 行情源的市场代码（交易日/数据过滤），默认上交所</td>
-</tr>
-</tbody>
-</table>
-<h2 id="qmt">本地实盘（QMT/模拟）<a class="headerlink" href="#qmt" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>变量</th>
-<th>必填</th>
-<th>示例/默认</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>DEFAULT_BROKER</code></td>
-<td>是</td>
-<td><code>qmt</code> 或 <code>simulator</code></td>
-<td>交易通道</td>
-</tr>
-<tr>
-<td><code>QMT_DATA_PATH</code></td>
-<td>是</td>
-<td><code>C:\国金QMT交易端\userdata_mini</code></td>
-<td>xtquant 数据目录</td>
-</tr>
-<tr>
-<td><code>QMT_ACCOUNT_ID</code></td>
-<td>是</td>
-<td><code>123456</code></td>
-<td>QMT 账户</td>
-</tr>
-<tr>
-<td><code>QMT_ACCOUNT_TYPE</code></td>
-<td>否</td>
-<td><code>stock</code></td>
-<td>账户类型</td>
-</tr>
-<tr>
-<td><code>MINIQMT_AUTO_DOWNLOAD</code></td>
-<td>否</td>
-<td><code>true</code></td>
-<td>自动下载 MiniQMT</td>
-</tr>
-<tr>
-<td><code>QMT_SESSION_ID</code></td>
-<td>否</td>
-<td><code>0</code></td>
-<td>会话 ID，可选</td>
-</tr>
-<tr>
-<td><code>QMT_AUTO_SUBSCRIBE</code></td>
-<td>否</td>
-<td><code>true</code></td>
-<td>连接 QMT 时是否自动订阅账户</td>
-</tr>
-<tr>
-<td><code>SIMULATOR_INITIAL_CASH</code></td>
-<td>否</td>
-<td><code>1000000</code></td>
-<td>模拟器初始资金（<code>simulator</code> 券商）</td>
-</tr>
-<tr>
-<td><code>MINIQMT_MARKET</code></td>
-<td>否</td>
-<td><code>SH</code></td>
-<td>本地 MiniQMT 行情的市场代码</td>
-</tr>
-</tbody>
-</table>
-<h2 id="security_overridesjson">下单手数规则（security_overrides.json）<a class="headerlink" href="#security_overridesjson" title="Permanent link">&para;</a></h2>
-<p>下单的最小手数与步进规则通过 <code>bullet_trade/config/security_overrides.json</code> 的 <code>lot_rules</code> 配置统一管理：
-- <code>default</code>：默认规则（例如 A 股 100 股/100 股步进）
-- <code>by_market</code>：按市场覆盖（北交所 <code>BJ</code>，兼容 <code>.BJ/.BSE</code>）
-- <code>by_prefix</code>：按代码前缀覆盖（如科创板 <code>68</code>、可转债 <code>110/113/118/123/127/128</code>）
-- <code>by_code</code>：单标覆盖</p>
-<p>规则匹配时兼容聚宽后缀（<code>.XSHG/.XSHE</code>）与 QMT/Tushare 后缀（<code>.SH/.SZ</code>、<code>.BJ/.BSE</code>）。</p>
-<h2 id="_4">风控（实盘）<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>变量</th>
-<th>必填</th>
-<th>示例/默认</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>MAX_ORDER_VALUE</code></td>
-<td>否</td>
-<td><code>100000</code></td>
-<td>单笔订单金额上限，超出直接拒单。</td>
-</tr>
-<tr>
-<td><code>MAX_DAILY_TRADE_VALUE</code></td>
-<td>否</td>
-<td><code>500000</code></td>
-<td>单日累计成交金额上限，超出直接拒单。</td>
-</tr>
-<tr>
-<td><code>MAX_DAILY_TRADES</code></td>
-<td>否</td>
-<td><code>100</code></td>
-<td>单日最大交易笔数，超出直接拒单。</td>
-</tr>
-<tr>
-<td><code>MAX_STOCK_COUNT</code></td>
-<td>否</td>
-<td><code>20</code></td>
-<td>最大持仓标的数（仅买入检查）。</td>
-</tr>
-<tr>
-<td><code>MAX_POSITION_RATIO</code></td>
-<td>否</td>
-<td><code>20</code></td>
-<td>单标下单金额占总资产上限，需要在风控检查时提供账户总资产才会生效。</td>
-</tr>
-<tr>
-<td><code>STOP_LOSS_RATIO</code></td>
-<td>否</td>
-<td><code>5</code></td>
-<td>止损阈值，供 <code>check_stop_loss</code> 辅助判断，需策略自行下撤单。</td>
-</tr>
-<tr>
-<td><code>RISK_CHECK_ENABLED</code></td>
-<td>否</td>
-<td><code>false</code></td>
-<td>后台风控巡检开关，间隔由 <code>RISK_CHECK_INTERVAL</code> 控制（默认 <code>300</code> 秒）。</td>
-</tr>
-<tr>
-<td><code>RISK_CHECK_INTERVAL</code></td>
-<td>否</td>
-<td><code>300</code></td>
-<td>风控后台巡检间隔（秒），仅 <code>RISK_CHECK_ENABLED=true</code> 时生效。</td>
-</tr>
-</tbody>
-</table>
-<h2 id="qmt-remote">远程实盘（qmt-remote）<a class="headerlink" href="#qmt-remote" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>变量</th>
-<th>必填</th>
-<th>示例/默认</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>DEFAULT_BROKER</code></td>
-<td>是</td>
-<td><code>qmt-remote</code></td>
-<td>远程通道</td>
-</tr>
-<tr>
-<td><code>QMT_SERVER_HOST</code>/<code>QMT_SERVER_PORT</code></td>
-<td>是</td>
-<td><code>10.0.0.8</code>/<code>58620</code></td>
-<td>远程服务地址</td>
-</tr>
-<tr>
-<td><code>QMT_SERVER_TOKEN</code></td>
-<td>是</td>
-<td><code>secret</code></td>
-<td>访问令牌</td>
-</tr>
-<tr>
-<td><code>QMT_SERVER_ACCOUNT_KEY</code></td>
-<td>否</td>
-<td><code>main</code></td>
-<td>多账户时指定</td>
-</tr>
-<tr>
-<td><code>QMT_SERVER_SUB_ACCOUNT</code></td>
-<td>否</td>
-<td><code>demo@main</code></td>
-<td>远程子账户标识，用于账户路由</td>
-</tr>
-<tr>
-<td><code>QMT_SERVER_TLS_CERT</code></td>
-<td>否</td>
-<td><code>/path/to/ca.pem</code></td>
-<td>启用 TLS 校验时的证书路径</td>
-</tr>
-</tbody>
-</table>
-<h2 id="_5">聚宽模拟盘接入远程实盘<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>变量</th>
-<th>必填</th>
-<th>示例/默认</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>BT_REMOTE_HOST</code>/<code>BT_REMOTE_PORT</code></td>
-<td>是</td>
-<td><code>10.0.0.8</code>/<code>58620</code></td>
-<td>远程 QMT server</td>
-</tr>
-<tr>
-<td><code>BT_REMOTE_TOKEN</code></td>
-<td>是</td>
-<td><code>secret</code></td>
-<td>访问令牌</td>
-</tr>
-<tr>
-<td><code>ACCOUNT_KEY</code>/<code>SUB_ACCOUNT</code></td>
-<td>视账户</td>
-<td><code>main</code>/<code>子账户</code></td>
-<td>选填，匹配远程账户</td>
-</tr>
-</tbody>
-</table>
-<h2 id="liveengine">实盘运行参数（LiveEngine）<a class="headerlink" href="#liveengine" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>变量</th>
-<th>必填</th>
-<th>示例/默认</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>ORDER_MAX_VOLUME</code></td>
-<td>否</td>
-<td><code>1000000</code></td>
-<td>单笔委托最大股数，超出自动拆单</td>
-</tr>
-<tr>
-<td><code>TRADE_MAX_WAIT_TIME</code></td>
-<td>否</td>
-<td><code>16</code></td>
-<td>同步下单/撤单等待秒数（&lt;=0 走异步立即返回）</td>
-</tr>
-<tr>
-<td><code>EVENT_TIME_OUT</code></td>
-<td>否</td>
-<td><code>60</code></td>
-<td>调度事件超时时间，延迟超过则丢弃当次事件</td>
-</tr>
-<tr>
-<td><code>STRATEGY_NAME</code></td>
-<td>否</td>
-<td><code>demo-strategy</code></td>
-<td>实盘订单备注中的策略标识，便于多策略并行排查；未设置时使用策略文件名</td>
-</tr>
-<tr>
-<td><code>SCHEDULER_MARKET_PERIODS</code></td>
-<td>否</td>
-<td><code>09:30-11:30,13:00-15:00</code></td>
-<td>自定义交易时段（期货/夜盘调试）</td>
-</tr>
-<tr>
-<td><code>ACCOUNT_SYNC_ENABLED</code>/<code>ACCOUNT_SYNC_INTERVAL</code></td>
-<td>否</td>
-<td><code>true</code>/<code>60</code></td>
-<td>账户快照后台同步开关与间隔（秒）</td>
-</tr>
-<tr>
-<td><code>ORDER_SYNC_ENABLED</code>/<code>ORDER_SYNC_INTERVAL</code></td>
-<td>否</td>
-<td><code>true</code>/<code>10</code></td>
-<td>订单状态轮询开关与间隔（秒）</td>
-</tr>
-<tr>
-<td><code>G_AUTOSAVE_ENABLED</code>/<code>G_AUTOSAVE_INTERVAL</code></td>
-<td>否</td>
-<td><code>true</code>/<code>60</code></td>
-<td><code>g</code> 状态自动保存开关与间隔（秒）</td>
-</tr>
-<tr>
-<td><code>TICK_SUBSCRIPTION_LIMIT</code></td>
-<td>否</td>
-<td><code>100</code></td>
-<td>Tick 订阅标的数量上限</td>
-</tr>
-<tr>
-<td><code>TICK_SYNC_ENABLED</code>/<code>TICK_SYNC_INTERVAL</code></td>
-<td>否</td>
-<td><code>true</code>/<code>2</code></td>
-<td>无推送时的 Tick 轮询开关与间隔（秒）</td>
-</tr>
-<tr>
-<td><code>CALENDAR_SKIP_WEEKEND</code>/<code>CALENDAR_RETRY_MINUTES</code></td>
-<td>否</td>
-<td><code>true</code>/<code>1</code></td>
-<td>非交易日检测：周末是否跳过、下一次检查间隔（分钟）</td>
-</tr>
-<tr>
-<td><code>BROKER_HEARTBEAT_INTERVAL</code></td>
-<td>否</td>
-<td><code>30</code></td>
-<td>券商心跳后台任务间隔（秒，&lt;=0 关闭）</td>
-</tr>
-<tr>
-<td><code>PORTFOLIO_REFRESH_THROTTLE_MS</code></td>
-<td>否</td>
-<td><code>200</code></td>
-<td>访问实时持仓/资金前的最小刷新间隔（毫秒），防止高频刷接口</td>
-</tr>
-<tr>
-<td><code>MARKET_BUY_PRICE_PERCENT</code>/<code>MARKET_SELL_PRICE_PERCENT</code></td>
-<td>否</td>
-<td><code>0.015</code>/<code>-0.015</code></td>
-<td>市价单保护价偏移比例（正=买高、负=卖低，默认 ±1.5%）</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>备注：实盘下单会生成 <code>bt:&lt;strategy&gt;:&lt;shortid&gt;</code> 格式的订单备注（仅 ASCII，&lt;=24 字符），其中 <code>&lt;strategy&gt;</code> 优先使用 <code>STRATEGY_NAME</code>，未设置则取策略文件名短名。</p>
-<p>提示：敏感信息不要入库，按需覆盖到本地 <code>.env</code>。***</p>
-</blockquote>
+<h1 id="_1">配置总览<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>这页只保留最常用、最少量的配置。<br />
+原则只有一个：<strong>有默认值的先不要写，先把必须项配通。</strong></p>
+<h2 id="1-qmt">1. 本地 QMT 最小配置<a class="headerlink" href="#1-qmt" title="Permanent link">&para;</a></h2>
+<p>适用场景：策略和 QMT 在同一台 Windows 机器上运行。</p>
+<div class="highlight"><pre><span></span><code>DEFAULT_DATA_PROVIDER=qmt
+DEFAULT_BROKER=qmt
+QMT_DATA_PATH=C:\国金QMT交易端\userdata_mini
+QMT_ACCOUNT_ID=123456
+</code></pre></div>
+<p>运行：</p>
+<div class="highlight"><pre><span></span><code>bullet-trade<span class="w"> </span>live<span class="w"> </span>strategies/demo_strategy.py<span class="w"> </span>--broker<span class="w"> </span>qmt
+</code></pre></div>
+<p>补充：</p>
+<ul>
+<li>股票账户默认就是 <code>stock</code>，所以 <code>QMT_ACCOUNT_TYPE</code> 不用写</li>
+<li>只有期货账户才需要写 <code>QMT_ACCOUNT_TYPE=future</code></li>
+</ul>
+<h2 id="2-server">2. 远程 server 最小配置<a class="headerlink" href="#2-server" title="Permanent link">&para;</a></h2>
+<p>适用场景：Windows 机器只负责连 QMT，对外提供远程行情和交易服务。</p>
+<div class="highlight"><pre><span></span><code>QMT_DATA_PATH=C:\国金QMT交易端\userdata_mini
+QMT_ACCOUNT_ID=123456
+QMT_SERVER_TOKEN=secret
+</code></pre></div>
+<p>运行：</p>
+<div class="highlight"><pre><span></span><code>bullet-trade<span class="w"> </span>--env-file<span class="w"> </span>.env<span class="w"> </span>server<span class="w"> </span>--listen<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span>--port<span class="w"> </span><span class="m">58620</span><span class="w"> </span>--enable-data<span class="w"> </span>--enable-broker
+</code></pre></div>
+<p>补充：</p>
+<ul>
+<li>当前版本不支持 <code>--data-path</code></li>
+<li><code>QMT_DATA_PATH</code> 必须写在 <code>.env</code></li>
+</ul>
+<h2 id="3-qmt-remote">3. 远程 qmt-remote 客户端最小配置<a class="headerlink" href="#3-qmt-remote" title="Permanent link">&para;</a></h2>
+<p>适用场景：策略跑在另一台机器上，通过 TCP 连远程 server。</p>
+<div class="highlight"><pre><span></span><code>DEFAULT_DATA_PROVIDER=qmt-remote
+DEFAULT_BROKER=qmt-remote
+QMT_SERVER_HOST=10.0.0.8
+QMT_SERVER_PORT=58620
+QMT_SERVER_TOKEN=secret
+</code></pre></div>
+<p>运行：</p>
+<div class="highlight"><pre><span></span><code>bullet-trade<span class="w"> </span>live<span class="w"> </span>strategies/demo_strategy.py<span class="w"> </span>--broker<span class="w"> </span>qmt-remote
+</code></pre></div>
+<p>单账户时，不用写 <code>QMT_SERVER_ACCOUNT_KEY</code>。</p>
+<h2 id="4">4. 多账户时才需要的参数<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<h3 id="server">server 端<a class="headerlink" href="#server" title="Permanent link">&para;</a></h3>
+<p>如果你在一个 server 上挂多个账户，才需要 <code>--accounts</code>。<br />
+股票账户可以这样写：</p>
+<div class="highlight"><pre><span></span><code>--accounts<span class="w"> </span><span class="nv">main</span><span class="o">=</span><span class="m">123456</span>
+</code></pre></div>
+<p>期货账户才需要显式写类型：</p>
+<div class="highlight"><pre><span></span><code>--accounts<span class="w"> </span><span class="nv">hedge</span><span class="o">=</span><span class="m">654321</span>:future
+</code></pre></div>
+<h3 id="_2">客户端<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>多账户时，客户端才需要指定：</p>
+<div class="highlight"><pre><span></span><code>QMT_SERVER_ACCOUNT_KEY=main
+</code></pre></div>
+<h2 id="5">5. 这些参数一开始通常不用配<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<p>下面这些先不用急着写，等跑通以后再加：</p>
+<ul>
+<li><code>LOG_DIR</code></li>
+<li><code>RUNTIME_DIR</code></li>
+<li><code>QMT_SESSION_ID</code></li>
+<li><code>QMT_AUTO_SUBSCRIBE</code></li>
+<li><code>MAX_ORDER_VALUE</code></li>
+<li><code>MAX_DAILY_TRADES</code></li>
+<li><code>RISK_CHECK_ENABLED</code></li>
+<li><code>QMT_SERVER_TLS_CERT</code></li>
+</ul>
+<h2 id="6">6. 一个判断原则<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<p>如果你现在只是想先跑通：</p>
+<ul>
+<li>本地 QMT：只配 <code>DEFAULT_DATA_PROVIDER</code>、<code>DEFAULT_BROKER</code>、<code>QMT_DATA_PATH</code>、<code>QMT_ACCOUNT_ID</code></li>
+<li>远程 server：只配 <code>QMT_DATA_PATH</code>、<code>QMT_ACCOUNT_ID</code>、<code>QMT_SERVER_TOKEN</code></li>
+<li>远程客户端：只配 <code>DEFAULT_DATA_PROVIDER</code>、<code>DEFAULT_BROKER</code>、<code>QMT_SERVER_HOST</code>、<code>QMT_SERVER_PORT</code>、<code>QMT_SERVER_TOKEN</code></li>
+</ul>
+<p>其他先都不要写。</p>
 
 
 

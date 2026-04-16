@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
@@ -865,7 +865,18 @@
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        架构总览
+        先记住两点
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#env" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        最小 .env
       
     </span>
   </a>
@@ -876,19 +887,74 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        最快启动
+        最小启动命令
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="最快启动">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#env_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        客户端最小 .env
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        :stock 到底要不要写
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        首次启动必看
+        常见问题
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="常见问题">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-data-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么我写了 --data-path 报错
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#qmt_server_account_key" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        单账户要不要写 QMT_SERVER_ACCOUNT_KEY
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        启动后没有行情/下单失败
       
     </span>
   </a>
@@ -897,39 +963,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#qmt-remote" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        客户端连接（qmt-remote）
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        聚宽远程实盘
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        常见问题
-      
-    </span>
-  </a>
   
 </li>
       
@@ -1185,123 +1218,82 @@
 
 
 <h1 id="qmt-server">QMT server（远程服务端）<a class="headerlink" href="#qmt-server" title="Permanent link">&para;</a></h1>
-<p>在 Windows 主机运行 <code>bullet-trade server</code>，为本地/远程策略提供行情与交易。核心关注：安全、端口放行、账户配置。</p>
-<h2 id="_1">架构总览<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────────────────────┐
-│                          部署架构图                                           │
-└─────────────────────────────────────────────────────────────────────────────┘
-
-┌─────────────────────────────────────────────────────────────────────────────┐
-│  Windows 主机（券商软件所在机器）                                               │
-│                                                                             │
-│  ┌─────────────────────────┐    ┌─────────────────────────────────────────┐ │
-│  │   miniQMT 交易端         │    │   bullet-trade server                   │ │
-│  │                         │    │                                         │ │
-│  │  ┌─────────────────┐    │    │  ┌─────────────┐   ┌─────────────────┐  │ │
-│  │  │  xtquant SDK    │◀───┼────┼──│ QmtData     │   │ QmtBroker       │  │ │
-│  │  │  (行情+交易)     │    │    │  │ Adapter     │   │ Adapter         │  │ │
-│  │  └─────────────────┘    │    │  │ (行情服务)   │   │ (交易服务)        │  │ │
-│  │                         │    │  └─────────────┘   └─────────────────┘  │ │
-│  │  ┌─────────────────┐    │    │           │               │             │ │
-│  │  │ userdata_mini   │    │    │           └───────┬───────┘             │ │
-│  │  │ (数据目录)       │    │    │                   │                     │ │
-│  │  └─────────────────┘    │    │  ┌────────────────▼──────────────────┐  │ │
-│  │                         │    │  │     TCP Server (:58620)           │  │ │
-│  └─────────────────────────┘    │  │     Token 鉴权 + 心跳保活           │  │ │
-│                                 │  └────────────────┬──────────────────┘  │ │
-│                                 └───────────────────┼─────────────────────┘ │
-└─────────────────────────────────────────────────────┼───────────────────────┘
-                                                      │
-                      ┌───────────────────────────────┼───────────────────────┐
-                      │            网络（局域网/公网）  │                       │
-                      │                               │                      │
-    ┌─────────────────▼───────────────┐   ┌──────────▼────────────────────┐  │
-    │                                 │   │                               │  │
-    │  场景 A: 本地/云端策略             │   │  场景 B: 聚宽模拟盘             │  │
-    │  (macOS/Linux/Windows)          │   │  (joinquant.com)              │  │
-    │                                 │   │                               │  │
-    │  ┌───────────────────────────┐  │   │  ┌─────────────────────────┐  │  │
-    │  │ bullet-trade live         │  │   │  │ 聚宽策略                  │  │  │
-    │  │ --broker qmt-remote       │  │   │  │ (模拟盘/研究环境)          │  │  │
-    │  │                           │  │   │  │                         │  │  │
-    │  │  ┌─────────────────────┐  │  │   │  │  ┌───────────────────┐  │  │  │
-    │  │  │ RemoteQmtBroker     │  │  │   │  │  │ helper.py         │  │  │  │
-    │  │  │ RemoteQmtProvider   │  │  │   │  │  │ bt.order()        │  │  │  │
-    │  │  │                     │  │  │   │  │  │ bt.get_positions()│  │  │  │
-    │  │  │ TCP ────────────────┼──┼──┼───┼──┼──┼─► TCP             │  │  │  │
-    │  │  └─────────────────────┘  │  │   │  │  └───────────────────┘  │  │  │
-    │  │                           │  │   │  │                         │  │  │
-    │  │  .env:                    │  │   │  │  configure():           │  │  │
-    │  │   QMT_SERVER_HOST=...     │  │   │  │   host, port, token     │  │  │
-    │  │   QMT_SERVER_PORT=58620   │  │   │  │   account_key           │  │  │
-    │  │   QMT_SERVER_TOKEN=secret │  │   │  │                         │  │  │
-    │  └───────────────────────────┘  │   │  └─────────────────────────┘  │  │
-    │                                 │   │                               │  │
-    └─────────────────────────────────┘   └───────────────────────────────┘  │
-                      │                                                      │
-                      └──────────────────────────────────────────────────────┘
-
-
-┌─────────────────────────────────────────────────────────────────────────────┐
-│  数据 &amp; 交易请求流向                                                           │
-│                                                                             │
-│  客户端                          服务端                     券商               │
-│                                                                             │
-│  order(&#39;000001&#39;, 100)                                                       │
-│        │                                                                    │
-│        ├─► broker.buy ─────────► QmtBrokerAdapter ─────────► xtquant.order  │
-│        │                               │                         │          │
-│        │                               │◀─────── 委托回报 ────────┤          │
-│        │◀────── order_id ◀─────────────┘                         │          │
-│                                                                  ▼          │
-│  get_price(&#39;000001&#39;)                                         miniQMT       │
-│        │                                                         │          │
-│        ├─► data.price ─────────► QmtDataAdapter ◀──── xtdata ────┘          │
-│        │                               │                                    │
-│        │◀────── DataFrame ◀────────────┘                                    │
-│                                                                             │
-└─────────────────────────────────────────────────────────────────────────────┘
-</code></pre></div>
-<h2 id="_2">最快启动<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>.venv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate
-pip<span class="w"> </span>install<span class="w"> </span>bullet-trade
-
-bullet-trade<span class="w"> </span>server<span class="w"> </span>--listen<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span>--port<span class="w"> </span><span class="m">58620</span><span class="w"> </span>--token<span class="w"> </span>secret<span class="w"> </span>^
-<span class="w">  </span>--enable-data<span class="w"> </span>--enable-broker<span class="w"> </span>^
-<span class="w">  </span>--accounts<span class="w"> </span><span class="nv">main</span><span class="o">=</span><span class="m">123456</span>:stock<span class="w"> </span>^
-<span class="w">  </span>--data-path<span class="w"> </span><span class="s2">&quot;C:\国金QMT交易端\userdata_mini&quot;</span>
-</code></pre></div>
-关键参数：
-- <code>--token</code>：必配，防止未授权访问。
-- <code>--accounts</code>：<code>别名=账号:类型</code>，可逗号分隔多账户。
-- <code>--data-path</code>：xtquant 数据目录，保证对应账户已登录。</p>
-<h3 id="_3">首次启动必看<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>Windows 防火墙放行提示：
-<img alt="server-firewall" src="assets/server-firewall.png" /></p>
-<p>服务端日志与下单示例：
-<img alt="joinquant-server-qmt" src="assets/joinquant-server-qmt.png" /></p>
-<h2 id="qmt-remote">客户端连接（qmt-remote）<a class="headerlink" href="#qmt-remote" title="Permanent link">&para;</a></h2>
-<p>本地/云端策略 <code>.env</code> 示例：
-<div class="highlight"><pre><span></span><code><span class="nv">DEFAULT_BROKER</span><span class="o">=</span>qmt-remote
-<span class="nv">QMT_SERVER_HOST</span><span class="o">=</span><span class="m">10</span>.0.0.8
-<span class="nv">QMT_SERVER_PORT</span><span class="o">=</span><span class="m">58620</span>
-<span class="nv">QMT_SERVER_TOKEN</span><span class="o">=</span>secret
-<span class="nv">QMT_SERVER_ACCOUNT_KEY</span><span class="o">=</span>main<span class="w">   </span><span class="c1"># 多账户时指定别名</span>
-</code></pre></div>
-运行：
-<div class="highlight"><pre><span></span><code>bullet-trade<span class="w"> </span>live<span class="w"> </span>strategies/demo_strategy.py<span class="w"> </span>--broker<span class="w"> </span>qmt-remote
-</code></pre></div></p>
-<h2 id="_4">聚宽远程实盘<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>这页只讲一件事：在 Windows 上把 <code>bullet-trade server</code> 启起来，给远程策略提供行情和下单。</p>
+<h2 id="_1">先记住两点<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <ul>
-<li>聚宽端到端步骤与 helper 用法请看 <a href="trade-support.html">trade-support</a>。</li>
+<li><code>bullet-trade server</code> <strong>不支持</strong> <code>--data-path</code>，QMT 数据目录要写到 <code>.env</code> 的 <code>QMT_DATA_PATH</code>。</li>
+<li>单账户时，<code>--accounts</code> 不是必填；如果已经在 <code>.env</code> 里写了 <code>QMT_ACCOUNT_ID</code>，可以直接启动。</li>
 </ul>
-<h2 id="_5">常见问题<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h2 id="env">最小 <code>.env</code><a class="headerlink" href="#env" title="Permanent link">&para;</a></h2>
+<p>把下面 3 个变量写进 <code>.env</code>：</p>
+<div class="highlight"><pre><span></span><code>QMT_DATA_PATH=C:\国金QMT交易端\userdata_mini
+QMT_ACCOUNT_ID=123456
+QMT_SERVER_TOKEN=secret
+</code></pre></div>
+<p>说明：</p>
 <ul>
-<li>端口/防火墙：确保监听端口放行，跨网段配置安全组。</li>
-<li>鉴权失败：token 不一致；必要时加 <code>--allowlist</code> 或 TLS。</li>
-<li>行情缺失：确认 QMT 已登录且有行情权限。</li>
-<li>多账户：<code>--accounts a=123456:stock,b=654321:stock</code>，客户端 <code>QMT_SERVER_ACCOUNT_KEY=a</code> 选择账户。</li>
-<li>撤单等待：broker.cancel_order 默认按 TRADE_MAX_WAIT_TIME 轮询订单状态，返回 timed_out=true 表示仍未进入终态，可再调用 broker.order_status 确认</li>
+<li><code>QMT_DATA_PATH</code>：QMT 的 <code>userdata_mini</code> 目录</li>
+<li><code>QMT_ACCOUNT_ID</code>：QMT 账号</li>
+<li><code>QMT_SERVER_TOKEN</code>：远程访问 token</li>
+</ul>
+<p>如果是股票账户，<strong>不用写</strong> <code>QMT_ACCOUNT_TYPE</code>。默认就是 <code>stock</code>。<br />
+只有期货账户才需要额外写：</p>
+<div class="highlight"><pre><span></span><code>QMT_ACCOUNT_TYPE=future
+</code></pre></div>
+<h2 id="_2">最小启动命令<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>bullet-trade<span class="w"> </span>--env-file<span class="w"> </span>.env<span class="w"> </span>server<span class="w"> </span>--listen<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span>--port<span class="w"> </span><span class="m">58620</span><span class="w"> </span>--enable-data<span class="w"> </span>--enable-broker
+</code></pre></div>
+<p>这条命令里真正需要你关心的只有：</p>
+<ul>
+<li><code>--listen</code></li>
+<li><code>--port</code></li>
+</ul>
+<p>其他账号、数据目录、token 都从 <code>.env</code> 里读。</p>
+<h2 id="env_1">客户端最小 <code>.env</code><a class="headerlink" href="#env_1" title="Permanent link">&para;</a></h2>
+<p>远程策略所在机器只需要这几个变量：</p>
+<div class="highlight"><pre><span></span><code>DEFAULT_DATA_PROVIDER=qmt-remote
+DEFAULT_BROKER=qmt-remote
+QMT_SERVER_HOST=10.0.0.8
+QMT_SERVER_PORT=58620
+QMT_SERVER_TOKEN=secret
+</code></pre></div>
+<p>运行：</p>
+<div class="highlight"><pre><span></span><code>bullet-trade<span class="w"> </span>live<span class="w"> </span>strategies/demo_strategy.py<span class="w"> </span>--broker<span class="w"> </span>qmt-remote
+</code></pre></div>
+<h2 id="stock"><code>:stock</code> 到底要不要写<a class="headerlink" href="#stock" title="Permanent link">&para;</a></h2>
+<p>如果你看到这样的写法：</p>
+<div class="highlight"><pre><span></span><code>--accounts<span class="w"> </span><span class="nv">default</span><span class="o">=</span><span class="m">123456</span>:stock
+</code></pre></div>
+<p>这里的 <code>stock</code> 是账户类型。它的作用只有一个：告诉服务端这是股票账户还是期货账户。</p>
+<p>但当前默认值就是 <code>stock</code>，所以单账户股票场景完全可以写成：</p>
+<div class="highlight"><pre><span></span><code>--accounts<span class="w"> </span><span class="nv">default</span><span class="o">=</span><span class="m">123456</span>
+</code></pre></div>
+<p>更进一步，如果你已经在 <code>.env</code> 里写了 <code>QMT_ACCOUNT_ID=123456</code>，连 <code>--accounts</code> 都可以不写。</p>
+<p>只有下面两种情况，才建议显式写账户类型：</p>
+<ul>
+<li>你在配多账户</li>
+<li>你不是股票账户，而是期货账户</li>
+</ul>
+<p>例如：</p>
+<div class="highlight"><pre><span></span><code>--accounts<span class="w"> </span><span class="nv">main</span><span class="o">=</span><span class="m">123456</span>,hedge<span class="o">=</span><span class="m">654321</span>:future
+</code></pre></div>
+<h2 id="_3">常见问题<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="-data-path">为什么我写了 <code>--data-path</code> 报错<a class="headerlink" href="#-data-path" title="Permanent link">&para;</a></h3>
+<p>因为当前版本没有这个 CLI 参数。请把数据目录写进 <code>.env</code>：</p>
+<div class="highlight"><pre><span></span><code>QMT_DATA_PATH=C:\国金QMT交易端\userdata_mini
+</code></pre></div>
+<h3 id="qmt_server_account_key">单账户要不要写 <code>QMT_SERVER_ACCOUNT_KEY</code><a class="headerlink" href="#qmt_server_account_key" title="Permanent link">&para;</a></h3>
+<p>不用。<br />
+只有多账户时，客户端才需要指定：</p>
+<div class="highlight"><pre><span></span><code>QMT_SERVER_ACCOUNT_KEY=main
+</code></pre></div>
+<h3 id="_4">启动后没有行情/下单失败<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>先检查这几项：</p>
+<ul>
+<li>QMT 客户端是否已登录</li>
+<li><code>QMT_DATA_PATH</code> 是否指向正确的 <code>userdata_mini</code></li>
+<li>Windows 防火墙是否放行了监听端口</li>
+<li><code>QMT_SERVER_TOKEN</code> 是否和客户端一致</li>
 </ul>
 
 

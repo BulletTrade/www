@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
@@ -1569,7 +1569,7 @@ cp<span class="w"> </span>env.backtest.example<span class="w"> </span>.env
 <span class="w">                      </span><span class="o">[</span>--log<span class="w"> </span>LOG<span class="o">]</span><span class="w"> </span><span class="o">[</span>--images<span class="o">]</span><span class="w"> </span><span class="o">[</span>--no-csv<span class="o">]</span><span class="w"> </span><span class="o">[</span>--no-html<span class="o">]</span><span class="w"> </span><span class="o">[</span>--no-logs<span class="o">]</span>
 <span class="w">                      </span><span class="o">[</span>--auto-report<span class="o">]</span><span class="w"> </span><span class="o">[</span>--report-format<span class="w"> </span><span class="o">{</span>html,pdf<span class="o">}]</span>
 <span class="w">                      </span><span class="o">[</span>--report-template<span class="w"> </span>TEMPLATE<span class="o">]</span><span class="w"> </span><span class="o">[</span>--report-metrics<span class="w"> </span>METRICS<span class="o">]</span>
-<span class="w">                      </span><span class="o">[</span>--report-title<span class="w"> </span>TITLE<span class="o">]</span>
+<span class="w">                      </span><span class="o">[</span>--report-title<span class="w"> </span>TITLE<span class="o">]</span><span class="w"> </span><span class="o">[</span>--report-output<span class="w"> </span>REPORT_OUTPUT<span class="o">]</span>
 </code></pre></div>
 <h3 id="_4">必填参数<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <table>
@@ -1648,7 +1648,7 @@ cp<span class="w"> </span>env.backtest.example<span class="w"> </span>.env
 <tr>
 <td><code>--images</code></td>
 <td>关闭</td>
-<td>生成 PNG 图表（净值曲线、持仓分布）</td>
+<td>额外导出独立 PNG 图表文件，不影响 <code>report.html</code> 内嵌图表</td>
 </tr>
 <tr>
 <td><code>--no-csv</code></td>
@@ -1680,7 +1680,7 @@ cp<span class="w"> </span>env.backtest.example<span class="w"> </span>.env
 <tr>
 <td><code>--auto-report</code></td>
 <td>关闭</td>
-<td>回测完成后自动生成标准化报告</td>
+<td>回测完成后额外生成标准化报告，不覆盖默认详细版 <code>report.html</code></td>
 </tr>
 <tr>
 <td><code>--report-format</code></td>
@@ -1701,6 +1701,11 @@ cp<span class="w"> </span>env.backtest.example<span class="w"> </span>.env
 <td><code>--report-title</code></td>
 <td>无</td>
 <td>报告标题（默认使用输出目录名）</td>
+</tr>
+<tr>
+<td><code>--report-output</code></td>
+<td>自动</td>
+<td>自动报告输出路径，默认写入 <code>&lt;output&gt;/standard_report.&lt;format&gt;</code></td>
 </tr>
 </tbody>
 </table>
