@@ -1218,8 +1218,14 @@
   <div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>bullet-trade
 </code></pre></div></li>
 <li>开发/贡献模式：
-  <div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;bullet-trade[dev]&quot;</span>
-cp<span class="w"> </span>bullet-trade/env.example<span class="w"> </span>bullet-trade/.env
+  <div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;.[dev]&quot;</span>
+<span class="c1"># macos/linux</span>
+cp<span class="w"> </span>env.example<span class="w"> </span>.env
+<span class="c1"># windows (cmd)</span>
+copy<span class="w"> </span>env.example<span class="w"> </span>.env
+</code></pre></div></li>
+<li>安装全部可选依赖：
+  <div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;.[all]&quot;</span>
 </code></pre></div></li>
 <li>安装后可用 <code>python -m bullet_trade.cli --help</code> 或 <code>bullet-trade --version</code> 检查。</li>
 </ul>

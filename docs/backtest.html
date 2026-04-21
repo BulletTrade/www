@@ -1542,9 +1542,16 @@
 </code></pre></div>
 <h2 id="3">最短路径（3 步）<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
 <p>1) 安装与模板：
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">source</span><span class="w"> </span>.venv/bin/activate
-pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;bullet-trade[dev]&quot;</span>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+<span class="c1"># macos/linux</span>
+<span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+<span class="c1"># windows (cmd)</span>
+.venv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate.bat
+pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;.[dev]&quot;</span>
+<span class="c1"># macos/linux</span>
 cp<span class="w"> </span>env.backtest.example<span class="w"> </span>.env
+<span class="c1"># windows (cmd)</span>
+copy<span class="w"> </span>env.backtest.example<span class="w"> </span>.env
 </code></pre></div></p>
 <p>2) 只填本页用到的变量（其余见 <a href="config.html">配置总览</a>）：
 <div class="highlight"><pre><span></span><code><span class="c1"># 数据源类型 (jqdata, tushare, qmt)</span>
