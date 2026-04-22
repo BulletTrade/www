@@ -1,0 +1,2026 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://bullettrade.cn/docs/beginner-route-b.html">
+      
+      
+        <link rel="prev" href="beginner-route-a.html">
+      
+      
+        <link rel="next" href="quickstart.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>方案 B：聚宽侧继续运行 - BulletTrade Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="css/custom.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="aa" data-md-color-accent="aa">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#bbullettrade-qmt" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="index.html" title="BulletTrade Docs" class="md-header__button md-logo" aria-label="BulletTrade Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            BulletTrade Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              方案 B：聚宽侧继续运行
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="aa" data-md-color-accent="aa"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/BulletTrade/bullet-trade" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  官方首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="index.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  文档首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="python-setup.html" class="md-tabs__link">
+          
+  
+  
+  新手入门
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="quickstart.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  快速上手
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="research.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  研究环境
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="config.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  配置总览
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="backtest.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  回测引擎
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="optimize.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  参数优化
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="live.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  实盘引擎
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="tick.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Tick 行情指南
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="trade-support.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  交易支撑
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="qmt-server.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  QMT 服务配置
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="api.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  API 文档
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="data/DATA_PROVIDER_GUIDE.html" class="md-tabs__link">
+          
+  
+  
+  数据源
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="contributing.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  邀请贡献
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="BulletTrade Docs" class="md-nav__button md-logo" aria-label="BulletTrade Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    BulletTrade Docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/BulletTrade/bullet-trade" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    官方首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    文档首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    新手入门
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    新手入门
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="python-setup.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    环境准备：安装 Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="beginner-guide.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    总览与选型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="beginner-route-a.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    方案 A：本地直接运行
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    方案 B：聚宽侧继续运行
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="beginner-route-b.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    方案 B：聚宽侧继续运行
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        总流程图
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#windows-qmt-miniqmt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第一章：准备 Windows 云服务器和 QMT / MiniQMT
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第一章：准备 Windows 云服务器和 QMT / MiniQMT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        建议的基础准备
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python-bullettrade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第二章：安装 Python 和 BulletTrade
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bullet-trade-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第三章：配置并启动远程 bullet-trade server
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第四章：放通端口，确认外网能访问
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第四章：放通端口，确认外网能访问">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        云平台要放通什么
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Windows 本机也要放通
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        怎么测试端口通不通
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#helper-notebook" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第五章：把 helper 和测试 notebook 上传到聚宽研究根目录
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jupyter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第六章：先在聚宽研究 / Jupyter 里做一次远程调试
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#helper" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第七章：把聚宽模拟策略改成通过 helper 下单
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第七章：把聚宽模拟策略改成通过 helper 下单">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 文件头上要加什么
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 远程服务器参数放在哪里
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 初始化时要加什么
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 买卖的时候改哪些函数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 第一次联调时怎么改最稳
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第八章：先用最小策略测试，再切回正式策略
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第九章：在聚宽模拟环境运行策略
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常见报错与排查
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="常见报错与排查">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 简单策略能买卖，复杂策略没有信号
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 聚宽连不上本地或云端 server
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 能查持仓，但下单失败
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="quickstart.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    快速上手
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="research.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    研究环境
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="config.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    配置总览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="backtest.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    回测引擎
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="optimize.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    参数优化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="live.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实盘引擎
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tick.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tick 行情指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="trade-support.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    交易支撑
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="qmt-server.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    QMT 服务配置
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="api.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API 文档
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_14" id="__nav_14_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据源
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_14">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    数据源
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data/DATA_PROVIDER_GUIDE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据源指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data/DATA_PROVIDER_JQDATA.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    聚宽数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data/DATA_PROVIDER_MINIQMT.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MiniQMT 数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data/DATA_PROVIDER_TUSHARE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tushare 数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="contributing.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    邀请贡献
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="bbullettrade-qmt">方案 B：策略继续在聚宽侧运行，BulletTrade 负责接收信号并在本地 QMT 执行<a class="headerlink" href="#bbullettrade-qmt" title="Permanent link">&para;</a></h1>
+<p><a href="beginner-guide.html">返回新手入门总览</a></p>
+<p>这一条路的意思是：</p>
+<ul>
+<li>策略逻辑继续放在聚宽侧跑</li>
+<li>聚宽负责选股、择时和生成买卖动作</li>
+<li>BulletTrade 负责把这些动作转发到本地或云端 Windows QMT / MiniQMT 机器执行</li>
+</ul>
+<p>这条路线适合：</p>
+<ul>
+<li>复杂策略现在就在聚宽侧跑</li>
+<li>你短期目标是先接通实盘，不是先把策略全部本地化</li>
+<li>策略依赖聚宽侧研究环境、平台权限表、复杂选股或财务链路</li>
+<li>你暂时判断不清哪些函数兼容、哪些函数不兼容</li>
+</ul>
+<h2 id="_1">总流程图<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>flowchart TD
+    A["购买 Windows 云服务器"] --&gt; B["安装 QMT"]
+    B --&gt; C["选择独立交易启动 QMT"]
+    C --&gt; D["安装 Python 环境"]
+    D --&gt; E["安装带 qmt 扩展的 BulletTrade"]
+    E --&gt; F["配置 .env"]
+    F --&gt; G["启动 bullet-trade server"]
+    G --&gt; H["研究里上传 helper 和测试 notebook"]
+    H --&gt; I["在聚宽研究里做远程调试"]
+    I --&gt; J["修改聚宽模拟策略"]
+    J --&gt; K["在策略里接入 bt.configure 和 bt.order 系列函数"]
+    K --&gt; L["在聚宽模拟环境运行策略"]</code></pre>
+<h2 id="windows-qmt-miniqmt">第一章：准备 Windows 云服务器和 QMT / MiniQMT<a class="headerlink" href="#windows-qmt-miniqmt" title="Permanent link">&para;</a></h2>
+<p>这台 Windows 机器可以是：</p>
+<ul>
+<li>你自己的 Windows 电脑</li>
+<li>Windows 云服务器</li>
+</ul>
+<p>如果你打算长期远程跑，建议直接用 Windows 云服务器。<br />
+例如：</p>
+<ul>
+<li>阿里云 Windows 云服务器</li>
+<li>腾讯云 Windows 云服务器</li>
+</ul>
+<p>在这台机器上，你要先完成 3 件事：</p>
+<ol>
+<li>安装 QMT</li>
+<li>启动支持 MiniQMT 的 QMT 环境</li>
+<li>登录 QMT 账号</li>
+</ol>
+<h3 id="_2">建议的基础准备<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li>已按 <a href="python-setup.html">环境准备：先安装 Python，再创建虚拟环境</a> 完成 Python 安装</li>
+<li>已安装并登录的 QMT，并且该环境支持 MiniQMT</li>
+<li>一台可以运行 QMT / MiniQMT 的 Windows 机器</li>
+<li>如果要远程连这台机器，还要能配置防火墙和公网访问</li>
+</ul>
+<p>这里有两个关键要求：</p>
+<ul>
+<li>后面的本地取数和远程 server 都默认你能访问 <code>userdata_mini</code></li>
+<li>登录时请选择 <strong>独立交易</strong> 方式启动 QMT</li>
+</ul>
+<p>可以参考下面这两张图：</p>
+<p><img alt="MiniQMT 启动入口" src="assets/mini_qmt.png" /></p>
+<p><img alt="登录时选择独立交易" src="assets/miniqmt_login.png" /></p>
+<p>到这一步，你的目标只有一个：<strong>先让 QMT 在这台 Windows 机器上稳定登录。</strong></p>
+<h2 id="python-bullettrade">第二章：安装 Python 和 BulletTrade<a class="headerlink" href="#python-bullettrade" title="Permanent link">&para;</a></h2>
+<p>如果这台机器还没有 Python，先完成：</p>
+<ul>
+<li><a href="python-setup.html">环境准备：先安装 Python，再创建虚拟环境</a></li>
+</ul>
+<p>这台机器要直接连接本地 QMT，并且要启动 <code>bullet-trade server</code>，所以建议直接安装带 QMT 扩展的版本：</p>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;bullet-trade[qmt]&quot;</span>
+</code></pre></div>
+<p>如果你还不知道 <code>.env</code> 是什么，或者不知道怎么在 Windows 里创建这个文件，先看：</p>
+<ul>
+<li><a href="python-setup.html#env-file">什么是 <code>.env</code> 文件，怎么创建</a></li>
+</ul>
+<h2 id="bullet-trade-server">第三章：配置并启动远程 <code>bullet-trade server</code><a class="headerlink" href="#bullet-trade-server" title="Permanent link">&para;</a></h2>
+<p>先准备 <code>.env</code> 文件。<br />
+下面这个代码块不是命令，而是要写进 <code>.env</code> 文件里的内容：</p>
+<div class="highlight"><pre><span></span><code>QMT_DATA_PATH=C:\QMT\userdata_mini
+QMT_ACCOUNT_ID=123456
+QMT_SERVER_TOKEN=secret
+</code></pre></div>
+<p>然后启动：</p>
+<div class="highlight"><pre><span></span><code>bullet-trade<span class="w"> </span>--env-file<span class="w"> </span>.env<span class="w"> </span>server<span class="w"> </span>--listen<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span>--port<span class="w"> </span><span class="m">58620</span><span class="w"> </span>--enable-data<span class="w"> </span>--enable-broker
+</code></pre></div>
+<p>请注意：</p>
+<ul>
+<li>不要写 <code>--data-path</code></li>
+<li>账号、数据目录、token 都放在 <code>.env</code></li>
+</ul>
+<p>启动成功后，你应该能看到服务监听日志。</p>
+<p><img alt="Server 日志示意" src="assets/joinquant-server-qmt.png" /></p>
+<h2 id="_3">第四章：放通端口，确认外网能访问<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>如果你用的是 Windows 云服务器，到这一步必须确认端口已经放通。<br />
+这里通常要同时检查两层：</p>
+<ol>
+<li>云平台安全组 / 防火墙</li>
+<li>Windows 自带防火墙</li>
+</ol>
+<h3 id="_4">云平台要放通什么<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>对新手来说，最小要求就是：</p>
+<ul>
+<li>放通入站 <code>TCP</code></li>
+<li>端口 <code>58620</code></li>
+</ul>
+<p>如果你用的是：</p>
+<ul>
+<li>阿里云：到云服务器对应的安全组里放通 <code>58620/TCP</code></li>
+<li>腾讯云：到云服务器对应的安全组或轻量服务器防火墙里放通 <code>58620/TCP</code></li>
+</ul>
+<h3 id="windows">Windows 本机也要放通<a class="headerlink" href="#windows" title="Permanent link">&para;</a></h3>
+<p>如果 Windows 第一次启动 <code>bullet-trade server</code> 时弹出了防火墙提示，要允许放行。<br />
+如果没有弹窗，就手动到 Windows Defender 防火墙里检查这台机器是否已经允许该端口或该程序。</p>
+<p><img alt="Windows 防火墙放行示意" src="assets/server-firewall.png" /></p>
+<h3 id="_5">怎么测试端口通不通<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>先在 Windows 云服务器本机检查服务有没有监听：</p>
+<div class="highlight"><pre><span></span><code>netstat<span class="w"> </span>-ano<span class="w"> </span><span class="p">|</span><span class="w"> </span>findstr<span class="w"> </span><span class="m">58620</span>
+</code></pre></div>
+<p>如果你看到 <code>0.0.0.0:58620</code> 或对应端口的监听信息，说明服务已经在本机起来了。</p>
+<p>然后在你自己的另一台机器上测试公网端口是否能打通。</p>
+<p>Windows PowerShell 可以用：</p>
+<div class="highlight"><pre><span></span><code><span class="nb">Test-NetConnection</span> <span class="n">your</span><span class="p">.</span><span class="n">server</span><span class="p">.</span><span class="n">ip</span> <span class="n">-Port</span> <span class="n">58620</span>
+</code></pre></div>
+<p>macOS / Linux 可以用：</p>
+<div class="highlight"><pre><span></span><code>nc<span class="w"> </span>-vz<span class="w"> </span>your.server.ip<span class="w"> </span><span class="m">58620</span>
+</code></pre></div>
+<p>如果测试通过，通常会看到：</p>
+<ul>
+<li><code>TcpTestSucceeded : True</code></li>
+<li>或者 <code>succeeded</code></li>
+</ul>
+<h2 id="helper-notebook">第五章：把 helper 和测试 notebook 上传到聚宽研究根目录<a class="headerlink" href="#helper-notebook" title="Permanent link">&para;</a></h2>
+<p>如果你前面是在 Windows 云服务器上启动了 QMT 和 <code>bullet-trade server</code>，到这里就先不要动云服务器那边了。<br />
+保持：</p>
+<ul>
+<li>QMT 已按独立交易方式登录</li>
+<li><code>bullet-trade server</code> 正在运行</li>
+</ul>
+<p>然后切到聚宽侧继续下面的联调。</p>
+<p>仓库里已经提供了现成文件：</p>
+<ul>
+<li><code>helpers/bullet_trade_jq_remote_helper.py</code>
+  下载链接：<a href="https://github.com/BulletTrade/bullet-trade/blob/main/helpers/bullet_trade_jq_remote_helper.py">bullet_trade_jq_remote_helper.py</a></li>
+<li><code>helpers/jq_remote_strategy_example.py</code>
+  下载链接：<a href="https://github.com/BulletTrade/bullet-trade/blob/main/helpers/jq_remote_strategy_example.py">jq_remote_strategy_example.py</a></li>
+<li><code>bullet_trade/notebook/04.joinquant_remote_live_trade.ipynb</code>
+  下载链接：<a href="https://github.com/BulletTrade/bullet-trade/blob/main/bullet_trade/notebook/04.joinquant_remote_live_trade.ipynb">04.joinquant_remote_live_trade.ipynb</a></li>
+</ul>
+<p>这里要分清楚两个位置：</p>
+<ul>
+<li><strong>聚宽研究根目录</strong>：上传 <code>bullet_trade_jq_remote_helper.py</code> 和 <code>04.joinquant_remote_live_trade.ipynb</code></li>
+<li><strong>聚宽策略</strong>：<code>jq_remote_strategy_example.py</code> 不需要上传到研究里，它是“策略怎么修改”的参考文件，应该放到聚宽策略里参考或对照修改</li>
+</ul>
+<p>建议上传到 <strong>聚宽研究根目录</strong> 的文件只有：</p>
+<ul>
+<li><code>bullet_trade_jq_remote_helper.py</code></li>
+<li><code>04.joinquant_remote_live_trade.ipynb</code></li>
+</ul>
+<p>上传位置尽量就是研究根目录，不要先放到别的子目录。<br />
+这样后面在聚宽里直接写：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">bullet_trade_jq_remote_helper</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">bt</span>
+</code></pre></div>
+<p>就能直接找到文件。</p>
+<p><img alt="聚宽研究环境里已看到 helper 文件" src="assets/joinquant-sever-reserch.png" /></p>
+<h2 id="jupyter">第六章：先在聚宽研究 / Jupyter 里做一次远程调试<a class="headerlink" href="#jupyter" title="Permanent link">&para;</a></h2>
+<p>这里说的调试，是在 <strong>聚宽自己的研究环境 / Jupyter 页面</strong> 里做。<br />
+不是在我们本地再开一个 <code>bullet-trade lab</code>。</p>
+<p>你可以用两种方式：</p>
+<ul>
+<li>或者直接打开刚上传的 <code>04.joinquant_remote_live_trade.ipynb</code>，在聚宽研究 / Jupyter 里测试 helper</li>
+<li>或者在聚宽研究 / Jupyter 里新建一个测试文件，把下面这段代码粘进去</li>
+</ul>
+<p>如果你是第一次联调，优先建议直接用这个 notebook。<br />
+它更适合做“先连通、先查账户、先查持仓”的最小验证。</p>
+<p>先做最小检查：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">bullet_trade_jq_remote_helper</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">bt</span>
+
+<span class="n">bt</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span>
+    <span class="n">host</span><span class="o">=</span><span class="s2">&quot;your.server.ip&quot;</span><span class="p">,</span>
+    <span class="n">port</span><span class="o">=</span><span class="mi">58620</span><span class="p">,</span>
+    <span class="n">token</span><span class="o">=</span><span class="s2">&quot;secret&quot;</span><span class="p">,</span>
+    <span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">acct</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">get_account</span><span class="p">()</span>
+<span class="n">positions</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">get_positions</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;可用资金:&quot;</span><span class="p">,</span> <span class="n">acct</span><span class="o">.</span><span class="n">available_cash</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;总资产:&quot;</span><span class="p">,</span> <span class="n">acct</span><span class="o">.</span><span class="n">total_value</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;持仓数量:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">positions</span><span class="p">))</span>
+</code></pre></div>
+<p>你第一次联调时，重点看两个地方：</p>
+<ul>
+<li>聚宽研究 / Jupyter 页面里，是否已经成功打印出账户和持仓</li>
+<li>Windows 云服务器上的 <code>bullet-trade server</code> 日志里，是否已经出现新的连接和访问日志</li>
+</ul>
+<p>如果聚宽这边运行了代码，但云服务器上完全没有新日志，优先怀疑：</p>
+<ul>
+<li>公网 IP 写错</li>
+<li>端口没放通</li>
+<li>token 不一致</li>
+<li>云服务器安全组或 Windows 防火墙没放行</li>
+</ul>
+<p><img alt="聚宽研究 / Jupyter 中成功打印账户和持仓" src="assets/joinquant-jupyter-test.png" /></p>
+<h2 id="helper">第七章：把聚宽模拟策略改成通过 helper 下单<a class="headerlink" href="#helper" title="Permanent link">&para;</a></h2>
+<p>很多用户卡在这里。<br />
+核心原则其实很简单：</p>
+<ul>
+<li><strong>选股和信号逻辑尽量不动</strong></li>
+<li><strong>真正的买卖动作改成调用 helper</strong></li>
+</ul>
+<p>如果你不知道策略文件该怎么改，可以把下面这个参考文件上传到 <strong>聚宽策略</strong> 里，对照着改你自己的策略：</p>
+<ul>
+<li><a href="https://github.com/BulletTrade/bullet-trade/blob/main/helpers/jq_remote_strategy_example.py">jq_remote_strategy_example.py</a></li>
+</ul>
+<h3 id="1">1. 文件头上要加什么<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<p>这里建议你把文档理解成：<br />
+<strong>保留你原来策略文件顶部的平台导入和原有逻辑，只新增 helper 相关代码。</strong></p>
+<p>你需要新增的是：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">bullet_trade_jq_remote_helper</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">bt</span>
+</code></pre></div>
+<p>如果你原来的策略文件已经能在平台侧正常运行，这里不要先去大改原来的导入。</p>
+<h3 id="2">2. 远程服务器参数放在哪里<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<p>建议直接写在策略文件开头，先用最直白的方式跑通：</p>
+<div class="highlight"><pre><span></span><code><span class="n">BT_REMOTE_HOST</span> <span class="o">=</span> <span class="s2">&quot;your.server.ip&quot;</span>
+<span class="n">BT_REMOTE_PORT</span> <span class="o">=</span> <span class="mi">58620</span>
+<span class="n">BT_REMOTE_TOKEN</span> <span class="o">=</span> <span class="s2">&quot;secret&quot;</span>
+</code></pre></div>
+<h3 id="3">3. 初始化时要加什么<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<p>聚宽环境会重启、刷新代码，所以更稳的写法是：<br />
+<strong>在 <code>process_initialize</code> 里做 <code>bt.configure(...)</code>。</strong></p>
+<p>最小写法：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">bullet_trade_jq_remote_helper</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">bt</span>
+
+<span class="n">BT_REMOTE_HOST</span> <span class="o">=</span> <span class="s2">&quot;your.server.ip&quot;</span>
+<span class="n">BT_REMOTE_PORT</span> <span class="o">=</span> <span class="mi">58620</span>
+<span class="n">BT_REMOTE_TOKEN</span> <span class="o">=</span> <span class="s2">&quot;secret&quot;</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">process_initialize</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+    <span class="n">bt</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span>
+        <span class="n">host</span><span class="o">=</span><span class="n">BT_REMOTE_HOST</span><span class="p">,</span>
+        <span class="n">port</span><span class="o">=</span><span class="n">BT_REMOTE_PORT</span><span class="p">,</span>
+        <span class="n">token</span><span class="o">=</span><span class="n">BT_REMOTE_TOKEN</span><span class="p">,</span>
+    <span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">initialize</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+    <span class="n">set_benchmark</span><span class="p">(</span><span class="s2">&quot;000300.XSHG&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="4">4. 买卖的时候改哪些函数<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<p>最常见就是把聚宽原来的下单函数，替换成 helper 对应函数。</p>
+<p>常见替换关系：</p>
+<ul>
+<li><code>order(...)</code> 改成 <code>bt.order(...)</code></li>
+<li><code>order_value(...)</code> 改成 <code>bt.order_value(...)</code></li>
+<li><code>order_target(...)</code> 改成 <code>bt.order_target(...)</code></li>
+<li><code>order_target_value(...)</code> 改成 <code>bt.order_target_value(...)</code></li>
+</ul>
+<p>例如，原来你可能是：</p>
+<div class="highlight"><pre><span></span><code><span class="n">order</span><span class="p">(</span><span class="s2">&quot;000001.XSHE&quot;</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">order_target_value</span><span class="p">(</span><span class="s2">&quot;510300.XSHG&quot;</span><span class="p">,</span> <span class="mi">100000</span><span class="p">)</span>
+</code></pre></div>
+<p>改成：</p>
+<div class="highlight"><pre><span></span><code><span class="n">bt</span><span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="s2">&quot;000001.XSHE&quot;</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">bt</span><span class="o">.</span><span class="n">order_target_value</span><span class="p">(</span><span class="s2">&quot;510300.XSHG&quot;</span><span class="p">,</span> <span class="mi">100000</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="5">5. 第一次联调时怎么改最稳<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
+<p>不要一上来就把整个复杂策略全量改掉。<br />
+更稳的顺序是：</p>
+<ol>
+<li>先只加 <code>import bullet_trade_jq_remote_helper as bt</code></li>
+<li>再加 <code>process_initialize</code> 里的 <code>bt.configure(...)</code></li>
+<li>先用 <code>bt.get_account()</code>、<code>bt.get_positions()</code> 验证连通</li>
+<li>最后只替换一两个下单函数做最小测试</li>
+</ol>
+<h2 id="_6">第八章：先用最小策略测试，再切回正式策略<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>建议不要第一枪就直接改你最复杂的正式策略。<br />
+先在聚宽里做一个最小联通测试，例如：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">bullet_trade_jq_remote_helper</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">bt</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">process_initialize</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+    <span class="n">bt</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span>
+        <span class="n">host</span><span class="o">=</span><span class="s2">&quot;your.server.ip&quot;</span><span class="p">,</span>
+        <span class="n">port</span><span class="o">=</span><span class="mi">58620</span><span class="p">,</span>
+        <span class="n">token</span><span class="o">=</span><span class="s2">&quot;secret&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">initialize</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+    <span class="n">set_benchmark</span><span class="p">(</span><span class="s2">&quot;000300.XSHG&quot;</span><span class="p">)</span>
+    <span class="n">run_daily</span><span class="p">(</span><span class="n">test_remote_trade</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="s2">&quot;09:35&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_remote_trade</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+    <span class="n">acct</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">get_account</span><span class="p">()</span>
+    <span class="n">positions</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">get_positions</span><span class="p">()</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[账号] 现金=</span><span class="si">{</span><span class="n">acct</span><span class="o">.</span><span class="n">available_cash</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> 总资产=</span><span class="si">{</span><span class="n">acct</span><span class="o">.</span><span class="n">total_value</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[持仓数] </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">positions</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># 第一次联调时，建议先只查账户与持仓</span>
+    <span class="c1"># 确认通了以后，再把下面这行打开做小额测试</span>
+    <span class="c1"># bt.order(&quot;000001.XSHE&quot;, 100, price=None, wait_timeout=10)</span>
+</code></pre></div>
+<p>第一轮联调，建议顺序一定要这样：</p>
+<ol>
+<li>先 <code>bt.get_account()</code></li>
+<li>再 <code>bt.get_positions()</code></li>
+<li>最后才 <code>bt.order(...)</code></li>
+</ol>
+<p>不要第一枪就直接下单。</p>
+<h2 id="_7">第九章：在聚宽模拟环境运行策略<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>当你已经在聚宽研究 / Jupyter 里验证通过，再把同样的改法带回聚宽模拟环境。</p>
+<p>这时候你的重点是同时观察两个地方：</p>
+<ul>
+<li>聚宽模拟日志</li>
+<li>Windows 上的 <code>bullet-trade server</code> 日志</li>
+</ul>
+<p>至少要满足下面这些条件，才算这条路线已经跑通：</p>
+<ul>
+<li>聚宽研究 / Jupyter 里能完成最小远程调试</li>
+<li>聚宽模拟里能正常执行 helper</li>
+<li>能查到账户和持仓</li>
+<li>能发出一笔测试单</li>
+<li>Windows 端能看到 server 收到请求并转发给 QMT</li>
+<li>QMT 侧能看到对应委托</li>
+</ul>
+<p>聚宽侧日志示意：</p>
+<p><img alt="聚宽测试日志示意" src="assets/joinquant_test.png" /></p>
+<h2 id="_8">常见报错与排查<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<h3 id="1_1">1. 简单策略能买卖，复杂策略没有信号<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h3>
+<p>优先排查这 5 件事：</p>
+<ol>
+<li>复杂策略的选股链路是不是根本没有迁移完整</li>
+<li>是否依赖财务面、平台权限数据或聚宽侧研究环境</li>
+<li>执行侧查询到的行情口径是否与你策略判断时使用的口径不同</li>
+<li>调度时间是不是变了，导致条件判断时点不对</li>
+<li>当天是否本来就没有满足条件的信号</li>
+</ol>
+<p>建议做法：</p>
+<ul>
+<li>先打印候选股票池</li>
+<li>再打印每个过滤条件剩下多少标的</li>
+<li>再打印最终买卖条件是否成立</li>
+</ul>
+<p>不要只盯着“为什么没有下单”，更要看“为什么没有信号”。</p>
+<h3 id="2-server">2. 聚宽连不上本地或云端 server<a class="headerlink" href="#2-server" title="Permanent link">&para;</a></h3>
+<p>优先排查：</p>
+<ul>
+<li><code>host</code> 和 <code>port</code> 是否写对</li>
+<li><code>QMT_SERVER_TOKEN</code> 是否一致</li>
+<li>服务端是否真的监听在 <code>0.0.0.0</code></li>
+<li>Windows 防火墙是否放行</li>
+<li>云服务器安全组是否放行端口</li>
+</ul>
+<h3 id="3_1">3. 能查持仓，但下单失败<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h3>
+<p>优先排查：</p>
+<ul>
+<li>QMT 是否已登录</li>
+<li>账户是否可交易</li>
+<li>标的是否停牌或不在交易时段</li>
+<li>可用资金或可卖数量是否不足</li>
+<li>价格保护或最小委托单位是否触发限制</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/BulletTrade/bullet-trade" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.tabs", "navigation.tracking", "search.suggest", "toc.integrate"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+      
+        <script src="js/mermaid-init.js"></script>
+      
+    
+  </body>
+</html>
