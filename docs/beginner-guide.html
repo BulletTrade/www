@@ -772,10 +772,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#a-bullettrade" class="md-nav__link">
+  <a href="#a" class="md-nav__link">
     <span class="md-ellipsis">
       
-        方案 A：策略在 BulletTrade 本地直接运行
+        方案 A：独立运行
       
     </span>
   </a>
@@ -783,10 +783,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#bbullettrade-qmt" class="md-nav__link">
+  <a href="#b" class="md-nav__link">
     <span class="md-ellipsis">
       
-        方案 B：策略继续在聚宽侧运行，BulletTrade 负责接收信号并在本地 QMT 执行
+        方案 B：策略在聚宽侧模拟盘运行
       
     </span>
   </a>
@@ -822,7 +822,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#a" class="md-nav__link">
+  <a href="#a_1" class="md-nav__link">
     <span class="md-ellipsis">
       
         常见例子：哪些策略优先看方案 A
@@ -833,7 +833,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#b" class="md-nav__link">
+  <a href="#b_1" class="md-nav__link">
     <span class="md-ellipsis">
       
         常见例子：哪些策略优先看方案 B
@@ -872,10 +872,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#a-bullettrade_1" class="md-nav__link">
+  <a href="#a_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        方案 A：策略在 BulletTrade 本地直接运行
+        方案 A：独立运行
       
     </span>
   </a>
@@ -883,10 +883,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#bbullettrade-qmt_1" class="md-nav__link">
+  <a href="#b_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        方案 B：策略继续在聚宽侧运行，BulletTrade 负责接收信号并在本地 QMT 执行
+        方案 B：策略在聚宽侧模拟盘运行
       
     </span>
   </a>
@@ -921,7 +921,7 @@
   <span class="md-ellipsis">
     
   
-    方案 A：本地直接运行
+    方案 A：独立运行
   
 
     
@@ -949,7 +949,7 @@
   <span class="md-ellipsis">
     
   
-    方案 B：聚宽侧继续运行
+    方案 B：聚宽侧模拟盘运行
   
 
     
@@ -1463,7 +1463,7 @@
 <ul>
 <li>聚宽策略能不能直接搬到本地运行</li>
 <li>为什么简单买卖能跑，复杂策略却没有信号</li>
-<li>我到底该先配本地直跑，还是在聚宽模拟里面跑策略</li>
+<li>我到底该先配独立运行，还是在聚宽模拟里面跑策略</li>
 </ul>
 <p>那么先看完这页，再进入对应的方案文档。</p>
 <h2 id="_2">先做一个共同前置步骤<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
@@ -1478,7 +1478,7 @@
 <li><a href="python-setup.html">环境准备：先安装 Python，再创建虚拟环境</a></li>
 </ul>
 <h2 id="_3">我们现在支持两种方案<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<h3 id="a-bullettrade">方案 A：策略在 BulletTrade 本地直接运行<a class="headerlink" href="#a-bullettrade" title="Permanent link">&para;</a></h3>
+<h3 id="a">方案 A：独立运行<a class="headerlink" href="#a" title="Permanent link">&para;</a></h3>
 <p>适合：</p>
 <ul>
 <li>策略主要依赖量价数据、定时调度、普通下单</li>
@@ -1487,7 +1487,7 @@
 </ul>
 <p>结构图：</p>
 <pre class="mermaid"><code>flowchart TD
-    A["策略在 BulletTrade 本地运行"] --&gt; B["调度和计算信号"]
+    A["策略在 BulletTrade 独立运行"] --&gt; B["调度和计算信号"]
     A --&gt; C["取数：qmt"]
     A --&gt; D["下单：qmt"]
     D --&gt; E["QMT / MiniQMT"]
@@ -1498,7 +1498,7 @@
 <li>BulletTrade 自己负责调度、取数、计算信号和下单</li>
 <li>QMT / MiniQMT 和策略放在同一台 Windows 机器上运行</li>
 </ul>
-<h3 id="bbullettrade-qmt">方案 B：策略继续在聚宽侧运行，BulletTrade 负责接收信号并在本地 QMT 执行<a class="headerlink" href="#bbullettrade-qmt" title="Permanent link">&para;</a></h3>
+<h3 id="b">方案 B：策略在聚宽侧模拟盘运行<a class="headerlink" href="#b" title="Permanent link">&para;</a></h3>
 <p>适合：</p>
 <ul>
 <li>策略强依赖聚宽侧环境、财务链路、平台因子或复杂选股</li>
@@ -1532,8 +1532,8 @@
     B --&gt;|否| F["是否依赖财务面、因子库、平台研究环境或复杂选股"]
     F --&gt;|是| G["看方案 B"]
     F --&gt;|不确定| H["还是先看方案 B"]</code></pre>
-<h3 id="a">常见例子：哪些策略优先看方案 A<a class="headerlink" href="#a" title="Permanent link">&para;</a></h3>
-<p>这类代码通常可以先按“本地直跑”思路理解：</p>
+<h3 id="a_1">常见例子：哪些策略优先看方案 A<a class="headerlink" href="#a_1" title="Permanent link">&para;</a></h3>
+<p>这类代码通常可以先按“独立运行”思路理解：</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">bullet_trade.core.api</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 
 
@@ -1567,9 +1567,9 @@
 <li>成交额过滤</li>
 <li>网格或简单择时</li>
 </ul>
-<h3 id="b">常见例子：哪些策略优先看方案 B<a class="headerlink" href="#b" title="Permanent link">&para;</a></h3>
-<p>下面这些不要先按“本地 QMT 无改动直跑”来理解。<br />
-更稳的做法是先让策略继续在聚宽侧运行，再由 BulletTrade 接收信号执行本地 QMT 下单。</p>
+<h3 id="b_1">常见例子：哪些策略优先看方案 B<a class="headerlink" href="#b_1" title="Permanent link">&para;</a></h3>
+<p>下面这些不要先按“本地 QMT 无改动独立运行”来理解。<br />
+更稳的做法是先让策略在聚宽侧模拟盘运行，再由 BulletTrade 接收信号执行本地 QMT 下单。</p>
 <p>常见场景：</p>
 <ul>
 <li>小市值或财务面选股</li>
@@ -1585,14 +1585,14 @@
 <h3 id="_6">关于“财务因子是不是不支持”的更准确说法<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <p>如果是写给新手看，我建议用下面这句：</p>
 <ul>
-<li><strong>BulletTrade 本地直跑优先保证的是量价、调度、下单这条通用链路</strong></li>
+<li><strong>BulletTrade 独立运行优先保证的是量价、调度、下单这条通用链路</strong></li>
 <li><strong>如果你的策略主逻辑依赖财务面、因子库、平台研究环境或复杂选股，不要默认它属于“无改动可迁移”的范围</strong></li>
 <li><strong>这类策略新手优先看方案 B</strong></li>
 </ul>
 <p>这样更容易帮用户做决策，也不会把“能不能做到”和“是不是适合第一步这么做”混在一起。</p>
 <h2 id="_7">选择你的方案<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
 <p>如果下面哪一段更像你的实际情况，就直接点对应链接。</p>
-<h3 id="a-bullettrade_1">方案 A：策略在 BulletTrade 本地直接运行<a class="headerlink" href="#a-bullettrade_1" title="Permanent link">&para;</a></h3>
+<h3 id="a_2">方案 A：独立运行<a class="headerlink" href="#a_2" title="Permanent link">&para;</a></h3>
 <p>适合：</p>
 <ul>
 <li>均线、动量、ETF 轮动、成交额过滤</li>
@@ -1610,7 +1610,7 @@
 <ul>
 <li><a href="beginner-route-a.html">进入方案 A 文档</a></li>
 </ul>
-<h3 id="bbullettrade-qmt_1">方案 B：策略继续在聚宽侧运行，BulletTrade 负责接收信号并在本地 QMT 执行<a class="headerlink" href="#bbullettrade-qmt_1" title="Permanent link">&para;</a></h3>
+<h3 id="b_2">方案 B：策略在聚宽侧模拟盘运行<a class="headerlink" href="#b_2" title="Permanent link">&para;</a></h3>
 <p>适合：</p>
 <ul>
 <li>小市值、财务过滤、因子选股</li>
