@@ -1374,6 +1374,7 @@
 <ul>
 <li>始终获取未复权行情 + 复权因子，自行计算前/后复权并应用 <code>pre_factor_ref_date</code>。  </li>
 <li>支持 <code>frequency</code> 为日线 (<code>D</code>) / 多个分钟级别 (<code>1min</code>、<code>5min</code>等)，与聚宽接口保持一致。  </li>
+<li>支持聚宽代码后缀自动转换，并按证券类型选择 Tushare 行情资产：股票 <code>asset='E'</code>、指数 <code>asset='I'</code>、基金/ETF <code>asset='FD'</code>。</li>
 <li><code>skip_paused=True</code> 时依据 <code>is_paused</code> 字段过滤；若缺失则全部保留。  </li>
 <li>多标的请求会拆分为多个单标的调用，并在返回时根据 <code>panel</code> 参数拼接（<code>panel=True</code> 为列 MultiIndex，<code>panel=False</code> 输出长表）。</li>
 </ul>
@@ -1393,7 +1394,7 @@
 <ol>
 <li><strong>速率限制</strong>：Pro 账号默认 5000 次/分钟，如高频调用建议开启 <code>DATA_CACHE_DIR</code> 缓存目录或在私有网络中本地化数据。  </li>
 <li><strong>数据完整性</strong>：部分场外基金/LOF 在 <code>fund_basic</code> 中缺少 <code>delist_date</code>，封装会将其解析为 <code>NaT</code>，可在策略端自行填补。  </li>
-<li><strong>指数资产判断</strong>：当前默认 <code>ts_code</code> 均按股票资产处理，如需要精确的 <code>asset</code> 可在后续版本通过 <code>stock_basic</code> 信息进一步区分。  </li>
+<li><strong>资产类型判断</strong>：常见股票/指数/ETF 代码会先通过后缀和前缀快速判断；无法确定时回退到 <code>index_basic</code> / <code>fund_basic</code> / <code>stock_basic</code> 目录查询。</li>
 <li><strong>分钟线权限</strong>：若账号未开通分钟级别数据，<code>ts.pro_bar</code> 会返回空 DataFrame；框架会在日志层面记录，策略需自行兜底。</li>
 </ol>
 <p>总体而言，TushareProvider 在无需依赖聚宽账号的情况下提供了等价的 API 行为，并支持动态复权与标准化分红事件，是纯离线或学术环境的推荐选择。***</p>

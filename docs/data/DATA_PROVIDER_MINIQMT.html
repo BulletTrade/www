@@ -1391,7 +1391,7 @@
 <li>支持的配置/环境变量：</li>
 <li><code>data_dir</code> / <code>QMT_DATA_PATH</code>：显式指定 xtquant 数据目录（<code>auth</code> 会调用 <code>xtdata.set_data_dir</code>）。<code>.env.example</code> 内提供了 Windows 默认安装路径 <code>C:\国金QMT交易端模拟\userdata_mini</code> 作为参考。  </li>
 <li><code>mode</code>：回测 <code>backtest</code>（默认）或实盘 <code>live</code>，用于控制自动下载等行为，可在初始化参数中传入。  </li>
-<li><code>auto_download</code> / <code>MINIQMT_AUTO_DOWNLOAD</code>：是否调用 <code>xtdata.download_history_data</code>；未指定时回测模式默认开启、实盘模式默认关闭。  </li>
+<li><code>auto_download</code> / <code>MINIQMT_AUTO_DOWNLOAD</code>：是否调用 <code>xtdata.download_history_data</code>；未指定时默认开启，实盘也会主动补齐缺失行情。  </li>
 <li><code>market</code> / <code>MINIQMT_MARKET</code>：交易日市场代码（默认 <code>SH</code>）。  </li>
 <li><code>cache_dir</code> / <code>DATA_CACHE_DIR</code>：磁盘缓存目录，若不显式传入则使用 <code>DATA_CACHE_DIR/miniqmt</code>；未设置则禁用缓存。  </li>
 <li><code>tushare_token</code> / <code>TUSHARE_TOKEN</code>：xtquant 缺失分红或指数成分时自动回退到 Tushare。</li>
@@ -1430,7 +1430,7 @@
 <li>BulletTrade 在 <code>tests/e2e/data/test_provider_parity.py</code> 内提供了平安银行 (<code>000001.XSHE</code>) 两个派息窗口（2025-06-12、2025-10-15）的 miniQMT 与 JQData 真实数据对齐测试。  </li>
 <li>运行前请确保：</li>
 <li><code>.env</code> 中已设置 <code>JQDATA_USERNAME</code>、<code>JQDATA_PASSWORD</code>；<code>QMT_DATA_PATH</code> 可留空，除非需要覆盖 xtquant 默认目录或为后续交易能力提前配置，若显式配置则需保证路径有效并同步行情；</li>
-<li>推荐开启 <code>MINIQMT_AUTO_DOWNLOAD=true</code> 以在数据缺失时自动补齐；</li>
+<li>默认会自动下载补齐缺失行情；如果显式设置 <code>MINIQMT_AUTO_DOWNLOAD=false</code>，请先确认本地行情已经预先同步；</li>
 <li>已安装 <code>jqdatasdk</code> 与 <code>xtquant</code>（可通过 <code>pip install jqdatasdk</code>、<code>pip install xtquant</code> 或 <code>pip install bullet-trade[qmt]</code> 完成）。</li>
 <li>执行示例：
   <div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>pytest<span class="w"> </span>bullet-trade/tests/e2e/data/test_provider_parity.py::test_ping_an_bank_real_parity<span class="w"> </span><span class="se">\</span>

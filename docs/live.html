@@ -1494,6 +1494,7 @@ QMT_SERVER_TOKEN=secret
 <h3 id="env">为什么文档里不再写一大堆 <code>.env</code><a class="headerlink" href="#env" title="Permanent link">&para;</a></h3>
 <p>因为绝大多数参数都有默认值。<br />
 第一步应该先跑通最小链路，不要一开始就把日志、风控、后台任务、通知全部写进去。</p>
+<p>正式实盘如果账号没有免五，建议在开启风控后按需配置 <code>MIN_BUY_ORDER_VALUE</code>，例如 <code>MIN_BUY_ORDER_VALUE=1000</code>。默认值为 <code>0</code>，不限制买入小单；该规则只拦截买入，不影响卖出或清仓。</p>
 <h3 id="stock"><code>:stock</code> 要不要写<a class="headerlink" href="#stock" title="Permanent link">&para;</a></h3>
 <p>单账户股票场景不用写。<br />
 默认就是 <code>stock</code>。</p>

@@ -1460,10 +1460,12 @@ QMT_SERVER_TOKEN=secret
 <li><code>QMT_SESSION_ID</code></li>
 <li><code>QMT_AUTO_SUBSCRIBE</code></li>
 <li><code>MAX_ORDER_VALUE</code></li>
+<li><code>MIN_BUY_ORDER_VALUE</code></li>
 <li><code>MAX_DAILY_TRADES</code></li>
 <li><code>RISK_CHECK_ENABLED</code></li>
 <li><code>QMT_SERVER_TLS_CERT</code></li>
 </ul>
+<p><code>MIN_BUY_ORDER_VALUE</code> 用于过滤实盘买入小单，默认 <code>0</code> 表示不限制。它只在风控开启后生效：本地 LiveEngine 需 <code>RISK_CHECK_ENABLED=true</code>，远程 QMT server 需 <code>QMT_SERVER_ORDER_RISK_ENABLED=true</code>。该参数只拦截买入订单，卖出、清仓和降仓不受影响。</p>
 <h2 id="6">6. 一个判断原则<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
 <p>如果你现在只是想先跑通：</p>
 <ul>
