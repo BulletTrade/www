@@ -1045,12 +1045,34 @@
   <a href="#5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. 常见问题
+        5. 模拟盘/实盘切换检查
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="5. 常见问题">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 下单等待（同步/异步）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 常见问题
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. 常见问题">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1490,7 +1512,70 @@ QMT_SERVER_TOKEN=secret
 <p>多账户时，客户端才需要：</p>
 <div class="highlight"><pre><span></span><code>QMT_SERVER_ACCOUNT_KEY=main
 </code></pre></div>
-<h2 id="5">5. 常见问题<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<h2 id="5">5. 模拟盘/实盘切换检查<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<p>模拟盘和实盘应尽量使用同一份策略代码，只通过 <code>.env</code> 切换账户、网关地址和风控参数。切换前先确认这几件事：</p>
+<table>
+<thead>
+<tr>
+<th>检查项</th>
+<th>模拟盘</th>
+<th>实盘</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>QMT 账号</td>
+<td>仿真或测试资金号</td>
+<td>真实资金号</td>
+</tr>
+<tr>
+<td>bullet-trade server</td>
+<td>默认 <code>58620</code>，提供行情和交易能力</td>
+<td>默认 <code>58620</code>，提供行情和交易能力</td>
+</tr>
+<tr>
+<td>上层调度网关</td>
+<td>如使用上层网关，策略通常连接网关自己的端口</td>
+<td>同样连接上层网关端口，再由网关连接 bullet-trade server</td>
+</tr>
+<tr>
+<td>下单等待</td>
+<td>可用 <code>TRADE_MAX_WAIT_TIME=0</code> 压测异步链路</td>
+<td>建议保留同步等待或按单设置 <code>wait_timeout</code></td>
+</tr>
+<tr>
+<td>风控</td>
+<td>先放宽，确认链路能跑通</td>
+<td>再启用 <code>RISK_CHECK_ENABLED</code>、<code>MIN_BUY_ORDER_VALUE</code> 等</td>
+</tr>
+</tbody>
+</table>
+<p>不要把 <code>QMT_SERVER_PORT</code> 和上层调度网关端口混用：<code>QMT_SERVER_PORT</code> 是 bullet-trade server 的端口；上层网关自己的端口应写在上层系统配置里。</p>
+<h2 id="6">6. 下单等待（同步/异步）<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<p>实盘下单时，引擎默认会<strong>同步等待最多 16 秒</strong>再返回结果。可以通过两种方式调整：</p>
+<table>
+<thead>
+<tr>
+<th>方式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.env</code> 设置 <code>TRADE_MAX_WAIT_TIME</code></td>
+<td>全局生效，默认 <code>16</code>；设 <code>0</code> 为纯异步</td>
+</tr>
+<tr>
+<td>函数参数 <code>wait_timeout=10</code></td>
+<td>单次下单覆盖，优先级高于环境变量</td>
+</tr>
+</tbody>
+</table>
+<p>策略中批量异步下单示例：</p>
+<div class="highlight"><pre><span></span><code><span class="n">order_target</span><span class="p">(</span><span class="s1">&#39;000001.XSHE&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">wait_timeout</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>   <span class="c1"># 立即返回</span>
+<span class="n">order</span><span class="p">(</span><span class="s1">&#39;600519.XSHG&#39;</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">wait_timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>         <span class="c1"># 等 10 秒</span>
+</code></pre></div>
+<h2 id="7">7. 常见问题<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
 <h3 id="env">为什么文档里不再写一大堆 <code>.env</code><a class="headerlink" href="#env" title="Permanent link">&para;</a></h3>
 <p>因为绝大多数参数都有默认值。<br />
 第一步应该先跑通最小链路，不要一开始就把日志、风控、后台任务、通知全部写进去。</p>
