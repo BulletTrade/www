@@ -347,6 +347,25 @@
   
   
     <li class="md-tabs__item">
+      <a href="backtest-data-session.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  回测数据会话优化
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
       <a href="optimize.html" class="md-tabs__link">
         
   
@@ -881,6 +900,33 @@
   
   
     <li class="md-nav__item">
+      <a href="backtest-data-session.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    回测数据会话优化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="optimize.html" class="md-nav__link">
         
   
@@ -1054,10 +1100,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" >
         
           
-          <label class="md-nav__link" for="__nav_14" id="__nav_14_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_15" id="__nav_15_label" tabindex="0">
             
   
   
@@ -1075,8 +1121,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_14">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_15">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1282,6 +1328,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        测试矩阵
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1318,6 +1375,17 @@
 <li>文档/示例 PR：遵循下方检查清单，保持中文描述，必要时补充英文术语。</li>
 <li>需求建议：说明业务目的与期望接口，团队会评估后纳入规划。</li>
 <li>交流：可通过站点上的微信二维码联系，或在 PR/Issue 里继续讨论。</li>
+</ul>
+<h2 id="_3">测试矩阵<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>默认快速测试不应依赖外部行情、券商软件或网络服务：</p>
+<div class="highlight"><pre><span></span><code>pytest<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;not slow and not requires_network&quot;</span>
+</code></pre></div>
+<p>带外部依赖的测试需要显式选择标记，并确认运行环境已经准备好：</p>
+<ul>
+<li><code>requires_qmt</code>：需要本机或测试机已经安装并登录 MiniQMT/xtquant，且测试账号、行情权限和 QMT 客户端状态可用；不要在默认 CI 中运行。</li>
+<li><code>requires_network</code>：需要可访问外部数据服务或远程行情服务，并已经配置相应账号或网络代理；不要把账号、密钥或私有服务地址写入测试代码和日志。</li>
+<li><code>requires_jqdata</code>：需要聚宽数据源账号或兼容数据源可用，适合手动集成验证，不适合作为无凭据的快速测试。</li>
+<li><code>slow</code>：用于长周期回测、跨数据源对比和性能基准，运行前应记录数据源、缓存状态、命令、耗时和核心结果。</li>
 </ul>
 <p>微信交流：</p>
 <p><img src="assets/wechat-contact.png" alt="微信二维码" width="180"></p>
