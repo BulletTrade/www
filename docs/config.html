@@ -1398,6 +1398,62 @@
   
   
     <li class="md-nav__item">
+      <a href="data/DATA_PROVIDER_MATRIX.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据源能力矩阵
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data/DATA_PROVIDER_ACCEPTANCE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据源接入验收框架
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="data/DATA_PROVIDER_JQDATA.html" class="md-nav__link">
         
   
@@ -1462,6 +1518,62 @@
     
   
     Tushare 数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data/DATA_PROVIDER_RQDATA.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RQData 数据 Beta
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data/DATA_PROVIDER_EASY_TDX.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    easy_tdx 通达信数据 Beta
   
 
     
@@ -1609,6 +1721,16 @@ QMT_SERVER_TOKEN=secret
 <td>实盘下单/撤单同步等待秒数；设为 <code>0</code> 或小于等于 <code>0</code> 时走异步立即返回。</td>
 </tr>
 <tr>
+<td><code>QMT_SERVER_RPC_TIMEOUT</code></td>
+<td><code>60</code></td>
+<td><code>qmt-remote</code> 客户端等待远程 server 响应的网络超时；应大于 <code>TRADE_MAX_WAIT_TIME</code> 或单次 <code>wait_timeout</code> 加安全余量。</td>
+</tr>
+<tr>
+<td><code>QMT_PLACE_ORDER_TIMEOUT_MARGIN</code></td>
+<td><code>30</code></td>
+<td>远程下单时在 <code>wait_timeout</code> 之外追加的请求超时安全余量，避免服务端刚返回 open/timed_out 时客户端先超时。</td>
+</tr>
+<tr>
 <td><code>MIN_BUY_ORDER_VALUE</code></td>
 <td><code>0</code></td>
 <td>最小买入订单金额；<code>0</code> 表示不限制，只拦截买入，不拦截卖出、降仓、清仓。</td>
@@ -1660,7 +1782,7 @@ QMT_SERVER_SUB_ACCOUNT=demo@main
 <tr>
 <td><code>DEFAULT_DATA_PROVIDER</code></td>
 <td><code>jqdata</code></td>
-<td>默认行情源：<code>jqdata</code>、<code>tushare</code>、<code>qmt</code>、<code>qmt-remote</code>。</td>
+<td>默认行情源：<code>jqdata</code>、<code>tushare</code>、<code>qmt</code>、<code>qmt-remote</code>、<code>rqdata</code>、<code>easy_tdx</code>。RQData/easy_tdx 仍为 Beta，需要显式启用。</td>
 </tr>
 <tr>
 <td><code>DEFAULT_BROKER</code></td>
@@ -1770,6 +1892,36 @@ QMT_SERVER_SUB_ACCOUNT=demo@main
 <td>Tushare 自定义接入地址。</td>
 </tr>
 <tr>
+<td><code>RQDATA_LICENSE</code></td>
+<td>空</td>
+<td>RQData license；配置后优先使用 license 初始化 <code>rqdatac</code>。</td>
+</tr>
+<tr>
+<td><code>RQDATA_USERNAME</code> / <code>RQDATA_PASSWORD</code></td>
+<td>空</td>
+<td>RQData 用户名和密码；未配置 license 时使用。</td>
+</tr>
+<tr>
+<td><code>RQDATA_USER</code> / <code>RQDATA_PWD</code></td>
+<td>空</td>
+<td>RQData 账号密码旧别名，仍兼容。</td>
+</tr>
+<tr>
+<td><code>EASY_TDX_HOST</code> / <code>EASY_TDX_PORT</code></td>
+<td>自动选主机 / <code>7709</code></td>
+<td>easy_tdx 通达信 online 行情服务器地址和端口；留空 host 时使用 SDK 自动选主机。</td>
+</tr>
+<tr>
+<td><code>EASY_TDX_TIMEOUT</code></td>
+<td><code>10</code></td>
+<td>easy_tdx 连接超时秒数。</td>
+</tr>
+<tr>
+<td><code>EASY_TDX_USE_STUB</code></td>
+<td><code>false</code></td>
+<td>仅用于测试/demo 的显式 stub 开关；真实模式连接失败不会返回假行情。</td>
+</tr>
+<tr>
 <td><code>QMT_DATA_PATH</code></td>
 <td>空</td>
 <td>MiniQMT/xtquant 数据目录；本地 QMT 行情和本地 QMT 交易都依赖它。</td>
@@ -1857,6 +2009,16 @@ QMT_SERVER_SUB_ACCOUNT=demo@main
 <td><code>TRADE_MAX_WAIT_TIME</code></td>
 <td><code>16</code></td>
 <td>下单/撤单同步等待秒数；小于等于 <code>0</code> 时异步立即返回。</td>
+</tr>
+<tr>
+<td><code>QMT_SERVER_RPC_TIMEOUT</code></td>
+<td><code>60</code></td>
+<td>远程 QMT 客户端默认 RPC 超时，只保护网络响应，不代表等待成交时间。</td>
+</tr>
+<tr>
+<td><code>QMT_PLACE_ORDER_TIMEOUT_MARGIN</code></td>
+<td><code>30</code></td>
+<td>远程下单请求超时相对订单等待窗口的默认余量。</td>
 </tr>
 <tr>
 <td><code>EVENT_TIME_OUT</code></td>

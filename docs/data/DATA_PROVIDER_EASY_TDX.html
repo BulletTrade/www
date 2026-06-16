@@ -8,31 +8,31 @@
       
       
       
-        <link rel="canonical" href="https://bullettrade.cn/docs/backtest-data-session.html">
+        <link rel="canonical" href="https://bullettrade.cn/docs/data/DATA_PROVIDER_EASY_TDX.html">
       
       
-        <link rel="prev" href="backtest.html">
+        <link rel="prev" href="DATA_PROVIDER_RQDATA.html">
       
       
-        <link rel="next" href="optimize.html">
+        <link rel="next" href="../contributing.html">
       
       
         
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>回测数据会话优化 - BulletTrade Docs</title>
+        <title>easy_tdx 通达信数据 Beta - BulletTrade Docs</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -51,9 +51,9 @@
       
     
     
-      <link rel="stylesheet" href="css/custom.css">
+      <link rel="stylesheet" href="../css/custom.css">
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#easy_tdx-beta" class="md-skip">
           跳转至
         </a>
       
@@ -96,7 +96,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="index.html" title="BulletTrade Docs" class="md-header__button md-logo" aria-label="BulletTrade Docs" data-md-component="logo">
+    <a href="../index.html" title="BulletTrade Docs" class="md-header__button md-logo" aria-label="BulletTrade Docs" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              回测数据会话优化
+              easy_tdx 通达信数据 Beta
             
           </span>
         </div>
@@ -234,7 +234,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="index.html" class="md-tabs__link">
+      <a href="../index.html" class="md-tabs__link">
         
   
   
@@ -255,7 +255,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="python-setup.html" class="md-tabs__link">
+        <a href="../python-setup.html" class="md-tabs__link">
           
   
   
@@ -273,7 +273,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="quickstart.html" class="md-tabs__link">
+      <a href="../quickstart.html" class="md-tabs__link">
         
   
   
@@ -292,7 +292,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="research.html" class="md-tabs__link">
+      <a href="../research.html" class="md-tabs__link">
         
   
   
@@ -311,7 +311,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="config.html" class="md-tabs__link">
+      <a href="../config.html" class="md-tabs__link">
         
   
   
@@ -330,7 +330,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="backtest.html" class="md-tabs__link">
+      <a href="../backtest.html" class="md-tabs__link">
         
   
   
@@ -347,11 +347,9 @@
   
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="backtest-data-session.html" class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href="../backtest-data-session.html" class="md-tabs__link">
         
   
   
@@ -370,7 +368,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="optimize.html" class="md-tabs__link">
+      <a href="../optimize.html" class="md-tabs__link">
         
   
   
@@ -389,7 +387,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="live.html" class="md-tabs__link">
+      <a href="../live.html" class="md-tabs__link">
         
   
   
@@ -408,7 +406,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="tick.html" class="md-tabs__link">
+      <a href="../tick.html" class="md-tabs__link">
         
   
   
@@ -427,7 +425,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="trade-support.html" class="md-tabs__link">
+      <a href="../trade-support.html" class="md-tabs__link">
         
   
   
@@ -446,7 +444,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="qmt-server.html" class="md-tabs__link">
+      <a href="../qmt-server.html" class="md-tabs__link">
         
   
   
@@ -465,7 +463,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="api.html" class="md-tabs__link">
+      <a href="../api.html" class="md-tabs__link">
         
   
   
@@ -482,11 +480,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="data/DATA_PROVIDER_GUIDE.html" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="DATA_PROVIDER_GUIDE.html" class="md-tabs__link">
           
   
   
@@ -504,7 +504,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="contributing.html" class="md-tabs__link">
+      <a href="../contributing.html" class="md-tabs__link">
         
   
   
@@ -541,7 +541,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="index.html" title="BulletTrade Docs" class="md-nav__button md-logo" aria-label="BulletTrade Docs" data-md-component="logo">
+    <a href="../index.html" title="BulletTrade Docs" class="md-nav__button md-logo" aria-label="BulletTrade Docs" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -598,7 +598,7 @@
   
   
     <li class="md-nav__item">
-      <a href="index.html" class="md-nav__link">
+      <a href="../index.html" class="md-nav__link">
         
   
   
@@ -675,7 +675,7 @@
   
   
     <li class="md-nav__item">
-      <a href="python-setup.html" class="md-nav__link">
+      <a href="../python-setup.html" class="md-nav__link">
         
   
   
@@ -703,7 +703,7 @@
   
   
     <li class="md-nav__item">
-      <a href="beginner-guide.html" class="md-nav__link">
+      <a href="../beginner-guide.html" class="md-nav__link">
         
   
   
@@ -731,7 +731,7 @@
   
   
     <li class="md-nav__item">
-      <a href="beginner-route-a.html" class="md-nav__link">
+      <a href="../beginner-route-a.html" class="md-nav__link">
         
   
   
@@ -759,7 +759,7 @@
   
   
     <li class="md-nav__item">
-      <a href="beginner-route-b.html" class="md-nav__link">
+      <a href="../beginner-route-b.html" class="md-nav__link">
         
   
   
@@ -794,7 +794,7 @@
   
   
     <li class="md-nav__item">
-      <a href="quickstart.html" class="md-nav__link">
+      <a href="../quickstart.html" class="md-nav__link">
         
   
   
@@ -821,7 +821,7 @@
   
   
     <li class="md-nav__item">
-      <a href="research.html" class="md-nav__link">
+      <a href="../research.html" class="md-nav__link">
         
   
   
@@ -848,7 +848,7 @@
   
   
     <li class="md-nav__item">
-      <a href="config.html" class="md-nav__link">
+      <a href="../config.html" class="md-nav__link">
         
   
   
@@ -875,7 +875,7 @@
   
   
     <li class="md-nav__item">
-      <a href="backtest.html" class="md-nav__link">
+      <a href="../backtest.html" class="md-nav__link">
         
   
   
@@ -899,37 +899,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    回测数据会话优化
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="backtest-data-session.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../backtest-data-session.html" class="md-nav__link">
         
   
   
@@ -945,70 +918,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        启用方式
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        能力边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        实盘隔离
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#manifest" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Manifest
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1020,7 +929,7 @@
   
   
     <li class="md-nav__item">
-      <a href="optimize.html" class="md-nav__link">
+      <a href="../optimize.html" class="md-nav__link">
         
   
   
@@ -1047,7 +956,7 @@
   
   
     <li class="md-nav__item">
-      <a href="live.html" class="md-nav__link">
+      <a href="../live.html" class="md-nav__link">
         
   
   
@@ -1074,7 +983,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tick.html" class="md-nav__link">
+      <a href="../tick.html" class="md-nav__link">
         
   
   
@@ -1101,7 +1010,7 @@
   
   
     <li class="md-nav__item">
-      <a href="trade-support.html" class="md-nav__link">
+      <a href="../trade-support.html" class="md-nav__link">
         
   
   
@@ -1128,7 +1037,7 @@
   
   
     <li class="md-nav__item">
-      <a href="qmt-server.html" class="md-nav__link">
+      <a href="../qmt-server.html" class="md-nav__link">
         
   
   
@@ -1155,7 +1064,7 @@
   
   
     <li class="md-nav__item">
-      <a href="api.html" class="md-nav__link">
+      <a href="../api.html" class="md-nav__link">
         
   
   
@@ -1179,24 +1088,29 @@
       
   
   
+    
   
   
+  
     
     
     
     
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" >
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" checked>
         
           
-          <label class="md-nav__link" for="__nav_15" id="__nav_15_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_15" id="__nav_15_label" tabindex="">
             
   
   
@@ -1214,7 +1128,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_15">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1232,7 +1146,7 @@
   
   
     <li class="md-nav__item">
-      <a href="data/DATA_PROVIDER_GUIDE.html" class="md-nav__link">
+      <a href="DATA_PROVIDER_GUIDE.html" class="md-nav__link">
         
   
   
@@ -1260,7 +1174,7 @@
   
   
     <li class="md-nav__item">
-      <a href="data/DATA_PROVIDER_MATRIX.html" class="md-nav__link">
+      <a href="DATA_PROVIDER_MATRIX.html" class="md-nav__link">
         
   
   
@@ -1288,7 +1202,7 @@
   
   
     <li class="md-nav__item">
-      <a href="data/DATA_PROVIDER_ACCEPTANCE.html" class="md-nav__link">
+      <a href="DATA_PROVIDER_ACCEPTANCE.html" class="md-nav__link">
         
   
   
@@ -1316,7 +1230,7 @@
   
   
     <li class="md-nav__item">
-      <a href="data/DATA_PROVIDER_JQDATA.html" class="md-nav__link">
+      <a href="DATA_PROVIDER_JQDATA.html" class="md-nav__link">
         
   
   
@@ -1344,7 +1258,7 @@
   
   
     <li class="md-nav__item">
-      <a href="data/DATA_PROVIDER_MINIQMT.html" class="md-nav__link">
+      <a href="DATA_PROVIDER_MINIQMT.html" class="md-nav__link">
         
   
   
@@ -1372,7 +1286,7 @@
   
   
     <li class="md-nav__item">
-      <a href="data/DATA_PROVIDER_TUSHARE.html" class="md-nav__link">
+      <a href="DATA_PROVIDER_TUSHARE.html" class="md-nav__link">
         
   
   
@@ -1400,7 +1314,7 @@
   
   
     <li class="md-nav__item">
-      <a href="data/DATA_PROVIDER_RQDATA.html" class="md-nav__link">
+      <a href="DATA_PROVIDER_RQDATA.html" class="md-nav__link">
         
   
   
@@ -1425,10 +1339,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="data/DATA_PROVIDER_EASY_TDX.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    easy_tdx 通达信数据 Beta
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="DATA_PROVIDER_EASY_TDX.html" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1444,6 +1385,92 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        安装与平台
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        关键安全边界
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        支持能力
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        免费数据使用约束
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jqdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        与 JQData 对账
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        能力探测脚本
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1463,7 +1490,7 @@
   
   
     <li class="md-nav__item">
-      <a href="contributing.html" class="md-nav__link">
+      <a href="../contributing.html" class="md-nav__link">
         
   
   
@@ -1503,54 +1530,230 @@
   
 
 
-<h1 id="_1">回测数据会话优化<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<p>回测数据会话是一次回测运行内的临时性能优化层。它默认关闭，只在回测入口显式启用后生效，不会写入永久行情缓存，也不会改变实盘或 QMT 服务端的数据刷新逻辑。</p>
-<h2 id="_2">启用方式<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>命令行启用:</p>
-<div class="highlight"><pre><span></span><code>bullet-trade<span class="w"> </span>backtest<span class="w"> </span>strategy.py<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--start<span class="w"> </span><span class="m">2024</span>-01-01<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--end<span class="w"> </span><span class="m">2024</span>-12-31<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--backtest-data-session<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--backtest-data-session-manifest<span class="w"> </span>backtest_results/session_manifest.json
+<h1 id="easy_tdx-beta">easy_tdx 通达信数据源 Beta<a class="headerlink" href="#easy_tdx-beta" title="Permanent link">&para;</a></h1>
+<p><code>EasyTdxProvider</code> 位于 <code>bullet_trade/data/providers/easy_tdx.py</code>，通过 <code>DEFAULT_DATA_PROVIDER=easy_tdx</code>、<code>DEFAULT_DATA_PROVIDER=tdx</code> 或 <code>set_data_provider("easy_tdx")</code> 启用。</p>
+<h2 id="_1">安装与平台<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>easy_tdx online 模式通过 SDK 直连通达信行情服务器，不需要安装 Windows 通达信客户端。本机 macOS/Linux 也可以测试在线行情。</p>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;bullet-trade[tdx]&quot;</span>
 </code></pre></div>
-<p>可选启用内存行情块缓存:</p>
-<div class="highlight"><pre><span></span><code>bullet-trade<span class="w"> </span>backtest<span class="w"> </span>strategy.py<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--start<span class="w"> </span><span class="m">2024</span>-01-01<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--end<span class="w"> </span><span class="m">2024</span>-12-31<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--backtest-data-session<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--backtest-price-block-cache
+<p>注意：<code>easy-tdx</code> 上游包要求 Python 3.10+。BulletTrade 主包仍支持 Python 3.8+，因此 <code>tdx</code> extra 对 <code>easy-tdx</code> 使用了 Python 版本 marker；Python 3.8/3.9 用户需要单独升级环境后再使用该 provider。</p>
+<p><code>.env</code> 示例：</p>
+<div class="highlight"><pre><span></span><code>DEFAULT_DATA_PROVIDER=easy_tdx
+
+# 留空时由 easy_tdx 自动选择可用服务器
+EASY_TDX_HOST=
+EASY_TDX_PORT=7709
+EASY_TDX_TIMEOUT=10
+
+# 仅单元测试或演示使用；真实回测不要打开
+EASY_TDX_USE_STUB=false
 </code></pre></div>
-<p>也可以使用环境变量:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">BT_BACKTEST_DATA_SESSION</span><span class="o">=</span><span class="nb">true</span>
-<span class="nb">export</span><span class="w"> </span><span class="nv">BT_BACKTEST_DATA_SESSION_QMT_DEDUP</span><span class="o">=</span><span class="nb">true</span>
-<span class="nb">export</span><span class="w"> </span><span class="nv">BT_BACKTEST_DATA_SESSION_PRICE_BLOCKS</span><span class="o">=</span><span class="nb">false</span>
-<span class="nb">export</span><span class="w"> </span><span class="nv">BT_BACKTEST_DATA_SESSION_MAX_BYTES</span><span class="o">=</span><span class="m">536870912</span>
-<span class="nb">export</span><span class="w"> </span><span class="nv">BT_BACKTEST_DATA_SESSION_MIN_FREE_BYTES</span><span class="o">=</span><span class="m">1073741824</span>
-<span class="nb">export</span><span class="w"> </span><span class="nv">BT_BACKTEST_DATA_SESSION_MANIFEST</span><span class="o">=</span>backtest_results/session_manifest.json
-</code></pre></div>
-<h2 id="_3">能力边界<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h2 id="_2">关键安全边界<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>Beta 版本保留 <code>use_stub=True</code>，但只用于测试和 demo。真实模式下：</p>
 <ul>
-<li>MiniQMT 回测下载去重: 在回测 session 内按证券、周期和覆盖区间登记已下载数据，后续覆盖范围内的请求跳过 <code>download_history_data</code>。</li>
-<li>内存行情块缓存: 仅处理可证明等价的单证券 <code>count</code> 历史窗口；<code>use_real_price=True</code> 的动态前复权不会缓存已锚定后的价格，而是缓存真实价格和复权因子等基础输入，再按当前 <code>pre_factor_ref_date</code> 重锚切片。不能证明等价的参数组合会自动降级到原 provider 路径。</li>
-<li>MiniQMT 本地数据块缓存: 启用 <code>--backtest-price-block-cache</code> 后，<code>mode=backtest</code> 的 MiniQMTProvider 会把本次回测覆盖区间内的 <code>xt.get_local_data</code> 结果按证券、周期和 <code>dividend_type</code> 暂存到内存，再按当前请求切片；动态前复权仍使用当前 <code>pre_factor_ref_date</code> 重新锚定，不复用已经锚定后的结果。</li>
-<li>current data 快照: 同一 bar 内可复用当前行情对象，进入下一 bar 后自动失效。</li>
-<li>内存预算: 通过 <code>BT_BACKTEST_DATA_SESSION_MAX_BYTES</code> 设置硬上限；可选 <code>BT_BACKTEST_DATA_SESSION_MIN_FREE_BYTES</code> 保护系统剩余内存。</li>
+<li>缺少 <code>easy_tdx</code> 依赖会抛出清晰安装错误。</li>
+<li>连接行情服务器失败会抛出错误，不会自动返回假行情。</li>
+<li><code>factor</code> 和 <code>pre_factor_ref_date</code> 通过通达信除权除息事件构造，仍属于 Beta 能力；新增标的类型或异常公司行为需要测试补充样例。</li>
 </ul>
-<h2 id="_4">实盘隔离<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<p>该优化只在 <code>BacktestEngine.run()</code> 激活的回测上下文中有效。MiniQMT provider 还会检查自身 <code>mode</code>，只有 <code>mode=backtest</code> 才会使用下载去重和本地数据块缓存。<code>mode=live</code>、QMT server adapter、实时 tick、订阅行情和实盘 current data 都不会读取回测 session 的 downloaded 记录或内存缓存。</p>
-<p>如果怀疑优化影响结果，可关闭:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">unset</span><span class="w"> </span>BT_BACKTEST_DATA_SESSION
-</code></pre></div>
-<p>或不要传 <code>--backtest-data-session</code>。关闭后回测会回到原 provider 调用路径。</p>
-<h2 id="manifest">Manifest<a class="headerlink" href="#manifest" title="Permanent link">&para;</a></h2>
-<p>启用 manifest 后，回测结束会输出 JSON 文件，包含:</p>
+<p>这样做的目的是避免用户在真实回测或实盘中误用自动生成的假行情。</p>
+<h2 id="_3">支持能力<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>当前优先支持：</p>
 <ul>
-<li>本次 session 的启用配置和内存预算。</li>
-<li>QMT 下载、跳过下载、覆盖校验和耗时。</li>
-<li>内存缓存命中、穿透、驱逐、降级和峰值占用。</li>
-<li>current bar 快照命中和写入次数。</li>
+<li><code>get_price()</code>：日线、1m、5m、15m、30m、60m K 线，字段映射为 <code>open/high/low/close/volume/money</code>。</li>
+<li><code>get_current_tick()</code> / <code>get_live_current()</code>：通过 quote 快照读取当前价、涨跌停和停牌状态；如果上游字段缺失，外层 <code>current_data</code> 仍会按已有规则兜底。</li>
+<li><code>get_trade_days()</code>：通过上证指数日线推导交易日。</li>
+<li><code>get_all_securities()</code>：依赖 easy_tdx 的 quotes-list 能力，实际完整性以 online 服务器返回为准。</li>
+<li><code>get_split_dividend()</code>：尝试使用 TdxClient 读取除权除息记录；不可用时返回空列表。</li>
 </ul>
-<p>manifest 不包含账号、密钥、内部服务器或用户本地敏感路径。</p>
+<p>行情单位：</p>
+<ul>
+<li>K 线 <code>volume</code> 按 easy_tdx 返回值保持为股。</li>
+<li>quote 快照 <code>vol</code> 按通达信手数换算为股。</li>
+<li><code>money</code> 保持元。</li>
+<li>代码输入支持聚宽格式，例如 <code>000001.XSHE</code>、<code>600519.XSHG</code>。</li>
+</ul>
+<h2 id="_4">免费数据使用约束<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>通达信 online 行情属于免费行情能力，必须按能力边界使用：</p>
+<table>
+<thead>
+<tr>
+<th>能力</th>
+<th>当前结论</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>股票/ETF/指数日线</td>
+<td>通过 online K 线接口探测，实际历史深度以服务器返回为准</td>
+</tr>
+<tr>
+<td>分钟线</td>
+<td>通常只覆盖近期数据；越老的 1m/5m/15m 数据越可能为空</td>
+</tr>
+<tr>
+<td>实时 quote</td>
+<td>支持轮询快照，不等同于交易所逐笔或完整 Level2</td>
+</tr>
+<tr>
+<td>历史 tick/逐笔</td>
+<td>Beta 阶段未作为回测核心能力接入</td>
+</tr>
+<tr>
+<td>复权</td>
+<td>未复权 K 线使用 online 原始数据；前复权优先用除权除息事件构造 <code>factor</code> 后计算，不再直接依赖 SDK 自带前复权</td>
+</tr>
+<tr>
+<td>动态真实价格</td>
+<td>支持日线 <code>pre_factor_ref_date</code> 动态前复权；分钟线动态前复权受限于免费分钟线历史深度</td>
+</tr>
+<tr>
+<td>请求频率</td>
+<td>免费服务器可能限流或断开；批量任务应控制 sleep 和重试</td>
+</tr>
+<tr>
+<td>Windows 客户端</td>
+<td>online 模式不需要；只有离线文件或安装目录验证才需要 Windows</td>
+</tr>
+</tbody>
+</table>
+<p>2026-06-16 在本机 <code>easy-tdx==1.14.4</code>、自动选择行情服务器、<code>000001.XSHE</code>、<code>count=50000</code> 的探测结果：</p>
+<table>
+<thead>
+<tr>
+<th>频率</th>
+<th style="text-align: right;">返回行数</th>
+<th>最早时间</th>
+<th>最新时间</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>日线</td>
+<td style="text-align: right;">8390</td>
+<td>1991-04-03</td>
+<td>2026-06-16</td>
+</tr>
+<tr>
+<td>1m</td>
+<td style="text-align: right;">23280</td>
+<td>2026-01-19 09:31</td>
+<td>2026-06-16 15:00</td>
+</tr>
+<tr>
+<td>5m</td>
+<td style="text-align: right;">23856</td>
+<td>2024-05-29 09:35</td>
+<td>2026-06-16 15:00</td>
+</tr>
+<tr>
+<td>15m</td>
+<td style="text-align: right;">7952</td>
+<td>2024-05-29 09:45</td>
+<td>2026-06-16 15:00</td>
+</tr>
+<tr>
+<td>30m</td>
+<td style="text-align: right;">3976</td>
+<td>2024-05-29 10:00</td>
+<td>2026-06-16 15:00</td>
+</tr>
+<tr>
+<td>60m</td>
+<td style="text-align: right;">1988</td>
+<td>2024-05-29 10:30</td>
+<td>2026-06-16 15:00</td>
+</tr>
+</tbody>
+</table>
+<p>同次探测中，证券列表返回股票约 5040 条、基金约 1609 条、指数约 100 条；quote 可返回最新价和涨跌停。上述结果只代表本次自动选择服务器的样例，不应写死为协议保证。注意：<code>count=8000</code> 只会返回最新 8000 条，不代表历史上限；做历史深度探测应使用更大的 <code>count</code> 或分页偏移。</p>
+<p>同日进一步指定旧分钟窗口探测，<code>000001.XSHE</code>、<code>600519.XSHG</code>、<code>510050.XSHG</code> 的 easy_tdx online 1m K 线结果如下：</p>
+<table>
+<thead>
+<tr>
+<th>窗口</th>
+<th style="text-align: right;">easy_tdx online 1m</th>
+<th style="text-align: right;">JQData 1m</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2015-12-01 到 2015-12-31</td>
+<td style="text-align: right;">0 行</td>
+<td style="text-align: right;">5520 行</td>
+</tr>
+<tr>
+<td>2025-12-01 到 2025-12-31</td>
+<td style="text-align: right;">0 行</td>
+<td style="text-align: right;">未作为本次 online 边界基准</td>
+</tr>
+</tbody>
+</table>
+<p>结论是：当前接入的 easy_tdx online 免费分钟线不能覆盖 2015 年、2025 年这类旧分钟回测窗口；如果用户的通达信客户端或离线文件有更老分钟数据，那属于后续“本地文件/客户端数据源”能力，不应混同为 online provider 已验证能力。</p>
+<h2 id="jqdata">与 JQData 对账<a class="headerlink" href="#jqdata" title="Permanent link">&para;</a></h2>
+<p>2026-06-16 使用 JQData 当前可见的最后交易日窗口（截至 2026-06-12）做样例对账：</p>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>窗口</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>日线未复权</td>
+<td>2026-06-10 到 2026-06-12</td>
+<td><code>open/high/low/close</code> 最大偏差约 <code>4e-7</code>，<code>volume</code> 最大偏差 7 股，<code>money</code> 最大偏差约 115 元</td>
+</tr>
+<tr>
+<td>1m 未复权</td>
+<td>2026-06-12 14:31 到 15:00</td>
+<td><code>open/high/low/close</code> 最大偏差约 <code>5e-7</code>，<code>volume</code> 最大偏差 28 股，<code>money</code> 最大偏差 8 元</td>
+</tr>
+<tr>
+<td>日线前复权</td>
+<td>2026-06-10 到 2026-06-12</td>
+<td>构造 factor 后价格字段最大偏差约 0.003 元；JQData 会调整前复权成交量，easy_tdx 不调整成交量，因此前复权成交量不作为一致性判断</td>
+</tr>
+<tr>
+<td>日线未复权长窗口</td>
+<td>2024-01-01 到 2026-06-12</td>
+<td>三个样例的 <code>open/high/low/close</code> 均能基本对齐，说明基础日 K 线口径可用</td>
+</tr>
+<tr>
+<td>日线前复权长窗口</td>
+<td>2024-01-01 到 2026-06-12</td>
+<td>使用 TDX 除权除息事件构造 factor 后，<code>000001.XSHE</code>、<code>600519.XSHG</code>、<code>510050.XSHG</code> 价格字段最大偏差分别约 0.011、0.091、0.0006</td>
+</tr>
+<tr>
+<td>动态前复权</td>
+<td><code>pre_factor_ref_date=2025-06-27</code></td>
+<td><code>600519.XSHG</code> 日线动态前复权最大价格偏差约 0.094 元</td>
+</tr>
+</tbody>
+</table>
+<p>JQData 当前只可见到 2026-06-12，因此不能用 2026-06-15/2026-06-16 与 easy_tdx 对账；否则会把 JQData 的不可见日期填充值误判为数据源差异。</p>
+<h2 id="_5">能力探测脚本<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>仓库提供本机探测脚本：</p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>scripts/probe_easy_tdx_capabilities.py<span class="w"> </span>--count<span class="w"> </span><span class="m">50000</span><span class="w"> </span>--json-output<span class="w"> </span>reports/easy_tdx_probe.json
+</code></pre></div>
+<p>也可以指定时间窗口复测旧分钟数据：</p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>scripts/probe_easy_tdx_capabilities.py<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--symbols<span class="w"> </span><span class="m">000001</span>.XSHE,600519.XSHG,510050.XSHG<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--frequencies<span class="w"> </span>1m<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--start-date<span class="w"> </span><span class="s2">&quot;2015-12-01 09:30:00&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--end-date<span class="w"> </span><span class="s2">&quot;2015-12-31 15:00:00&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--count<span class="w"> </span><span class="m">50000</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--json-output<span class="w"> </span>reports/easy_tdx_probe_2015_12.json
+</code></pre></div>
+<p>报告会记录：</p>
+<ul>
+<li>探测日期、Python 版本、easy-tdx 版本。</li>
+<li>样例股票、ETF、指数的日线和分钟线返回行数、时间范围、字段。</li>
+<li>quote 快照字段、最新价、涨跌停。</li>
+<li>证券列表接口的返回行数和样例。</li>
+</ul>
+<p>发布前应把该报告中的实际结果同步到本页“免费数据使用约束”。如果探测失败，发布说明必须保留失败原因，不能把 provider 描述为已完成真实数据验收。</p>
 
 
 
@@ -1616,14 +1819,14 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.tabs", "navigation.tracking", "search.suggest", "toc.integrate"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": {"default": "latest", "provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tracking", "search.suggest", "toc.integrate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
       
-        <script src="js/mermaid-init.js"></script>
+        <script src="../js/mermaid-init.js"></script>
       
     
   </body>
