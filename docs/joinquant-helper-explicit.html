@@ -8,11 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://bullettrade.cn/docs/index.html">
+        <link rel="canonical" href="https://bullettrade.cn/docs/joinquant-helper-explicit.html">
       
       
+        <link rel="prev" href="joinquant-integration-options.html">
       
-        <link rel="next" href="python-setup.html">
+      
+        <link rel="next" href="joinquant-live-takeover-usage.html">
       
       
         
@@ -23,7 +25,7 @@
     
     
       
-        <title>BulletTrade Docs</title>
+        <title>聚宽接入方案 A：显式调用 helper - BulletTrade Docs</title>
       
     
     
@@ -76,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#bullettrade" class="md-skip">
+        <a href="#a-helper" class="md-skip">
           跳转至
         </a>
       
@@ -114,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              文档首页
+              聚宽接入方案 A：显式调用 helper
             
           </span>
         </div>
@@ -230,10 +232,8 @@
   
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
+    <li class="md-tabs__item">
       <a href="index.html" class="md-tabs__link">
         
   
@@ -461,8 +461,10 @@
   
   
   
+    
   
-    <li class="md-tabs__item">
+  
+    <li class="md-tabs__item md-tabs__item--active">
       <a href="joinquant-helper-explicit.html" class="md-tabs__link">
         
   
@@ -669,37 +671,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    文档首页
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="index.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
         
   
   
@@ -715,92 +690,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#index" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        index
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        风险与声明
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        一键安装与环境准备
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#bullettrade_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        BulletTrade 有哪些优势
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cli" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        常用 CLI 速览
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        联系与支持
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1248,10 +1137,37 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="joinquant-helper-explicit.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    聚宽接入方案 A：显式调用 helper
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="joinquant-helper-explicit.html" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1267,6 +1183,103 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-helper" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 上传 helper
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 策略里配置远程 server
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 参数说明
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 下单函数怎么改
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 账户和持仓读取
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 聚宽研究里测试连接
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 优缺点
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1707,92 +1720,183 @@
   
 
 
-<h1 id="bullettrade">BulletTrade 帮助文档<a class="headerlink" href="#bullettrade" title="Permanent link">&para;</a></h1>
-<p>BulletTrade 是一套兼容聚宽 API 的量化研究与交易框架，支持多数据源、多券商接入，覆盖回测、仿真与本地/远程实盘。本页是文档主入口，与 bullettrade.cn 首页的“文档/帮助”按钮保持一致。</p>
-<p>
-  <img src="assets/logo.png" alt="BulletTrade Logo" width="100">
-</p>
+<h1 id="a-helper">聚宽接入方案 A：显式调用 helper<a class="headerlink" href="#a-helper" title="Permanent link">&para;</a></h1>
+<p>这份文档适合需要在聚宽策略或聚宽研究里直接调用 <code>bt.xxx</code> 的用户。</p>
+<p>方案 A 的核心是：聚宽继续运行策略，真实下单点显式改成 <code>bullet_trade_jq_remote_helper</code> 的函数。</p>
+<h2 id="1-helper">1. 上传 helper<a class="headerlink" href="#1-helper" title="Permanent link">&para;</a></h2>
+<p>把下面文件上传到聚宽研究根目录：</p>
+<ul>
+<li><code>bullet_trade_jq_remote_helper.py</code></li>
+</ul>
+<p>文件来源：</p>
+<ul>
+<li>GitHub：<code>helpers/bullet_trade_jq_remote_helper.py</code></li>
+</ul>
+<p>上传后，聚宽策略里可以直接：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">bullet_trade_jq_remote_helper</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">bt</span>
+</code></pre></div>
+<h2 id="2-server">2. 策略里配置远程 server<a class="headerlink" href="#2-server" title="Permanent link">&para;</a></h2>
+<p>推荐把服务器参数放在策略文件开头，把 <code>bt.configure(...)</code> 放在 <code>process_initialize(context)</code>。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">bullet_trade_jq_remote_helper</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">bt</span>
 
-<h2 id="index">index<a class="headerlink" href="#index" title="Permanent link">&para;</a></h2>
+
+<span class="n">BT_REMOTE_HOST</span> <span class="o">=</span> <span class="s2">&quot;your.server.ip&quot;</span>
+<span class="n">BT_REMOTE_PORT</span> <span class="o">=</span> <span class="mi">58620</span>
+<span class="n">BT_REMOTE_TOKEN</span> <span class="o">=</span> <span class="s2">&quot;secret&quot;</span>
+<span class="n">BT_ACCOUNT_KEY</span> <span class="o">=</span> <span class="s2">&quot;main&quot;</span>
+<span class="n">BT_SUB_ACCOUNT_ID</span> <span class="o">=</span> <span class="kc">None</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">process_initialize</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+    <span class="n">bt</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span>
+        <span class="n">host</span><span class="o">=</span><span class="n">BT_REMOTE_HOST</span><span class="p">,</span>
+        <span class="n">port</span><span class="o">=</span><span class="n">BT_REMOTE_PORT</span><span class="p">,</span>
+        <span class="n">token</span><span class="o">=</span><span class="n">BT_REMOTE_TOKEN</span><span class="p">,</span>
+        <span class="n">account_key</span><span class="o">=</span><span class="n">BT_ACCOUNT_KEY</span><span class="p">,</span>
+        <span class="n">sub_account_id</span><span class="o">=</span><span class="n">BT_SUB_ACCOUNT_ID</span><span class="p">,</span>
+    <span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">initialize</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+    <span class="c1"># 原来的 initialize 逻辑继续写在这里</span>
+    <span class="n">set_benchmark</span><span class="p">(</span><span class="s2">&quot;000300.XSHG&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p><code>process_initialize(context)</code> 用来在聚宽模拟盘进程启动或重启后恢复 helper 配置。<code>initialize(context)</code> 继续放原策略初始化逻辑，例如 <code>set_benchmark</code>、<code>run_daily</code>。</p>
+<h2 id="3">3. 参数说明<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>host</code></td>
+<td><code>bullet-trade server</code> 地址，可以是公网 IP、内网 IP 或域名。</td>
+</tr>
+<tr>
+<td><code>port</code></td>
+<td><code>bullet-trade server</code> 端口，默认建议 <code>58620</code>。</td>
+</tr>
+<tr>
+<td><code>token</code></td>
+<td>server 端配置的访问 token。</td>
+</tr>
+<tr>
+<td><code>account_key</code></td>
+<td>多账户配置时的账户 key；单账户可以传 <code>None</code> 或不传。</td>
+</tr>
+<tr>
+<td><code>sub_account_id</code></td>
+<td>BulletTrade 虚拟子账户 ID；不用虚拟账户时传 <code>None</code>。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="4">4. 下单函数怎么改<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<p>把聚宽原始下单函数显式改成 <code>bt.xxx</code>：</p>
+<table>
+<thead>
+<tr>
+<th>原聚宽写法</th>
+<th>方案 A 写法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>order(...)</code></td>
+<td><code>bt.order(...)</code></td>
+</tr>
+<tr>
+<td><code>order_value(...)</code></td>
+<td><code>bt.order_value(...)</code></td>
+</tr>
+<tr>
+<td><code>order_percent(...)</code></td>
+<td><code>bt.order_percent(...)</code></td>
+</tr>
+<tr>
+<td><code>order_target(...)</code></td>
+<td><code>bt.order_target(...)</code></td>
+</tr>
+<tr>
+<td><code>order_target_value(...)</code></td>
+<td><code>bt.order_target_value(...)</code></td>
+</tr>
+<tr>
+<td><code>order_target_percent(...)</code></td>
+<td><code>bt.order_target_percent(...)</code></td>
+</tr>
+<tr>
+<td><code>cancel_order(order_id)</code></td>
+<td><code>bt.cancel_order(order_id)</code></td>
+</tr>
+</tbody>
+</table>
+<p>示例：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 原来</span>
+<span class="n">order_target_value</span><span class="p">(</span><span class="s2">&quot;510300.XSHG&quot;</span><span class="p">,</span> <span class="mi">100000</span><span class="p">)</span>
+
+<span class="c1"># 改成</span>
+<span class="n">bt</span><span class="o">.</span><span class="n">order_target_value</span><span class="p">(</span><span class="s2">&quot;510300.XSHG&quot;</span><span class="p">,</span> <span class="mi">100000</span><span class="p">)</span>
+</code></pre></div>
+<p>下单默认是异步立即返回；如果希望同步等待，可以传 <code>wait_timeout</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="n">bt</span><span class="o">.</span><span class="n">order_target_value</span><span class="p">(</span><span class="s2">&quot;510300.XSHG&quot;</span><span class="p">,</span> <span class="mi">100000</span><span class="p">,</span> <span class="n">wait_timeout</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="5">5. 账户和持仓读取<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<p>方案 A 不接管 <code>context.portfolio</code>。如果策略里的仓位判断要按真实账户计算，应显式读取远程账户：</p>
+<div class="highlight"><pre><span></span><code><span class="n">acct</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">get_account</span><span class="p">()</span>
+<span class="n">positions</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">get_positions</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;远程可用资金:&quot;</span><span class="p">,</span> <span class="n">acct</span><span class="o">.</span><span class="n">available_cash</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;远程总资产:&quot;</span><span class="p">,</span> <span class="n">acct</span><span class="o">.</span><span class="n">total_value</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;远程持仓数量:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">positions</span><span class="p">))</span>
+</code></pre></div>
+<p>如果原策略继续使用下面这些字段，它们仍然来自聚宽虚拟盘：</p>
+<div class="highlight"><pre><span></span><code><span class="n">context</span><span class="o">.</span><span class="n">portfolio</span><span class="o">.</span><span class="n">available_cash</span>
+<span class="n">context</span><span class="o">.</span><span class="n">portfolio</span><span class="o">.</span><span class="n">total_value</span>
+<span class="n">context</span><span class="o">.</span><span class="n">portfolio</span><span class="o">.</span><span class="n">positions</span>
+</code></pre></div>
+<p>所以当策略依赖现金、持仓、市值比例来决定真实下单金额时，要么把这些判断也改成 <code>bt.get_account()</code> / <code>bt.get_positions()</code>，要么改用 <a href="joinquant-live-takeover-usage.html">方案 B：接管聚宽函数</a>。</p>
+<h2 id="6">6. 聚宽研究里测试连接<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<p>在聚宽研究环境里可以先运行下面代码，只测试连接、账户读取和持仓读取；默认不下单。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">bullet_trade_jq_remote_helper</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">bt</span>
+
+
+<span class="n">bt</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span>
+    <span class="n">host</span><span class="o">=</span><span class="s2">&quot;your.server.ip&quot;</span><span class="p">,</span>
+    <span class="n">port</span><span class="o">=</span><span class="mi">58620</span><span class="p">,</span>
+    <span class="n">token</span><span class="o">=</span><span class="s2">&quot;secret&quot;</span><span class="p">,</span>
+    <span class="n">account_key</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
+    <span class="n">sub_account_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">acct</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">get_account</span><span class="p">()</span>
+<span class="n">positions</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">get_positions</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;远程可用资金:&quot;</span><span class="p">,</span> <span class="n">acct</span><span class="o">.</span><span class="n">available_cash</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;远程总资产:&quot;</span><span class="p">,</span> <span class="n">acct</span><span class="o">.</span><span class="n">total_value</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;远程持仓数量:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">positions</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">pos</span> <span class="ow">in</span> <span class="n">positions</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">pos</span><span class="o">.</span><span class="n">security</span><span class="p">,</span> <span class="n">pos</span><span class="o">.</span><span class="n">amount</span><span class="p">,</span> <span class="n">pos</span><span class="o">.</span><span class="n">available</span><span class="p">,</span> <span class="n">pos</span><span class="o">.</span><span class="n">market_value</span><span class="p">,</span> <span class="n">pos</span><span class="o">.</span><span class="n">avg_cost</span><span class="p">)</span>
+
+<span class="c1"># 谨慎：取消注释后会真实远程下单</span>
+<span class="c1"># bt.order(&quot;000001.XSHE&quot;, 100, wait_timeout=0)</span>
+</code></pre></div>
+<h2 id="7">7. 优缺点<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
+<p>优点：</p>
 <ul>
-<li><a href="python-setup.html">环境准备：安装 Python</a>：两个方案共用的前置步骤，先装 Python，再创建虚拟环境。</li>
-<li><a href="beginner-guide.html">新手入门总览</a>：先看 BulletTrade 目前支持的两种方案、结构图和选型方法，再进入对应文档。</li>
-<li><a href="beginner-route-a.html">方案 A：独立运行</a>：策略在 BulletTrade 独立运行，连接本地 QMT。</li>
-<li><a href="beginner-route-b.html">方案 B：聚宽侧模拟盘运行</a>：策略在聚宽侧模拟盘运行，BulletTrade 负责接收信号并在本地 QMT 执行。</li>
-<li><a href="joinquant-integration-options.html">聚宽策略接入方案对比</a>：在聚宽侧运行策略时，比较显式调用 helper 和接管聚宽函数两种改法。</li>
-<li><a href="joinquant-helper-explicit.html">聚宽接入方案 A：显式调用 helper</a>：下单处显式改成 <code>bt.order_target_value(...)</code> 等函数。</li>
-<li><a href="joinquant-live-takeover-usage.html">聚宽接入方案 B：接管聚宽函数</a>：回测不接管，模拟盘使用 BulletTrade 真实账户状态和远程下单，尽量减少策略代码改动。</li>
-<li><a href="joinquant-live-takeover.html">聚宽模拟盘完全接管设计说明</a>：兼容层实现边界、账户代理、下单映射和验收清单。</li>
-<li><a href="quickstart.html">快速上手</a>：三步跑通回测/实盘，聚宽策略无改直接复用。</li>
-<li><a href="research.html">研究环境（JupyterLab）</a>：<code>bullet-trade lab</code> 一键启动 Notebook，默认根目录、设置文件与示例说明。</li>
-<li><a href="config.html">配置总览</a>：回测/本地实盘/远程实盘/聚宽接入的环境变量一览。</li>
-<li><a href="backtest.html">回测引擎</a>：真实价格成交、分红送股处理、聚宽代码示例与 CLI 回测。</li>
-<li><a href="optimize.html">参数优化</a>：多进程并行参数寻优，自动找出最优策略参数。</li>
-<li><a href="live.html">实盘引擎</a>：本地 QMT 独立实盘与远程实盘流程。</li>
-<li><a href="trade-support.html">交易支撑</a>：聚宽模拟盘接入、远程 QMT 服务与 helper 用法。</li>
-<li><a href="qmt-server.html">QMT 服务配置</a>：bullet-trade server 的完整说明。</li>
-<li><a href="tick.html">Tick 订阅指南</a>：本地 xtdata 与远程 qmt-remote 的订阅、字段与常见问题。</li>
-<li><a href="data/DATA_PROVIDER_GUIDE.html">数据源指南</a>：聚宽、MiniQMT、Tushare 以及自定义 Provider 配置。</li>
-<li><a href="api.html">API 文档</a>：策略可用 API、类模型与工具函数。</li>
+<li>真实下单点很明确。</li>
+<li>不覆盖聚宽原始函数，适合研究、调试和小范围改造。</li>
+<li>对已经按 <code>bt.xxx</code> 改好的老策略完全兼容。</li>
 </ul>
-<p><strong>链接</strong>：
-- GitHub 仓库 https://github.com/BulletTrade/bullet-trade 
-- 官方站点 https://bullettrade.cn/</p>
-<h2 id="_1">风险与声明<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>缺点：</p>
 <ul>
-<li>量化及实盘有市场与系统风险，任何策略/软件均不保证收益,软件不可避免有BUG,请先小额或模拟验证，自行承担交易风险。</li>
-<li>TuShare 数据源受测试账号权限限制，覆盖不完全，欢迎补充测试与提交 PR 完善。</li>
-<li>目前示例策略以量价数据为主，若需要财务/基本面等扩展，建议先在聚宽模拟环境调用，再通过 qmt server 完成下单。</li>
+<li>需要逐个修改下单函数。</li>
+<li>账户和持仓判断也要人工确认口径，否则可能出现“聚宽虚拟盘资金判断、远程真实账户下单”的错配。</li>
+<li>存量策略下单点很多时，改造成本高于方案 B。</li>
 </ul>
-<h2 id="_2">一键安装与环境准备<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<ul>
-<li>推荐使用 Python 3.10+ 并创建虚拟环境：
-  <div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
-<span class="c1"># macos/linux</span>
-<span class="nb">source</span><span class="w"> </span>.venv/bin/activate
-<span class="c1"># windows</span>
-.venv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate.bat
-</code></pre></div></li>
-<li>一键安装：
-  <div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>bullet-trade
-</code></pre></div></li>
-<li>开发/贡献模式：
-  <div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;.[dev]&quot;</span>
-<span class="c1"># macos/linux</span>
-cp<span class="w"> </span>env.example<span class="w"> </span>.env
-<span class="c1"># windows (cmd)</span>
-copy<span class="w"> </span>env.example<span class="w"> </span>.env
-</code></pre></div></li>
-<li>如果你还不知道 <code>.env</code> 是什么，先看 <a href="python-setup.html#env-file">什么是 <code>.env</code> 文件，怎么创建</a>。</li>
-<li>安装全部可选依赖：
-  <div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;.[all]&quot;</span>
-</code></pre></div></li>
-<li>安装后可用 <code>python -m bullet_trade.cli --help</code> 或 <code>bullet-trade --version</code> 检查。</li>
-</ul>
-<h2 id="bullettrade_1">BulletTrade 有哪些优势<a class="headerlink" href="#bullettrade_1" title="Permanent link">&para;</a></h2>
-<ul>
-<li>兼容聚宽策略：<code>from jqdata import *</code> / <code>from bullet_trade.compat.api import *</code> 即可平滑迁移。</li>
-<li>数据自由切换：JQData、MiniQMT、TuShare、本地缓存、远程 QMT server 均可用。</li>
-<li>券商多入口：本地 QMT、远程 QMT server 与模拟券商可按场景切换。</li>
-<li>CLI 简单双击：回测、报告生成、实盘/服务启动都用同一套命令。</li>
-</ul>
-<h2 id="cli">常用 CLI 速览<a class="headerlink" href="#cli" title="Permanent link">&para;</a></h2>
-<ul>
-<li>回测：<br />
-<code>bullet-trade backtest strategies/demo_strategy.py --start 2024-01-01 --end 2024-03-01 --frequency minute --benchmark 000300.XSHG</code></li>
-<li>参数优化：<br />
-<code>bullet-trade optimize strategies/demo_strategy.py --params params.json --start 2020-01-01 --end 2023-12-31 --output optimization.csv</code></li>
-<li>实盘（本地/远程 QMT，未配置时可先用模拟券商）：<br />
-<code>bullet-trade live strategies/demo_strategy.py --broker qmt</code><br />
-<code>bullet-trade live strategies/demo_strategy.py --broker qmt-remote  # 需要 .env 配好 QMT_SERVER_*</code></li>
-<li>远程服务（MiniQMT+QMT）：<br />
-<code>bullet-trade server --listen 0.0.0.0 --port 58620 --token secret --enable-data --enable-broker</code></li>
-<li>报告：<br />
-<code>bullet-trade report --input backtest_results --format html</code></li>
-</ul>
-<h2 id="_3">联系与支持<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<p>如需交流或反馈，低佣开通QMT等，可扫码添加微信，并在 Issue/PR 中提出建议：</p>
-<p><img src="assets/wechat-contact.png" alt="微信二维码" width="180"></p>
 
 
 

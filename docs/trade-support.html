@@ -14,7 +14,7 @@
         <link rel="prev" href="tick.html">
       
       
-        <link rel="next" href="qmt-server.html">
+        <link rel="next" href="joinquant-integration-options.html">
       
       
         
@@ -434,6 +434,82 @@
     
   
   交易支撑
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="joinquant-integration-options.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  聚宽策略接入方案对比
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="joinquant-helper-explicit.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  聚宽接入方案 A：显式调用 helper
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="joinquant-live-takeover-usage.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  聚宽接入方案 B：接管聚宽函数
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="joinquant-live-takeover.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  聚宽模拟盘完全接管设计说明
 
       </a>
     </li>
@@ -1092,10 +1168,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
+  <a href="#3-helper" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. 在策略里最小配置
+        3. 在策略里最小配置（显式 helper 调用）
       
     </span>
   </a>
@@ -1156,6 +1232,114 @@
   
 </nav>
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="joinquant-integration-options.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    聚宽策略接入方案对比
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="joinquant-helper-explicit.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    聚宽接入方案 A：显式调用 helper
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="joinquant-live-takeover-usage.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    聚宽接入方案 B：接管聚宽函数
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="joinquant-live-takeover.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    聚宽模拟盘完全接管设计说明
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1232,10 +1416,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_19" >
         
           
-          <label class="md-nav__link" for="__nav_15" id="__nav_15_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_19" id="__nav_19_label" tabindex="0">
             
   
   
@@ -1253,8 +1437,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_15">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_19_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_19">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1544,6 +1728,12 @@
 
 <h1 id="_1">交易支撑：聚宽模拟盘远程实盘<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <p>这页只保留最小流程：聚宽策略如何连到远程 <code>bullet-trade server</code> 做真实下单。</p>
+<p>聚宽侧改策略有两种方式：</p>
+<ul>
+<li><a href="joinquant-helper-explicit.html">聚宽接入方案 A：显式调用 helper</a>：下单处写 <code>bt.order(...)</code>、<code>bt.order_target_value(...)</code>。</li>
+<li><a href="joinquant-live-takeover-usage.html">聚宽接入方案 B：接管聚宽函数</a>：在 <code>process_initialize</code> 安装兼容层，原来的 <code>order(...)</code>、<code>context.portfolio</code> 尽量不改。</li>
+</ul>
+<p>两种方式的优缺点见 <a href="joinquant-integration-options.html">聚宽策略接入方案对比</a>。</p>
 <h2 id="1-server">1. 先启动远程 server<a class="headerlink" href="#1-server" title="Permanent link">&para;</a></h2>
 <p>Windows 机器上的 <code>.env</code> 最少只要：</p>
 <div class="highlight"><pre><span></span><code>QMT_DATA_PATH=C:\国金QMT交易端\userdata_mini
@@ -1559,17 +1749,18 @@ QMT_SERVER_TOKEN=secret
 <ul>
 <li><code>helpers/bullet_trade_jq_remote_helper.py</code></li>
 </ul>
-<h2 id="3">3. 在策略里最小配置<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<h2 id="3-helper">3. 在策略里最小配置（显式 helper 调用）<a class="headerlink" href="#3-helper" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">bullet_trade_jq_remote_helper</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">bt</span>
-
-<span class="n">bt</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span>
-    <span class="n">host</span><span class="o">=</span><span class="s2">&quot;your.server.ip&quot;</span><span class="p">,</span>
-    <span class="n">port</span><span class="o">=</span><span class="mi">58620</span><span class="p">,</span>
-    <span class="n">token</span><span class="o">=</span><span class="s2">&quot;secret&quot;</span><span class="p">,</span>
-<span class="p">)</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">initialize</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
     <span class="n">set_benchmark</span><span class="p">(</span><span class="s1">&#39;000300.XSHG&#39;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">process_initialize</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+    <span class="n">bt</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span>
+        <span class="n">host</span><span class="o">=</span><span class="s2">&quot;your.server.ip&quot;</span><span class="p">,</span>
+        <span class="n">port</span><span class="o">=</span><span class="mi">58620</span><span class="p">,</span>
+        <span class="n">token</span><span class="o">=</span><span class="s2">&quot;secret&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">handle_data</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
     <span class="n">bt</span><span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="s1">&#39;000001.XSHE&#39;</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>

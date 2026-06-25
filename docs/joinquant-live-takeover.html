@@ -1,0 +1,2356 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://bullettrade.cn/docs/joinquant-live-takeover.html">
+      
+      
+        <link rel="prev" href="joinquant-live-takeover-usage.html">
+      
+      
+        <link rel="next" href="qmt-server.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>聚宽模拟盘完全接管设计说明 - BulletTrade Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="css/custom.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="aa" data-md-color-accent="aa">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="index.html" title="BulletTrade Docs" class="md-header__button md-logo" aria-label="BulletTrade Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            BulletTrade Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              聚宽模拟盘完全接管设计说明
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="aa" data-md-color-accent="aa"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/BulletTrade/bullet-trade" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  官方首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="index.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  文档首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="python-setup.html" class="md-tabs__link">
+          
+  
+  
+  新手入门
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="quickstart.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  快速上手
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="research.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  研究环境
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="config.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  配置总览
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="backtest.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  回测引擎
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="backtest-data-session.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  回测数据会话优化
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="optimize.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  参数优化
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="live.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  实盘引擎
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="tick.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Tick 行情指南
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="trade-support.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  交易支撑
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="joinquant-integration-options.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  聚宽策略接入方案对比
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="joinquant-helper-explicit.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  聚宽接入方案 A：显式调用 helper
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="joinquant-live-takeover-usage.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  聚宽接入方案 B：接管聚宽函数
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="joinquant-live-takeover.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  聚宽模拟盘完全接管设计说明
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="qmt-server.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  QMT 服务配置
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="api.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  API 文档
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="data/DATA_PROVIDER_GUIDE.html" class="md-tabs__link">
+          
+  
+  
+  数据源
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="contributing.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  邀请贡献
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="BulletTrade Docs" class="md-nav__button md-logo" aria-label="BulletTrade Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    BulletTrade Docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/BulletTrade/bullet-trade" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    官方首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    文档首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    新手入门
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    新手入门
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="python-setup.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    环境准备：安装 Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="beginner-guide.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    总览与选型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="beginner-route-a.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    方案 A：独立运行
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="beginner-route-b.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    方案 B：聚宽侧模拟盘运行
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="quickstart.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    快速上手
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="research.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    研究环境
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="config.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    配置总览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="backtest.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    回测引擎
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="backtest-data-session.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    回测数据会话优化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="optimize.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    参数优化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="live.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实盘引擎
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tick.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tick 行情指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="trade-support.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    交易支撑
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="joinquant-integration-options.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    聚宽策略接入方案对比
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="joinquant-helper-explicit.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    聚宽接入方案 A：显式调用 helper
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="joinquant-live-takeover-usage.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    聚宽接入方案 B：接管聚宽函数
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    聚宽模拟盘完全接管设计说明
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="joinquant-live-takeover.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    聚宽模拟盘完全接管设计说明
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        目标
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基本原则
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="基本原则">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 回测不接管
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 模拟盘完全接管
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 默认不在聚宽下单
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 默认同步等待 16 秒
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        账户状态接管
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="账户状态接管">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#portfolio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Portfolio 字段
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#position" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Position 字段
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        刷新策略
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        下单函数接管
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="下单函数接管">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#style" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        style 映射
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        按比例或权重下单
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        用户策略可直接使用的内容
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        返回值
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        启动顺序
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        失败策略
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        实现清单
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        和当前方案的关系
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="qmt-server.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    QMT 服务配置
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="api.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API 文档
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_19" >
+        
+          
+          <label class="md-nav__link" for="__nav_19" id="__nav_19_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据源
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_19_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_19">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    数据源
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data/DATA_PROVIDER_GUIDE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据源指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data/DATA_PROVIDER_MATRIX.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据源能力矩阵
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data/DATA_PROVIDER_ACCEPTANCE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据源接入验收框架
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data/DATA_PROVIDER_JQDATA.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    聚宽数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data/DATA_PROVIDER_MINIQMT.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MiniQMT 数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data/DATA_PROVIDER_TUSHARE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tushare 数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data/DATA_PROVIDER_RQDATA.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RQData 数据 Beta
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data/DATA_PROVIDER_EASY_TDX.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    easy_tdx 通达信数据 Beta
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="contributing.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    邀请贡献
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="_1">聚宽模拟盘完全接管设计说明<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>用户接入流程见 <a href="joinquant-live-takeover-usage.html">聚宽接入方案 B：接管聚宽函数</a>。当前文档用于说明兼容层实现边界、账户代理、下单映射和验收清单。</p>
+</blockquote>
+<h2 id="_2">目标<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>让强依赖聚宽平台环境的策略继续在聚宽模拟盘里运行，但账户状态和真实下单由 BulletTrade 完全接管。</p>
+<p>目标用户只需要在策略头部增加一小段初始化代码，后面的选股、择时、仓位判断和下单代码尽量不改。</p>
+<p>推荐写法：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">bullet_trade_jq_remote_helper</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">bt</span>
+
+
+<span class="n">BT_REMOTE_HOST</span> <span class="o">=</span> <span class="s2">&quot;your.server.ip&quot;</span>
+<span class="n">BT_REMOTE_PORT</span> <span class="o">=</span> <span class="mi">58620</span>
+<span class="n">BT_REMOTE_TOKEN</span> <span class="o">=</span> <span class="s2">&quot;secret&quot;</span>
+<span class="n">BT_ACCOUNT_KEY</span> <span class="o">=</span> <span class="s2">&quot;main&quot;</span>
+<span class="n">BT_SUB_ACCOUNT_ID</span> <span class="o">=</span> <span class="kc">None</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_install_bt</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+    <span class="n">bt</span><span class="o">.</span><span class="n">install_jq_compat</span><span class="p">(</span>
+        <span class="nb">globals</span><span class="p">(),</span>
+        <span class="n">context</span><span class="o">=</span><span class="n">context</span><span class="p">,</span>
+        <span class="n">host</span><span class="o">=</span><span class="n">BT_REMOTE_HOST</span><span class="p">,</span>
+        <span class="n">port</span><span class="o">=</span><span class="n">BT_REMOTE_PORT</span><span class="p">,</span>
+        <span class="n">token</span><span class="o">=</span><span class="n">BT_REMOTE_TOKEN</span><span class="p">,</span>
+        <span class="n">account_key</span><span class="o">=</span><span class="n">BT_ACCOUNT_KEY</span><span class="p">,</span>
+        <span class="n">sub_account_id</span><span class="o">=</span><span class="n">BT_SUB_ACCOUNT_ID</span><span class="p">,</span>
+        <span class="n">mirror_jq_orders</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">default_wait_timeout</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
+    <span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">initialize</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+    <span class="c1"># 原策略原来的 initialize 逻辑继续写在下面</span>
+    <span class="n">set_benchmark</span><span class="p">(</span><span class="s2">&quot;000300.XSHG&quot;</span><span class="p">)</span>
+    <span class="n">run_daily</span><span class="p">(</span><span class="n">market_open</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="s2">&quot;09:35&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">process_initialize</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+    <span class="n">_install_bt</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+</code></pre></div>
+<p>如果不想封装 <code>_install_bt(context)</code>，也可以直接写在 <code>process_initialize(context)</code> 里：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">bullet_trade_jq_remote_helper</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">bt</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">initialize</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+    <span class="c1"># 原策略原来的 initialize 逻辑继续写在下面</span>
+    <span class="n">set_benchmark</span><span class="p">(</span><span class="s2">&quot;000300.XSHG&quot;</span><span class="p">)</span>
+    <span class="n">run_daily</span><span class="p">(</span><span class="n">market_open</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="s2">&quot;09:35&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">process_initialize</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+    <span class="n">bt</span><span class="o">.</span><span class="n">install_jq_compat</span><span class="p">(</span>
+        <span class="nb">globals</span><span class="p">(),</span>
+        <span class="n">context</span><span class="o">=</span><span class="n">context</span><span class="p">,</span>
+        <span class="n">host</span><span class="o">=</span><span class="s2">&quot;your.server.ip&quot;</span><span class="p">,</span>
+        <span class="n">port</span><span class="o">=</span><span class="mi">58620</span><span class="p">,</span>
+        <span class="n">token</span><span class="o">=</span><span class="s2">&quot;secret&quot;</span><span class="p">,</span>
+        <span class="n">account_key</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
+        <span class="n">sub_account_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">mirror_jq_orders</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">default_wait_timeout</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
+    <span class="p">)</span>
+</code></pre></div>
+<p>参数说明：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>globals()</code></td>
+<td>是</td>
+<td>当前策略文件的全局命名空间。helper 会在这里替换 <code>order</code>、<code>order_value</code>、<code>order_percent</code>、<code>order_target</code>、<code>order_target_value</code>、<code>order_target_percent</code> 等函数。</td>
+</tr>
+<tr>
+<td><code>context</code></td>
+<td>是</td>
+<td>聚宽传入的策略上下文。用于判断 <code>context.run_params.type</code>，并在模拟盘环境下接管 <code>context.portfolio</code> 和 <code>context.subportfolios</code>。</td>
+</tr>
+<tr>
+<td><code>host</code></td>
+<td>是</td>
+<td><code>bullet-trade server</code> 地址，可以是公网 IP、内网 IP 或域名。</td>
+</tr>
+<tr>
+<td><code>port</code></td>
+<td>否</td>
+<td><code>bullet-trade server</code> 端口，默认建议 <code>58620</code>。</td>
+</tr>
+<tr>
+<td><code>token</code></td>
+<td>是</td>
+<td>server 端配置的访问 token。</td>
+</tr>
+<tr>
+<td><code>account_key</code></td>
+<td>否</td>
+<td>多账户配置时的账户 key；单账户可以传 <code>None</code> 或不传。</td>
+</tr>
+<tr>
+<td><code>sub_account_id</code></td>
+<td>否</td>
+<td>BulletTrade 虚拟子账户 ID；不用虚拟账户时传 <code>None</code>。</td>
+</tr>
+<tr>
+<td><code>mirror_jq_orders</code></td>
+<td>否</td>
+<td>默认 <code>False</code>。是否在远程下单成功后，额外调用聚宽原始下单函数做页面展示。真实交易建议保持 <code>False</code>。</td>
+</tr>
+<tr>
+<td><code>default_wait_timeout</code></td>
+<td>否</td>
+<td>默认 <code>16</code> 秒。聚宽兼容接管层的下单默认同步等待时间；单次下单传 <code>wait_timeout=0</code> 可异步立即返回。</td>
+</tr>
+</tbody>
+</table>
+<p>安装后，原策略里的这些代码仍按原样写：</p>
+<div class="highlight"><pre><span></span><code><span class="n">cash</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">portfolio</span><span class="o">.</span><span class="n">available_cash</span>
+<span class="n">total_value</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">portfolio</span><span class="o">.</span><span class="n">total_value</span>
+
+<span class="k">if</span> <span class="n">context</span><span class="o">.</span><span class="n">portfolio</span><span class="o">.</span><span class="n">positions</span><span class="p">[</span><span class="s2">&quot;510300.XSHG&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">closeable_amount</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">order_target_value</span><span class="p">(</span><span class="s2">&quot;510300.XSHG&quot;</span><span class="p">,</span> <span class="n">total_value</span> <span class="o">*</span> <span class="mf">0.2</span><span class="p">)</span>
+</code></pre></div>
+<p>在聚宽模拟盘环境中，上面读取到的是 BulletTrade 远程账户状态，下单也发到 <code>bullet-trade server</code>。</p>
+<h2 id="_3">基本原则<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="1">1. 回测不接管<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<p>当 <code>context.run_params.type</code> 是下面任意值时，helper 不替换账户对象，也不替换下单函数：</p>
+<ul>
+<li><code>simple_backtest</code></li>
+<li><code>full_backtest</code></li>
+</ul>
+<p>回测仍完全由聚宽自己的回测系统处理，避免把历史回测信号误发到真实账户。</p>
+<h3 id="2">2. 模拟盘完全接管<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<p>当 <code>context.run_params.type == "sim_trade"</code> 时，helper 接管两类入口：</p>
+<ul>
+<li>账户读取：<code>context.portfolio</code>、<code>context.subportfolios[0]</code>、<code>positions</code>、<code>available_cash</code>、<code>total_value</code> 等</li>
+<li>交易函数：<code>order</code>、<code>order_value</code>、<code>order_percent</code>、<code>order_target</code>、<code>order_target_value</code>、<code>order_target_percent</code>、<code>cancel_order</code>、<code>get_open_orders</code>、<code>get_orders</code>、<code>get_trades</code></li>
+</ul>
+<p>策略中的仓位计算、现金判断和下单金额都基于 BulletTrade 远程账户，避免“用聚宽虚拟盘现金计算，真实账户执行”的错配。</p>
+<h3 id="3">3. 默认不在聚宽下单<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<p>默认 <code>mirror_jq_orders=False</code>。</p>
+<p>也就是说，聚宽模拟盘只负责运行策略代码、取聚宽平台数据、打印日志；真实下单只走 BulletTrade。</p>
+<p>如果用户明确想让聚宽页面里也显示一份虚拟订单，可以设置：</p>
+<div class="highlight"><pre><span></span><code><span class="n">bt</span><span class="o">.</span><span class="n">install_jq_compat</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">mirror_jq_orders</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+<p>此时 helper 会在远程下单成功后，尽力调用一次聚宽原始下单函数做页面展示。这个调用只用于展示，不作为真实交易结果；如果聚宽虚拟盘资金或持仓不匹配导致失败，只记录 warning，不影响远程真实订单。</p>
+<h3 id="4-16">4. 默认同步等待 16 秒<a class="headerlink" href="#4-16" title="Permanent link">&para;</a></h3>
+<p>聚宽兼容接管层的下单默认是同步等待，默认等待窗口为 <code>16</code> 秒：</p>
+<div class="highlight"><pre><span></span><code><span class="n">bt</span><span class="o">.</span><span class="n">install_jq_compat</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">default_wait_timeout</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+</code></pre></div>
+<p>这和 BulletTrade 实盘侧 <code>TRADE_MAX_WAIT_TIME=16</code> 的默认语义保持一致。策略中如果没有显式传 <code>wait_timeout</code>，wrapper 会把 <code>16</code> 秒传给远程 server；如果某一次下单希望异步立即返回，可以显式写：</p>
+<div class="highlight"><pre><span></span><code><span class="n">order_target_value</span><span class="p">(</span><span class="s2">&quot;510300.XSHG&quot;</span><span class="p">,</span> <span class="mi">100000</span><span class="p">,</span> <span class="n">wait_timeout</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+<p>低层 <code>bt.order(...)</code> / <code>bt.order_target_value(...)</code> 直接调用接口仍保留旧 helper 的兼容行为；<code>install_jq_compat</code> 包出来的聚宽同名函数采用同步 16 秒作为默认值。</p>
+<h2 id="_4">账户状态接管<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>模拟盘接管后，helper 会从 <code>bullet-trade server</code> 拉取真实账户信息，并构造聚宽风格的只读对象。</p>
+<h3 id="portfolio">Portfolio 字段<a class="headerlink" href="#portfolio" title="Permanent link">&para;</a></h3>
+<p>需要优先兼容这些常用字段：</p>
+<ul>
+<li><code>available_cash</code></li>
+<li><code>total_value</code></li>
+<li><code>positions_value</code></li>
+<li><code>positions</code></li>
+<li><code>subportfolios</code></li>
+</ul>
+<p><code>context.portfolio.positions</code> 应表现为一个 dict：</p>
+<div class="highlight"><pre><span></span><code><span class="n">position</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">portfolio</span><span class="o">.</span><span class="n">positions</span><span class="p">[</span><span class="s2">&quot;510300.XSHG&quot;</span><span class="p">]</span>
+</code></pre></div>
+<p>不存在的持仓建议返回空持仓对象，而不是直接抛 <code>KeyError</code>，以兼容常见写法：</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">context</span><span class="o">.</span><span class="n">portfolio</span><span class="o">.</span><span class="n">positions</span><span class="p">[</span><span class="n">stock</span><span class="p">]</span><span class="o">.</span><span class="n">closeable_amount</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">order_target_value</span><span class="p">(</span><span class="n">stock</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="position">Position 字段<a class="headerlink" href="#position" title="Permanent link">&para;</a></h3>
+<p>远程持仓对象至少兼容：</p>
+<ul>
+<li><code>security</code></li>
+<li><code>total_amount</code></li>
+<li><code>closeable_amount</code></li>
+<li><code>value</code></li>
+<li><code>price</code></li>
+<li><code>avg_cost</code></li>
+<li><code>hold_cost</code></li>
+</ul>
+<p>字段映射建议：</p>
+<table>
+<thead>
+<tr>
+<th>聚宽字段</th>
+<th>BulletTrade 来源</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>security</code></td>
+<td><code>RemotePosition.security</code></td>
+</tr>
+<tr>
+<td><code>total_amount</code></td>
+<td><code>RemotePosition.amount</code></td>
+</tr>
+<tr>
+<td><code>closeable_amount</code></td>
+<td><code>RemotePosition.available</code></td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td><code>RemotePosition.market_value</code></td>
+</tr>
+<tr>
+<td><code>price</code></td>
+<td><code>market_value / amount</code>，无持仓时为 <code>0</code></td>
+</tr>
+<tr>
+<td><code>avg_cost</code> / <code>hold_cost</code></td>
+<td><code>RemotePosition.avg_cost</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_5">刷新策略<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>账户对象应使用远程快照代理，而不是一次性复制。</p>
+<p>建议实现为短 TTL 的 lazy snapshot：</p>
+<ul>
+<li>首次访问 <code>context.portfolio</code> 字段时拉取远程账户和持仓</li>
+<li>同一轮策略回调内复用快照</li>
+<li>下单、撤单后主动刷新快照</li>
+<li>远程账户不可用时 fail closed：不回退到聚宽虚拟盘账本，不发送远程订单</li>
+</ul>
+<h2 id="_6">下单函数接管<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>兼容聚宽官方常用交易函数签名：</p>
+<div class="highlight"><pre><span></span><code><span class="n">order</span><span class="p">(</span><span class="n">security</span><span class="p">,</span> <span class="n">amount</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">side</span><span class="o">=</span><span class="s2">&quot;long&quot;</span><span class="p">,</span> <span class="n">pindex</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">close_today</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">order_value</span><span class="p">(</span><span class="n">security</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">side</span><span class="o">=</span><span class="s2">&quot;long&quot;</span><span class="p">,</span> <span class="n">pindex</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">close_today</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">order_percent</span><span class="p">(</span><span class="n">security</span><span class="p">,</span> <span class="n">percent</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">side</span><span class="o">=</span><span class="s2">&quot;long&quot;</span><span class="p">,</span> <span class="n">pindex</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">close_today</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">order_target</span><span class="p">(</span><span class="n">security</span><span class="p">,</span> <span class="n">amount</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">side</span><span class="o">=</span><span class="s2">&quot;long&quot;</span><span class="p">,</span> <span class="n">pindex</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">close_today</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">order_target_value</span><span class="p">(</span><span class="n">security</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">side</span><span class="o">=</span><span class="s2">&quot;long&quot;</span><span class="p">,</span> <span class="n">pindex</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">close_today</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">order_target_percent</span><span class="p">(</span><span class="n">security</span><span class="p">,</span> <span class="n">percent</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">side</span><span class="o">=</span><span class="s2">&quot;long&quot;</span><span class="p">,</span> <span class="n">pindex</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">close_today</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+<p>同时保留现有 helper 扩展参数：</p>
+<div class="highlight"><pre><span></span><code><span class="n">price</span><span class="o">=</span><span class="kc">None</span>
+<span class="n">wait_timeout</span><span class="o">=</span><span class="kc">None</span>
+<span class="n">market</span><span class="o">=</span><span class="kc">None</span>
+<span class="n">remark</span><span class="o">=</span><span class="kc">None</span>
+<span class="n">order_remark</span><span class="o">=</span><span class="kc">None</span>
+<span class="n">idempotency_key</span><span class="o">=</span><span class="kc">None</span>
+</code></pre></div>
+<p><code>wait_timeout=None</code> 表示使用 <code>install_jq_compat(default_wait_timeout=16)</code> 的默认等待窗口；显式传 <code>wait_timeout=0</code> 表示异步立即返回。</p>
+<h3 id="style">style 映射<a class="headerlink" href="#style" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>调用方式</th>
+<th>远程 payload</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>order("000001.XSHE", 100)</code></td>
+<td>市价单</td>
+</tr>
+<tr>
+<td><code>order("688001.XSHG", 100, MarketOrderStyle(10))</code></td>
+<td>市价保护单，<code>protect_price=10</code></td>
+</tr>
+<tr>
+<td><code>order("000001.XSHE", 100, LimitOrderStyle(10))</code></td>
+<td>限价单，<code>price=10</code></td>
+</tr>
+<tr>
+<td><code>bt.order(..., price=10, market=True)</code></td>
+<td>保留老 helper 语义：市价保护价</td>
+</tr>
+<tr>
+<td><code>bt.order(..., price=10)</code></td>
+<td>保留老 helper 语义：限价单</td>
+</tr>
+</tbody>
+</table>
+<p>第一版只支持股票/ETF 的 <code>side="long"</code>、<code>pindex=0</code>、<code>close_today=False</code>。</p>
+<p>这些情况应明确报不支持，不静默忽略：</p>
+<ul>
+<li><code>side="short"</code></li>
+<li><code>pindex != 0</code></li>
+<li><code>close_today=True</code></li>
+<li><code>StopMarketOrderStyle</code></li>
+<li><code>StopLimitOrderStyle</code></li>
+</ul>
+<h2 id="_7">按比例或权重下单<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>很多策略并不会直接写死金额，而是先按资产比例算目标市值：</p>
+<div class="highlight"><pre><span></span><code><span class="n">weight</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="n">target_value</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">portfolio</span><span class="o">.</span><span class="n">total_value</span> <span class="o">*</span> <span class="n">weight</span>
+<span class="n">order_target_value</span><span class="p">(</span><span class="s2">&quot;510300.XSHG&quot;</span><span class="p">,</span> <span class="n">target_value</span><span class="p">)</span>
+</code></pre></div>
+<p>这种写法可以继续使用。关键是 <code>context.portfolio.total_value</code> 已经被远程账户接管，所以按比例计算出来的目标金额来自真实账户，而不是聚宽虚拟盘。</p>
+<p>如果策略直接调用聚宽的 <code>order_percent</code> / <code>order_target_percent</code>，兼容层会用远程 <code>total_value</code> 换算下单金额，再走 BulletTrade 远程下单。</p>
+<h2 id="_8">用户策略可直接使用的内容<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p>安装兼容层后，策略中下面这些聚宽常见函数可以继续直接调用，不需要改成 <code>bt.xxx</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="n">order</span><span class="p">(</span><span class="s2">&quot;000001.XSHE&quot;</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">order_value</span><span class="p">(</span><span class="s2">&quot;000001.XSHE&quot;</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
+<span class="n">order_percent</span><span class="p">(</span><span class="s2">&quot;000001.XSHE&quot;</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="n">order_target</span><span class="p">(</span><span class="s2">&quot;000001.XSHE&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">order_target_value</span><span class="p">(</span><span class="s2">&quot;000001.XSHE&quot;</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
+<span class="n">order_target_percent</span><span class="p">(</span><span class="s2">&quot;000001.XSHE&quot;</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span>
+<span class="n">cancel_order</span><span class="p">(</span><span class="n">order_id</span><span class="p">)</span>
+<span class="n">get_open_orders</span><span class="p">()</span>
+<span class="n">get_orders</span><span class="p">()</span>
+<span class="n">get_trades</span><span class="p">()</span>
+</code></pre></div>
+<p>这些函数在回测环境中保持聚宽原始行为；在聚宽模拟盘环境中走 BulletTrade 远程账户和远程下单。</p>
+<p>策略里下面这些账户变量也可以继续按聚宽写法读取，但模拟盘环境下数据来自 BulletTrade 真实账户：</p>
+<div class="highlight"><pre><span></span><code><span class="n">context</span><span class="o">.</span><span class="n">portfolio</span><span class="o">.</span><span class="n">available_cash</span>
+<span class="n">context</span><span class="o">.</span><span class="n">portfolio</span><span class="o">.</span><span class="n">total_value</span>
+<span class="n">context</span><span class="o">.</span><span class="n">portfolio</span><span class="o">.</span><span class="n">positions_value</span>
+<span class="n">context</span><span class="o">.</span><span class="n">portfolio</span><span class="o">.</span><span class="n">positions</span>
+<span class="n">context</span><span class="o">.</span><span class="n">subportfolios</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">available_cash</span>
+<span class="n">context</span><span class="o">.</span><span class="n">subportfolios</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">total_value</span>
+<span class="n">context</span><span class="o">.</span><span class="n">subportfolios</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">positions_value</span>
+<span class="n">context</span><span class="o">.</span><span class="n">subportfolios</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">long_positions</span>
+</code></pre></div>
+<p>持仓读取示例：</p>
+<div class="highlight"><pre><span></span><code><span class="n">pos</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">portfolio</span><span class="o">.</span><span class="n">positions</span><span class="p">[</span><span class="s2">&quot;510300.XSHG&quot;</span><span class="p">]</span>
+
+<span class="n">amount</span> <span class="o">=</span> <span class="n">pos</span><span class="o">.</span><span class="n">total_amount</span>
+<span class="n">closeable</span> <span class="o">=</span> <span class="n">pos</span><span class="o">.</span><span class="n">closeable_amount</span>
+<span class="n">value</span> <span class="o">=</span> <span class="n">pos</span><span class="o">.</span><span class="n">value</span>
+<span class="n">avg_cost</span> <span class="o">=</span> <span class="n">pos</span><span class="o">.</span><span class="n">avg_cost</span>
+</code></pre></div>
+<p>按现金或总资产比例下单也可以继续沿用原写法：</p>
+<div class="highlight"><pre><span></span><code><span class="n">cash</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">portfolio</span><span class="o">.</span><span class="n">available_cash</span>
+<span class="n">order_value</span><span class="p">(</span><span class="s2">&quot;510300.XSHG&quot;</span><span class="p">,</span> <span class="n">cash</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">)</span>
+
+<span class="n">weight</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="n">target_value</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">portfolio</span><span class="o">.</span><span class="n">total_value</span> <span class="o">*</span> <span class="n">weight</span>
+<span class="n">order_target_value</span><span class="p">(</span><span class="s2">&quot;159915.XSHE&quot;</span><span class="p">,</span> <span class="n">target_value</span><span class="p">)</span>
+
+<span class="n">order_target_percent</span><span class="p">(</span><span class="s2">&quot;510300.XSHG&quot;</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
+</code></pre></div>
+<p>如果策略自己封装了按百分比下单函数，例如：</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">order_target_percent</span><span class="p">(</span><span class="n">security</span><span class="p">,</span> <span class="n">percent</span><span class="p">):</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">portfolio</span><span class="o">.</span><span class="n">total_value</span> <span class="o">*</span> <span class="n">percent</span>
+    <span class="k">return</span> <span class="n">order_target_value</span><span class="p">(</span><span class="n">security</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+</code></pre></div>
+<p>这种封装不需要额外适配，因为最终读取的是远程 <code>total_value</code>，调用的是已接管的 <code>order_target_value</code>。</p>
+<h2 id="_9">返回值<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<p>为了尽量少改用户策略，兼容层函数返回值应尽量接近聚宽：</p>
+<ul>
+<li>成功创建委托：返回一个订单对象</li>
+<li>创建失败或无需下单：返回 <code>None</code></li>
+</ul>
+<p>订单对象至少提供：</p>
+<ul>
+<li><code>order_id</code></li>
+<li><code>security</code></li>
+<li><code>amount</code></li>
+<li><code>price</code></li>
+<li><code>is_buy</code></li>
+<li><code>status</code></li>
+</ul>
+<p>现有低层 helper 可以继续返回远程订单号字符串；<code>install_jq_compat</code> 包装出来的聚宽兼容函数应返回订单对象，避免破坏原策略里对 <code>Order</code> 的判断。</p>
+<h2 id="_10">启动顺序<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<p>推荐用户把 <code>_install_bt(context)</code> 放在：</p>
+<ul>
+<li><code>process_initialize</code></li>
+</ul>
+<p>原因：</p>
+<ul>
+<li><code>initialize</code> 更适合放原策略初始化逻辑，例如 <code>set_benchmark</code>、<code>run_daily</code></li>
+<li>聚宽模拟盘进程会重启并恢复状态，网络连接和 helper 内部状态不能依赖持久化</li>
+<li><code>process_initialize</code> 更适合在每次进程启动或重启后重新安装 wrapper 和恢复远程连接</li>
+</ul>
+<p><code>install_jq_compat</code> 必须是幂等的。重复调用不应重复包裹函数，也不应重复覆盖已经安装的代理对象。</p>
+<h2 id="_11">失败策略<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<p>实盘接管必须 fail closed：</p>
+<ul>
+<li>无法连接 <code>bullet-trade server</code>：抛错或阻断远程下单</li>
+<li>远程账户不可读取：不使用聚宽虚拟盘账户兜底</li>
+<li>远程下单失败：返回 <code>None</code> 或抛出可读错误，并写日志</li>
+<li>聚宽镜像下单失败：仅当 <code>mirror_jq_orders=True</code> 时记录 warning，不影响远程真实订单</li>
+</ul>
+<h2 id="_12">实现清单<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<ol>
+<li>在 <code>helpers/bullet_trade_jq_remote_helper.py</code> 增加 <code>install_jq_compat(...)</code>。</li>
+<li>保存聚宽原始交易函数，支持卸载或重复安装检测。</li>
+<li>增加聚宽风格 <code>MarketOrderStyle</code> / <code>LimitOrderStyle</code> 识别和 style 解析。</li>
+<li>增加远程 <code>Portfolio</code> / <code>SubPortfolio</code> / <code>Position</code> 代理对象。</li>
+<li>在 <code>sim_trade</code> 下覆盖 <code>context.portfolio</code> 和 <code>context.subportfolios</code>。</li>
+<li>包装 <code>order/order_value/order_percent/order_target/order_target_value/order_target_percent/cancel_order/get_orders/get_open_orders/get_trades</code>。</li>
+<li>聚宽兼容包装层默认 <code>default_wait_timeout=16</code>，单次调用允许 <code>wait_timeout=0</code> 异步覆盖。</li>
+<li>增加测试：回测环境不远程、模拟盘接管、style 映射、按比例下单、默认同步等待 16 秒、远程不可用 fail closed、<code>mirror_jq_orders</code> best effort。</li>
+</ol>
+<h2 id="_13">和当前方案的关系<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
+<p>当前文档描述的是下一代推荐接入方式。</p>
+<p>两种用户接入方式都保留：</p>
+<ul>
+<li><a href="joinquant-helper-explicit.html">方案 A：显式调用 helper</a></li>
+<li><a href="joinquant-live-takeover-usage.html">方案 B：接管聚宽函数</a></li>
+</ul>
+<p>现有显式 helper 方式仍可使用：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">bullet_trade_jq_remote_helper</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">bt</span>
+
+<span class="n">bt</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="n">bt</span><span class="o">.</span><span class="n">order_target_value</span><span class="p">(</span><span class="s2">&quot;510300.XSHG&quot;</span><span class="p">,</span> <span class="mi">100000</span><span class="p">)</span>
+</code></pre></div>
+<p>它适合 notebook、研究环境、手工联调和已经改好的老策略。新方案面向“存量聚宽策略尽量不改代码”的模拟盘接管场景。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/BulletTrade/bullet-trade" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.tabs", "navigation.tracking", "search.suggest", "toc.integrate"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+      
+        <script src="js/mermaid-init.js"></script>
+      
+    
+  </body>
+</html>
