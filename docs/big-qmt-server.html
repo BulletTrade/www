@@ -11,6 +11,10 @@
         <link rel="canonical" href="https://bullettrade.cn/docs/big-qmt-server.html">
       
       
+        <link rel="prev" href="qmt-server.html">
+      
+      
+        <link rel="next" href="api.html">
       
       
         
@@ -523,6 +527,27 @@
     
   
   QMT 服务配置
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="big-qmt-server.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  大 QMT 服务向导
 
       </a>
     </li>
@@ -1239,6 +1264,284 @@
       
   
   
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    大 QMT 服务向导
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="big-qmt-server.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    大 QMT 服务向导
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#qmt-qmt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        小 QMT 和大 QMT 的关系
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 架构先看清
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-qmt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 登录大 QMT
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 新建 Python 策略
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-helper" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 粘贴 helper 并修改顶部参数
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 新建策略交易运行项
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-helper" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 启动 helper 服务
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-bullet-trade-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 启动 bullet-trade server
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-qmt-remote" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 策略侧仍使用 qmt-remote
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 最小验收清单
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-miniqmt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. MiniQMT 对齐口径
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. 常见问题
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. 常见问题">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#helper" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么 helper 日志里显示启动后又停止
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9000" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么 9000 能通，但策略不能连
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么下单报权限或不可用
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么密码不匹配
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#qmt-miniqmt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        大 QMT 和 MiniQMT 的接口是否完全一样
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#qmt_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        大 QMT 的历史数据是否也需要下载
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
   
   
     <li class="md-nav__item">
@@ -1280,10 +1583,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_19" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_20" >
         
           
-          <label class="md-nav__link" for="__nav_19" id="__nav_19_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_20" id="__nav_20_label" tabindex="0">
             
   
   
@@ -1301,8 +1604,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_19_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_19">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_20_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_20">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1727,6 +2030,21 @@ bullet-trade server --server-type big_qmt
 <td>股票账户用 <code>stock</code></td>
 </tr>
 <tr>
+<td><code>AUTO_ENSURE_HISTORY_CACHE</code></td>
+<td><code>data.history</code> 是否先触发历史行情下载</td>
+<td>默认 <code>True</code>，对齐 MiniQMT</td>
+</tr>
+<tr>
+<td><code>HISTORY_FAIL_ON_ENSURE_CACHE_ERROR</code></td>
+<td>自动下载失败时是否直接返回错误</td>
+<td>默认 <code>True</code>，避免读取旧缓存或空数据</td>
+</tr>
+<tr>
+<td><code>INDEX_WEIGHT_DOWNLOAD_BEFORE_READ</code></td>
+<td>指数成分读取前是否先下载指数权重</td>
+<td>默认 <code>True</code>，优先对齐 MiniQMT 成分股口径</td>
+</tr>
+<tr>
 <td><code>ENABLE_TRADING</code></td>
 <td>是否允许下单</td>
 <td>仿真测试可设 <code>True</code>，只读验证设 <code>False</code></td>
@@ -1838,7 +2156,17 @@ QMT_SERVER_TOKEN=change_me_server_token
 <li><code>broker.trades</code>：能获取成交。</li>
 <li>仿真环境下测试限价单、市价单、撤单、订单备注和虚拟子账户过滤。</li>
 </ul>
-<h2 id="10">10. 常见问题<a class="headerlink" href="#10" title="Permanent link">&para;</a></h2>
+<h2 id="10-miniqmt">10. MiniQMT 对齐口径<a class="headerlink" href="#10-miniqmt" title="Permanent link">&para;</a></h2>
+<p>大 QMT helper 和 <code>--server-type big_qmt</code> 的目标是对上层继续提供 MiniQMT 兼容的 <code>qmt-remote</code> 协议。关键数据接口按下面口径处理：</p>
+<ul>
+<li><code>data.history</code>：默认先调用大 QMT 内置 <code>download_history_data</code>，再调用 <code>get_market_data_ex</code> 读取本地行情。调用方只有在明确诊断缓存问题时才建议传 <code>auto_download=false</code>。</li>
+<li><code>data.current_tick</code>：保留当前价接口，返回结构与快照保持一致，至少包含 <code>sid</code>、<code>last_price</code>、<code>dt</code>。</li>
+<li><code>data.security_info</code>：返回聚宽风格 <code>code</code> 和 QMT 风格 <code>qmt_code</code>，同时补齐 <code>display_name</code>、<code>name</code>、<code>start_date</code>、<code>end_date</code>、<code>type</code>、<code>subtype</code>、<code>parent</code>。</li>
+<li><code>data.get_index_stocks</code>：优先使用 <code>download_index_weight</code> / <code>get_index_weight</code> 获取指数权重成分；如果当前大 QMT 环境不支持，再回退到板块列表。</li>
+<li><code>data.trade_days</code>：输出日期保持 MiniQMT 兼容格式，避免不同后端返回纯数字日期导致上层对比失败。</li>
+</ul>
+<p>这几个接口都应该通过 <code>58620</code> 的 <code>qmt-remote</code> 服务访问，不要让策略直接调用 <code>9000</code> helper。</p>
+<h2 id="11">11. 常见问题<a class="headerlink" href="#11" title="Permanent link">&para;</a></h2>
 <h3 id="helper">为什么 helper 日志里显示启动后又停止<a class="headerlink" href="#helper" title="Permanent link">&para;</a></h3>
 <p>如果日志只有：</p>
 <div class="highlight"><pre><span></span><code>module loaded
@@ -1868,6 +2196,8 @@ module autostart disabled
 <h3 id="qmt-miniqmt">大 QMT 和 MiniQMT 的接口是否完全一样<a class="headerlink" href="#qmt-miniqmt" title="Permanent link">&para;</a></h3>
 <p>上层尽量保持同一套 <code>qmt-remote</code> 协议。大 QMT 后端负责把大 QMT helper 返回值归一化成 MiniQMT 兼容口径，例如日期格式、行情字段、复权数据、订单和成交结构。</p>
 <p>新增能力应优先放在大 QMT adapter/helper 内，不应为了大 QMT 随意修改策略引擎。</p>
+<h3 id="qmt_1">大 QMT 的历史数据是否也需要下载<a class="headerlink" href="#qmt_1" title="Permanent link">&para;</a></h3>
+<p>需要。正式口径和 MiniQMT 一样：先确保本地缓存，再读取历史行情。<code>AUTO_ENSURE_HISTORY_CACHE=True</code> 时，helper 会在 <code>data.history</code> 里自动调用下载函数；如果下载失败且 <code>HISTORY_FAIL_ON_ENSURE_CACHE_ERROR=True</code>，接口会返回错误，而不是继续读可能不完整的数据。</p>
 
 
 
