@@ -1840,6 +1840,7 @@
 <li>BulletTrade 自己负责调度、取数、计算信号和下单</li>
 <li>QMT / MiniQMT 和策略放在同一台 Windows 机器上运行</li>
 </ul>
+<p>如果券商不再提供 MiniQMT，方案 A 也可以改成“大 QMT helper + <code>qmt-remote</code>”的方式运行：先按 <a href="big-qmt-server.html">大 QMT 服务向导</a> 启动 <code>58620</code> qmt server，再让本地策略连接 <code>qmt-remote</code>。</p>
 <h3 id="b">方案 B：策略在聚宽侧模拟盘运行<a class="headerlink" href="#b" title="Permanent link">&para;</a></h3>
 <p>适合：</p>
 <ul>
@@ -1859,6 +1860,7 @@
 <li>聚宽负责产生交易动作</li>
 <li>BulletTrade 只负责接收信号，并通过本地 QMT 下单</li>
 </ul>
+<p>方案 B 同样支持大 QMT。区别只在 Windows 侧的 server 后端：MiniQMT 用 <code>QMT_DATA_PATH</code>，大 QMT 用 <a href="big-qmt-server.html">大 QMT 服务向导</a> 里的 helper 和 <code>--server-type big_qmt</code>；聚宽侧仍然连接同一个 <code>58620</code> qmt server。</p>
 <blockquote>
 <p>聚宽侧改策略有两种方式：显式调用 helper，或接管聚宽函数。先看 <a href="joinquant-integration-options.html">聚宽策略接入方案对比</a>，再选择 <a href="joinquant-helper-explicit.html">方案 A：显式调用 helper</a> 或 <a href="joinquant-live-takeover-usage.html">方案 B：接管聚宽函数</a>。</p>
 </blockquote>

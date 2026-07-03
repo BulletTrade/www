@@ -1793,6 +1793,7 @@
 <div class="highlight"><pre><span></span><code>bullet-trade<span class="w"> </span>backtest<span class="w"> </span>strategies/demo_strategy.py<span class="w"> </span>--start<span class="w"> </span><span class="m">2024</span>-01-01<span class="w"> </span>--end<span class="w"> </span><span class="m">2024</span>-06-01
 </code></pre></div>
 <h2 id="3-qmt">3. 本地 QMT<a class="headerlink" href="#3-qmt" title="Permanent link">&para;</a></h2>
+<p>本节是 MiniQMT/xtquant 直连配置。它要求本机有 <code>userdata_mini</code> 数据目录，并且能加载 MiniQMT/xtquant。大 QMT 不使用 <code>QMT_DATA_PATH</code> 直连；如果要用大 QMT，请看 <a href="big-qmt-server.html">大 QMT 服务向导</a>，启动后客户端仍走第 5 节的 <code>qmt-remote</code>。</p>
 <p>如果你还不知道 <code>.env</code> 是什么，先看：</p>
 <ul>
 <li><a href="python-setup.html#env-file">什么是 <code>.env</code> 文件，怎么创建</a></li>
@@ -1808,6 +1809,7 @@ QMT_ACCOUNT_ID=123456
 <div class="highlight"><pre><span></span><code>bullet-trade<span class="w"> </span>live<span class="w"> </span>strategies/demo_strategy.py<span class="w"> </span>--broker<span class="w"> </span>qmt
 </code></pre></div>
 <h2 id="4-server">4. 远程 server<a class="headerlink" href="#4-server" title="Permanent link">&para;</a></h2>
+<p>下面是 MiniQMT 后端的远程 server 配置。如果 Windows 侧使用大 QMT，请改用 <a href="big-qmt-server.html">大 QMT 服务向导</a> 里的 <code>bullet-trade server --server-type big_qmt</code>。</p>
 <p>Windows 上的 <code>.env</code> 最少：</p>
 <div class="highlight"><pre><span></span><code>QMT_DATA_PATH=C:\国金QMT交易端\userdata_mini
 QMT_ACCOUNT_ID=123456
@@ -1843,15 +1845,17 @@ QMT_SERVER_TOKEN=secret
 只有期货账户才需要写 <code>QMT_ACCOUNT_TYPE=future</code>。</p>
 <h3 id="-data-path"><code>--data-path</code> 为什么报错<a class="headerlink" href="#-data-path" title="Permanent link">&para;</a></h3>
 <p>因为当前版本没有这个参数。<br />
-请把数据目录写到 <code>.env</code>：</p>
+MiniQMT 后端请把数据目录写到 <code>.env</code>：</p>
 <div class="highlight"><pre><span></span><code>QMT_DATA_PATH=C:\国金QMT交易端\userdata_mini
 </code></pre></div>
+<p>大 QMT 后端不使用 <code>QMT_DATA_PATH</code>，见 <a href="big-qmt-server.html">大 QMT 服务向导</a>。</p>
 <p>更多说明：</p>
 <ul>
 <li><a href="python-setup.html">环境准备：先安装 Python，再创建虚拟环境</a></li>
 <li><a href="beginner-guide.html">新手入门总览：先选方案，再看对应文档</a></li>
 <li><a href="beginner-route-a.html">方案 A：策略在 BulletTrade 本地直接运行</a></li>
 <li><a href="beginner-route-b.html">方案 B：策略继续在聚宽侧运行，BulletTrade 负责接收信号并在本地 QMT 执行</a></li>
+<li><a href="big-qmt-server.html">大 QMT 服务向导</a></li>
 <li><a href="config.html">配置总览</a></li>
 <li><a href="live.html">实盘引擎</a></li>
 <li><a href="qmt-server.html">QMT server</a></li>

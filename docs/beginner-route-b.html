@@ -1950,6 +1950,7 @@
 <li>聚宽负责选股、择时和生成买卖动作</li>
 <li>BulletTrade 负责把这些动作转发到本地或云端 Windows QMT / MiniQMT 机器执行</li>
 </ul>
+<p>本页默认用 MiniQMT/xtquant 启动远程 <code>bullet-trade server</code>。如果券商不再提供 MiniQMT，也可以先按 <a href="big-qmt-server.html">大 QMT 服务向导</a> 在大 QMT 里启动 helper，再启动 <code>bullet-trade server --server-type big_qmt</code>；聚宽侧 helper 仍然连接同一个 <code>58620</code> qmt server。</p>
 <p>这条路线适合：</p>
 <ul>
 <li>复杂策略现在就在聚宽侧跑</li>
@@ -1990,6 +1991,7 @@
 <li>启动支持 MiniQMT 的 QMT 环境</li>
 <li>登录 QMT 账号</li>
 </ol>
+<p>如果使用大 QMT，不需要 <code>userdata_mini</code> 和 xtquant 本地数据目录这条配置链路；需要在大 QMT 里新建并运行 helper 策略，具体见 <a href="big-qmt-server.html">大 QMT 服务向导</a>。</p>
 <h3 id="_2">建议的基础准备<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <ul>
 <li>已按 <a href="python-setup.html">环境准备：先安装 Python，再创建虚拟环境</a> 完成 Python 安装</li>
@@ -2019,6 +2021,7 @@
 <li><a href="python-setup.html#env-file">什么是 <code>.env</code> 文件，怎么创建</a></li>
 </ul>
 <h2 id="bullet-trade-server">第三章：配置并启动远程 <code>bullet-trade server</code><a class="headerlink" href="#bullet-trade-server" title="Permanent link">&para;</a></h2>
+<p>下面是 MiniQMT/xtquant 后端的配置。大 QMT 后端不要写 <code>QMT_DATA_PATH</code>，请按 <a href="big-qmt-server.html">大 QMT 服务向导</a> 使用 <code>BIG_QMT_GATEWAY_URL</code> 和 <code>--server-type big_qmt</code>。</p>
 <p>先准备 <code>.env</code> 文件。<br />
 下面这个代码块不是命令，而是要写进 <code>.env</code> 文件里的内容：</p>
 <div class="highlight"><pre><span></span><code>QMT_DATA_PATH=C:\QMT\userdata_mini

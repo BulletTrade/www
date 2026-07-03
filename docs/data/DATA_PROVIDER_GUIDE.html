@@ -1989,6 +1989,12 @@
 <h1 id="bullettrade">BulletTrade 数据提供者使用指南<a class="headerlink" href="#bullettrade" title="Permanent link">&para;</a></h1>
 <p>本目录包含使用 BulletTrade 不同数据提供者的示例 notebook。</p>
 <h2 id="_1">🆚 数据提供者对比<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>先区分几个名字：</p>
+<ul>
+<li><code>qmt</code> / MiniQMT Provider：本地 <code>xtquant</code> / <code>userdata_mini</code> 直连数据源。</li>
+<li>大 QMT：另一种 QMT 数据和交易后端，通过大 QMT 策略 helper 提供能力，不直接写成 <code>DEFAULT_DATA_PROVIDER=big_qmt</code>。</li>
+<li><code>qmt-remote</code> / RemoteQMT：远程客户端数据源。它是一层协议包装，底层 server 可以接 MiniQMT，也可以接大 QMT。</li>
+</ul>
 <h3 id="jqdata-provider">JQData Provider<a class="headerlink" href="#jqdata-provider" title="Permanent link">&para;</a></h3>
 <p><strong>优点：</strong>
 - ✅ 数据全面：股票、基金、期货、期权等
@@ -2018,6 +2024,7 @@
 - ⚡ 需要极速数据访问
 - 🔒 对数据安全有要求
 - 💻 已有 QMT 环境</p>
+<p>说明：MiniQMT Provider 是本地 <code>xtquant</code> / <code>userdata_mini</code> 直连模式。大 QMT 不使用这个 provider 直接配置；大 QMT 应先启动 helper 和 <code>bullet-trade server --server-type big_qmt</code>，再由策略使用 <code>qmt-remote</code> 访问。详见 <a href="../big-qmt-server.html">大 QMT 服务向导</a>。</p>
 <h3 id="rqdata-provider-beta">RQData Provider Beta<a class="headerlink" href="#rqdata-provider-beta" title="Permanent link">&para;</a></h3>
 <p><strong>优点：</strong>
 - 支持通过 <code>rqdatac</code> 接入米筐数据，接口按聚宽风格封装。
@@ -2330,6 +2337,7 @@ JQDATA_USERNAME=your_username
 JQDATA_PASSWORD=your_password
 </code></pre></div>
 <h3 id="2-miniqmt-env">2. MiniQMT 配置（.env 示例）<a class="headerlink" href="#2-miniqmt-env" title="Permanent link">&para;</a></h3>
+<p>这组配置只适用于 MiniQMT/xtquant。大 QMT 不需要 <code>QMT_DATA_PATH</code>，也不能只靠设置 <code>DEFAULT_DATA_PROVIDER=qmt</code> 启动；大 QMT 配置见 <a href="../big-qmt-server.html">大 QMT 服务向导</a>。</p>
 <div class="highlight"><pre><span></span><code># 默认数据源设置为 qmt
 DEFAULT_DATA_PROVIDER=qmt
 
@@ -2420,7 +2428,7 @@ EASY_TDX_USE_STUB=false
 <p>执行前确保：
 - <code>JQDATA_USERNAME/JQDATA_PASSWORD</code> 已配置
 - <code>TUSHARE_TOKEN</code> 已配置（如使用 Tushare）
-- <code>QMT_DATA_PATH</code> 已配置（如使用 QMT）</p>
+- <code>QMT_DATA_PATH</code> 已配置（如使用 MiniQMT/xtquant）</p>
 <h2 id="_7">🎯 代码格式对照表<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -2483,7 +2491,8 @@ EASY_TDX_USE_STUB=false
 </code></pre></div>
 - 路径是否存在
 - 路径是否正确（根据实际安装目录调整）
-- QMT 是否已经下载了相应的数据</p>
+- QMT 是否已经下载了相应的数据
+- 如果你使用的是大 QMT，不走这个数据目录配置，请看 <a href="../big-qmt-server.html">大 QMT 服务向导</a>。</p>
 <h3 id="q4">Q4: 数据格式不一致怎么办？<a class="headerlink" href="#q4" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>推荐</strong>：在策略中统一使用聚宽格式（<code>.XSHG</code>/<code>.XSHE</code>）</li>
@@ -2494,6 +2503,7 @@ EASY_TDX_USE_STUB=false
 <ul>
 <li><a href="DATA_PROVIDER_JQDATA.html">聚宽数据</a></li>
 <li><a href="DATA_PROVIDER_MINIQMT.html">MiniQMT 数据</a></li>
+<li><a href="../big-qmt-server.html">大 QMT 服务向导</a></li>
 <li><a href="DATA_PROVIDER_TUSHARE.html">Tushare 数据</a></li>
 <li><a href="DATA_PROVIDER_RQDATA.html">RQData 数据 Beta</a></li>
 <li><a href="DATA_PROVIDER_EASY_TDX.html">easy_tdx 通达信数据 Beta</a></li>

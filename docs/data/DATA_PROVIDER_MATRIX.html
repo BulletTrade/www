@@ -1672,6 +1672,7 @@
 
 <h1 id="_1">数据源能力矩阵<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <p>本页用于说明不同数据源的适用边界。新增 provider 均为显式启用，不会改变默认 <code>jqdata</code> 行为。</p>
+<p>这里的 <code>RemoteQMT</code> 是客户端远程数据源名称，不等同于某一种底层 QMT。它的 server 后端可以是 MiniQMT/xtquant，也可以是大 QMT helper。</p>
 <table>
 <thead>
 <tr>
@@ -1709,11 +1710,11 @@
 <tr>
 <td>RemoteQMT</td>
 <td>默认代码路径</td>
-<td>远程 bullet-trade server + QMT</td>
+<td>远程 bullet-trade server + QMT 后端</td>
 <td>客户端跨平台，服务端 Windows</td>
-<td>由远程 QMT provider 提供</td>
+<td>由远程 QMT 后端提供</td>
 <td>由远程 server 转发</td>
-<td>由远程 QMT provider 能力决定</td>
+<td>由远程 QMT 后端能力决定</td>
 <td>已有远程实盘数据源</td>
 </tr>
 <tr>
@@ -1752,6 +1753,7 @@
 <ul>
 <li>正式回测优先使用已完成复权和对账验证的数据源：JQData、MiniQMT 或已验证环境下的 Tushare。</li>
 <li>需要与 QMT 实盘尽量一致时，优先 MiniQMT 或 RemoteQMT。</li>
+<li>MiniQMT 是本地 xtquant/<code>userdata_mini</code> 直连；RemoteQMT 可以由 MiniQMT server 提供，也可以由大 QMT helper + <code>--server-type big_qmt</code> 提供。大 QMT 启动流程见 <a href="../big-qmt-server.html">大 QMT 服务向导</a>。</li>
 <li>easy_tdx 适合作为免费行情源探索和轻量 smoke；日线动态前复权已有样例对账，分钟级长期历史回测仍受免费 online 分钟线保留窗口限制。</li>
 <li>RQData 在拿到 API key 并完成真实对账前，只作为 Beta provider 接入和测试。</li>
 </ul>

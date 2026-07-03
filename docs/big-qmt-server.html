@@ -8,13 +8,9 @@
       
       
       
-        <link rel="canonical" href="https://bullettrade.cn/docs/live.html">
+        <link rel="canonical" href="https://bullettrade.cn/docs/big-qmt-server.html">
       
       
-        <link rel="prev" href="optimize.html">
-      
-      
-        <link rel="next" href="tick.html">
       
       
         
@@ -25,7 +21,7 @@
     
     
       
-        <title>实盘引擎 - BulletTrade Docs</title>
+        <title>大 QMT 服务向导 - BulletTrade Docs</title>
       
     
     
@@ -78,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#qmt" class="md-skip">
           跳转至
         </a>
       
@@ -116,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              实盘引擎
+              大 QMT 服务向导
             
           </span>
         </div>
@@ -385,10 +381,8 @@
   
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
+    <li class="md-tabs__item">
       <a href="live.html" class="md-tabs__link">
         
   
@@ -1029,37 +1023,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    实盘引擎
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="live.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="live.html" class="md-nav__link">
         
   
   
@@ -1075,198 +1042,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-qmt" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. 本地 QMT 最小配置
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-qmt-remote" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. 远程 qmt-remote 最小配置
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-server" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. 远程 server 怎么启动
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. 多账户时再看这两个参数
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="4. 多账户时再看这两个参数">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#server" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        server 端
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        客户端
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5. 模拟盘/实盘切换检查
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6. 下单等待（同步/异步）
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="6. 下单等待（同步/异步）">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        远程下单兼容性与升级边界
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        7. 常见问题
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="7. 常见问题">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#env" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        为什么文档里不再写一大堆 .env
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#stock" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        :stock 要不要写
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#-data-path" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        --data-path 为什么不能写
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        运行态目录和日志目录要不要先配
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1815,167 +1590,284 @@
   
 
 
-<h1 id="_1">实盘引擎<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<p>这页只讲最常见的两种实盘方式：</p>
+<h1 id="qmt">大 QMT 服务向导<a class="headerlink" href="#qmt" title="Permanent link">&para;</a></h1>
+<p>这页说明如何在大 QMT 里运行 BulletTrade helper，并启动兼容原 <code>qmt-remote</code> 的 <code>bullet-trade server</code>。</p>
+<p>适用场景：券商不再提供 MiniQMT，或者 MiniQMT 不能继续作为数据和交易网关时，用大 QMT 的策略运行环境承接行情、账户、持仓、委托、成交和下单撤单能力。</p>
+<p>如果你的券商仍然提供 MiniQMT/xtquant，并且可以正常访问 <code>userdata_mini</code>，优先看 <a href="qmt-server.html">QMT server（MiniQMT 后端）</a>。本页只讲大 QMT helper 后端。</p>
+<h2 id="qmt-qmt">小 QMT 和大 QMT 的关系<a class="headerlink" href="#qmt-qmt" title="Permanent link">&para;</a></h2>
+<p>从底层能力看，小 QMT 和大 QMT 是两种不同的数据/交易后端：</p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>小 QMT / MiniQMT</th>
+<th>大 QMT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>本地直连数据源</td>
+<td><code>DEFAULT_DATA_PROVIDER=qmt</code></td>
+<td>不提供本地直连 provider</td>
+</tr>
+<tr>
+<td>本地直连交易通道</td>
+<td><code>DEFAULT_BROKER=qmt</code></td>
+<td>不直接作为 broker 使用</td>
+</tr>
+<tr>
+<td>server 后端</td>
+<td><code>--server-type qmt</code></td>
+<td><code>--server-type big_qmt</code></td>
+</tr>
+<tr>
+<td>依赖</td>
+<td><code>xtquant</code> / <code>userdata_mini</code></td>
+<td>大 QMT 策略环境里的 <code>ContextInfo</code> 和内置函数</td>
+</tr>
+<tr>
+<td>客户端访问</td>
+<td>可直连 <code>qmt</code>，也可通过 <code>qmt-remote</code></td>
+<td>通过 <code>qmt-remote</code></td>
+</tr>
+</tbody>
+</table>
+<p>所以文档里看到的 <code>qmt-remote</code> 不是说小 QMT 和大 QMT 是同一个数据源，而是说它们都可以被包装成同一套远程协议。上层策略为了兼容，统一连 <code>58620</code> 的 <code>qmt-remote</code>；底层 server 再决定实际使用 MiniQMT 后端还是大 QMT 后端。</p>
+<p>大 QMT 只替换底层 QMT 网关，不限定上层策略运行方式。BulletTrade 原来的两种使用路线都支持：</p>
 <ul>
-<li>本地 QMT</li>
-<li>远程 qmt-remote</li>
+<li>方案 A：策略直接用 <code>bullet-trade live</code> 独立运行，连接 <code>qmt-remote</code>。</li>
+<li>方案 B：策略在聚宽模拟盘等远程环境运行，通过 BulletTrade helper 调用本地 <code>qmt-remote</code> 服务。</li>
 </ul>
-<h2 id="1-qmt">1. 本地 QMT 最小配置<a class="headerlink" href="#1-qmt" title="Permanent link">&para;</a></h2>
-<p>这是 MiniQMT/xtquant 直连模式，要求本机能访问 <code>userdata_mini</code>。大 QMT 不支持直接套用这组 <code>QMT_DATA_PATH</code> 配置；大 QMT 需要先启动 helper，再通过远程 <code>qmt-remote</code> 使用，见 <a href="big-qmt-server.html">大 QMT 服务向导</a>。</p>
-<p><code>.env</code> 最少只写这几个：</p>
-<div class="highlight"><pre><span></span><code>DEFAULT_DATA_PROVIDER=qmt
-DEFAULT_BROKER=qmt
-QMT_DATA_PATH=C:\国金QMT交易端\userdata_mini
-QMT_ACCOUNT_ID=123456
+<h2 id="1">1. 架构先看清<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<p>大 QMT 方案分两层：</p>
+<div class="highlight"><pre><span></span><code>大 QMT 策略进程
+  运行 helpers/big_qmt_gateway_strategy_sample.py
+  监听本机 127.0.0.1:9000
+        |
+        v
+bullet-trade server --server-type big_qmt
+  连接大 QMT helper
+  对外监听 58620
+        |
+        v
+策略 / AIStocks V2 / bullet-trade live
+  仍然使用 qmt-remote 连接 58620
 </code></pre></div>
-<p>运行：</p>
-<div class="highlight"><pre><span></span><code>bullet-trade<span class="w"> </span>live<span class="w"> </span>strategies/demo_strategy.py<span class="w"> </span>--broker<span class="w"> </span>qmt
+<p>注意：</p>
+<ul>
+<li><code>9000</code> 是大 QMT helper 的本机 HTTP 端口，只给同一台机器上的 <code>bullet-trade server</code> 使用。</li>
+<li><code>58620</code> 才是 BulletTrade 对外提供的 qmt server 端口。</li>
+<li>上层策略仍然配置 <code>qmt-remote</code>，不需要直接知道底层是 MiniQMT 还是大 QMT。</li>
+<li>方案 A 的本地 live 和方案 B 的聚宽远程调用都走同一个 <code>58620</code> qmt server。</li>
+</ul>
+<h2 id="2-qmt">2. 登录大 QMT<a class="headerlink" href="#2-qmt" title="Permanent link">&para;</a></h2>
+<p>先正常登录大 QMT 交易端。</p>
+<p><img src="assets/big-qmt-1-login.png" alt="登录大 QMT" width="640"></p>
+<p>要点：</p>
+<ul>
+<li>确认登录的是要提供数据和交易能力的资金账号。</li>
+<li>登录后保持大 QMT 运行，helper 服务依赖这个进程。</li>
+</ul>
+<h2 id="3-python">3. 新建 Python 策略<a class="headerlink" href="#3-python" title="Permanent link">&para;</a></h2>
+<p>在大 QMT 左侧策略区新建 Python 策略。</p>
+<p><img src="assets/big-qmt-2-new-strategy.png" alt="新建 Python 策略" width="640"></p>
+<p>建议策略名称使用容易识别的名字，例如：</p>
+<div class="highlight"><pre><span></span><code>BIGQMTHELPER
+</code></pre></div>
+<h2 id="4-helper">4. 粘贴 helper 并修改顶部参数<a class="headerlink" href="#4-helper" title="Permanent link">&para;</a></h2>
+<p>把仓库里的 helper 文件内容复制到大 QMT 策略编辑器：</p>
+<div class="highlight"><pre><span></span><code>helpers/big_qmt_gateway_strategy_sample.py
+</code></pre></div>
+<p>保存前先检查顶部参数。
+由于我们是监听的本机端口，实际上也没有什么太多的安全隐患，但是记得把 ACCOUNT_ID 改了。
+<img src="assets/big-qmt-3-modify-strategy-and-save.png" alt="修改 helper 参数并保存" width="900"></p>
+<p>常用参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>建议</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>LISTEN_HOST</code></td>
+<td>大 QMT helper 监听地址</td>
+<td>默认 <code>127.0.0.1</code></td>
+</tr>
+<tr>
+<td><code>LISTEN_PORT</code></td>
+<td>大 QMT helper 监听端口</td>
+<td>默认 <code>9000</code></td>
+</tr>
+<tr>
+<td><code>GATEWAY_BUILD_ID</code></td>
+<td>启动日志和 <code>/health</code> 里的版本标识</td>
+<td>每次升级 helper 后更新</td>
+</tr>
+<tr>
+<td><code>GATEWAY_PASSWORD</code></td>
+<td>BulletTrade 访问 helper 的密码</td>
+<td>必须改成私有值，并和 server 侧一致</td>
+</tr>
+<tr>
+<td><code>GATEWAY_SECRET</code></td>
+<td>可选增强认证密钥</td>
+<td>可先保留默认，正式环境建议改</td>
+</tr>
+<tr>
+<td><code>ACCOUNT_ID</code></td>
+<td>QMT 资金账号</td>
+<td>改成当前大 QMT 登录账号</td>
+</tr>
+<tr>
+<td><code>ACCOUNT_TYPE</code></td>
+<td>账户类型</td>
+<td>股票账户用 <code>stock</code></td>
+</tr>
+<tr>
+<td><code>ENABLE_TRADING</code></td>
+<td>是否允许下单</td>
+<td>仿真测试可设 <code>True</code>，只读验证设 <code>False</code></td>
+</tr>
+<tr>
+<td><code>ENABLE_CANCEL_ORDER</code></td>
+<td>是否允许按订单号撤单</td>
+<td>需要撤单时设 <code>True</code></td>
+</tr>
+<tr>
+<td><code>RUN_HTTP_IN_BACKGROUND_THREAD</code></td>
+<td>是否后台线程运行 HTTP</td>
+<td>默认按 helper 注释使用，不要随意改</td>
+</tr>
+<tr>
+<td><code>AUTO_START_HTTP_ON_MODULE_LOAD</code></td>
+<td>模块加载时是否自启动 HTTP</td>
+<td>正式运行通常保持 <code>False</code></td>
+</tr>
+<tr>
+<td><code>LOG_DIR</code> / <code>LOG_FILE_NAME</code></td>
+<td>helper 日志位置</td>
+<td>默认即可，排查时看日志</td>
+</tr>
+</tbody>
+</table>
+<p>特别注意：</p>
+<ul>
+<li>文件头保持 <code>#encoding:gbk</code>。</li>
+<li>复制到开源仓库或提交前，不要保留真实资金账号、密码和密钥。</li>
+<li>大 QMT 内置 Python 较老，helper 已按大 QMT 白名单库控制依赖，不要额外加第三方库。</li>
+</ul>
+<h2 id="5">5. 新建策略交易运行项<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<p>回到模型交易区，新建策略交易，选择刚才保存的 Python 策略。</p>
+<p><img src="assets/big-qmt-4-new-server.png" alt="新建策略交易运行项" width="760"></p>
+<p>建议配置：</p>
+<ul>
+<li>策略类型：选择刚才的 helper 策略。</li>
+<li>账号类型：股票账户。</li>
+<li>资金账号：选择当前要提供服务的 QMT 资金账号。</li>
+<li>主图代码：可以用 <code>000300</code>。</li>
+<li>运行周期：日线即可。</li>
+<li>勾选“终端启动后自动运行”。</li>
+</ul>
+<p>不要勾选“启动本地 Python”。如果勾选后大 QMT 只加载模块，不调用 <code>init(ContextInfo)</code>，helper 可能不会真正拿到 QMT 上下文。</p>
+<h2 id="6-helper">6. 启动 helper 服务<a class="headerlink" href="#6-helper" title="Permanent link">&para;</a></h2>
+<p>启动刚才创建的策略交易运行项，然后查看“策略日志”。</p>
+<p><img src="assets/big-qmt-5-run-server.png" alt="启动大 QMT helper" width="900"></p>
+<p>正常启动时应看到类似日志：</p>
+<div class="highlight"><pre><span></span><code>[BT_BIG_QMT] init starting account=...
+[BT_BIG_QMT] ContextInfo.set_account success account=...
+[BT_BIG_QMT] listen success listen=127.0.0.1:9000
+[BT_BIG_QMT] entering tornado ioloop; gateway should keep running
+</code></pre></div>
+<p>如果只看到 <code>module loaded</code> 后策略结束，通常说明这个运行方式没有调用 <code>init(ContextInfo)</code>，优先检查是否勾选了“启动本地 Python”，以及是否是从策略交易运行项启动。</p>
+<h2 id="7-bullet-trade-server">7. 启动 bullet-trade server<a class="headerlink" href="#7-bullet-trade-server" title="Permanent link">&para;</a></h2>
+<p>大 QMT helper 启动后，在同一台 Windows 机器上启动 <code>bullet-trade server</code>。</p>
+<p>示例 <code>.env.bigqmt</code>：</p>
+<div class="highlight"><pre><span></span><code>QMT_SERVER_TOKEN=change_me_server_token
+
+BIG_QMT_GATEWAY_URL=http://127.0.0.1:9000
+BIG_QMT_GATEWAY_PASSWORD=change_me_gateway_password
+BIG_QMT_GATEWAY_TIMEOUT_SECONDS=30
+
+BIG_QMT_ENABLE_TRADING=true
+BIG_QMT_ENABLE_CANCEL_ORDER=true
+</code></pre></div>
+<p>启动命令：</p>
+<div class="highlight"><pre><span></span><code>bullet-trade<span class="w"> </span>--env-file<span class="w"> </span>.env.bigqmt<span class="w"> </span>server<span class="w"> </span>--server-type<span class="w"> </span>big_qmt<span class="w"> </span>--listen<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span>--port<span class="w"> </span><span class="m">58620</span><span class="w"> </span>--enable-data<span class="w"> </span>--enable-broker
 </code></pre></div>
 <p>说明：</p>
 <ul>
-<li>股票账户默认就是 <code>stock</code>，所以 <code>QMT_ACCOUNT_TYPE</code> 不用写</li>
-<li>只有期货账户才需要写 <code>QMT_ACCOUNT_TYPE=future</code></li>
+<li><code>--server-type big_qmt</code> 表示后端连接大 QMT helper。</li>
+<li><code>BIG_QMT_GATEWAY_URL</code> 指向大 QMT helper 的 <code>9000</code> 端口。</li>
+<li><code>QMT_SERVER_TOKEN</code> 是上层策略连接 <code>58620</code> 时使用的 token。</li>
+<li><code>BIG_QMT_GATEWAY_PASSWORD</code> 必须和 helper 顶部的 <code>GATEWAY_PASSWORD</code> 一致。</li>
+<li><code>BIG_QMT_ENABLE_TRADING=false</code> 时只提供数据和账户查询，不允许下单。</li>
 </ul>
-<h2 id="2-qmt-remote">2. 远程 qmt-remote 最小配置<a class="headerlink" href="#2-qmt-remote" title="Permanent link">&para;</a></h2>
-<p>如果 QMT 在另一台 Windows 机器上，客户端 <code>.env</code> 只要：</p>
+<h2 id="8-qmt-remote">8. 策略侧仍使用 qmt-remote<a class="headerlink" href="#8-qmt-remote" title="Permanent link">&para;</a></h2>
+<p>上层策略、AIStocks V2 或其他客户端仍然连接 <code>bullet-trade server</code> 的 <code>58620</code>。</p>
+<p>这意味着大 QMT 后端对上层是透明的：</p>
+<ul>
+<li>方案 A：策略直接在本机或服务器上运行 <code>bullet-trade live</code>，配置 <code>DEFAULT_DATA_PROVIDER=qmt-remote</code> 和 <code>DEFAULT_BROKER=qmt-remote</code>。</li>
+<li>方案 B：策略在聚宽模拟盘运行，使用 <code>helpers/bullet_trade_jq_remote_helper.py</code> 或聚宽接管方案，最终也是调用同一个 <code>58620</code> qmt server。</li>
+</ul>
+<p>客户端 <code>.env</code> 示例：</p>
 <div class="highlight"><pre><span></span><code>DEFAULT_DATA_PROVIDER=qmt-remote
 DEFAULT_BROKER=qmt-remote
-QMT_SERVER_HOST=10.0.0.8
+QMT_SERVER_HOST=127.0.0.1
 QMT_SERVER_PORT=58620
-QMT_SERVER_TOKEN=secret
+QMT_SERVER_TOKEN=change_me_server_token
 </code></pre></div>
 <p>运行：</p>
 <div class="highlight"><pre><span></span><code>bullet-trade<span class="w"> </span>live<span class="w"> </span>strategies/demo_strategy.py<span class="w"> </span>--broker<span class="w"> </span>qmt-remote
 </code></pre></div>
-<p>单账户时，不用写 <code>QMT_SERVER_ACCOUNT_KEY</code>。</p>
-<h2 id="3-server">3. 远程 server 怎么启动<a class="headerlink" href="#3-server" title="Permanent link">&para;</a></h2>
-<p>下面是 MiniQMT 后端的 server 启动方式。大 QMT 后端请使用 <a href="big-qmt-server.html">大 QMT 服务向导</a> 里的 <code>--server-type big_qmt</code> 和 <code>BIG_QMT_GATEWAY_*</code> 配置。</p>
-<p>Windows 服务端 <code>.env</code>：</p>
-<div class="highlight"><pre><span></span><code>QMT_DATA_PATH=C:\国金QMT交易端\userdata_mini
-QMT_ACCOUNT_ID=123456
-QMT_SERVER_TOKEN=secret
-</code></pre></div>
-<p>启动：</p>
-<div class="highlight"><pre><span></span><code>bullet-trade<span class="w"> </span>--env-file<span class="w"> </span>.env<span class="w"> </span>server<span class="w"> </span>--listen<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span>--port<span class="w"> </span><span class="m">58620</span><span class="w"> </span>--enable-data<span class="w"> </span>--enable-broker
-</code></pre></div>
-<p>更完整的 MiniQMT server 说明看 <a href="qmt-server.html">QMT server</a>。大 QMT 后端看 <a href="big-qmt-server.html">大 QMT 服务向导</a>。</p>
-<h2 id="4">4. 多账户时再看这两个参数<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
-<h3 id="server">server 端<a class="headerlink" href="#server" title="Permanent link">&para;</a></h3>
-<p>多账户时才用 <code>--accounts</code>。<br />
-股票账户示例：</p>
-<div class="highlight"><pre><span></span><code>--accounts<span class="w"> </span><span class="nv">main</span><span class="o">=</span><span class="m">123456</span>
-</code></pre></div>
-<p>期货账户示例：</p>
-<div class="highlight"><pre><span></span><code>--accounts<span class="w"> </span><span class="nv">hedge</span><span class="o">=</span><span class="m">654321</span>:future
-</code></pre></div>
-<h3 id="_2">客户端<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>多账户时，客户端才需要：</p>
-<div class="highlight"><pre><span></span><code>QMT_SERVER_ACCOUNT_KEY=main
-</code></pre></div>
-<h2 id="5">5. 模拟盘/实盘切换检查<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
-<p>模拟盘和实盘应尽量使用同一份策略代码，只通过 <code>.env</code> 切换账户、网关地址和风控参数。切换前先确认这几件事：</p>
-<table>
-<thead>
-<tr>
-<th>检查项</th>
-<th>模拟盘</th>
-<th>实盘</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>QMT 账号</td>
-<td>仿真或测试资金号</td>
-<td>真实资金号</td>
-</tr>
-<tr>
-<td>bullet-trade server</td>
-<td>默认 <code>58620</code>，提供行情和交易能力</td>
-<td>默认 <code>58620</code>，提供行情和交易能力</td>
-</tr>
-<tr>
-<td>上层调度网关</td>
-<td>如使用上层网关，策略通常连接网关自己的端口</td>
-<td>同样连接上层网关端口，再由网关连接 bullet-trade server</td>
-</tr>
-<tr>
-<td>下单等待</td>
-<td>可用 <code>TRADE_MAX_WAIT_TIME=0</code> 压测异步链路</td>
-<td>建议保留同步等待或按单设置 <code>wait_timeout</code></td>
-</tr>
-<tr>
-<td>风控</td>
-<td>先放宽，确认链路能跑通</td>
-<td>再启用 <code>RISK_CHECK_ENABLED</code>、<code>MIN_BUY_ORDER_VALUE</code> 等</td>
-</tr>
-</tbody>
-</table>
-<p>不要把 <code>QMT_SERVER_PORT</code> 和上层调度网关端口混用：<code>QMT_SERVER_PORT</code> 是 bullet-trade server 的端口；上层网关自己的端口应写在上层系统配置里。</p>
-<h2 id="6">6. 下单等待（同步/异步）<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
-<p>实盘下单时，引擎默认会<strong>同步等待最多 16 秒</strong>再返回结果。可以通过两种方式调整：</p>
-<table>
-<thead>
-<tr>
-<th>方式</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>.env</code> 设置 <code>TRADE_MAX_WAIT_TIME</code></td>
-<td>全局生效，默认 <code>16</code>；设 <code>0</code> 为纯异步</td>
-</tr>
-<tr>
-<td>函数参数 <code>wait_timeout=10</code></td>
-<td>单次下单覆盖，优先级高于环境变量</td>
-</tr>
-</tbody>
-</table>
-<p><code>TRADE_MAX_WAIT_TIME</code> / <code>wait_timeout</code> 是订单终态等待窗口，不是网络请求超时。远程 <code>qmt-remote</code> 默认使用 <code>QMT_SERVER_RPC_TIMEOUT=60</code>，并在下单时保证请求超时大于 <code>wait_timeout + QMT_PLACE_ORDER_TIMEOUT_MARGIN</code>，避免订单已提交但客户端先报 RPC 超时。长连接 <code>RemoteQmtBroker</code> 如果显式配置了默认等待窗口，会把同一个等待值传给 server 并用于 RPC timeout 预算；如果没有配置，则保持旧行为，由 server 端使用自己的默认等待设置。</p>
-<p>server session 的外层请求超时默认也是 60 秒；当 <code>broker.place_order</code> 显式传入更长 <code>wait_timeout</code> 时，会自动扩展到 <code>wait_timeout + 30s</code>，避免 server 外层先于订单等待窗口超时。</p>
-<p>策略中批量异步下单示例：</p>
-<div class="highlight"><pre><span></span><code><span class="n">order_target</span><span class="p">(</span><span class="s1">&#39;000001.XSHE&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">wait_timeout</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>   <span class="c1"># 立即返回</span>
-<span class="n">order</span><span class="p">(</span><span class="s1">&#39;600519.XSHG&#39;</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">wait_timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>         <span class="c1"># 等 10 秒</span>
-</code></pre></div>
-<h3 id="_3">远程下单兼容性与升级边界<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>本次远程 QMT 下单语义保持向后兼容：</p>
+<p>如果是 AIStocks V2，中间网关也继续连接 <code>58620</code>，不直接连大 QMT helper 的 <code>9000</code>。</p>
+<p>启动 live 前确认模拟/实盘开关。</p>
+<p><img src="assets/big-qmt-6-start-live.png" alt="确认模拟或实盘" width="360"></p>
+<h2 id="9">9. 最小验收清单<a class="headerlink" href="#9" title="Permanent link">&para;</a></h2>
+<p>部署后至少检查这些接口：</p>
 <ul>
-<li><code>buy</code> / <code>sell</code> / <code>order</code> 正常提交后仍返回订单号字符串，旧策略不需要改成读取新对象。</li>
-<li><code>broker.place_order</code> 响应只新增可选字段，例如 <code>timed_out</code>、<code>async_tracking</code>、<code>last_snapshot</code>、<code>sub_account_id</code>，旧客户端可以忽略。</li>
-<li><code>broker.orders</code> / <code>broker.trades</code> 仍返回原有 list/dict 结构；新字段只用于排查和上层系统认领迟到订单。</li>
-<li>新 helper 连接旧 server 时，缺少这些新增字段也能运行；旧 helper 连接新 server 时，未知字段不会影响旧字段读取。</li>
-<li>若看到 <code>status=open/submitted</code> 且 <code>timed_out=true</code>，含义是“委托已提交但等待终态超时”，不是下单失败；后续应通过订单/成交查询确认最终状态。</li>
-<li>若客户端网络超时且没有拿到 <code>order_id</code>，只能视为 <code>submit_unknown</code>，需要后续查订单/成交，不应直接重复下单。</li>
+<li><code>health</code>：确认 <code>backend_type=big_qmt</code>，并看到 helper 的 <code>GATEWAY_BUILD_ID</code>。</li>
+<li><code>data.trade_days</code>：返回日期应兼容 MiniQMT，例如 <code>2026-06-29 00:00:00</code>。</li>
+<li><code>data.current_tick</code>：能获取当前行情。</li>
+<li><code>data.history</code>：能获取日线和分钟线。</li>
+<li><code>broker.account</code>：能获取账户资金。</li>
+<li><code>broker.positions</code>：能获取持仓。</li>
+<li><code>broker.orders</code>：能获取委托。</li>
+<li><code>broker.trades</code>：能获取成交。</li>
+<li>仿真环境下测试限价单、市价单、撤单、订单备注和虚拟子账户过滤。</li>
 </ul>
-<p>开源用户升级时建议保留默认值：</p>
-<div class="highlight"><pre><span></span><code>QMT_SERVER_RPC_TIMEOUT=60
-QMT_PLACE_ORDER_TIMEOUT_MARGIN=30
+<h2 id="10">10. 常见问题<a class="headerlink" href="#10" title="Permanent link">&para;</a></h2>
+<h3 id="helper">为什么 helper 日志里显示启动后又停止<a class="headerlink" href="#helper" title="Permanent link">&para;</a></h3>
+<p>如果日志只有：</p>
+<div class="highlight"><pre><span></span><code>module loaded
+module autostart disabled
 </code></pre></div>
-<p>聚宽短连接 helper 不读取 <code>.env</code>，需要在初始化时传参；不传时也使用相同默认值：</p>
-<div class="highlight"><pre><span></span><code><span class="n">bt</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span>
-    <span class="n">host</span><span class="o">=</span><span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span>
-    <span class="n">token</span><span class="o">=</span><span class="s2">&quot;secret&quot;</span><span class="p">,</span>
-    <span class="n">rpc_timeout</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span>
-    <span class="n">place_order_timeout_margin</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
-<span class="p">)</span>
-</code></pre></div>
-<p>如果明确希望只按 <code>wait_timeout</code> 本身设置请求超时，可以把 <code>place_order_timeout_margin=0</code>；该显式 0 值会被保留，不会被默认 30 秒覆盖。</p>
-<p>如果显式把 <code>TRADE_MAX_WAIT_TIME</code> 调大，也应同步确认 RPC timeout 至少大于 <code>wait_timeout + margin</code>。</p>
-<h2 id="7">7. 常见问题<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
-<h3 id="env">为什么文档里不再写一大堆 <code>.env</code><a class="headerlink" href="#env" title="Permanent link">&para;</a></h3>
-<p>因为绝大多数参数都有默认值。<br />
-第一步应该先跑通最小链路，不要一开始就把日志、风控、后台任务、通知全部写进去。</p>
-<p>正式实盘如果账号没有免五，建议在开启风控后按需配置 <code>MIN_BUY_ORDER_VALUE</code>，例如 <code>MIN_BUY_ORDER_VALUE=1000</code>。默认值为 <code>0</code>，不限制买入小单；该规则只拦截买入，不影响卖出或清仓。</p>
-<h3 id="stock"><code>:stock</code> 要不要写<a class="headerlink" href="#stock" title="Permanent link">&para;</a></h3>
-<p>单账户股票场景不用写。<br />
-默认就是 <code>stock</code>。</p>
-<h3 id="-data-path"><code>--data-path</code> 为什么不能写<a class="headerlink" href="#-data-path" title="Permanent link">&para;</a></h3>
-<p>因为当前版本没有这个 CLI 参数。<br />
-MiniQMT 数据目录要写在 <code>.env</code> 的 <code>QMT_DATA_PATH</code>。大 QMT 不使用这个配置入口，见 <a href="big-qmt-server.html">大 QMT 服务向导</a>。</p>
-<h3 id="_4">运行态目录和日志目录要不要先配<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>先不用。<br />
-除非你有明确的目录要求，否则先用默认值即可。</p>
+<p>但没有 <code>init starting</code>，说明大 QMT 没有调用策略生命周期里的 <code>init(ContextInfo)</code>。优先确认：</p>
+<ul>
+<li>不是只在编辑器里运行代码。</li>
+<li>是从“策略交易”运行项启动。</li>
+<li>没有勾选“启动本地 Python”。</li>
+</ul>
+<h3 id="9000">为什么 9000 能通，但策略不能连<a class="headerlink" href="#9000" title="Permanent link">&para;</a></h3>
+<p>策略不应该连接 <code>9000</code>。策略和上层网关应该连接 <code>bullet-trade server</code> 的 <code>58620</code>。</p>
+<h3 id="_1">为什么下单报权限或不可用<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>检查两层开关：</p>
+<ul>
+<li>helper 顶部 <code>ENABLE_TRADING=True</code></li>
+<li>server 侧 <code>.env.bigqmt</code> 里 <code>BIG_QMT_ENABLE_TRADING=true</code></li>
+</ul>
+<p>撤单同理检查：</p>
+<ul>
+<li>helper 顶部 <code>ENABLE_CANCEL_ORDER=True</code></li>
+<li>server 侧 <code>.env.bigqmt</code> 里 <code>BIG_QMT_ENABLE_CANCEL_ORDER=true</code></li>
+</ul>
+<h3 id="_2">为什么密码不匹配<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p><code>GATEWAY_PASSWORD</code> 和 <code>BIG_QMT_GATEWAY_PASSWORD</code> 是一对，必须一致。<code>QMT_SERVER_TOKEN</code> 是另一层 token，给 <code>qmt-remote</code> 客户端连接 <code>58620</code> 使用。</p>
+<h3 id="qmt-miniqmt">大 QMT 和 MiniQMT 的接口是否完全一样<a class="headerlink" href="#qmt-miniqmt" title="Permanent link">&para;</a></h3>
+<p>上层尽量保持同一套 <code>qmt-remote</code> 协议。大 QMT 后端负责把大 QMT helper 返回值归一化成 MiniQMT 兼容口径，例如日期格式、行情字段、复权数据、订单和成交结构。</p>
+<p>新增能力应优先放在大 QMT adapter/helper 内，不应为了大 QMT 随意修改策略引擎。</p>
 
 
 

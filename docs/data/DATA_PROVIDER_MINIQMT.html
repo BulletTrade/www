@@ -1738,6 +1738,7 @@
 
 <h1 id="miniqmt">MiniQMT 数据源封装说明<a class="headerlink" href="#miniqmt" title="Permanent link">&para;</a></h1>
 <p><code>MiniQMTProvider</code> 位于 <code>bullet_trade/data/providers/miniqmt.py</code>，用于在本地安装了 mini QMT/xtquant 环境的场景下直接复用行情数据。</p>
+<p>本页只说明 MiniQMT/xtquant 直连模式。大 QMT 不是这个 provider 的替代配置，不能只通过 <code>QMT_DATA_PATH</code> 接入；大 QMT 需要在大 QMT 策略里运行 helper，再由 <code>bullet-trade server --server-type big_qmt</code> 对外提供 <code>qmt-remote</code>。完整步骤见 <a href="../big-qmt-server.html">大 QMT 服务向导</a>。</p>
 <h2 id="_1">依赖与配置<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <ul>
 <li>依赖官方 <code>xtquant</code> 包（通常随 miniQMT 安装提供），未安装时会抛出明确的 ImportError。  </li>

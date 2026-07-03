@@ -2,122 +2,126 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://bullettrade.cn/docs/index.html</loc>
-         <lastmod>2026-06-25</lastmod>
+         <lastmod>2026-07-03</lastmod>
     </url>
     <url>
          <loc>https://bullettrade.cn/docs/api.html</loc>
-         <lastmod>2026-06-25</lastmod>
+         <lastmod>2026-07-03</lastmod>
     </url>
     <url>
          <loc>https://bullettrade.cn/docs/backtest-data-session.html</loc>
-         <lastmod>2026-06-25</lastmod>
+         <lastmod>2026-07-03</lastmod>
     </url>
     <url>
          <loc>https://bullettrade.cn/docs/backtest.html</loc>
-         <lastmod>2026-06-25</lastmod>
+         <lastmod>2026-07-03</lastmod>
     </url>
     <url>
          <loc>https://bullettrade.cn/docs/beginner-guide.html</loc>
-         <lastmod>2026-06-25</lastmod>
+         <lastmod>2026-07-03</lastmod>
     </url>
     <url>
          <loc>https://bullettrade.cn/docs/beginner-route-a.html</loc>
-         <lastmod>2026-06-25</lastmod>
+         <lastmod>2026-07-03</lastmod>
     </url>
     <url>
          <loc>https://bullettrade.cn/docs/beginner-route-b.html</loc>
-         <lastmod>2026-06-25</lastmod>
+         <lastmod>2026-07-03</lastmod>
+    </url>
+    <url>
+         <loc>https://bullettrade.cn/docs/big-qmt-server.html</loc>
+         <lastmod>2026-07-03</lastmod>
     </url>
     <url>
          <loc>https://bullettrade.cn/docs/config.html</loc>
-         <lastmod>2026-06-25</lastmod>
+         <lastmod>2026-07-03</lastmod>
     </url>
     <url>
          <loc>https://bullettrade.cn/docs/contributing.html</loc>
-         <lastmod>2026-06-25</lastmod>
+         <lastmod>2026-07-03</lastmod>
     </url>
     <url>
          <loc>https://bullettrade.cn/docs/joinquant-helper-explicit.html</loc>
-         <lastmod>2026-06-25</lastmod>
+         <lastmod>2026-07-03</lastmod>
     </url>
     <url>
          <loc>https://bullettrade.cn/docs/joinquant-integration-options.html</loc>
-         <lastmod>2026-06-25</lastmod>
+         <lastmod>2026-07-03</lastmod>
     </url>
     <url>
          <loc>https://bullettrade.cn/docs/joinquant-live-takeover-usage.html</loc>
-         <lastmod>2026-06-25</lastmod>
+         <lastmod>2026-07-03</lastmod>
     </url>
     <url>
          <loc>https://bullettrade.cn/docs/joinquant-live-takeover.html</loc>
-         <lastmod>2026-06-25</lastmod>
+         <lastmod>2026-07-03</lastmod>
     </url>
     <url>
          <loc>https://bullettrade.cn/docs/live.html</loc>
-         <lastmod>2026-06-25</lastmod>
+         <lastmod>2026-07-03</lastmod>
     </url>
     <url>
          <loc>https://bullettrade.cn/docs/optimize.html</loc>
-         <lastmod>2026-06-25</lastmod>
+         <lastmod>2026-07-03</lastmod>
     </url>
     <url>
          <loc>https://bullettrade.cn/docs/python-setup.html</loc>
-         <lastmod>2026-06-25</lastmod>
+         <lastmod>2026-07-03</lastmod>
     </url>
     <url>
          <loc>https://bullettrade.cn/docs/qmt-server.html</loc>
-         <lastmod>2026-06-25</lastmod>
+         <lastmod>2026-07-03</lastmod>
     </url>
     <url>
          <loc>https://bullettrade.cn/docs/quickstart.html</loc>
-         <lastmod>2026-06-25</lastmod>
+         <lastmod>2026-07-03</lastmod>
     </url>
     <url>
          <loc>https://bullettrade.cn/docs/research.html</loc>
-         <lastmod>2026-06-25</lastmod>
+         <lastmod>2026-07-03</lastmod>
     </url>
     <url>
          <loc>https://bullettrade.cn/docs/tick.html</loc>
-         <lastmod>2026-06-25</lastmod>
+         <lastmod>2026-07-03</lastmod>
     </url>
     <url>
          <loc>https://bullettrade.cn/docs/trade-support.html</loc>
-         <lastmod>2026-06-25</lastmod>
+         <lastmod>2026-07-03</lastmod>
     </url>
     <url>
          <loc>https://bullettrade.cn/docs/data/DATA_PROVIDER_ACCEPTANCE.html</loc>
-         <lastmod>2026-06-25</lastmod>
+         <lastmod>2026-07-03</lastmod>
     </url>
     <url>
          <loc>https://bullettrade.cn/docs/data/DATA_PROVIDER_DIRECT_ACCESS.html</loc>
-         <lastmod>2026-06-25</lastmod>
+         <lastmod>2026-07-03</lastmod>
     </url>
     <url>
          <loc>https://bullettrade.cn/docs/data/DATA_PROVIDER_EASY_TDX.html</loc>
-         <lastmod>2026-06-25</lastmod>
+         <lastmod>2026-07-03</lastmod>
     </url>
     <url>
          <loc>https://bullettrade.cn/docs/data/DATA_PROVIDER_GUIDE.html</loc>
-         <lastmod>2026-06-25</lastmod>
+         <lastmod>2026-07-03</lastmod>
     </url>
     <url>
          <loc>https://bullettrade.cn/docs/data/DATA_PROVIDER_JQDATA.html</loc>
-         <lastmod>2026-06-25</lastmod>
+         <lastmod>2026-07-03</lastmod>
     </url>
     <url>
          <loc>https://bullettrade.cn/docs/data/DATA_PROVIDER_MATRIX.html</loc>
-         <lastmod>2026-06-25</lastmod>
+         <lastmod>2026-07-03</lastmod>
     </url>
     <url>
          <loc>https://bullettrade.cn/docs/data/DATA_PROVIDER_MINIQMT.html</loc>
-         <lastmod>2026-06-25</lastmod>
+         <lastmod>2026-07-03</lastmod>
     </url>
     <url>
          <loc>https://bullettrade.cn/docs/data/DATA_PROVIDER_RQDATA.html</loc>
-         <lastmod>2026-06-25</lastmod>
+         <lastmod>2026-07-03</lastmod>
     </url>
     <url>
          <loc>https://bullettrade.cn/docs/data/DATA_PROVIDER_TUSHARE.html</loc>
-         <lastmod>2026-06-25</lastmod>
+         <lastmod>2026-07-03</lastmod>
     </url>
 </urlset>

@@ -1750,9 +1750,17 @@
 
 <h1 id="qmt-server">QMT server（远程服务端）<a class="headerlink" href="#qmt-server" title="Permanent link">&para;</a></h1>
 <p>这页只讲一件事：在 Windows 上把 <code>bullet-trade server</code> 启起来，给远程策略提供行情和下单。</p>
+<p>本页默认讲 MiniQMT/xtquant 后端，也就是通过 <code>QMT_DATA_PATH</code> 访问 <code>userdata_mini</code>。这套配置不能直接套到大 QMT。</p>
+<p>如果券商不再提供 MiniQMT，需要用大 QMT 策略环境提供数据和交易网关，请先看 <a href="big-qmt-server.html">大 QMT 服务向导</a>。那种模式下，大 QMT helper 监听 <code>127.0.0.1:9000</code>，<code>bullet-trade server --server-type big_qmt</code> 再对外提供 <code>qmt-remote</code> 服务。</p>
+<p>概念上要分清三层：</p>
+<ul>
+<li><code>qmt</code>：MiniQMT/xtquant 本地直连数据源和交易通道。</li>
+<li><code>big_qmt</code>：大 QMT helper server 后端，不是本地直连 provider。</li>
+<li><code>qmt-remote</code>：客户端远程协议，底层可以接 MiniQMT server，也可以接大 QMT server。</li>
+</ul>
 <h2 id="_1">先记住两点<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <ul>
-<li><code>bullet-trade server</code> <strong>不支持</strong> <code>--data-path</code>，QMT 数据目录要写到 <code>.env</code> 的 <code>QMT_DATA_PATH</code>。</li>
+<li><code>bullet-trade server</code> <strong>不支持</strong> <code>--data-path</code>，MiniQMT 数据目录要写到 <code>.env</code> 的 <code>QMT_DATA_PATH</code>。</li>
 <li>单账户时，<code>--accounts</code> 不是必填；如果已经在 <code>.env</code> 里写了 <code>QMT_ACCOUNT_ID</code>，可以直接启动。</li>
 </ul>
 <h2 id="env">最小 <code>.env</code><a class="headerlink" href="#env" title="Permanent link">&para;</a></h2>
@@ -1763,7 +1771,7 @@ QMT_SERVER_TOKEN=secret
 </code></pre></div>
 <p>说明：</p>
 <ul>
-<li><code>QMT_DATA_PATH</code>：QMT 的 <code>userdata_mini</code> 目录</li>
+<li><code>QMT_DATA_PATH</code>：MiniQMT 的 <code>userdata_mini</code> 目录</li>
 <li><code>QMT_ACCOUNT_ID</code>：QMT 账号</li>
 <li><code>QMT_SERVER_TOKEN</code>：远程访问 token</li>
 </ul>
@@ -1822,7 +1830,7 @@ QMT_SERVER_TOKEN=secret
 <p>先检查这几项：</p>
 <ul>
 <li>QMT 客户端是否已登录</li>
-<li><code>QMT_DATA_PATH</code> 是否指向正确的 <code>userdata_mini</code></li>
+<li><code>QMT_DATA_PATH</code> 是否指向正确的 MiniQMT <code>userdata_mini</code></li>
 <li>Windows 防火墙是否放行了监听端口</li>
 <li><code>QMT_SERVER_TOKEN</code> 是否和客户端一致</li>
 </ul>

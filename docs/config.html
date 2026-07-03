@@ -1834,6 +1834,30 @@
 <p>没有列入这里的旧变量，通常表示当前代码没有读取，或者只是某个示例脚本里的 Python 常量，不再作为通用 <code>.env</code> 配置入口。</p>
 <h2 id="1-qmt">1. 本地 QMT 最小配置<a class="headerlink" href="#1-qmt" title="Permanent link">&para;</a></h2>
 <p>适用场景：策略和 QMT 在同一台 Windows 机器上运行。</p>
+<p>这是 MiniQMT/xtquant 直连模式，依赖 <code>QMT_DATA_PATH</code> 指向 <code>userdata_mini</code>。大 QMT 不能直接使用这组配置；大 QMT 先按 <a href="big-qmt-server.html">大 QMT 服务向导</a> 启动 helper 和 <code>--server-type big_qmt</code>，策略侧再使用第 3 节的 <code>qmt-remote</code>。</p>
+<p>命名关系：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>qmt</code></td>
+<td>MiniQMT/xtquant 本地直连 provider/broker</td>
+</tr>
+<tr>
+<td><code>big_qmt</code></td>
+<td>大 QMT server 后端</td>
+</tr>
+<tr>
+<td><code>qmt-remote</code></td>
+<td>客户端远程 provider/broker，实际后端可能是 MiniQMT 或大 QMT</td>
+</tr>
+</tbody>
+</table>
 <div class="highlight"><pre><span></span><code>DEFAULT_DATA_PROVIDER=qmt
 DEFAULT_BROKER=qmt
 QMT_DATA_PATH=C:\国金QMT交易端\userdata_mini
@@ -1849,6 +1873,7 @@ QMT_ACCOUNT_ID=123456
 </ul>
 <h2 id="2-server">2. 远程 server 最小配置<a class="headerlink" href="#2-server" title="Permanent link">&para;</a></h2>
 <p>适用场景：Windows 机器只负责连 QMT，对外提供远程行情和交易服务。</p>
+<p>下面是 MiniQMT 后端的远程 server 配置。大 QMT 后端使用 <code>BIG_QMT_GATEWAY_URL</code>、<code>BIG_QMT_GATEWAY_PASSWORD</code> 和 <code>--server-type big_qmt</code>，见 <a href="big-qmt-server.html">大 QMT 服务向导</a>。</p>
 <div class="highlight"><pre><span></span><code>QMT_DATA_PATH=C:\国金QMT交易端\userdata_mini
 QMT_ACCOUNT_ID=123456
 QMT_SERVER_TOKEN=secret
@@ -2350,6 +2375,7 @@ QMT_SERVER_SUB_ACCOUNT=demo@main
 </table>
 <h2 id="11-qmt-server">11. 远程 QMT server<a class="headerlink" href="#11-qmt-server" title="Permanent link">&para;</a></h2>
 <p>这些配置作用在 <code>bullet-trade server</code> 进程。</p>
+<p><code>QMT_SERVER_TYPE=qmt</code> 是 MiniQMT/xtquant 后端；<code>QMT_SERVER_TYPE=big_qmt</code> 或 CLI <code>--server-type big_qmt</code> 是大 QMT helper 后端。大 QMT 还需要配置 <code>BIG_QMT_GATEWAY_*</code>，完整步骤见 <a href="big-qmt-server.html">大 QMT 服务向导</a>。</p>
 <table>
 <thead>
 <tr>
@@ -2508,8 +2534,9 @@ QMT_SERVER_SUB_ACCOUNT=demo@main
 <h2 id="14">14. 一个判断原则<a class="headerlink" href="#14" title="Permanent link">&para;</a></h2>
 <p>如果只是先跑通：</p>
 <ul>
-<li>本地 QMT：只配 <code>DEFAULT_DATA_PROVIDER</code>、<code>DEFAULT_BROKER</code>、<code>QMT_DATA_PATH</code>、<code>QMT_ACCOUNT_ID</code>。</li>
-<li>远程 server：只配 <code>QMT_DATA_PATH</code>、<code>QMT_ACCOUNT_ID</code>、<code>QMT_SERVER_TOKEN</code>。</li>
+<li>本地 MiniQMT：只配 <code>DEFAULT_DATA_PROVIDER</code>、<code>DEFAULT_BROKER</code>、<code>QMT_DATA_PATH</code>、<code>QMT_ACCOUNT_ID</code>。</li>
+<li>MiniQMT 远程 server：只配 <code>QMT_DATA_PATH</code>、<code>QMT_ACCOUNT_ID</code>、<code>QMT_SERVER_TOKEN</code>。</li>
+<li>大 QMT 远程 server：先按 <a href="big-qmt-server.html">大 QMT 服务向导</a> 配 helper，再配 <code>BIG_QMT_GATEWAY_URL</code>、<code>BIG_QMT_GATEWAY_PASSWORD</code>、<code>QMT_SERVER_TOKEN</code>。</li>
 <li>远程客户端：只配 <code>DEFAULT_DATA_PROVIDER</code>、<code>DEFAULT_BROKER</code>、<code>QMT_SERVER_HOST</code>、<code>QMT_SERVER_PORT</code>、<code>QMT_SERVER_TOKEN</code>。</li>
 </ul>
 <p>其他配置先不写进 <code>.env</code> 也可以，但需要查的时候，上面的索引应该都能找到。</p>

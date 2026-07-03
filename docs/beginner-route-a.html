@@ -1841,6 +1841,7 @@
 <ul>
 <li><strong>QMT / MiniQMT 和 BulletTrade 应该放在同一台 Windows 机器上</strong></li>
 </ul>
+<p>本页默认讲 MiniQMT/xtquant 直连模式，也就是 <code>.env</code> 里配置 <code>DEFAULT_DATA_PROVIDER=qmt</code>、<code>DEFAULT_BROKER=qmt</code> 和 <code>QMT_DATA_PATH</code>。如果券商不再提供 MiniQMT，需要使用大 QMT 承接网关能力，不要套用本页的 <code>QMT_DATA_PATH</code> 配置，请改看 <a href="big-qmt-server.html">大 QMT 服务向导</a>。大 QMT 启动后，上层策略仍可按方案 A 用 <code>qmt-remote</code> 运行。</p>
 <h3 id="2">2. 建议的基础准备<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
 <ul>
 <li>已按 <a href="python-setup.html">环境准备：先安装 Python，再创建虚拟环境</a> 完成 Python 安装</li>
@@ -1856,6 +1857,7 @@
 登录要选择独立交易！
 <img alt="登录时选择独立交易" src="assets/miniqmt_login.png" /></p>
 <p><img alt="MiniQMT 启动入口" src="assets/mini_qmt.png" /></p>
+<p>大 QMT 的登录和 helper 启动流程不同，见 <a href="big-qmt-server.html">大 QMT 服务向导</a>。</p>
 <h3 id="3">3. 先完成共享环境准备文档<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
 <p>如果你现在还没有装 Python，或者命令行里还不能正常执行：</p>
 <ul>

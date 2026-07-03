@@ -1735,6 +1735,7 @@
 </ul>
 <p>两种方式的优缺点见 <a href="joinquant-integration-options.html">聚宽策略接入方案对比</a>。</p>
 <h2 id="1-server">1. 先启动远程 server<a class="headerlink" href="#1-server" title="Permanent link">&para;</a></h2>
+<p>下面是 MiniQMT 后端的启动方式。若 Windows 侧使用大 QMT，请先按 <a href="big-qmt-server.html">大 QMT 服务向导</a> 在大 QMT 里运行 helper，再启动 <code>bullet-trade server --server-type big_qmt</code>；聚宽侧 helper 仍然连接 <code>58620</code>。</p>
 <p>Windows 机器上的 <code>.env</code> 最少只要：</p>
 <div class="highlight"><pre><span></span><code>QMT_DATA_PATH=C:\国金QMT交易端\userdata_mini
 QMT_ACCOUNT_ID=123456
@@ -1780,7 +1781,7 @@ QMT_SERVER_TOKEN=secret
 单账户场景不用写；只有多账户才需要。</p>
 <h3 id="server-data-path">server 端为什么不能写 <code>--data-path</code><a class="headerlink" href="#server-data-path" title="Permanent link">&para;</a></h3>
 <p>因为当前版本没有这个参数。<br />
-数据目录要放到 <code>.env</code> 里的 <code>QMT_DATA_PATH</code>。</p>
+MiniQMT 数据目录要放到 <code>.env</code> 里的 <code>QMT_DATA_PATH</code>。大 QMT 不使用这个配置入口。</p>
 <h3 id="stock"><code>:stock</code> 必须写吗<a class="headerlink" href="#stock" title="Permanent link">&para;</a></h3>
 <p>也不是。<br />
 股票账户默认就是 <code>stock</code>，所以多账户示例写成：</p>
@@ -1790,7 +1791,7 @@ QMT_SERVER_TOKEN=secret
 只有期货账户才需要写成：</p>
 <div class="highlight"><pre><span></span><code>--accounts<span class="w"> </span><span class="nv">hedge</span><span class="o">=</span><span class="m">654321</span>:future
 </code></pre></div>
-<p>更多说明见 <a href="qmt-server.html">QMT server</a>。</p>
+<p>更多 MiniQMT server 说明见 <a href="qmt-server.html">QMT server</a>。大 QMT 后端见 <a href="big-qmt-server.html">大 QMT 服务向导</a>。</p>
 
 
 
