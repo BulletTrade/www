@@ -1390,10 +1390,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#7-bullet-trade-server" class="md-nav__link">
+  <a href="#7-bullettrade-qmt-remote-server" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7. 启动 bullet-trade server
+        7. 启动 BulletTrade qmt-remote server
       
     </span>
   </a>
@@ -2086,17 +2086,21 @@ bullet-trade server --server-type big_qmt
 [BT_BIG_QMT] entering tornado ioloop; gateway should keep running
 </code></pre></div>
 <p>如果只看到 <code>module loaded</code> 后策略结束，通常说明这个运行方式没有调用 <code>init(ContextInfo)</code>，优先检查是否勾选了“启动本地 Python”，以及是否是从策略交易运行项启动。</p>
-<h2 id="7-bullet-trade-server">7. 启动 bullet-trade server<a class="headerlink" href="#7-bullet-trade-server" title="Permanent link">&para;</a></h2>
-<p>大 QMT helper 启动后，在同一台 Windows 机器上启动 <code>bullet-trade server</code>。</p>
-<p>示例 <code>.env.bigqmt</code>：</p>
+<h2 id="7-bullettrade-qmt-remote-server">7. 启动 BulletTrade qmt-remote server<a class="headerlink" href="#7-bullettrade-qmt-remote-server" title="Permanent link">&para;</a></h2>
+<p>大 QMT helper 启动后，如果上层策略要继续按 <code>qmt-remote</code> 协议访问行情和交易，就需要在同一台 Windows 机器上再启动一个 <code>bullet-trade server</code>。</p>
+<p>这里容易误会：</p>
+<ul>
+<li>大 QMT 本身不读取 <code>.env.bigqmt</code>。</li>
+<li>大 QMT 里的 helper 只读策略文件顶部那些大写参数，例如 <code>ACCOUNT_ID</code>、<code>GATEWAY_PASSWORD</code>、<code>LISTEN_PORT</code>。</li>
+<li><code>.env.bigqmt</code> 只是给外部 Python 进程 <code>bullet-trade server</code> 用的启动配置，目的是告诉它怎么连接大 QMT helper，以及对外用什么 token 提供 <code>58620</code> 服务。</li>
+<li>这个文件不是必须叫 <code>.env.bigqmt</code>，也不是必须用文件；你也可以用系统环境变量或命令行参数。文档用 <code>.env.bigqmt</code> 只是为了和客户端 <code>.env</code> 分开，避免混在一起。</li>
+</ul>
+<p>示例 <code>bullet-trade server</code> 配置文件：</p>
 <div class="highlight"><pre><span></span><code>QMT_SERVER_TOKEN=change_me_server_token
 
 BIG_QMT_GATEWAY_URL=http://127.0.0.1:9000
 BIG_QMT_GATEWAY_PASSWORD=change_me_gateway_password
 BIG_QMT_GATEWAY_TIMEOUT_SECONDS=30
-
-BIG_QMT_ENABLE_TRADING=true
-BIG_QMT_ENABLE_CANCEL_ORDER=true
 </code></pre></div>
 <p>启动命令：</p>
 <div class="highlight"><pre><span></span><code>bullet-trade<span class="w"> </span>--env-file<span class="w"> </span>.env.bigqmt<span class="w"> </span>server<span class="w"> </span>--server-type<span class="w"> </span>big_qmt<span class="w"> </span>--listen<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span>--port<span class="w"> </span><span class="m">58620</span><span class="w"> </span>--enable-data<span class="w"> </span>--enable-broker
@@ -2107,8 +2111,11 @@ BIG_QMT_ENABLE_CANCEL_ORDER=true
 <li><code>BIG_QMT_GATEWAY_URL</code> 指向大 QMT helper 的 <code>9000</code> 端口。</li>
 <li><code>QMT_SERVER_TOKEN</code> 是上层策略连接 <code>58620</code> 时使用的 token。</li>
 <li><code>BIG_QMT_GATEWAY_PASSWORD</code> 必须和 helper 顶部的 <code>GATEWAY_PASSWORD</code> 一致。</li>
-<li><code>BIG_QMT_ENABLE_TRADING=false</code> 时只提供数据和账户查询，不允许下单。</li>
+<li><code>--enable-broker</code> 启用券商接口；是否真正允许下单和撤单，由 helper 顶部的 <code>ENABLE_TRADING</code>、<code>ENABLE_CANCEL_ORDER</code> 决定。</li>
+<li>如果只想提供行情和账户查询，启动 server 时使用 <code>--disable-broker</code>，或者把 helper 顶部 <code>ENABLE_TRADING=False</code>。</li>
 </ul>
+<p>如果你只是想验证大 QMT helper 本身是否启动，看到 <code>listen success listen=127.0.0.1:9000</code> 就已经说明 helper 在大 QMT 里跑起来了。<br />
+但如果要让 BulletTrade 策略、AIStocks V2 或聚宽 helper 继续使用原来的 <code>qmt-remote</code> 接口，就还需要这个 <code>bullet-trade server</code> 作为中间层。</p>
 <h2 id="8-qmt-remote">8. 策略侧仍使用 qmt-remote<a class="headerlink" href="#8-qmt-remote" title="Permanent link">&para;</a></h2>
 <p>上层策略、AIStocks V2 或其他客户端仍然连接 <code>bullet-trade server</code> 的 <code>58620</code>。</p>
 <p>这意味着大 QMT 后端对上层是透明的：</p>
@@ -2167,16 +2174,15 @@ module autostart disabled
 <h3 id="9000">为什么 9000 能通，但策略不能连<a class="headerlink" href="#9000" title="Permanent link">&para;</a></h3>
 <p>策略不应该连接 <code>9000</code>。策略和上层网关应该连接 <code>bullet-trade server</code> 的 <code>58620</code>。</p>
 <h3 id="_1">为什么下单报权限或不可用<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
-<p>检查两层开关：</p>
+<p>先检查 helper 顶部的真实交易开关：</p>
 <ul>
 <li>helper 顶部 <code>ENABLE_TRADING=True</code></li>
-<li>server 侧 <code>.env.bigqmt</code> 里 <code>BIG_QMT_ENABLE_TRADING=true</code></li>
 </ul>
-<p>撤单同理检查：</p>
+<p>撤单同理：</p>
 <ul>
 <li>helper 顶部 <code>ENABLE_CANCEL_ORDER=True</code></li>
-<li>server 侧 <code>.env.bigqmt</code> 里 <code>BIG_QMT_ENABLE_CANCEL_ORDER=true</code></li>
 </ul>
+<p>如果想让整个 <code>58620</code> 服务不提供券商接口，启动 <code>bullet-trade server</code> 时使用 <code>--disable-broker</code>。</p>
 <h3 id="_2">为什么密码不匹配<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p><code>GATEWAY_PASSWORD</code> 和 <code>BIG_QMT_GATEWAY_PASSWORD</code> 是一对，必须一致。<code>QMT_SERVER_TOKEN</code> 是另一层 token，给 <code>qmt-remote</code> 客户端连接 <code>58620</code> 使用。</p>
 <h3 id="qmt-miniqmt">大 QMT 和 MiniQMT 的接口是否完全一样<a class="headerlink" href="#qmt-miniqmt" title="Permanent link">&para;</a></h3>
