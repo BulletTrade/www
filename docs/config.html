@@ -408,6 +408,25 @@
   
   
     <li class="md-tabs__item">
+      <a href="huaxin.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  华鑫 TORA 接入（第一阶段）
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
       <a href="tick.html" class="md-tabs__link">
         
   
@@ -1401,6 +1420,33 @@
   
   
     <li class="md-nav__item">
+      <a href="huaxin.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    华鑫 TORA 接入（第一阶段）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="tick.html" class="md-nav__link">
         
   
@@ -1547,10 +1593,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_17" >
         
           
-          <label class="md-nav__link" for="__nav_16" id="__nav_16_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_17" id="__nav_17_label" tabindex="0">
             
   
   
@@ -1568,8 +1614,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_16">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_17_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_17">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2028,7 +2074,7 @@ QMT_SERVER_SUB_ACCOUNT=demo@main
 <tr>
 <td><code>DEFAULT_BROKER</code></td>
 <td><code>simulator</code></td>
-<td>默认券商/交易通道：<code>simulator</code>、<code>qmt</code>、<code>qmt-remote</code>。</td>
+<td>默认券商/交易通道：<code>simulator</code>、<code>qmt</code>、<code>qmt-remote</code>、<code>huaxin</code>；远程华鑫策略通常仍选择 <code>qmt-remote</code>，由 server 使用 <code>huaxin</code> adapter。</td>
 </tr>
 <tr>
 <td><code>LOG_DIR</code></td>
@@ -2267,6 +2313,11 @@ QMT_SERVER_SUB_ACCOUNT=demo@main
 <td>策略事件超时秒数。</td>
 </tr>
 <tr>
+<td><code>BT_LIVE_FAIL_ON_SCHEDULE_ERROR</code></td>
+<td><code>false</code></td>
+<td>调度任务报错时拒绝该批委托、锁死后续新委托并让 LiveEngine 异常退出；查询和已知订单撤单仍可执行。生产环境建议显式设为 <code>true</code>。</td>
+</tr>
+<tr>
 <td><code>STRATEGY_NAME</code></td>
 <td>空</td>
 <td>策略名称，用于订单备注和日志标识；未设置时通常用策略文件名。</td>
@@ -2494,9 +2545,9 @@ QMT_SERVER_SUB_ACCOUNT=demo@main
 <td>是否启用 server 端订单/撤单风控。</td>
 </tr>
 <tr>
-<td><code>QMT_SERVER_IDEMPOTENCY_TTL_SECONDS</code></td>
-<td><code>300</code></td>
-<td>下单幂等缓存窗口秒数，避免重试导致重复下单。</td>
+<td><code>QMT_SERVER_IDEMPOTENCY_MAX_ENTRIES</code></td>
+<td><code>50000</code></td>
+<td>进程内交易写幂等条目上限；达到上限后新 key 在券商调用前失败关闭，已有 key 仍可安全查询。</td>
 </tr>
 <tr>
 <td><code>QMT_SERVER_ACCOUNTS</code></td>
@@ -2510,6 +2561,11 @@ QMT_SERVER_SUB_ACCOUNT=demo@main
 </tr>
 </tbody>
 </table>
+<p>交易写必须携带稳定 <code>idempotency_key</code>。Server 在当前进程内原子占位并保留到进程结束；
+缓存不会按 TTL 或 LRU 淘汰，以免旧 key 被重新执行，但受 <code>QMT_SERVER_IDEMPOTENCY_MAX_ENTRIES</code>
+硬上限约束。达到上限后只拒绝新的写 key，拒绝发生在券商调用前；已有 key 的结果和冲突判断继续
+可用。应在确认所有在途/未知订单后选择维护窗口安全重启，而不是通过删除条目继续下单。进程重启后
+不承诺跨重启 exactly-once，提交结果未知时只允许用柜台订单/成交事实对账，禁止自动重发。</p>
 <h2 id="12-qmt-remote">12. qmt-remote 客户端<a class="headerlink" href="#12-qmt-remote" title="Permanent link">&para;</a></h2>
 <p>这些配置作用在远程客户端，也就是 <code>DEFAULT_DATA_PROVIDER=qmt-remote</code> 或 <code>DEFAULT_BROKER=qmt-remote</code> 的一侧。</p>
 <table>

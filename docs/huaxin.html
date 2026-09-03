@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://bullettrade.cn/docs/tick.html">
+        <link rel="canonical" href="https://bullettrade.cn/docs/huaxin.html">
       
       
-        <link rel="prev" href="huaxin.html">
+        <link rel="prev" href="live.html">
       
       
-        <link rel="next" href="trade-support.html">
+        <link rel="next" href="tick.html">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>Tick 行情指南 - BulletTrade Docs</title>
+        <title>华鑫 TORA 接入（第一阶段） - BulletTrade Docs</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#tick" class="md-skip">
+        <a href="#tora" class="md-skip">
           跳转至
         </a>
       
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Tick 行情指南
+              华鑫 TORA 接入（第一阶段）
             
           </span>
         </div>
@@ -404,8 +404,10 @@
   
   
   
+    
   
-    <li class="md-tabs__item">
+  
+    <li class="md-tabs__item md-tabs__item--active">
       <a href="huaxin.html" class="md-tabs__link">
         
   
@@ -423,10 +425,8 @@
   
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
+    <li class="md-tabs__item">
       <a href="tick.html" class="md-tabs__link">
         
   
@@ -1188,33 +1188,6 @@
       
   
   
-  
-  
-    <li class="md-nav__item">
-      <a href="huaxin.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    华鑫 TORA 接入（第一阶段）
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
     
   
   
@@ -1234,7 +1207,7 @@
   <span class="md-ellipsis">
     
   
-    Tick 行情指南
+    华鑫 TORA 接入（第一阶段）
   
 
     
@@ -1245,14 +1218,14 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="tick.html" class="md-nav__link md-nav__link--active">
+      <a href="huaxin.html" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
     
   
-    Tick 行情指南
+    华鑫 TORA 接入（第一阶段）
   
 
     
@@ -1278,22 +1251,33 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#tick_1" class="md-nav__link">
+  <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Tick 订阅架构
+        1. 架构与职责
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Tick 订阅架构">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-sdk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. SDK 与私密资产边界
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. SDK 与私密资产边界">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#tick_2" class="md-nav__link">
+  <a href="#21" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Tick 负载里有哪些字段？
+        2.1 开源发布边界
       
     </span>
   </a>
@@ -1306,38 +1290,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        快速开始：订阅部分标的
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="快速开始：订阅部分标的">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        重启 / 热更新后的订阅要点
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        全市场订阅
+        3. 构建与诊断
       
     </span>
   </a>
@@ -1345,10 +1301,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#4-server" class="md-nav__link">
     <span class="md-ellipsis">
       
-        取消与查询
+        4. Server 最小配置
       
     </span>
   </a>
@@ -1356,10 +1312,43 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        已知限制与测试现状
+        5. 客户端与策略
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 新鲜度、幂等与恢复语义
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 已做与未做
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 安全门禁
       
     </span>
   </a>
@@ -1370,6 +1359,33 @@
   
 </nav>
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tick.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tick 行情指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1810,210 +1826,216 @@
   
 
 
-<h1 id="tick">Tick 订阅与行情接收指南<a class="headerlink" href="#tick" title="Permanent link">&para;</a></h1>
-<p>面向实盘/远程使用者的 Tick 使用说明，覆盖订阅、接收、取消以及当前实现限制。</p>
-<h2 id="tick_1">Tick 订阅架构<a class="headerlink" href="#tick_1" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────────────────────┐
-│                         Tick 订阅数据流架构                                   │
-└─────────────────────────────────────────────────────────────────────────────┘
-
-┌─────────────────────────────────────────────────────────────────────────────┐
-│  场景 A: 本地 xtdata 订阅（Windows + miniQMT 环境）                            │
-│                                                                             │
-│  ┌──────────────────┐      ┌──────────────────┐      ┌──────────────────┐   │
-│  │   策略代码        │      │   bullet-trade    │     │   miniQMT        │   │
-│  │                  │      │   core/api.py    │      │   xtquant SDK    │   │
-│  │  subscribe(      │      │                  │      │                  │   │
-│  │   [&#39;000001&#39;],    │─────▶│  subscribe()     │─────▶│ xtdata.subscribe │   │
-│  │   &#39;tick&#39;         │      │                  │      │ _quote()         │   │
-│  │  )               │      │                  │      │                  │   │
-│  └──────────────────┘      └──────────────────┘      └────────┬─────────┘   │
-│                                                               │             │
-│                                                   实时推送 tick│             │
-│                                                               ▼             │
-│  ┌──────────────────┐      ┌──────────────────┐      ┌──────────────────┐   │
-│  │   handle_tick    │◀─────│   _on_xt_tick    │◀─────│ callback 回调    │   │
-│  │   (context,tick) │      │   字段映射转换     │      │ {lastPrice,time} │   │
-│  │                  │      │   sid/last_price │      │                  │   │
-│  └──────────────────┘      └──────────────────┘      └──────────────────┘   │
-│                                                                             │
-│  特点：延迟最低（&lt; 100ms），支持全市场订阅 [&#39;SH&#39;,&#39;SZ&#39;]                             │
-└─────────────────────────────────────────────────────────────────────────────┘
-
-┌─────────────────────────────────────────────────────────────────────────────┐
-│  场景 B: LiveEngine + qmt-remote 远程订阅（macOS/Linux 客户端）                 │
-│                                                                             │
-│  ┌──────────────────────────────────────────────────────────────────────┐   │
-│  │  客户端 (macOS/Linux)                                                 │   │
-│  │                                                                      │   │
-│  │  ┌──────────────┐    ┌──────────────────┐    ┌────────────────────┐  │   │
-│  │  │  策略代码     │    │  LiveEngine       │    │ RemoteQmtBroker   │  │   │
-│  │  │              │    │                  │    │ RemoteQmtProvider  │  │   │
-│  │  │  subscribe(  │───▶│ register_tick_   │───▶│                    │  │   │
-│  │  │   [...],     │    │ subscription()   │    │ 记录订阅清单         │  │   │
-│  │  │   &#39;tick&#39;     │    │                  │    │                    │  │   │
-│  │  │  )           │    │                  │    │                    │  │   │
-│  │  └──────────────┘    └──────────────────┘    └────────────────────┘  │   │
-│  │                              │                         │             │   │
-│  │                   tick_sync_interval                   │             │   │
-│  │                   (默认 2 秒轮询)                        │             │   │
-│  │                              │                         │             │   │
-│  │                              ▼                         │             │   │
-│  │                      ┌──────────────────┐              │             │   │
-│  │                      │  _tick_loop()    │              │             │   │
-│  │                      │  定时拉取快照     │───────────────┘             │   │
-│  │                      └────────┬─────────┘                            │   │
-│  │                               │                                      │   │
-│  │                               │ request(&quot;data.snapshot&quot;)             │   │
-│  └───────────────────────────────┼──────────────────────────────────────┘   │
-│                                  │                                          │
-│                          ════════╪════════  网络 ════════════════            │
-│                                  │                                          │
-│  ┌───────────────────────────────┼──────────────────────────────────────┐   │
-│  │  服务端 (Windows + miniQMT)    │                                      │   │
-│  │                               ▼                                      │   │
-│  │  ┌────────────────────────────────────────────────────────────────┐  │   │
-│  │  │  bullet-trade server                                           │  │   │
-│  │  │                                                                │  │   │
-│  │  │  ┌────────────────┐       ┌────────────────┐                   │  │   │
-│  │  │  │ QmtDataAdapter │◀──────│ data.snapshot  │◀── 客户端请求       │  │   │
-│  │  │  │                │       │ 处理器          │                   │  │   │
-│  │  │  └───────┬────────┘       └────────────────┘                   │  │   │
-│  │  │          │                                                     │  │   │
-│  │  │          │ get_current_tick()                                  │  │   │
-│  │  │          ▼                                                     │  │   │
-│  │  │  ┌────────────────┐                                            │  │   │
-│  │  │  │ xtdata.get_    │                                            │  │   │
-│  │  │  │ full_tick()    │                                            │  │   │
-│  │  │  └───────┬────────┘                                            │  │   │
-│  │  │          │                                                     │  │   │
-│  │  │          ▼                                                     │  │   │
-│  │  │  ┌────────────────┐                                            │  │   │
-│  │  │  │ miniQMT        │  实时 tick 数据源                            │  │   │
-│  │  │  │ xtquant SDK    │  {lastPrice, time, bidPrice, askPrice...}  │  │   │
-│  │  │  └────────────────┘                                            │  │   │
-│  │  └────────────────────────────────────────────────────────────────┘  │   │
-│  └──────────────────────────────────────────────────────────────────────┘   │
-│                                                                             │
-│  特点：跨平台支持，延迟 = tick_sync_interval + 网络延迟                          │
-└─────────────────────────────────────────────────────────────────────────────┘
-
-┌─────────────────────────────────────────────────────────────────────────────┐
-│  handle_tick 回调数据格式                                                     │
-│                                                                             │
-│  def handle_tick(context, tick):                                            │
-│      # tick 字典包含以下字段（来源于 miniQMT xtdata 推送）                       │
-│      tick = {                                                               │
-│          &#39;sid&#39;: &#39;000001.XSHE&#39;,       # 聚宽风格代码                           │
-│          &#39;symbol&#39;: &#39;000001.SZ&#39;,      # QMT 风格代码                          │
-│          &#39;last_price&#39;: 10.50,        # 最新价                                │
-│          &#39;dt&#39;: 1700000000000,        # 时间戳(毫秒)                           │
-│          # ── 盘口字段（本地 xtdata 模式可用）──                                │
-│          &#39;bid1&#39;: 10.49,              # 买一价                                │
-│          &#39;ask1&#39;: 10.51,              # 卖一价                                │
-│          &#39;bid1_volume&#39;: 1000,        # 买一量                                │
-│          &#39;ask1_volume&#39;: 800,         # 卖一量                                │
-│          &#39;last_close&#39;: 10.30,        # 昨收                                  │
-│          &#39;open&#39;: 10.35,              # 开盘价                                │
-│          &#39;high&#39;: 10.55,              # 最高价                                │
-│          &#39;low&#39;: 10.28,               # 最低价                                │
-│          &#39;volume&#39;: 50000,            # 成交量                                │
-│          &#39;amount&#39;: 525000.0,         # 成交额                                │
-│      }                                                                      │
-└─────────────────────────────────────────────────────────────────────────────┘
+<h1 id="tora">华鑫 TORA 接入<a class="headerlink" href="#tora" title="Permanent link">&para;</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">当前状态：代码已接通，真实环境仍须逐环境验收</p>
+<p>当前版本已经接通 TORA Trader、独立 Python 3.7 XMD Level 1 sidecar、
+<code>bullet-trade server --server-type huaxin</code> 与上层 <code>qmt-remote</code> 客户端。
+本地自动化测试通过不等于特定仿真或生产柜台已经验收；每个部署仍需使用对应
+Git commit、私密配置、SDK 制品和运行日志完成只读与受控写验证。</p>
+<p>当前不包含华鑫 Level 2，也不在 BulletTrade server 内维护虚拟子账户账本。
+多虚拟账户由 AIStocks V2 等上层网关负责，华鑫 server 只提供父账户行情和交易事实。</p>
+</div>
+<h2 id="1">1. 架构与职责<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<p>华鑫适配属于同一个开源 <code>bullet-trade</code> 包，不存在另一个运行框架：</p>
+<div class="highlight"><pre><span></span><code>bullet-trade live 策略（qmt-remote）
+              │
+              ▼
+bullet-trade server --server-type huaxin
+        ├── HuaxinBrokerAdapter ── TORA Trader native bridge
+        └── HuaxinDataAdapter   ── Python 3.7 XMD L1 sidecar
 </code></pre></div>
-<p>底层实现主要有两条链路：</p>
 <ul>
-<li><strong>LiveEngine + qmt-remote（默认）</strong>：<code>subscribe(...)</code> 只记录订阅清单，后台按 <code>tick_sync_interval</code>（默认 2 秒）轮询券商的 <code>get_current_tick</code>。对于远程场景，该调用会通过 <code>RemoteQmtBroker -&gt; RemoteQmtConnection</code> 请求 server 的 <code>data.snapshot</code>，并在收到后触发策略的 <code>handle_tick</code>。</li>
-<li><strong>本地 xtdata（无 LiveEngine 或设置了 xtdata 数据源）</strong>：<code>subscribe(...)</code> 会直接调用 <code>xtdata.subscribe_quote/subscribe_whole_quote</code> 由 xtquant 推送，回调 <code>_on_xt_tick</code> 统一成 <code>sid/last_price/dt</code> 后传给策略的 <code>handle_tick</code>。</li>
-<li><strong>Server 端 data.subscribe</strong>：<code>bullet-trade server</code> 内部的 <code>TickSubscriptionManager</code> 每隔 1 秒轮询数据适配器的 <code>get_current_tick</code>，将结果打包成事件 <code>{"symbol": "000001.SZ", "sid": "000001.XSHE", "last_price": 10.1, "dt": ...}</code> 推给远程客户端。当前 LiveEngine 的 qmt-remote 券商并不消费该推送，而是采用上面的轮询模式。</li>
+<li>Trader 负责账户、资金、持仓、委托、成交、限价单、已支持的市价类型和撤单。</li>
+<li>XMD 只负责新鲜 L1 快照；历史 K 线、复权、财务和因子仍由显式选择的其他 Provider 提供。</li>
+<li>server 不复制券商账本，也不在华鑫路径创建 SQLite 数据库。</li>
+<li>AIStocks V2 若提供两个虚拟账号，它才是虚拟现金、冻结、持仓、订单和成交的权威 owner。</li>
 </ul>
-<h3 id="tick_2">Tick 负载里有哪些字段？<a class="headerlink" href="#tick_2" title="Permanent link">&para;</a></h3>
+<h2 id="2-sdk">2. SDK 与私密资产边界<a class="headerlink" href="#2-sdk" title="Permanent link">&para;</a></h2>
+<p>通用 wheel/sdist 只包含 BulletTrade 自研代码、C ABI、bridge 源码和测试桩，不包含华鑫厂商 SDK。
+厂商 SDK 必须由有权用户从外部目录显式提供。</p>
+<p>以下内容不得提交到公开 Git、打入 PyPI 包或写入公开日志：</p>
 <ul>
-<li>始终有 <code>sid</code>（聚宽风格代码，例如 <code>000001.XSHE</code>）和 <code>last_price</code>、<code>dt</code>（时间字符串）。  </li>
-<li>xtdata 推送时原始字段是 <code>stock_code</code>/<code>code</code> + <code>lastPrice</code>/<code>time</code>，框架会映射成上述键；server 推送时会额外带 <code>symbol</code>（QMT 风格代码，如 <code>000001.SZ</code>）。  </li>
-<li><strong>本地 xtdata 订阅</strong> 会尽量保留盘口与昨收等字段：<code>bid1/ask1/bid1_volume/ask1_volume/last_close/open/high/low/volume/amount/limit_up/limit_down</code>，命中即写入 <code>tick</code>；五档以上暂未展开。  </li>
-<li>远程 qmt-remote 目前仍只有基础快照（不含盘口深度）。</li>
+<li>厂商头文件、动态库、PDF 和示例包；</li>
+<li>账号、密码、动态口令、TerminalInfo、MAC、IP 和硬盘序列号；</li>
+<li>柜台、行情、代理地址和端口；</li>
+<li>生产服务器、VPN、SDK 与部署目录；</li>
+<li>未脱敏的行情、订单、成交、资金和持仓记录。</li>
 </ul>
-<h2 id="_1">快速开始：订阅部分标的<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<ol>
-<li>准备 <code>.env.live</code>（或通过 <code>--env-file</code> 指定），关键项：<br />
-<code>DEFAULT_BROKER=qmt-remote</code>、<code>QMT_SERVER_HOST/PORT/TOKEN</code>，必要时 <code>QMT_SERVER_ACCOUNT_KEY</code>、<code>QMT_SERVER_SUB_ACCOUNT</code>、<code>QMT_SERVER_TLS_CERT</code>。<br />
-   服务端需已通过 <code>bullet-trade server --enable-data --enable-broker</code> 启动。</li>
-<li>在策略中声明订阅并实现回调：
-   <div class="highlight"><pre><span></span><code> <span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dt</span>
- <span class="kn">from</span><span class="w"> </span><span class="nn">jqdata</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<p>代码不内置生产或仿真前置地址。Trader 的 <code>HUAXIN_TRADE_FRONT</code> 和 XMD 的
+<code>HUAXIN_XMD_FRONT</code> 都必须来自部署机器上已被 Git 忽略的私密 env 文件。</p>
+<h3 id="21">2.1 开源发布边界<a class="headerlink" href="#21" title="Permanent link">&para;</a></h3>
+<p>BulletTrade 公开发布的华鑫能力仅包含项目自行编写的 adapter、flat C ABI、bridge 源码、构建
+入口、调用示例、测试桩和文档。源码中对 TORA API 名称、类型和回调的引用只用于实现互操作，
+不复制或再分发厂商 SDK 源文件及二进制制品。</p>
+<p>厂商头文件、动态库、PDF、示例包、柜台地址、账号、TerminalInfo 和真实业务数据不会进入公开
+Git、wheel 或 sdist。用户必须通过外部目录自行提供有权使用的 SDK，并自行遵守取得该 SDK 时
+适用的许可和使用条件；BulletTrade 的开源许可证不授予任何厂商 SDK 权利。</p>
+<h2 id="3">3. 构建与诊断<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<p>公开 Git、wheel 和 sdist 已包含以下内容，用户不需要工作区上层的 <code>huaxin/tools</code>：</p>
+<table>
+<thead>
+<tr>
+<th>能力</th>
+<th>公开包是否包含入口</th>
+<th>用户还需自行准备</th>
+<th>当前状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Trader C++ bridge</td>
+<td>是：C ABI、C++ 源码、CMake、<code>huaxin build/doctor</code></td>
+<td>Linux x86_64 工具链及有权取得的 Trader SDK</td>
+<td>可显式编译；仍需目标柜台验收</td>
+</tr>
+<tr>
+<td>Level 1 行情</td>
+<td>是：XMD sidecar 适配与 Server 接入</td>
+<td>Python 3.7、XMD SDK、私密前置与账号</td>
+<td>可接入；不是 C++ native bridge</td>
+</tr>
+<tr>
+<td>Level 2 行情</td>
+<td>否</td>
+<td>—</td>
+<td>当前版本不支持，不能靠上层脚本补齐</td>
+</tr>
+<tr>
+<td>上层 <code>huaxin/tools</code></td>
+<td>不进入公开包</td>
+<td>—</td>
+<td>仅供 BulletTrade 内部部署、探测、canary 和运维，不是公开构建依赖</td>
+</tr>
+</tbody>
+</table>
+<p>因此，“用户完全不知道怎么编译”对 Trader 并不成立：安装后的 CLI 就是正式入口；但如果把“华鑫”
+理解为 L1/L2/Trader 全套 native，当前确实没有完成，必须按上表理解能力边界。</p>
+<p>离线 fake bridge 可用于安装、ABI 和队列合同回归：</p>
+<div class="highlight"><pre><span></span><code>bullet-trade<span class="w"> </span>huaxin<span class="w"> </span>build<span class="w"> </span>--prefix<span class="w"> </span>&lt;BUILD_PREFIX&gt;<span class="w"> </span>--offline-fake<span class="w"> </span>--build-type<span class="w"> </span>Release
+bullet-trade<span class="w"> </span>huaxin<span class="w"> </span>doctor<span class="w"> </span>--bundle<span class="w"> </span>&lt;BUNDLE_DIR&gt;
+</code></pre></div>
+<p>真实 Trader bridge 必须显式选择 trader 模式并提供外部 SDK：</p>
+<div class="highlight"><pre><span></span><code>bullet-trade<span class="w"> </span>huaxin<span class="w"> </span>build<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--prefix<span class="w"> </span>&lt;BUILD_PREFIX&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--trader<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--sdk-dir<span class="w"> </span>&lt;PRIVATE_TORA_TRADER_SDK_DIR&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--build-type<span class="w"> </span>Release
+</code></pre></div>
+<p>构建成功只证明制品生成；只有 native 加载、登录和四项基线查询均成功，Trader 查询状态才是
+<code>ready</code>。XMD sidecar 的加载、登录和新鲜快照是另一套独立门禁，二者不能互相替代。</p>
+<h2 id="4-server">4. Server 最小配置<a class="headerlink" href="#4-server" title="Permanent link">&para;</a></h2>
+<p>以下只展示变量名，不提供真实值。完整值必须放入私密 env：</p>
+<div class="highlight"><pre><span></span><code>QMT_SERVER_TYPE=huaxin
+QMT_SERVER_LISTEN=&lt;LISTEN_ADDRESS&gt;
+QMT_SERVER_PORT=&lt;SERVER_PORT&gt;
+QMT_SERVER_TOKEN=&lt;FIXED_PRIVATE_TOKEN&gt;
+QMT_SERVER_ENABLE_BROKER=true
+QMT_SERVER_ENABLE_DATA=true
+QMT_SERVER_ACCOUNTS=default=&lt;PRIVATE_ACCOUNT_ID&gt;:stock
 
+HUAXIN_NATIVE_BUNDLE=&lt;PRIVATE_TRADER_BUNDLE_PATH&gt;
+HUAXIN_TRADE_FRONT=&lt;PRIVATE_TRADE_TCP_FRONT&gt;
+HUAXIN_LOGIN_ACCOUNT=&lt;PRIVATE_LOGIN_ACCOUNT&gt;
+HUAXIN_PASSWORD=&lt;PRIVATE_PASSWORD&gt;
+HUAXIN_MAC_ADDRESS=&lt;PRIVATE_MAC&gt;
+HUAXIN_USER_PRODUCT_INFO=&lt;PRIVATE_PRODUCT_INFO&gt;
+HUAXIN_TERMINAL_INFO=&lt;PRIVATE_TERMINAL_INFO&gt;
+# 若按受控文件提供硬盘标识，可显式指定；不会扫描个人用户目录。
+HUAXIN_TERMINAL_INFO_FILE=&lt;PRIVATE_TERMINAL_INFO_FILE&gt;
+HUAXIN_ENABLE_TRADING=false
+HUAXIN_ENABLE_CANCEL=false
 
- <span class="k">def</span><span class="w"> </span><span class="nf">initialize</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
-     <span class="k">pass</span>
-
-
- <span class="k">def</span><span class="w"> </span><span class="nf">process_initialize</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
-     <span class="n">subscribe</span><span class="p">([</span><span class="s1">&#39;000001.XSHE&#39;</span><span class="p">,</span> <span class="s1">&#39;000002.XSHE&#39;</span><span class="p">,</span><span class="s1">&#39;232592.XSHG&#39;</span><span class="p">,</span><span class="s1">&#39;104749.SZ&#39;</span><span class="p">],</span> <span class="s1">&#39;tick&#39;</span><span class="p">)</span>
-
-
- <span class="k">def</span><span class="w"> </span><span class="nf">handle_tick</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">tick</span><span class="p">):</span>
-<span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">     假定 tick 是 dict，形如 {code: [payload,...]} 或 {code: payload}。</span>
-<span class="sd">     只提取最常用字段并打印当前时间与 tick 时间的延迟。</span>
-<span class="sd">     &quot;&quot;&quot;</span>
-     <span class="n">now</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
-     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">tick</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-         <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">tick</span><span class="p">)</span>
-         <span class="k">return</span>
-
-     <span class="k">for</span> <span class="n">code</span><span class="p">,</span> <span class="n">payload</span> <span class="ow">in</span> <span class="n">tick</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-         <span class="n">entry</span> <span class="o">=</span> <span class="n">payload</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">payload</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">))</span> <span class="ow">and</span> <span class="n">payload</span> <span class="k">else</span> <span class="n">payload</span>
-         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-             <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;code=</span><span class="si">{</span><span class="n">code</span><span class="si">}</span><span class="s2"> tick=</span><span class="si">{</span><span class="n">entry</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-             <span class="k">continue</span>
-         <span class="n">ts_raw</span> <span class="o">=</span> <span class="n">entry</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">entry</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;datetime&#39;</span><span class="p">)</span>
-         <span class="n">delay</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ts_raw</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)):</span>
-             <span class="k">try</span><span class="p">:</span>
-                 <span class="n">delay_val</span> <span class="o">=</span> <span class="p">(</span><span class="n">now</span> <span class="o">-</span> <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">ts_raw</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">))</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span>
-                 <span class="n">delay</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;[delay=+</span><span class="si">{</span><span class="n">delay_val</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">s] &quot;</span>
-             <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
-                 <span class="n">delay</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-         <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-             <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">delay</span><span class="si">}</span><span class="s2">code=</span><span class="si">{</span><span class="n">code</span><span class="si">}</span><span class="s2"> last=</span><span class="si">{</span><span class="n">entry</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;lastPrice&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2"> &quot;</span>
-             <span class="sa">f</span><span class="s2">&quot;bid=</span><span class="si">{</span><span class="n">entry</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;bidPrice&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2"> ask=</span><span class="si">{</span><span class="n">entry</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;askPrice&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2"> &quot;</span>
-             <span class="sa">f</span><span class="s2">&quot;vol=</span><span class="si">{</span><span class="n">entry</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;volume&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2"> amt=</span><span class="si">{</span><span class="n">entry</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;amount&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2"> ts=</span><span class="si">{</span><span class="n">ts_raw</span><span class="si">}</span><span class="s2">&quot;</span>
-         <span class="p">)</span>
-</code></pre></div></li>
-<li>启动实盘：<br />
-<code>bullet-trade live strategies/demo.py --broker qmt-remote --env-file .env.live</code></li>
-<li>运行中可随时调用 <code>unsubscribe(['000001.XSHE'], 'tick')</code> 或 <code>unsubscribe_all()</code> 取消。</li>
-</ol>
-<p>能从图上看到我们测试环境tick数据的延迟情况
-<img alt="delay" src="assets/tick-delay.png" /></p>
-<blockquote>
-<p>轮询模式意味着订阅数量越多，对 server 的请求压力越大；请留意 <code>tick_subscription_limit</code>（默认 100）和 <code>tick_sync_interval</code>。</p>
-</blockquote>
-<h3 id="_2">重启 / 热更新后的订阅要点<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+HUAXIN_XMD_BACKEND=python37_sidecar
+HUAXIN_XMD_PYTHON=&lt;PRIVATE_PYTHON37_EXECUTABLE&gt;
+HUAXIN_XMD_SDK_DIR=&lt;PRIVATE_XMD_SDK_DIR&gt;
+HUAXIN_XMD_FRONT=&lt;PRIVATE_XMD_TCP_FRONT&gt;
+HUAXIN_XMD_MAX_AGE_SECONDS=30
+HUAXIN_XMD_SIMULATION_REPLAY=false
+</code></pre></div>
+<p>生产环境必须保持 <code>HUAXIN_XMD_SIMULATION_REPLAY=false</code>，继续按交易所时间严格校验。
+只有厂商 7×24 仿真环境使用人工交易日回放行情时才设置为 <code>true</code>；此时快照保留原始
+<code>TradingDay</code>/<code>UpdateTime</code>，但以本机接收时间执行 30 秒新鲜度门禁。</p>
+<p>启动命令：</p>
+<div class="highlight"><pre><span></span><code>bullet-trade<span class="w"> </span>--env-file<span class="w"> </span>&lt;PRIVATE_ENV_FILE&gt;<span class="w"> </span>server<span class="w"> </span>--server-type<span class="w"> </span>huaxin
+</code></pre></div>
+<p>非回环监听还必须同时配置 TLS 证书、TLS 私钥、固定 token 和来源 allowlist；缺少任一项都会
+fail closed。公开示例不应提供可直接连接的地址。</p>
+<h2 id="5">5. 客户端与策略<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<p>策略继续使用统一的远程协议：</p>
+<div class="highlight"><pre><span></span><code>DEFAULT_DATA_PROVIDER=qmt-remote
+DEFAULT_BROKER=qmt-remote
+QMT_SERVER_HOST=&lt;PRIVATE_SERVER_HOST&gt;
+QMT_SERVER_PORT=&lt;SERVER_PORT&gt;
+QMT_SERVER_TOKEN=&lt;FIXED_PRIVATE_TOKEN&gt;
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>bullet-trade<span class="w"> </span>--env-file<span class="w"> </span>&lt;PRIVATE_CLIENT_ENV&gt;<span class="w"> </span>live<span class="w"> </span>&lt;STRATEGY_FILE&gt;<span class="w"> </span>--broker<span class="w"> </span>qmt-remote
+</code></pre></div>
+<p>策略可沿用原有 <code>get_current_data()</code>、订单查询、限价/市价下单与撤单接口。server 只对协议做
+适配，不另建一套华鑫专用策略框架。</p>
+<h2 id="6">6. 新鲜度、幂等与恢复语义<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
 <ul>
-<li>LiveEngine 会把订阅清单持久化，但券商侧不会自动恢复订阅。若第二次启动时跳过了 <code>initialize</code>，订阅不会自动重绑。</li>
-<li>建议在 <code>process_initialize</code>（Live 独有）或 <code>after_code_changed</code> 中再调用一次 <code>subscribe(...)</code> 以确保重启/热更新后仍然生效；也可在 <code>initialize</code> 里保留调用以兼容回测。</li>
+<li>XMD 快照默认最大年龄是 30 秒，配置只能收紧，不能超过 30 秒；过期快照直接报错，不用历史
+  数据或其他行情源静默补齐。</li>
+<li>每次远程下单和撤单都必须携带有效 <code>idempotency_key</code>。Server 使用有界、进程内且不淘汰的
+  结果缓存与柜台订单事实，不创建或要求任何幂等数据库、文件路径或第二启用开关；缓存达到
+  <code>QMT_SERVER_IDEMPOTENCY_MAX_ENTRIES</code> 后，新 key 会在券商调用前失败关闭。</li>
+<li>Trader 登录后以柜台 <code>MaxOrderRef</code> 为基线，运行中只在内存中单调递增；server 重启不会复制
+  一份柜台订单账本。</li>
+<li>Trader 或 XMD 断线时，现有 adapter watchdog 在同一 server 进程内重建会话。重连期间查询和
+  写入快速失败；XMD 重新订阅原标的并等待新鲜快照后才恢复 <code>ready</code>。</li>
+<li>watchdog 只做连接、登录、查询、订阅和新鲜度检查，绝不自动重放下单或撤单。提交结果未知时
+  必须查询柜台事实后由上层决定，不能盲目补单。</li>
+<li>夜间启动时，Trader 柜台或 XMD 尚未开放可以进入等待/降级状态；是否达到跨夜生产验收，仍须
+  用实际部署版本完成夜间启动到次日恢复的运行证据。</li>
 </ul>
-<h2 id="_3">全市场订阅<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<ul>
-<li>本地 Windows + xtquant 场景可用：<code>subscribe(['SH', 'SZ'], 'tick')</code> 会调用 <code>xtdata.subscribe_whole_quote</code>，推送经 <code>_on_xt_tick</code> 转发后进入 <code>handle_tick</code>。</li>
-<li><strong>远程 qmt-remote 暂不支持全市场订阅</strong>：server 端未实现 <code>allow_full_market</code> 开关，<code>RemoteQmtBroker</code> 也未对接推送订阅；需要全市场时只能在本地 xtdata 运行或自行枚举标的列表。</li>
-</ul>
-<h2 id="_4">取消与查询<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<ul>
-<li><code>unsubscribe([...], 'tick')</code>：取消部分订阅；<code>unsubscribe_all()</code>：全部取消。对远程模式会减少 LiveEngine 轮询列表。</li>
-<li><code>get_current_tick('000001.XSHE')</code>：即时拉取一次快照（同样经 server 的 <code>data.snapshot</code> 拉取），不依赖订阅状态，可在调试时验证连通性。</li>
-</ul>
-<h2 id="_5">已知限制与测试现状<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<ul>
-<li>推送链路与 LiveEngine 脱节：远程模式的订阅不会触发 server 端的 tick 推送，而是客户端每隔 <code>tick_sync_interval</code> 主动拉取；标的较多时延迟与带宽占用上升。</li>
-<li>未实现 Throttler/压缩/批量：server 端对订阅数仅做上限校验，没有批量聚合或压缩，极端高频场景需要谨慎。</li>
-<li>全市场订阅仅限本地 xtdata；<code>allow_full_market</code> 配置未在 server 侧生效。</li>
-<li>自动补价/停牌检测仅在下单时发生，tick 本身不含这些标志。</li>
-<li>测试覆盖：存在 LiveEngine 订阅限额与快照读取的单测（见 <code>tests/core/test_live_engine.py</code>），但没有覆盖远程 server 的 tick 订阅/推送、重连、全市场等场景；建议实盘前手工验证。</li>
-</ul>
+<h2 id="7">7. 已做与未做<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>能力</th>
+<th>当前结论</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Trader 账户/资金/持仓/委托/成交查询</td>
+<td>已编码并有自动化测试；每个真实环境仍需验收</td>
+</tr>
+<tr>
+<td>限价单、市价单、撤单</td>
+<td>已编码并有 fake/native 合同测试；真实写入必须单独授权</td>
+</tr>
+<tr>
+<td>XMD Level 1 与 <code>get_current_data()</code> 兼容字段</td>
+<td>已编码；真实行情需用新鲜快照验证</td>
+</tr>
+<tr>
+<td>Server + qmt-remote 策略</td>
+<td>已编码；仿真和生产分别使用各自私密 env</td>
+</tr>
+<tr>
+<td>运行中 Trader/XMD 自动重连</td>
+<td>已编码；仍需跨夜/跨窗口环境测试</td>
+</tr>
+<tr>
+<td>华鑫路径 SQLite 幂等账本</td>
+<td>不做；保留幂等键和柜台事实边界</td>
+</tr>
+<tr>
+<td>AIStocks V2 虚拟子账户</td>
+<td>不属于本 adapter，由 AIStocks V2 负责</td>
+</tr>
+<tr>
+<td>华鑫全市场 Level 2</td>
+<td>本轮不做，后续独立需求和验收</td>
+</tr>
+</tbody>
+</table>
+<h2 id="8">8. 安全门禁<a class="headerlink" href="#8" title="Permanent link">&para;</a></h2>
+<p>默认原则是 fail closed：环境身份不明时按生产处理；未获明确生产写授权时只允许登录、健康检查、
+查询和行情观察。仿真或生产写测试都必须同时限定账号、标的、数量、时间窗和写开关。进程存活、
+登录成功、收到一条行情或一次成交，都不能外推为全部接口、跨夜恢复或生产长期运行已经完成。</p>
 
 
 

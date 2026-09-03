@@ -406,6 +406,25 @@
   
   
     <li class="md-tabs__item">
+      <a href="huaxin.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  华鑫 TORA 接入（第一阶段）
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
       <a href="tick.html" class="md-tabs__link">
         
   
@@ -1172,6 +1191,33 @@
   
   
     <li class="md-nav__item">
+      <a href="huaxin.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    华鑫 TORA 接入（第一阶段）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="tick.html" class="md-nav__link">
         
   
@@ -1479,6 +1525,28 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#helper_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        helper 日志为什么会越来越大
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#helper-gbk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么 helper 文件必须保持 GBK
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1569,10 +1637,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_17" >
         
           
-          <label class="md-nav__link" for="__nav_16" id="__nav_16_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_17" id="__nav_17_label" tabindex="0">
             
   
   
@@ -1590,8 +1658,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_16">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_17_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_17">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1968,7 +2036,7 @@ bullet-trade server --server-type big_qmt
 <div class="highlight"><pre><span></span><code>helpers/big_qmt_gateway_strategy_sample.py
 </code></pre></div>
 <p>保存前先检查顶部参数。
-由于我们是监听的本机端口，实际上也没有什么太多的安全隐患，但是记得把 ACCOUNT_ID 改了。
+由于 helper 默认只监听本机，网络暴露风险较小；实体账号以 sidecar 的 <code>QMT_SERVER_ACCOUNTS</code> 为正式路由，helper 顶部 <code>ACCOUNT_ID</code> 建议设置为同一账号，方便直接调试和 <code>ContextInfo.set_account</code>。
 <img src="assets/big-qmt-3-modify-strategy-and-save.png" alt="修改 helper 参数并保存" width="900"></p>
 <p>常用参数：</p>
 <table>
@@ -2008,22 +2076,12 @@ bullet-trade server --server-type big_qmt
 <tr>
 <td><code>ACCOUNT_ID</code></td>
 <td>QMT 资金账号</td>
-<td>改成当前大 QMT 登录账号</td>
+<td>建议与 sidecar <code>QMT_SERVER_ACCOUNTS</code> 一致；所有请求都显式传账号时可留占位值</td>
 </tr>
 <tr>
 <td><code>ACCOUNT_TYPE</code></td>
 <td>账户类型</td>
 <td>股票账户用 <code>stock</code></td>
-</tr>
-<tr>
-<td><code>AUTO_ENSURE_HISTORY_CACHE</code></td>
-<td><code>data.history</code> 是否先触发历史行情下载</td>
-<td>默认 <code>True</code>，对齐 MiniQMT</td>
-</tr>
-<tr>
-<td><code>HISTORY_FAIL_ON_ENSURE_CACHE_ERROR</code></td>
-<td>自动下载失败时是否直接返回错误</td>
-<td>默认 <code>True</code>，避免读取旧缓存或空数据</td>
 </tr>
 <tr>
 <td><code>INDEX_WEIGHT_DOWNLOAD_BEFORE_READ</code></td>
@@ -2043,7 +2101,7 @@ bullet-trade server --server-type big_qmt
 <tr>
 <td><code>RUN_HTTP_IN_BACKGROUND_THREAD</code></td>
 <td>是否后台线程运行 HTTP</td>
-<td>默认按 helper 注释使用，不要随意改</td>
+<td>正式模型必须为 <code>False</code>，由 QMT 主线程 direct dispatch</td>
 </tr>
 <tr>
 <td><code>AUTO_START_HTTP_ON_MODULE_LOAD</code></td>
@@ -2051,9 +2109,29 @@ bullet-trade server --server-type big_qmt
 <td>正式运行通常保持 <code>False</code></td>
 </tr>
 <tr>
+<td><code>SLOW_ACTION_WARNING_SECONDS</code></td>
+<td>direct-dispatch 慢请求告警阈值</td>
+<td>默认 <code>5</code> 秒</td>
+</tr>
+<tr>
 <td><code>LOG_DIR</code> / <code>LOG_FILE_NAME</code></td>
-<td>helper 日志位置</td>
+<td>helper 当前活动日志位置</td>
 <td>默认即可，排查时看日志</td>
+</tr>
+<tr>
+<td><code>LOG_ROTATE_WHEN</code> / <code>LOG_ROTATE_INTERVAL</code></td>
+<td>日志切分周期</td>
+<td>默认本机午夜、每天一次</td>
+</tr>
+<tr>
+<td><code>LOG_BACKUP_COUNT</code></td>
+<td>已完成的历史日志保留数量</td>
+<td>默认 <code>5</code>，即当前文件外再保留最近 5 个日文件</td>
+</tr>
+<tr>
+<td><code>LOG_ROTATE_UTC</code></td>
+<td>是否按 UTC 切分日志</td>
+<td>默认 <code>False</code>，按 Windows/QMT 本地时间</td>
 </tr>
 </tbody>
 </table>
@@ -2095,12 +2173,14 @@ bullet-trade server --server-type big_qmt
 <li><code>.env.bigqmt</code> 只是给外部 Python 进程 <code>bullet-trade server</code> 用的启动配置，目的是告诉它怎么连接大 QMT helper，以及对外用什么 token 提供 <code>58620</code> 服务。</li>
 <li>这个文件不是必须叫 <code>.env.bigqmt</code>，也不是必须用文件；你也可以用系统环境变量或命令行参数。文档用 <code>.env.bigqmt</code> 只是为了和客户端 <code>.env</code> 分开，避免混在一起。</li>
 </ul>
-<p>示例 <code>bullet-trade server</code> 配置文件：</p>
+<p>仓库中的完整模板是 <code>env.bigqmt.example</code>。生产复制配置项时必须替换 token/password，且不要提交真实密钥。最小示例：</p>
 <div class="highlight"><pre><span></span><code>QMT_SERVER_TOKEN=change_me_server_token
+QMT_SERVER_ACCOUNTS=default=change_me_account_id:stock
 
 BIG_QMT_GATEWAY_URL=http://127.0.0.1:9000
 BIG_QMT_GATEWAY_PASSWORD=change_me_gateway_password
-BIG_QMT_GATEWAY_TIMEOUT_SECONDS=30
+BIG_QMT_GATEWAY_TIMEOUT_SECONDS=120
+QMT_SERVER_REQUEST_TIMEOUT_SECONDS=150
 </code></pre></div>
 <p>启动命令：</p>
 <div class="highlight"><pre><span></span><code>bullet-trade<span class="w"> </span>--env-file<span class="w"> </span>.env.bigqmt<span class="w"> </span>server<span class="w"> </span>--server-type<span class="w"> </span>big_qmt<span class="w"> </span>--listen<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span>--port<span class="w"> </span><span class="m">58620</span><span class="w"> </span>--enable-data<span class="w"> </span>--enable-broker
@@ -2110,10 +2190,20 @@ BIG_QMT_GATEWAY_TIMEOUT_SECONDS=30
 <li><code>--server-type big_qmt</code> 表示后端连接大 QMT helper。</li>
 <li><code>BIG_QMT_GATEWAY_URL</code> 指向大 QMT helper 的 <code>9000</code> 端口。</li>
 <li><code>QMT_SERVER_TOKEN</code> 是上层策略连接 <code>58620</code> 时使用的 token。</li>
+<li><code>QMT_SERVER_ACCOUNTS</code> 是 58620 的实体账号路由，格式为 <code>逻辑名=QMT账号:账户类型</code>；broker 请求会把它传给 helper。</li>
 <li><code>BIG_QMT_GATEWAY_PASSWORD</code> 必须和 helper 顶部的 <code>GATEWAY_PASSWORD</code> 一致。</li>
+<li>如果 helper 顶部 <code>GATEWAY_SECRET</code> 已改成非占位值，还必须设置相同的 <code>BIG_QMT_GATEWAY_SECRET</code>。</li>
+<li>外层 <code>QMT_SERVER_REQUEST_TIMEOUT_SECONDS</code> 必须大于 <code>BIG_QMT_GATEWAY_TIMEOUT_SECONDS</code>；客户端超时不会取消已经进入 QMT 主线程的同步调用。</li>
 <li><code>--enable-broker</code> 启用券商接口；是否真正允许下单和撤单，由 helper 顶部的 <code>ENABLE_TRADING</code>、<code>ENABLE_CANCEL_ORDER</code> 决定。</li>
 <li>如果只想提供行情和账户查询，启动 server 时使用 <code>--disable-broker</code>，或者把 helper 顶部 <code>ENABLE_TRADING=False</code>。</li>
 </ul>
+<p>实体账号的实际传递顺序如下：</p>
+<div class="highlight"><pre><span></span><code>客户端/V2 请求 account_key=default
+  -&gt; 58620 用 QMT_SERVER_ACCOUNTS 解析出实体 account_id/account_type
+  -&gt; big_qmt adapter 在每个 account/position/order/trade/place/cancel 请求中携带实体账号
+  -&gt; helper 优先使用请求里的 account_id；只有请求没有账号时才回退到顶部 ACCOUNT_ID
+</code></pre></div>
+<p>因此 <code>/health</code> 中 <code>account_configured=false</code> 只表示 helper 顶部 <code>ACCOUNT_ID</code> 仍是占位值，不表示经 58620 转发的请求没有实体账号。正常 sidecar 请求只要配置了 <code>QMT_SERVER_ACCOUNTS</code> 就能查询和交易；直接访问 helper 且没有传 <code>account_id</code> 时会返回 <code>ACCOUNT_NOT_CONFIGURED</code>。正式环境仍建议把 helper <code>ACCOUNT_ID</code> 设置为同一实体账号，减少直接调试和错误配置时的歧义。</p>
 <p>如果你只是想验证大 QMT helper 本身是否启动，看到 <code>listen success listen=127.0.0.1:9000</code> 就已经说明 helper 在大 QMT 里跑起来了。<br />
 但如果要让 BulletTrade 策略、AIStocks V2 或聚宽 helper 继续使用原来的 <code>qmt-remote</code> 接口，就还需要这个 <code>bullet-trade server</code> 作为中间层。</p>
 <h2 id="8-qmt-remote">8. 策略侧仍使用 qmt-remote<a class="headerlink" href="#8-qmt-remote" title="Permanent link">&para;</a></h2>
@@ -2152,8 +2242,8 @@ QMT_SERVER_TOKEN=change_me_server_token
 <h2 id="10-miniqmt">10. MiniQMT 对齐口径<a class="headerlink" href="#10-miniqmt" title="Permanent link">&para;</a></h2>
 <p>大 QMT helper 和 <code>--server-type big_qmt</code> 的目标是对上层继续提供 MiniQMT 兼容的 <code>qmt-remote</code> 协议。关键数据接口按下面口径处理：</p>
 <ul>
-<li><code>data.history</code>：默认先调用大 QMT 内置 <code>download_history_data</code>，再调用 <code>get_market_data_ex</code> 读取本地行情。调用方只有在明确诊断缓存问题时才建议传 <code>auto_download=false</code>。</li>
-<li><code>data.current_tick</code>：保留当前价接口，返回结构与快照保持一致，至少包含 <code>sid</code>、<code>last_price</code>、<code>dt</code>。</li>
+<li><code>data.history</code>：每次都先调用大 QMT 内置 <code>download_history_data</code>，再调用 <code>get_market_data_ex</code> 读取本地行情。请求参数不能跳过下载；下载失败直接返回受控错误，避免把缺失数据当成成功结果。</li>
+<li><code>data.current_tick</code> / 快照：保留当前价接口并返回 <code>sid</code>、<code>last_price</code>、<code>dt</code>；build <code>20260828_observation_metadata_v1</code> 起还保留 <code>source_time</code>、独立的 <code>query_completed_time</code>、<code>source</code>、<code>feed_health</code> 以及可用的一档买卖价。上层可以分别判断“行情通道是否健康”和“当前证券最近事件是否较旧”，避免把安静证券误判为整条行情链路失效。</li>
 <li><code>data.security_info</code>：返回聚宽风格 <code>code</code> 和 QMT 风格 <code>qmt_code</code>，同时补齐 <code>display_name</code>、<code>name</code>、<code>start_date</code>、<code>end_date</code>、<code>type</code>、<code>subtype</code>、<code>parent</code>。</li>
 <li><code>data.get_index_stocks</code>：优先使用 <code>download_index_weight</code> / <code>get_index_weight</code> 获取指数权重成分；如果当前大 QMT 环境不支持，再回退到板块列表。</li>
 <li><code>data.trade_days</code>：输出日期保持 MiniQMT 兼容格式，避免不同后端返回纯数字日期导致上层对比失败。</li>
@@ -2183,13 +2273,25 @@ module autostart disabled
 <li>helper 顶部 <code>ENABLE_CANCEL_ORDER=True</code></li>
 </ul>
 <p>如果想让整个 <code>58620</code> 服务不提供券商接口，启动 <code>bullet-trade server</code> 时使用 <code>--disable-broker</code>。</p>
+<h3 id="helper_1">helper 日志为什么会越来越大<a class="headerlink" href="#helper_1" title="Permanent link">&para;</a></h3>
+<p>build <code>20260710_daily_log_rotation_5d</code> 起，helper 使用 Python 3.6 标准库 <code>TimedRotatingFileHandler</code>：</p>
+<ul>
+<li>每天按 Windows/QMT 本地午夜切分一次；</li>
+<li>当前活动文件仍叫 <code>bt_big_qmt_gateway.log</code>；</li>
+<li>轮转文件使用日期后缀；</li>
+<li>当前文件之外保留最近 5 个已完成日文件；</li>
+<li><code>/health</code> 返回 <code>log_file_size_bytes</code>、<code>log_rotate_when</code>、<code>log_backup_count</code> 等字段。</li>
+</ul>
+<p>升级前已经很大的活动日志不会在启动时直接删除。它会在下一个午夜进入轮转，再按保留数量逐日淘汰。如果需要立即释放空间，应先停止 helper，人工归档或删除旧日志，再启动新版 helper；不要在 helper 正写入时强制删除或改名。</p>
+<h3 id="helper-gbk">为什么 helper 文件必须保持 GBK<a class="headerlink" href="#helper-gbk" title="Permanent link">&para;</a></h3>
+<p><code>helpers/big_qmt_gateway_strategy_sample.py</code> 是复制到大 QMT 内置策略编辑器运行的嵌入式源码，不是普通外部 Python 脚本。正式文件第一行和真实文件字节均保持 GBK；不要使用编辑器或格式化工具自动转成 UTF-8，否则部分大 QMT 版本会在加载策略或返回服务端响应时发生编码错误。</p>
 <h3 id="_2">为什么密码不匹配<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p><code>GATEWAY_PASSWORD</code> 和 <code>BIG_QMT_GATEWAY_PASSWORD</code> 是一对，必须一致。<code>QMT_SERVER_TOKEN</code> 是另一层 token，给 <code>qmt-remote</code> 客户端连接 <code>58620</code> 使用。</p>
 <h3 id="qmt-miniqmt">大 QMT 和 MiniQMT 的接口是否完全一样<a class="headerlink" href="#qmt-miniqmt" title="Permanent link">&para;</a></h3>
 <p>上层尽量保持同一套 <code>qmt-remote</code> 协议。大 QMT 后端负责把大 QMT helper 返回值归一化成 MiniQMT 兼容口径，例如日期格式、行情字段、复权数据、订单和成交结构。</p>
 <p>新增能力应优先放在大 QMT adapter/helper 内，不应为了大 QMT 随意修改策略引擎。</p>
 <h3 id="qmt_1">大 QMT 的历史数据是否也需要下载<a class="headerlink" href="#qmt_1" title="Permanent link">&para;</a></h3>
-<p>需要。正式口径和 MiniQMT 一样：先确保本地缓存，再读取历史行情。<code>AUTO_ENSURE_HISTORY_CACHE=True</code> 时，helper 会在 <code>data.history</code> 里自动调用下载函数；如果下载失败且 <code>HISTORY_FAIL_ON_ENSURE_CACHE_ERROR=True</code>，接口会返回错误，而不是继续读可能不完整的数据。</p>
+<p>需要。正式口径和 MiniQMT 一样：每次先确保本地缓存，再读取历史行情。helper 会在 <code>data.history</code> 里先调用下载函数；如果下载失败，接口直接返回错误，而不是继续读可能不完整的数据。盘前预热用于降低延迟，但不能替代本次下载确认。</p>
 
 
 
