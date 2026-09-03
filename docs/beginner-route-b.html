@@ -1773,7 +1773,7 @@
 </ol>
 <div class="highlight"><pre><span></span><code><span class="n">bullet-trade</span> <span class="p">-</span><span class="n">-env</span><span class="o">-file</span> <span class="p">.</span><span class="n">env</span><span class="p">.</span><span class="n">bigqmt</span> <span class="n">server</span> <span class="p">-</span><span class="n">-server-type</span> <span class="n">big_qmt</span> <span class="p">-</span><span class="n">-listen</span> <span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">0</span>
 </code></pre></div>
-<p>只对外开放 <code>58620</code>，不要开放大 QMT 内部的 <code>9000</code>。公网接入建议配合 VPN、IP 白名单或 TLS。</p>
+<p>只对外开放 <code>58620</code>，不要开放大 QMT 内部的 <code>9000</code>。不要把 <code>58620</code> 作为裸 TCP 直接暴露到公网；跨互联网访问应使用 VPN、加密隧道，或正确配置 TLS 与 IP 白名单。</p>
 <h2 id="2-helper">2. 上传一个 helper<a class="headerlink" href="#2-helper" title="Permanent link">&para;</a></h2>
 <p>将下面文件上传到聚宽研究根目录：</p>
 <div class="highlight"><pre><span></span><code>helpers/bullet_trade_jq_remote_helper.py

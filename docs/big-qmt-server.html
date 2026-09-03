@@ -775,6 +775,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="第二步：启动 BulletTrade 服务">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#0100-beta-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        从 0.10.0 Beta 1 升级
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2001,7 +2018,18 @@ BIG_QMT_GATEWAY_PASSWORD=与helper顶部完全一致
 <p>聚宽路线需要允许远程连接：</p>
 <div class="highlight"><pre><span></span><code><span class="n">bullet-trade</span> <span class="p">-</span><span class="n">-env</span><span class="o">-file</span> <span class="p">.</span><span class="n">env</span><span class="p">.</span><span class="n">bigqmt</span> <span class="n">server</span> <span class="p">-</span><span class="n">-server-type</span> <span class="n">big_qmt</span> <span class="p">-</span><span class="n">-listen</span> <span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">0</span>
 </code></pre></div>
-<p>端口、网关地址、超时和数据/交易模块都有默认值，不需要写进首次配置。聚宽路线只开放 <code>58620</code>，不要开放 <code>9000</code>；公网使用时建议再配合 VPN、IP 白名单或 TLS。</p>
+<p>端口、网关地址、超时和数据/交易模块都有默认值，不需要写进首次配置。聚宽路线只开放 <code>58620</code>，不要开放 <code>9000</code>。</p>
+<div class="admonition danger">
+<p class="admonition-title">不要把 58620 作为裸 TCP 直接暴露到公网</p>
+<p>跨互联网访问时应使用 VPN、加密隧道，或正确配置 TLS 与 IP 白名单。<code>QMT_SERVER_TOKEN</code> 只负责身份校验，不能代替传输加密。</p>
+</div>
+<h3 id="0100-beta-1">从 0.10.0 Beta 1 升级<a class="headerlink" href="#0100-beta-1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>升级运行 BulletTrade server 的 Python 包或源码并重启 server。</li>
+<li>聚宽运行策略需要重新上传本版 <code>helpers/bullet_trade_jq_remote_helper.py</code>，以获得 <code>data.history</code> 的 180 秒默认等待窗口。</li>
+<li>大 QMT 中运行的 <code>helpers/big_qmt_gateway_strategy_sample.py</code> 本批没有变化，不需要仅为本次升级重新复制或重启网关策略。</li>
+<li>本地运行策略直接使用升级后的 <code>qmt-remote</code> 客户端，不需要额外增加超时配置。</li>
+</ul>
 <p><a id="joinquant-route"></a></p>
 <h2 id="_2">路线一：策略在聚宽运行<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <pre class="mermaid"><code>flowchart LR
